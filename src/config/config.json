@@ -33,12 +33,6 @@
     "link": "https://github.com/reednel/pages"
   },
 
-  "disqus": {
-    "enable": true,
-    "shortname": "themefisher-template",
-    "settings": {}
-  },
-
   "metadata": {
     "meta_author": "reednel",
     "meta_image": "/images/og-image.png",
