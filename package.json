@@ -8,9 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "format": "prettier -w ./src",
-    "generate-json": "node scripts/jsonGenerator.js",
-    "remove-darkmode": "node scripts/removeDarkmode.js && yarn format"
+    "format": "prettier -w ./src"
   },
   "dependencies": {
     "@astrojs/image": "^0.17.3",
