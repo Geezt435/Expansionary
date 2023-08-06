@@ -47,6 +47,12 @@ export default defineConfig({
           test: "Table of contents",
         },
       ],
+      'remark-math',
+    ],
+    rehypePlugins: [
+      ['rehype-katex', {
+      // Katex plugin options
+      }]
     ],
     shikiConfig: {
       theme: "one-dark-pro",

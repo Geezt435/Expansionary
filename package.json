@@ -32,7 +32,9 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
     "react-lite-youtube-embed": "^2.3.52",
+    "rehype-katex": "^6.0.3",
     "remark-collapse": "^0.1.2",
+    "remark-math": "^5.1.1",
     "remark-toc": "^8.0.1",
     "sharp": "^0.32.4",
     "swiper": "^10.1.0"
