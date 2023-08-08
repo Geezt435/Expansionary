@@ -18,7 +18,7 @@ export interface NavigationLink {
 }
 
 const { main }: { main: NavigationLink[] } = menu;
-const { navigation_button, settings } = config;
+const { settings } = config;
 const { pathname } = Astro.url;
 ---
 
@@ -103,18 +103,6 @@ const { pathname } = Astro.url;
           </>
         ))
       }
-      {
-        navigation_button.enable && (
-          <li class="mt-4 inline-block lg:hidden">
-            <a
-              class="btn btn-outline-primary btn-sm"
-              href={navigation_button.link}
-            >
-              {navigation_button.label}
-            </a>
-          </li>
-        )
-      }
     </ul>
     <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
       {
@@ -129,16 +117,6 @@ const { pathname } = Astro.url;
         )
       }
       <ThemeSwitcher className="mr-5" />
-      {
-        navigation_button.enable && (
-          <a
-            class="btn btn-outline-primary btn-sm hidden lg:inline-block"
-            href={navigation_button.link}
-          >
-            {navigation_button.label}
-          </a>
-        )
-      }
     </div>
   </nav>
 </header>

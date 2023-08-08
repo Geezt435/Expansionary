@@ -11,7 +11,7 @@ const { footer }: { footer: { name: string; url: string }[] } = menu;
 
 <footer class="bg-theme-light dark:bg-darkmode-theme-light">
   <div class="container">
-    <div class="row items-center py-10">
+    <div class="row items-center py-4">
       <div class="mb-8 text-center lg:col-3 lg:mb-0 lg:text-left">
         <Logo />
       </div>
@@ -29,11 +29,6 @@ const { footer }: { footer: { name: string; url: string }[] } = menu;
       <div class="mb-8 text-center lg:col-3 lg:mb-0 lg:mt-0 lg:text-right">
         <Social source={social.main} className="social-icons" />
       </div>
-    </div>
-  </div>
-  <div class="border-t border-border py-7 dark:border-darkmode-border">
-    <div class="container text-center text-light dark:text-darkmode-light">
-      <p set:html={markdownify(config.params.copyright)} />
     </div>
   </div>
 </footer>
