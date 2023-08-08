@@ -1,26 +1,23 @@
 ---
 # Banner
 banner:
-  title: "The Ultimate Starter Template You Need To Start Your Astro Project"
-  content: "Astroplate is a free starter template built with Astro and TailwindCSS, providing everything you need to jumpstart your Astro project and save valuable time."
+  title: "Pages"
+  content: "A starter template for a blog and things."
   image: "/images/banner.png"
   button:
     enable: true
     label: "Get Started For Free"
-    link: "https://github.com/zeon-studio/astroplate"
+    link: "https://github.com/reednel/pages"
 
 # Features
 features:
-  - title: "What's Included in Astroplate"
+  - title: "What's Included"
     image: "/images/service-1.png"
-    content: "Astroplate is a comprehensive starter template that includes everything you need to get started with your Astro project. What's Included in Astroplate"
+    content: "This template is"
     bulletpoints:
-      - "10+ Pre-build pages"
-      - "95+ Google Pagespeed Score"
-      - "Build with Astro and TailwindCSS for easy and customizable styling"
+      - "Built with Astro and TailwindCSS"
       - "Fully responsive on all devices"
-      - "SEO-optimized for better search engine rankings"
-      - "**Open-source and free** for personal and commercial use"
+      - "SEO-optimized"
     button:
       enable: false
       label: "Get Started Now"
@@ -36,7 +33,7 @@ features:
     button:
       enable: true
       label: "Get Started Now"
-      link: "https://github.com/zeon-studio/astroplate"
+      link: "https://github.com/reednel/pages"
 
   - title: "The Top Reasons to Choose Astro for Your Next Project"
     image: "/images/service-3.png"
