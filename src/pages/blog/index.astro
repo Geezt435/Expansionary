@@ -7,7 +7,7 @@ import { getSinglePage } from "@/lib/contentParser.astro";
 import { getAllTaxonomy, getTaxonomy } from "@/lib/taxonomyParser.astro";
 import { sortByDate } from "@/lib/utils/sortFunctions";
 import PageHeader from "@/partials/PageHeader.astro";
-import PostSidebar from "@/partials/PostSidebar.astro";
+import BlogSidebar from "@/partials/BlogSidebar.astro";
 import { getEntryBySlug } from "astro:content";
 
 const { blog_folder } = config.settings;
@@ -50,7 +50,7 @@ const currentPosts = sortedPosts.slice(0, config.settings.pagination);
         </div>
 
         <!-- sidebar -->
-        <PostSidebar
+        <BlogSidebar
           categories={categories}
           tags={tags}
           allCategories={allCategories}

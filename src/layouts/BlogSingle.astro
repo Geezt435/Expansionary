@@ -39,13 +39,15 @@ const { title, description, author, categories, image, date, tags } = post.data;
             </div>
           )
         }
-        <h1 set:html={markdownify(title)} class="h2 mb-4" />
+        <h1 set:html={markdownify(title)} class="mb-4" />
         <ul class="mb-4">
           <li class="mr-4 inline-block">
-            <a href={`/authors/${slugify(author)}`}>
-              <FaRegUserCircle className={"mr-2 -mt-1 inline-block"} />
-              {humanize(author)}
-            </a>
+            <FaRegUserCircle className={"mr-2 -mt-1 inline-block"} />
+            {humanize(author)}
+          </li>
+          <li class="mr-4 inline-block">
+            <FaRegClock className={"mr-2 -mt-1 inline-block"} />
+            {dateFormat(date)}
           </li>
           <li class="mr-4 inline-block">
             <FaRegFolder className={"mr-2 -mt-1 inline-block"} />
@@ -57,10 +59,6 @@ const { title, description, author, categories, image, date, tags } = post.data;
                 </a>
               ))
             }
-          </li>
-          <li class="mr-4 inline-block">
-            <FaRegClock className={"mr-2 -mt-1 inline-block"} />
-            {dateFormat(date)}
           </li>
         </ul>
         <div class="content mb-10">
@@ -75,9 +73,9 @@ const { title, description, author, categories, image, date, tags } = post.data;
                   <li class="inline-block">
                     <a
                       class="m-1 block rounded bg-theme-light px-3 py-1 hover:bg-primary hover:text-white dark:bg-darkmode-theme-light dark:hover:bg-darkmode-primary dark:hover:text-dark"
-                      href={`/blog/tags/${slugify(tag)}`}
+                      href={`blog/tags/${slugify(tag)}`}
                     >
-                      {humanize(tag)}
+                      {tag}
                     </a>
                   </li>
                 ))
@@ -97,18 +95,21 @@ const { title, description, author, categories, image, date, tags } = post.data;
       </article>
     </div>
 
-    <!-- Related posts -->
-    <div class="section pb-0">
-      <h2 class="h3 mb-12 text-center">Related Posts</h2>
-      <div class="row justify-center">
-        {
-          similarPosts.map((post) => (
-            <div class="lg:col-4">
-              <BlogCard data={post} />
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </div>
+    {
+      similarPosts.length > 0 && (
+        <!-- Related posts -->
+        <div class="section pb-0">
+          <h2 class="h3 mb-12 text-center">Related Posts</h2>
+          <div class="row justify-center">
+            {
+              similarPosts.slice(0, 3).map((post) => (
+                <div class="lg:col-4">
+                  <BlogCard data={post} />
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      )
+    }
 </section>
