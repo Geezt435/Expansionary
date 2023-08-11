@@ -1,9 +1,9 @@
 html {
-  @apply text-base;
+  @apply text-base h-screen;
 }
 
 body {
-  @apply bg-body font-primary font-normal leading-relaxed text-text dark:bg-darkmode-body dark:text-darkmode-text;
+  @apply bg-body font-primary font-normal leading-relaxed text-text dark:bg-darkmode-body dark:text-darkmode-text flex flex-col min-h-screen;
 }
 
 h1,
