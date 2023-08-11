@@ -21,7 +21,7 @@ const allCategories = await getAllTaxonomy(blog_folder, "categories");
             return (
               <li class="m-3 inline-block">
                 <a
-                  href={`/categories/${category}`}
+                  href={`/blog/categories/${category}`}
                   class="block rounded bg-theme-light px-4 py-2 text-xl text-dark dark:bg-darkmode-theme-light dark:text-darkmode-dark"
                 >
                   {humanize(category)}{" "}

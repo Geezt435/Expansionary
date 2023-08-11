@@ -26,16 +26,8 @@
           "url": "/authors"
         },
         {
-          "name": "Categories",
-          "url": "/categories"
-        },
-        {
           "name": "Search",
           "url": "/search"
-        },
-        {
-          "name": "404 Page",
-          "url": "/404"
         }
       ]
     }

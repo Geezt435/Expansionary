@@ -41,7 +41,7 @@ const { title, image, date, author, categories } = data.data;
       <FaRegFolder className={"mr-2 -mt-1 inline-block"} />
       {
         categories.map((category: string, index: number) => (
-          <a href={`/categories/${slugify(category)}`}>
+          <a href={`/blog/categories/${slugify(category)}`}>
             {humanize(category)}
             {index !== categories.length - 1 && ","}
           </a>
