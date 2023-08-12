@@ -1,0 +1,27 @@
+---
+import Base from "@/layouts/Base.astro";
+import PageHeader from "@/partials/PageHeader.astro";
+import { getEntryBySlug } from "astro:content";
+
+const terms = await getEntryBySlug("terms", "-index");
+const { Content } = await terms.render();
+const { title, meta_title } = terms.data;
+---
+
+<Base
+  title={title}
+  meta_title={meta_title}
+>
+  <PageHeader title={title} />
+  <section class="section-sm">
+    <div class="container"> 
+      <div class="row justify-center">
+        <div class="col-10">
+          <div class="content">
+            <Content />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,6 +1,6 @@
 # Pages
 
-[![GitHub License](https://img.shields.io/github/license/reednel/pages?color=red)](https://github.com/reednel/pages/blob/main/LICENCE) [![Repo Size](https://img.shields.io/github/repo-size/reednel/pages)](https://github.com/reednel/pages) [![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/reednel/pages/deploy.yml?color=limegreen)](https://github.com/reednel/pages/deployments) [![Website](https://img.shields.io/website?up_message=online&up_color=limegreen&down_message=offline&down_color=yellow&url=https%3A%2F%2Freednel.com%2F)](https://reednel.com/)
+[![GitHub License](https://img.shields.io/github/license/reednel/pages?color=red)](https://github.com/reednel/pages/blob/main/LICENSE) [![Repo Size](https://img.shields.io/github/repo-size/reednel/pages)](https://github.com/reednel/pages) [![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/reednel/pages/deploy.yml?color=limegreen)](https://github.com/reednel/pages/deployments) [![Website](https://img.shields.io/website?up_message=online&up_color=limegreen&down_message=offline&down_color=yellow&url=https%3A%2F%2Freednel.com%2F)](https://reednel.com/)
 
 Reed Nelson's personal website.
 
@@ -18,7 +18,7 @@ Build: `npm run dev`
 
 ## License
 
-Manual is licensed under the [MIT License](LICENSE).
+Pages is licensed under the [MIT License](LICENSE).
 
 ## Acknowledgments
 
