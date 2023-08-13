@@ -31,15 +31,5 @@
         }
       ]
     }
-  ],
-  "footer": [
-    {
-      "name": "Elements",
-      "url": "/elements"
-    },
-    {
-      "name": "Terms & Conditions",
-      "url": "/terms"
-    }
   ]
 }

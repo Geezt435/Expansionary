@@ -6,7 +6,7 @@ banner:
   image: "/images/banner.png"
   button:
     enable: true
-    label: "Get Started For Free"
+    label: "Get Started"
     link: "https://github.com/reednel/pages"
 
 # Features
