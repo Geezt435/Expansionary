@@ -1,12 +1,12 @@
 ---
-title: "How to build an Application with modern Technology"
-meta_title: ""
-description: "this is meta description"
+title: How to build an Application with modern Technology
+meta_title: How to build an Application with modern Technology
+description: this is meta description
 date: 2022-04-04T05:00:00Z
-image: "/images/image-placeholder.png"
-categories: ["Application", "Data"]
-author: "Jane Doe"
-tags: ["nextjs", "tailwind"]
+image: /images/image-placeholder.png
+categories: [Application, Data]
+author: Jane Doe
+tags: [nextjs, tailwind]
 draft: false
 ---
 

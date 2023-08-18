@@ -1,6 +1,6 @@
 ---
-title: "Terms & Conditions"
-meta_title: "Terms & Conditions"
+title: Terms & Conditions
+meta_title: Terms & Conditions
 draft: false
 ---
 

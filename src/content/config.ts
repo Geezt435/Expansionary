@@ -23,17 +23,13 @@ const authorsCollection = defineCollection({
     email: z.string().optional(),
     image: z.string().optional(),
     description: z.string().optional(),
-    social: z
-      .array(
-        z
-          .object({
+    social: z.array(
+        z.object({
             name: z.string().optional(),
             icon: z.string().optional(),
             link: z.string().optional(),
-          })
-          .optional(),
-      )
-      .optional(),
+          }).optional(),
+      ).optional(),
     draft: z.boolean().optional(),
   }),
 });
