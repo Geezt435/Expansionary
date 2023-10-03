@@ -1,6 +1,6 @@
 ---
 import Base from "@/layouts/Base.astro";
-import PageHeader from "@/partials/PageHeader.astro";
+import PageHeader from "@/components/PageHeader.astro";
 import { getEntryBySlug } from "astro:content";
 
 const terms = await getEntryBySlug("terms", "-index");

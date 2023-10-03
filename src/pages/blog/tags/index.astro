@@ -3,7 +3,7 @@ import config from "@/config/config.json";
 import Base from "@/layouts/Base.astro";
 import { getAllTaxonomy, getTaxonomy } from "@/lib/taxonomyParser.astro";
 import { humanize } from "@/lib/utils/textConverter";
-import PageHeader from "@/partials/PageHeader.astro";
+import PageHeader from "@/components/PageHeader.astro";
 
 const { blog_folder }: { blog_folder: string } = config.settings;
 const tags = await getTaxonomy(blog_folder, "tags");

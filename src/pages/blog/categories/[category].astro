@@ -5,7 +5,7 @@ import Base from "@/layouts/Base.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import { getTaxonomy } from "@/lib/taxonomyParser.astro";
 import taxonomyFilter from "@/lib/utils/taxonomyFilter";
-import PageHeader from "@/partials/PageHeader.astro";
+import PageHeader from "@/components/PageHeader.astro";
 
 export async function getStaticPaths() {
   const categories = await getTaxonomy(
