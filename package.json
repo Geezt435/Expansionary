@@ -11,13 +11,12 @@
     "format": "prettier -w ./src"
   },
   "dependencies": {
-    "@astrojs/image": "^0.17.3",
     "@astrojs/mdx": "^0.19.7",
-    "@astrojs/react": "^2.2.1",
+    "@astrojs/react": "^3.0.3",
     "@astrojs/rss": "^2.4.3",
     "@astrojs/sitemap": "^2.0.1",
-    "@astrojs/tailwind": "^4.0.0",
-    "astro": "^2.10.1",
+    "@astrojs/tailwind": "^5.0.2",
+    "astro": "^3.3.3",
     "astro-auto-import": "^0.3.1",
     "date-fns": "^2.30.0",
     "date-fns-tz": "^2.0.0",
