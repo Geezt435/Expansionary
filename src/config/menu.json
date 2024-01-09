@@ -9,6 +9,10 @@
       "url": "/about"
     },
     {
+      "name": "Docs",
+      "url": "/docs"
+    },
+    {
       "name": "Pages",
       "url": "",
       "hasChildren": true,

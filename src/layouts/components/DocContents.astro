@@ -1,0 +1,48 @@
+---
+	const { headings } = Astro.props;
+---
+<!-- <ul class="flex flex-col gap-4 mt-24">
+	{ headings.map(({ slug, text }) => {
+		return (
+		<li class="text-slate-400 hover:text-slate-800">
+			#<a href={`#${slug}`}>{text}</a>
+		</li>
+		) 
+	}) }
+</ul> -->
+
+<nav aria-labelledby="grid-right">
+	<div class="px-8">
+		<div id="_anchor" class="fixed top-0 py-24 px-4">
+			<h1 class="dark:text-white text-xl my-4">On This Page</h1>
+			{headings.map((heading) => {
+			  let Heading: any = `h${heading.depth}`;
+			  let className = `peer border-l-2 border-l-zinc-400 dark:border-l-zinc-700 `
+			  switch (heading.depth) {
+				case 2:
+				  className += `pl-2`;
+				  break;
+				case 3:
+				  className += `pl-4`;
+				  break;
+				case 4:
+				  className += `pl-6`;
+				  break;
+				case 5:
+				  className += `pl-8`;
+				  break;
+				case 6:
+				  className += `pl-10`;
+				  break;
+				default:
+				  break;
+			  }
+			  return <Heading class={className}>
+				<a href={`#${heading.slug}`} class="block py-1 text-zinc-600 dark:text-zinc-400 hover:text-green-600 dark:hover:text-zinc-300 transition-colors">
+				  {heading.text}
+				</a>
+			  </Heading>
+			})}
+		</div>
+	</div>
+</nav>

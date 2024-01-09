@@ -1,0 +1,24 @@
+---
+import Base from "@/layouts/Base.astro";
+import DocsSingle from "@/layouts/DocsSingle.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const docs = await getCollection('docs');
+  return docs.map(post => ({
+    params: { id: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { title } = post.data;
+---
+
+<Base
+  title={title}
+  meta_title={title}
+>
+  <DocsSingle post={post} />
+</Base>

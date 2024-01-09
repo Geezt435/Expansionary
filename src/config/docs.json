@@ -1,0 +1,12 @@
+{
+  "Get Started": [
+    "/docs/get-started/introduction/",
+    "/docs/get-started/installation/"
+  ],
+  "Tutorials": [
+    "/docs/tutorials/build-x/"
+  ],
+  "Guides": [
+    "/docs/guides/migrate-from-z/"
+  ]
+}

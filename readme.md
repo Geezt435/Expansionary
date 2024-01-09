@@ -22,4 +22,4 @@ Pages is licensed under the [MIT License](LICENSE).
 
 ## Acknowledgments
 
-This website is derived from zeon-studio's [astroplate](https://github.com/zeon-studio/astroplate).
+This template is derived from zeon-studio's [astroplate](https://github.com/zeon-studio/astroplate), with structure borrowed from jordienr's [astro-design-system](https://github.com/jordienr/astro-design-system) and TheOtterlord's [manual](https://github.com/TheOtterlord/manual).
