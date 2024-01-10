@@ -1,14 +1,11 @@
 ---
 import DocBrowser from '@/components/DocBrowser.astro';
 import DocContents from '@/components/DocContents.astro';
-import Share from "@/components/Share.astro";
-import config from "@/config/config.json";
 
 const { post } = Astro.props;
 const { Content, headings } = await post.render();
 const { title } = post.data;
 const currentPage = new URL(Astro.request.url).pathname;
-const { docs_folder } = config.settings;
 ---
 
 <section class="section pt-7">
@@ -16,29 +13,19 @@ const { docs_folder } = config.settings;
     <div class="row justify-center">
       <div class="grid grid-cols-12">
         <!-- Document Browser (Left) -->
-        <div class="col-span-3 sticky top-0 pt-12 h-screen flex">
+        <div class="col-span-3 sticky top-0 h-screen flex">
           <div class="ml-auto">
             <DocBrowser currentPage={currentPage} />
           </div>
         </div>
         <!-- Content -->
         <main class="py-4 px-8 pb-32 col-span-6  overflow-auto">
-          <div>
-            <Content />
-            <!-- Share -->
-            <div class="row items-start justify-between">
-              <div class="flex items-center mt-8">
-                <h5 class="mr-3">Share :</h5>
-                <Share
-                  className="social-icons"
-                  title={title}
-                  description={"description"}
-                  folder={docs_folder}
-                  slug={post.slug}
-                />
-              </div>
+          <article>
+            <h1 class="mb-4">{ title }</h1>
+            <div class="content mb-10">
+              <Content />
             </div>
-          </div>
+          </article>
         </main>
         <!-- Document Contents (Right) -->
         <div class="col-span-3 sticky top-0 h-screen flex">

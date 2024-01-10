@@ -1,12 +1,32 @@
 {
-  "Get Started": [
-    "/docs/get-started/introduction/",
-    "/docs/get-started/installation/"
-  ],
-  "Tutorials": [
-    "/docs/tutorials/build-x/"
-  ],
-  "Guides": [
-    "/docs/guides/migrate-from-z/"
+  "main": [
+    {
+      "text": "Get Started",
+      "header": true
+    },
+    {
+      "text": "Installation",
+      "link": "/docs/get-started/installation"
+    },
+    {
+      "text": "Introduction",
+      "link": "/docs/get-started/introduction"
+    },
+    {
+      "text": "Guides",
+      "header": true
+    },
+    {
+      "text": "Migrate from Z",
+      "link": "/docs/guides/migrate-from-z"
+    },
+    {
+      "text": "Tutorials",
+      "header": true
+    },
+    {
+      "text": "Build X",
+      "link": "/docs/tutorials/build-x"
+    }
   ]
 }

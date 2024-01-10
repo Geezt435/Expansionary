@@ -1,11 +1,11 @@
 ---
 import Base from "@/layouts/Base.astro";
-import DocsSingle from "@/layouts/DocsSingle.astro";
+import DocSingle from "@/layouts/DocSingle.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
-import { getCollection } from 'astro:content';
+import config from "@/config/config.json";
 
 export async function getStaticPaths() {
-  const docs = await getCollection('docs');
+  const docs = await getSinglePage(config.settings.docs_folder);
   return docs.map(post => ({
     params: { id: post.slug },
     props: { post },
@@ -20,5 +20,5 @@ const { title } = post.data;
   title={title}
   meta_title={title}
 >
-  <DocsSingle post={post} />
+  <DocSingle post={post} />
 </Base>
