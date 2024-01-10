@@ -1,7 +1,7 @@
 ---
 import docs from "@/config/docs.json";
 const { currentPage } = Astro.props;
-const currentPageMatch = currentPage.slice(1);
+const currentPageMatch = currentPage ? currentPage.slice(1) : null;
 
 const isCurrentPage = (item) => {
   if (item.link) {

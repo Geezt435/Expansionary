@@ -36,7 +36,7 @@ input#nav-toggle:checked ~ #nav-menu {
 }
 
 .nav-link {
-  @apply block p-3 font-semibold text-dark transition hover:text-primary dark:text-darkmode-dark lg:px-2 lg:py-3;
+  @apply block p-3 font-primary font-semibold text-dark transition hover:text-primary dark:text-darkmode-dark lg:px-2 lg:py-3;
 }
 
 .nav-dropdown {
@@ -55,12 +55,12 @@ input#nav-toggle:checked ~ #nav-menu {
   @apply block py-1 font-semibold text-dark transition hover:text-primary dark:text-darkmode-text dark:hover:text-darkmode-primary;
 }
 
-//theme-switcher
+// theme-switcher
 .theme-switcher {
   @apply inline-flex;
 
   label {
-    @apply relative inline-block h-4 w-6 cursor-pointer rounded-2xl bg-border;
+    @apply relative inline-block h-4 w-6 cursor-pointer;
   }
 
   input {
@@ -68,6 +68,6 @@ input#nav-toggle:checked ~ #nav-menu {
   }
 
   span {
-    @apply absolute -top-1 left-0 flex h-6 w-6 items-center justify-center rounded-full bg-dark transition-all duration-300 dark:bg-white;
+    @apply absolute -top-1 left-0 flex h-6 w-6 items-center justify-center rounded-full hover:rotate-12 transition-all duration-300;
   }
 }

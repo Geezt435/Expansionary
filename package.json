@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "postbuild": "pagefind --site dist",
     "format": "prettier -w ./src"
   },
   "dependencies": {
@@ -47,6 +48,7 @@
     "@types/react-dom": "18.2.7",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.46.0",
+    "pagefind": "^1.0.4",
     "postcss": "^8.4.27",
     "prettier": "^3.0.1",
     "prettier-plugin-astro": "^0.11.0",

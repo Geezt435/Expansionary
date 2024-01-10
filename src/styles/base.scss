@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  @apply bg-body font-primary font-normal leading-relaxed text-text dark:bg-darkmode-body dark:text-darkmode-text flex flex-col min-h-screen;
+  @apply bg-body font-primary font-normal leading-relaxed text-text dark:bg-darkmode-body dark:text-darkmode-text flex flex-col min-h-screen sm:mx-0 lg:mx-8;
 }
 
 h1,
@@ -54,6 +54,10 @@ code {
   @apply after:border-none;
 }
 
+img {
+  @apply mx-auto;
+}
+
 a:hover {
   @apply scale-105;
   @apply opacity-60;
@@ -61,4 +65,8 @@ a:hover {
 
 .a:hover {
   @apply opacity-60;
+}
+
+hr {
+  @apply dark:border-light;
 }
