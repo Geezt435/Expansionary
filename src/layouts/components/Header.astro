@@ -99,7 +99,7 @@ const { pathname } = Astro.url;
         ))
       }
     </ul>
-    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
+    <div class="order-1 ml-auto flex items-center lg:order-2 lg:ml-0">
       <div class="mr-4 flex items-center">
         <ThemeSwitcher />
       </div>
@@ -115,18 +115,18 @@ const { pathname } = Astro.url;
           // </a>
           <>
 
-            <div class="md:hidden border-border text-xl text-dark hover:text-primary dark:text-white flex items-center hover:rotate-12 transition-all duration-300">
+            <div class="lg:hidden border-border text-xl text-dark hover:text-primary dark:text-white flex items-center hover:rotate-12 transition-all duration-300">
               <button id="mobile-search" aria-label="Search">
                 <IoSearch />
               </button>
             </div>
             
 
-            <span class="z-20 bg-theme-light dark:bg-darkmode-theme-light rounded-md max-md:!mx-[5%] max-md:absolute max-md:left-0 max-md:mt-8 max-md:w-[90%] max-md:rounded-lg max-md:shadow hidden md:flex md:float-right md:space-x-4 flex-row-reverse py-2 px-2 md:py-1">
+            <span class="z-20 bg-theme-light dark:bg-darkmode-theme-light rounded-md max-lg:!mx-[10%] max-lg:absolute max-lg:left-0 max-lg:w-[80%] max-lg:rounded-md hidden lg:flex lg:space-x-4 flex-row-reverse py-2 px-2">
               
               <div
                 id="mobile-search-close"
-                class="cursor-pointer md:hidden md:mr-1 flex items-center text-xl text-dark hover:text-primary dark:text-white hover:rotate-12 transition-all duration-300"
+                class="cursor-pointer lg:hidden lg:mr-1 flex items-center text-xl text-dark hover:text-primary dark:text-white hover:rotate-12 transition-all duration-300"
               >
                 <IoClose />
               </div>
@@ -134,17 +134,17 @@ const { pathname } = Astro.url;
               <input
                 id="search"
                 type="text"
-                class="max-md:text-lg bg-transparent border-transparent w-full md:w-60 focus:outline-none p-1 m-0"
+                class="max-lg:text-lg bg-transparent border-transparent w-full lg:w-60 focus:outline-none p-0 m-0"
                 placeholder="Search..."
               />
               
-              <div class="text-xl text-dark hover:text-primary dark:border-darkmode-border dark:text-white flex items-center hover:rotate-12 transition-all duration-300">
+              <div class="text-xl m-0 p-0 text-dark hover:text-primary dark:border-darkmode-border dark:text-white flex items-center">
                 <IoSearch />
               </div>
 
               <div
                 id="results"
-                class="peer-placeholder-shown:hidden empty:hidden focus:block absolute top-16 max-md:-mr-2 w-full md:w-72  rounded-lg overflow-y-auto max-h-96 md:max-h-72"
+                class="peer-placeholder-shown:hidden empty:hidden focus:block absolute top-16 max-lg:-mr-2 w-full lg:w-72  rounded-lg overflow-y-auto max-h-96 lg:max-h-72"
               />
             </span>
           </>
