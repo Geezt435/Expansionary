@@ -27,7 +27,7 @@ const { pathname } = Astro.url;
     <input id="nav-toggle" type="checkbox" class="hidden" />
     <label
       for="nav-toggle"
-      class="order-3 cursor-pointer flex items-center lg:hidden text-dark dark:text-white lg:order-1"
+      class="order-0 cursor-pointer flex items-center lg:hidden text-dark dark:text-white lg:order-1"
     >
       <svg id="show-button" class="h-6 fill-current block" viewBox="0 0 20 20">
         <title>Menu Open</title>
@@ -100,7 +100,10 @@ const { pathname } = Astro.url;
       }
     </ul>
     <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
-      <ThemeSwitcher className="mr-5" />
+      <div class="mr-4 flex items-center">
+        <ThemeSwitcher />
+      </div>
+      
       {
         settings.search && (
           // <a
@@ -111,15 +114,19 @@ const { pathname } = Astro.url;
           //   <IoSearch />
           // </a>
           <>
-            <div class="inline-block md:hidden mr-5 border-border text-xl text-dark hover:text-primary dark:border-darkmode-border dark:text-white">
+
+            <div class="md:hidden border-border text-xl text-dark hover:text-primary dark:text-white flex items-center hover:rotate-12 transition-all duration-300">
               <button id="mobile-search" aria-label="Search">
                 <IoSearch />
               </button>
             </div>
-            <span class="max-md:!mx-[5%] max-md:absolute max-md:left-0 max-md:mt-8 max-md:w-[90%] max-md:rounded-lg max-md:shadow hidden md:flex md:float-right md:space-x-4 flex-row-reverse py-2 px-2 md:py-1">
+            
+
+            <span class="z-20 bg-theme-light dark:bg-darkmode-theme-light rounded-md max-md:!mx-[5%] max-md:absolute max-md:left-0 max-md:mt-8 max-md:w-[90%] max-md:rounded-lg max-md:shadow hidden md:flex md:float-right md:space-x-4 flex-row-reverse py-2 px-2 md:py-1">
+              
               <div
                 id="mobile-search-close"
-                class="cursor-pointer md:hidden md:mr-1"
+                class="cursor-pointer md:hidden md:mr-1 flex items-center text-xl text-dark hover:text-primary dark:text-white hover:rotate-12 transition-all duration-300"
               >
                 <IoClose />
               </div>
@@ -127,12 +134,14 @@ const { pathname } = Astro.url;
               <input
                 id="search"
                 type="text"
-                class="peer max-md:text-lg bg-transparent rounded-md w-full md:w-60 focus:outline-none"
+                class="max-md:text-lg bg-transparent border-transparent w-full md:w-60 focus:outline-none p-1 m-0"
                 placeholder="Search..."
               />
-              <div class="mr-5 inline-block border-border text-xl text-dark hover:text-primary dark:border-darkmode-border dark:text-white">
+              
+              <div class="text-xl text-dark hover:text-primary dark:border-darkmode-border dark:text-white flex items-center hover:rotate-12 transition-all duration-300">
                 <IoSearch />
               </div>
+
               <div
                 id="results"
                 class="peer-placeholder-shown:hidden empty:hidden focus:block absolute top-16 max-md:-mr-2 w-full md:w-72  rounded-lg overflow-y-auto max-h-96 md:max-h-72"
