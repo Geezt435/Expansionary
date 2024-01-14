@@ -26,8 +26,8 @@
           "url": "/authors"
         },
         {
-          "name": "Search",
-          "url": "/search"
+          "name": "Terms",
+          "url": "/terms"
         }
       ]
     }
