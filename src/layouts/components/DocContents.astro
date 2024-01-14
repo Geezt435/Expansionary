@@ -8,7 +8,7 @@ const { headings } = Astro.props;
     {
       headings &&
         headings.map((heading) => {
-          let className = ``;
+          let className = `block p-1 mb-1 rounded hover:bg-theme-light dark:hover:bg-darkmode-theme-light `;
           const sizeAndIndent = {
             1: `pl-0 text-2xl`,
             2: `pl-2 text-xl`,
@@ -19,8 +19,8 @@ const { headings } = Astro.props;
           };
           className += sizeAndIndent[heading.depth] || "";
           return (
-            <p class={className}>
-              <a href={`#${heading.slug}`} class="block py-1">
+            <p>
+              <a href={`#${heading.slug}`} class={className}>
                 {heading.text}
               </a>
             </p>
