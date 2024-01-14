@@ -3,31 +3,29 @@ const { headings } = Astro.props;
 ---
 
 <nav aria-labelledby="grid-right">
-  <div class="px-4 py-16">
-<h3 class="dark:text-white mb-4">On This Page</h3>
-{
-	headings && headings.map((heading) => {
-		let className = `peer border-l-2 border-l-zinc-400 dark:border-l-zinc-700 `;
-		const sizeAndIndent = {
-			1: `pl-0 text-3xl`,
-			2: `pl-2 text-2xl`,
-			3: `pl-4 text-xl`,
-			4: `pl-6 text-lg`,
-			5: `pl-8 text-base`,
-			6: `pl-10 text-sm`,
-		};
-		className += sizeAndIndent[heading.depth] || "";
-		return (
-			<p class={className}>
-				<a
-					href={`#${heading.slug}`}
-					class="block py-1 text-zinc-600 dark:text-zinc-400 hover:text-green-600 dark:hover:text-zinc-300 transition-colors"
-				>
-					{heading.text}
-				</a>
-			</p>
-		);
-	})
-}
+  <div class="mx-4 my-16">
+    <h3 class="my-4">On This Page</h3>
+    {
+      headings &&
+        headings.map((heading) => {
+          let className = ``;
+          const sizeAndIndent = {
+            1: `pl-0 text-2xl`,
+            2: `pl-2 text-xl`,
+            3: `pl-4 text-lg`,
+            4: `pl-6 text-base`,
+            5: `pl-8 text-sm`,
+            6: `pl-10 text-xs`,
+          };
+          className += sizeAndIndent[heading.depth] || "";
+          return (
+            <p class={className}>
+              <a href={`#${heading.slug}`} class="block py-1">
+                {heading.text}
+              </a>
+            </p>
+          );
+        })
+    }
   </div>
 </nav>
