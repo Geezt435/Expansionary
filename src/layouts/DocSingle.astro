@@ -11,15 +11,15 @@ const currentPage = new URL(Astro.request.url).pathname;
 <section class="section pt-7">
   <div class="container">
     <div class="row justify-center">
-      <div class="grid grid-cols-12">
+      <div class="flex">
         <!-- Document Browser (Left) -->
-        <div class="col-span-3 sticky top-0 h-screen flex">
+        <div class="col-3 sticky top-0 h-screen flex ml-auto">
           <div class="ml-auto">
             <DocBrowser currentPage={currentPage} />
           </div>
         </div>
         <!-- Content -->
-        <main class="py-4 px-8 pb-32 col-span-6  overflow-auto">
+        <main class="py-4 col-9 lg:col-6 overflow-auto">
           <article>
             <h1 class="mb-4">{ title }</h1>
             <div class="content mb-10">
@@ -28,8 +28,10 @@ const currentPage = new URL(Astro.request.url).pathname;
           </article>
         </main>
         <!-- Document Contents (Right) -->
-        <div class="col-span-3 sticky top-0 h-screen flex">
-          <DocContents headings={headings} />
+        <div class="col-3 sticky top-0 h-screen flex invisible lg:visible">
+          <div>
+            <DocContents headings={ headings } />
+          </div>
         </div>
       </div>
     </div>

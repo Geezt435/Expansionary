@@ -30,8 +30,8 @@ export interface doc_data {
 const { main }: { main: doc_data[] } = docs;
 ---
 
-<nav aria-labelledby="grid-left" class="border-r">
-  <div class="mx-4 my-16">
+<nav class="max-h-screen overflow-y-auto mx-8 border-r border-light dark:border-darkmode-light">
+  <div class="mx-4 my-8">
     <ul>
       {
         main.map((item) =>

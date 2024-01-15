@@ -2,8 +2,8 @@
 const { headings } = Astro.props;
 ---
 
-<nav aria-labelledby="grid-right">
-  <div class="mx-4 my-16">
+<nav class="max-h-screen overflow-y-auto mx-8 border-l border-light dark:border-darkmode-light">
+  <div class="mx-4 my-8">
     <h3 class="my-4">On This Page</h3>
     {
       headings &&
