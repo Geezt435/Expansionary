@@ -1,6 +1,6 @@
 {
   "name": "pages",
-  "version": "1.4.1",
+  "version": "1.0.0",
   "description": "Template.",
   "author": "Jane Doe",
   "license": "MIT",
@@ -12,13 +12,13 @@
     "format": "prettier -w ./src"
   },
   "dependencies": {
-    "@astrojs/mdx": "^0.19.7",
-    "@astrojs/react": "^3.0.3",
-    "@astrojs/rss": "^2.4.3",
-    "@astrojs/sitemap": "^2.0.1",
-    "@astrojs/tailwind": "^5.0.2",
-    "astro": "^3.3.3",
-    "astro-auto-import": "^0.3.1",
+    "@astrojs/mdx": "^2.0.4",
+    "@astrojs/react": "^3.0.9",
+    "@astrojs/rss": "^4.0.2",
+    "@astrojs/sitemap": "^3.0.4",
+    "@astrojs/tailwind": "^5.1.0",
+    "astro": "^4.1.2",
+    "astro-auto-import": "^0.4.2",
     "date-fns": "^2.30.0",
     "date-fns-tz": "^2.0.0",
     "fuse.js": "^6.6.2",

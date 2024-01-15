@@ -4,46 +4,51 @@ const { currentPage } = Astro.props;
 const currentPageMatch = currentPage ? currentPage.slice(1) : null;
 
 const isCurrentPage = (item) => {
-  if (item.link) {
-    return item.link.includes(currentPageMatch);
+  if (item.url) {
+    return item.url.includes(currentPageMatch);
   }
   return false;
 };
 
-const getLinkClasses = (link) => {
+const getLinkClasses = (url) => {
   const baseClasses =
     "text-xl block py-1 px-2 my-1 rounded hover:bg-theme-light dark:hover:bg-darkmode-theme-light";
 
-  if (isCurrentPage(link)) {
+  if (isCurrentPage(url)) {
     return baseClasses + "rounded bg-theme-light dark:bg-darkmode-theme-light";
   } else {
     return baseClasses;
   }
 };
 
-export interface doc_data {
-  text: string;
-  header?: boolean;
-  link?: string;
+export interface doc_child {
+  name: string;
+  url: string;
 }
 
-const { main }: { main: doc_data[] } = docs;
+export interface doc_parent {
+  name: string;
+  children?: doc_child[];
+}
+
+const { main }: { main: doc_parent[] } = docs;
 ---
 
 <nav class="max-h-screen overflow-y-auto mx-8 border-r border-light dark:border-darkmode-light">
   <div class="mx-4 my-8">
     <ul>
       {
-        main.map((item) =>
-          item.header ? (
-            <h3 class="mt-4">{item.text}</h3>
-          ) : (
+        main.map((parent) =>
+          <h3 class="mt-4">{ parent.name }</h3>
+          <>
+          { parent.children?.map((child) => 
             <li>
-              <a class={getLinkClasses(item)} href={item.link}>
-                {item.text}
+              <a class={ getLinkClasses(child) } href={ child.url }>
+                { child.name }
               </a>
             </li>
-          ),
+          )}
+          </>
         )
       }
     </ul>

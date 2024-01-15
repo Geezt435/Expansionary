@@ -1,32 +1,35 @@
 {
   "main": [
     {
-      "text": "Get Started",
-      "header": true
+      "name": "Get Started",
+      "children": [
+        {
+          "name": "Installation",
+          "url": "/docs/get-started/installation"
+        },
+        {
+          "name": "Introduction",
+          "url": "/docs/get-started/introduction"
+        }
+      ]
     },
     {
-      "text": "Installation Guide",
-      "link": "/docs/get-started/installation"
+      "name": "Guides",
+      "children": [
+        {
+          "name": "Migrate from Z",
+          "url": "/docs/guides/migrate-from-z"
+        }
+      ]
     },
     {
-      "text": "Introduction",
-      "link": "/docs/get-started/introduction"
-    },
-    {
-      "text": "Guides",
-      "header": true
-    },
-    {
-      "text": "Migrate from Z",
-      "link": "/docs/guides/migrate-from-z"
-    },
-    {
-      "text": "Tutorials",
-      "header": true
-    },
-    {
-      "text": "Build X",
-      "link": "/docs/tutorials/build-x"
+      "name": "Tutorials",
+      "children": [
+        {
+          "name": "Build X",
+          "url": "/docs/tutorials/build-x"
+        }
+      ]
     }
   ]
 }
