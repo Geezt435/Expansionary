@@ -2,7 +2,11 @@
 import config from "@/config/config.json";
 import { humanize, plainify, slugify } from "@/lib/utils/textConverter";
 import { Image } from "astro:assets";
-import { FaRegFolder, FaRegUserCircle, FaRegClock } from "react-icons/fa/index.js";
+import {
+  FaRegFolder,
+  FaRegUserCircle,
+  FaRegClock,
+} from "react-icons/fa/index.js";
 import readingTime from "@/lib/utils/readingTime";
 
 const {
@@ -49,7 +53,7 @@ const { title, image, date, author, categories } = data.data;
         ))
       }
     </li>
-    <li class="mr-4 inline-block ">
+    <li class="mr-4 inline-block">
       <FaRegClock className={"mr-1 -mt-1 inline-block"} />
       {readingTime(data.body)}
     </li>

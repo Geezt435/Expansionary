@@ -30,24 +30,6 @@ const similerItems = (currentItem: any, allItems: any, slug: string) => {
   const filterBySlug = mergedItems.filter((product) => product.slug !== slug);
 
   return filterBySlug;
-
-  // // The code below needs more testing before the above can be replaced.
-  // // merged after filter
-  // const mergedItems = [...filterByCategories, ...filterByTags, ...filterBySpirits, ...filterByBottles];
-  // // Remove self from list
-  // const filterBySlug = mergedItems.filter((item) => item.slug !== slug);
-  // // count instances of each item
-  // const itemCount = filterBySlug.reduce((accumulator: any, currentItem: any) => {
-  //   accumulator[currentItem.slug] = (accumulator[currentItem.slug] || 0) + 1;
-  //   return accumulator;
-  // }, {});
-  // // sort items by number of instances
-  // const sortedItems = filterBySlug.sort((a: any, b: any) => itemCount[b.slug] - itemCount[a.slug]);
-  // // remove duplicates
-  // const uniqueItems = [...new Set(sortedItems.map((item: any) => item.slug))].map((slug: string) => {
-  //   return sortedItems.find((item: any) => item.slug === slug);
-  // });
-  // return uniqueItems;
 };
 
 export default similerItems;

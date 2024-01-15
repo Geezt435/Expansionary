@@ -6,7 +6,7 @@ import config from "@/config/config.json";
 
 export async function getStaticPaths() {
   const docs = await getSinglePage(config.settings.docs_folder);
-  return docs.map(post => ({
+  return docs.map((post) => ({
     params: { id: post.slug },
     props: { post },
   }));
@@ -16,9 +16,6 @@ const { post } = Astro.props;
 const { title } = post.data;
 ---
 
-<Base
-  title={title}
-  meta_title={title}
->
+<Base title={title} meta_title={title}>
   <DocSingle post={post} />
 </Base>

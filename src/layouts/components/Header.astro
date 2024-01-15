@@ -103,12 +103,8 @@ const { pathname } = Astro.url;
       <div class="mr-4 flex items-center">
         <ThemeSwitcher />
       </div>
-      
-      {
-        settings.search && (
-          <SearchBar />
-        )
-      }
+
+      {settings.search && <SearchBar />}
     </div>
   </nav>
 </header>

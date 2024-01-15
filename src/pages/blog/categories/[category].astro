@@ -10,7 +10,7 @@ import PageHeader from "@/components/PageHeader.astro";
 export async function getStaticPaths() {
   const categories = await getTaxonomy(
     config.settings.blog_folder,
-    "categories"
+    "categories",
   );
 
   return categories.map((category) => {
