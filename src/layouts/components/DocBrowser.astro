@@ -12,10 +12,10 @@ const isCurrentPage = (item: doc_child) => {
 
 const getLinkClasses = (item: doc_child) => {
   const baseClasses =
-    "text-xl block py-1 px-2 my-1 rounded hover:bg-theme-light dark:hover:bg-darkmode-theme-light";
+    "text-xl block py-1 px-2 my-1 rounded hover:bg-primary hover:text-white dark:hover:bg-darkmode-primary dark:hover:text-dark";
 
   if (isCurrentPage(item)) {
-    return baseClasses + "rounded bg-theme-light dark:bg-darkmode-theme-light";
+    return baseClasses + "rounded bg-white dark:bg-darkmode-body";
   } else {
     return baseClasses;
   }
@@ -35,7 +35,7 @@ const { main }: { main: doc_parent[] } = docs;
 ---
 
 <nav
-  class="max-h-screen overflow-y-auto mx-8 border-r border-light dark:border-darkmode-light"
+  class="w-full mr-8 max-h-[75vh] overflow-y-auto rounded-lg bg-theme-light dark:bg-darkmode-theme-light my-0 px-0 py-0"
 >
   <div class="mx-4 my-8">
     <ul>

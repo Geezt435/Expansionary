@@ -4,13 +4,13 @@ const { headings } = Astro.props;
 
 { headings &&
   <nav
-    class="max-h-screen overflow-y-auto mx-8 border-light dark:border-darkmode-light"
+    class="w-full ml-8 max-h-[75vh] overflow-y-auto rounded-lg bg-theme-light dark:bg-darkmode-theme-light"
   >
     <div class="mx-4 my-8">
       <h3 class="my-4">On This Page</h3>
       {
           headings.map((heading: any) => {
-            let className = `block p-1 mb-1 rounded hover:bg-theme-light dark:hover:bg-darkmode-theme-light `;
+            let className = `block p-1 mb-1 rounded hover:bg-primary hover:text-white dark:hover:bg-darkmode-primary dark:hover:text-dark `;
             const sizeAndIndent: { [key: number]: string } = {
               1: `pl-0 text-2xl`,
               2: `pl-2 text-xl`,
@@ -32,4 +32,3 @@ const { headings } = Astro.props;
     </div>
   </nav>
 }
-
