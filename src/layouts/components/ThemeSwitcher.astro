@@ -1,23 +1,24 @@
 ---
 import config from "@/config/config.json";
-
 const {
   theme_switcher,
   default_theme,
 }: { theme_switcher: boolean; default_theme: string } = config.settings;
+const { className }: { className?: string } = Astro.props;
 ---
 
 {
   theme_switcher && (
-    <div class="theme-switcher">
+    <div class={`theme-switcher a ${className}`}>
       <input id="theme-switcher" data-theme-switcher type="checkbox" />
       <label for="theme-switcher">
+        <span class="sr-only">theme switcher</span>
         <span>
           <svg
-            class="z-10 opacity-100 dark:opacity-0"
+            class="absolute z-10 opacity-100 dark:opacity-0"
             viewBox="0 0 24 24"
-            height="20"
-            width="20"
+            height="21"
+            width="21"
           >
             <path
               fill="#000"
@@ -27,8 +28,8 @@ const {
           <svg
             class="absolute z-10 opacity-0 dark:opacity-100"
             viewBox="0 0 24 24"
-            height="20"
-            width="20"
+            height="21"
+            width="21"
           >
             <path
               fill="#fff"
@@ -40,7 +41,6 @@ const {
     </div>
   )
 }
-
 <script is:inline define:vars={{ defaultTheme: default_theme }}>
   var darkMode = defaultTheme === "dark" ? true : false;
   var themeSwitch = document.querySelectorAll("[data-theme-switcher]");
@@ -62,9 +62,7 @@ const {
         document.documentElement.classList.toggle("dark");
         localStorage.setItem(
           "theme",
-          document.documentElement.classList.contains("dark")
-            ? "dark"
-            : "light",
+          document.documentElement.classList.contains("dark") ? "dark" : "light"
         );
       });
     });

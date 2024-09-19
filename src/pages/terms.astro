@@ -5,10 +5,10 @@ import { getEntryBySlug } from "astro:content";
 
 const terms = await getEntryBySlug("terms", "-index");
 const { Content } = await terms.render();
-const { title, meta_title } = terms.data;
+const { title } = terms.data;
 ---
 
-<Base title={title} meta_title={meta_title}>
+<Base meta_title={title}>
   <PageHeader title={title} />
   <section class="section-sm">
     <div class="container">

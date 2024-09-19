@@ -1,5 +1,5 @@
 ---
-import { humanize } from "@/lib/utils/textConverter";
+import { lowerHumanize, upperHumanize } from "@/lib/utils/textConverter";
 
 const { tags, categories, allCategories } = Astro.props;
 ---
@@ -7,8 +7,10 @@ const { tags, categories, allCategories } = Astro.props;
 <div class="lg:col-4">
   <!-- categories -->
   <div class="mb-8">
-    <h5 class="mb-6">Categories</h5>
-    <div class="rounded bg-theme-light p-8 dark:bg-darkmode-theme-light">
+    <div class="rounded bg-theme-light p-6 dark:bg-darkmode-theme-light">
+        <h4 class="mb-2 text-center">
+          <a href="/blog/categories">Categories</a>
+        </h4>
       <ul class="space-y-4">
         {
           categories.map((category: any) => {
@@ -21,7 +23,7 @@ const { tags, categories, allCategories } = Astro.props;
                   class="flex justify-between hover:text-primary dark:hover:text-darkmode-primary"
                   href={`/blog/categories/${category}`}
                 >
-                  {humanize(category)} <span>({count})</span>
+                  {upperHumanize(category)} <span>({count})</span>
                 </a>
               </li>
             );
@@ -32,8 +34,10 @@ const { tags, categories, allCategories } = Astro.props;
   </div>
   <!-- tags -->
   <div class="mb-8">
-    <h5 class="mb-6">Tags</h5>
     <div class="rounded bg-theme-light p-6 dark:bg-darkmode-theme-light">
+      <h4 class="mb-2 text-center">
+        <a href="/blog/tags">Tags</a>
+      </h4>
       <ul>
         {
           tags.map((tag: any) => {
@@ -41,7 +45,7 @@ const { tags, categories, allCategories } = Astro.props;
               <li class="inline-block">
                 <a
                   class="m-1 block rounded bg-white px-3 py-1 hover:bg-primary hover:text-white dark:bg-darkmode-body dark:hover:bg-darkmode-primary dark:hover:text-dark"
-                  href={`/blog/tags/${tag}`}
+                  href={`/blog/tags/${lowerHumanize(tag)}`}
                 >
                   {tag}
                 </a>

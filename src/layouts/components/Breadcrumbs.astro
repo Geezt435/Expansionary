@@ -1,5 +1,5 @@
 ---
-import { humanize } from "@/lib/utils/textConverter";
+import { lowerHumanize } from "@/lib/utils/textConverter";
 
 const { className }: { className?: string } = Astro.props;
 
@@ -16,7 +16,7 @@ paths.forEach((label: string, i: number) => {
   const href = `/${paths.slice(0, i + 1).join("/")}`;
   label !== "page" &&
     parts.push({
-      label: humanize(label.replace(/[-_]/g, " ")) || "",
+      label: lowerHumanize(label.replace(/[-_]/g, " ")) || "",
       href,
       "aria-label": Astro.url.pathname === href ? "page" : undefined,
     });

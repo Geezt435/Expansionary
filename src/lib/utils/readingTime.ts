@@ -1,18 +1,22 @@
 // content reading
-const readingTime = (content: string): string => {
-  const WPS = 225 / 60;
+const readingTime = (content: string, complexity: number): string => {
+  const WPS = 200 / 60;
 
   let images = 0;
   const regex = /\w/;
 
   let words = content.split(" ").filter((word) => {
-    if (word.includes("<img")) {
+    if (word.includes(".png)")
+      || word.includes(".jpg)")
+      || word.includes(".svg)")
+      || word.includes(".webp)")
+      || word.includes(".gif)" )
+    ) {
       images += 1;
     }
     return regex.test(word);
   }).length;
 
-  let imageAdjust = images * 4;
   let imageSecs = 0;
   let imageFactor = 12;
 
@@ -24,12 +28,16 @@ const readingTime = (content: string): string => {
     images -= 1;
   }
 
-  const minutes = Math.ceil(((words - imageAdjust) / WPS + imageSecs) / 60);
+  let ttr = 0; // time to read (in minutes)
+  ttr = words / WPS;
+  ttr = ttr + imageSecs;
+  ttr = ttr * complexity;
+  ttr = Math.ceil(ttr / 60);
 
-  if (minutes < 2) {
-    return minutes + ` minute`;
+  if (ttr < 2) {
+    return ttr + ` min`;
   } else {
-    return minutes + ` minutes`;
+    return ttr + ` mins`;
   }
 };
 

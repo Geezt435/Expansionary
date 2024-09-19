@@ -8,6 +8,14 @@ export const sortByDate = (array: any[]) => {
   return sortedArray;
 };
 
+// sort by title
+export const sortByTitle = (array: any[]) => {
+  const sortedArray = array.sort((a: any, b: any) =>
+    a.data.title.localeCompare(b.data.title),
+  );
+  return sortedArray;
+};
+
 // sort product by weight
 export const sortByWeight = (array: any[]) => {
   const withWeight = array.filter(
@@ -21,5 +29,11 @@ export const sortByWeight = (array: any[]) => {
       a.data.weight - b.data.weight,
   );
   const sortedArray = [...new Set([...sortedWeightedArray, ...withoutWeight])];
+  return sortedArray;
+};
+
+// sort by random
+export const sortByRandom = (array: any[]) => {
+  const sortedArray = array.sort(() => Math.random() - 0.5);
   return sortedArray;
 };

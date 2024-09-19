@@ -6,12 +6,11 @@ import { getEntryBySlug } from "astro:content";
 
 const about = await getEntryBySlug("about", "-index");
 const { Content } = await about.render();
-const { title, description, meta_title, image } = about.data;
+const { title, description, image } = about.data;
 ---
 
 <Base
-  title={title}
-  meta_title={meta_title}
+  meta_title={title}
   description={description}
   image={image}
 >

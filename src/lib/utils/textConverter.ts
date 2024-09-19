@@ -16,14 +16,19 @@ export const markdownify = (content: string, div?: boolean) => {
   return div ? marked.parse(content) : marked.parseInline(content);
 };
 
-// humanize
-export const humanize = (content: string) => {
+// hyphen to space, uppercase only first letter in each word
+export const upperHumanize = (content: string) => {
   return content
-    .replace(/^[\s_]+|[\s_]+$/g, "")
-    .replace(/[_\s]+/g, " ")
-    .replace(/^[a-z]/, function (m) {
-      return m.toUpperCase();
-    });
+    .toLowerCase()
+    .replace(/-/g, " ")
+    .replace(/(^\w{1})|(\s{1}\w{1})/g, (match) => match.toUpperCase());
+};
+
+// hyphen to space, lowercase all letters
+export const lowerHumanize = (content: string) => {
+  return content
+    .toLowerCase()
+    .replace(/-/g, " ");
 };
 
 // plainify

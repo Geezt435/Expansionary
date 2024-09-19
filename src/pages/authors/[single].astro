@@ -21,7 +21,7 @@ export async function getStaticPaths() {
 
 const { blog_folder }: { blog_folder: string } = config.settings;
 const { author } = Astro.props;
-const { title, social, meta_title, description, image } = author.data;
+const { title, social, description, image } = author.data;
 const { Content } = await author.render();
 const posts = await getSinglePage(blog_folder);
 const postFilterByAuthor = posts.filter(
@@ -30,8 +30,7 @@ const postFilterByAuthor = posts.filter(
 ---
 
 <Base
-  title={title}
-  meta_title={meta_title}
+  meta_title={title}
   description={description}
   image={image}
 >

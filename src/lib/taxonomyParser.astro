@@ -14,6 +14,7 @@ export const getTaxonomy = async (collection: string, name: string) => {
     }
   }
   const taxonomy = [...new Set(taxonomies)];
+  taxonomy.sort((a, b) => a.localeCompare(b)); // alphabetize
   return taxonomy;
 };
 

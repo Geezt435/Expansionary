@@ -22,8 +22,7 @@ const currentPosts = sortedPosts.slice(0, config.settings.pagination);
 ---
 
 <Base
-  title={postIndex.data.title}
-  meta_title={postIndex.data.meta_title}
+  meta_title={postIndex.data.title}
   image={postIndex.data.image}
   description={postIndex.data.description}
 >
@@ -36,7 +35,7 @@ const currentPosts = sortedPosts.slice(0, config.settings.pagination);
           <div class="row">
             {
               currentPosts.map((post) => (
-                <div class="mb-14 md:col-6">
+                <div class="pb-4 md:pb-8 md:col-6">
                   <BlogCard data={post} />
                 </div>
               ))

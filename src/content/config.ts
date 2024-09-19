@@ -35,6 +35,7 @@ const blogCollection = defineCollection({
     categories: z.array(z.string()).default(["others"]),
     tags: z.array(z.string()).default(["others"]),
     draft: z.boolean().optional(),
+    complexity: z.number().default(1),
   }),
 });
 

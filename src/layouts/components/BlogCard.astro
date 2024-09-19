@@ -1,6 +1,6 @@
 ---
 import config from "@/config/config.json";
-import { humanize, plainify, slugify } from "@/lib/utils/textConverter";
+import { upperHumanize, plainify, slugify } from "@/lib/utils/textConverter";
 import { Image } from "astro:assets";
 import {
   FaRegFolder,
@@ -14,7 +14,7 @@ const {
   blog_folder,
 }: { summary_length: number; blog_folder: string } = config.settings;
 const { data } = Astro.props;
-const { title, image, date, author, categories } = data.data;
+const { title, image, date, author, categories, complexity } = data.data;
 ---
 
 <div class="bg-body dark:bg-darkmode-body">
@@ -39,7 +39,7 @@ const { title, image, date, author, categories } = data.data;
     <!-- <li class="mr-4 inline-block">
       <a href={`/authors/${slugify(author)}`}>
         <FaRegUserCircle className={"mr-2 -mt-1 inline-block"} />
-        {humanize(author)}
+        {upperHumanize(author)}
       </a>
     </li> -->
     <li class="mr-4 inline-block">
@@ -47,7 +47,7 @@ const { title, image, date, author, categories } = data.data;
       {
         categories.map((category: string, index: number) => (
           <a href={`/blog/categories/${slugify(category)}`}>
-            {humanize(category)}
+            {upperHumanize(category)}
             {index !== categories.length - 1 && ","}
           </a>
         ))
@@ -55,7 +55,7 @@ const { title, image, date, author, categories } = data.data;
     </li>
     <li class="mr-4 inline-block">
       <FaRegClock className={"mr-1 -mt-1 inline-block"} />
-      {readingTime(data.body)}
+      {readingTime(data.body, complexity)}
     </li>
   </ul>
   <p class="mb-6">{plainify(data.body?.slice(0, Number(summary_length)))}</p>

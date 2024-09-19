@@ -1,4 +1,4 @@
-import { humanize } from "@/lib/utils/textConverter";
+import { upperHumanize } from "@/lib/utils/textConverter";
 import React from "react";
 
 function Notice({
@@ -75,7 +75,7 @@ function Notice({
             />
           </svg>
         )}
-        <p className="my-0 ml-1.5">{humanize(type)}</p>
+        <p className="my-0 ml-1.5">{upperHumanize(type)}</p>
       </div>
       <div className="notice-body">{children}</div>
     </div>
