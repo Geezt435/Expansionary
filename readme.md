@@ -4,6 +4,8 @@
 
 A personal website template.
 
+## Requirements
+
 ## Development Instructions
 
 Clone: `git clone https://github.com/reednel/pages.git`

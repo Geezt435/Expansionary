@@ -5,7 +5,7 @@ import { getSinglePage } from "@/lib/contentParser.astro";
 import config from "@/config/config.json";
 
 export async function getStaticPaths() {
-  const docs = await getSinglePage(config.settings.docs_folder);
+  const docs = await getSinglePage(config.settings.doc_folder);
   return docs.map((post) => ({
     params: { id: post.slug },
     props: { post },

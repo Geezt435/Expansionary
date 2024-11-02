@@ -62,6 +62,20 @@ module.exports = {
           "theme-dark": theme.colors.darkmode.theme_color.theme_dark,
         },
       },
+
+      minHeight: {
+        dynamic_hero: "calc(100vh - 69px - 76.8px)",
+        static_sidemenu: "calc(100vh - 69px - 76.8px)",
+      },
+      maxHeight: {
+        static_sidemenu: "calc(100vh - 69px - 76.8px)",
+        dynamic_search: "calc(50svh - 124px)",
+        dynamic_hscreen: "calc(100dvh - 32px - 2rem)",
+      },
+      height: {
+        dynamic_hscreen: "calc(100dvh - 36px - 2rem)",
+      },
+
       fontSize: {
         base: font_base + "px",
         h1: h1 + "rem",

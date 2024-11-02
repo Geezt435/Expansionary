@@ -20,7 +20,9 @@
     "pagination": 4,
     "summary_length": 200,
     "blog_folder": "blog",
-    "docs_folder": "docs"
+    "doc_folder": "docs",
+    "hide_doc_browser": false,
+    "hide_doc_contents": false
   },
 
   "metadata": {

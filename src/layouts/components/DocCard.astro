@@ -1,0 +1,23 @@
+---
+import config from "@/config/config.json";
+
+const {
+  summary_length,
+  doc_folder,
+}: { summary_length: number; doc_folder: string } = config.settings;
+const { data } = Astro.props;
+const { title, description } = data.data;
+---
+
+<div class="min-h-full block border border-light bg-transparent text-light rounded-sm dark:text-darkmode-light dark:border-darkmode-light">
+  <div class="m-6">
+    <a href={`/${doc_folder}/${data.slug}`}>
+      <h4 class="mb-3">
+        {title}
+      </h4>
+    </a>
+    <p>
+      {description}
+    </p>
+  </div>
+</div>

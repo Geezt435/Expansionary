@@ -1,4 +1,70 @@
 ---
+import config from "@/config/config.json";
+import { capitalizeFirstLetter } from "@/lib/utils/docsUtils";
+import type { SideNavMenuProps } from "@/types/index";
+
+const { currentPage, items, level } = Astro.props as SideNavMenuProps;
+const pathname: string = new URL(Astro.request.url).pathname;
+const {doc_folder} = config.settings;
+
+const currentPageMatch = currentPage ? currentPage.slice(1) : null;
+
+// const isCurrentPage = (item: doc_child) => {
+//   if (item.url) {
+//     return item.url.includes(currentPageMatch);
+//   }
+//   return false;
+// };
+
+// export interface doc_child {
+//   name: string;
+//   url: string;
+// }
+
+// export interface doc_parent {
+//   name: string;
+//   children?: doc_child[];
+// }
+
+// const { main }: { main: doc_parent[] } = docs;
+
+// To pass the tailwindcss classes to the astro component
+const { class: className } = Astro.props;
+---
+
+<ul class:list={["list-none m-0", className]}>
+  {
+    items
+      .filter((item) => !item.draft)
+      .map((item) => {
+        const label = item.title
+          ? capitalizeFirstLetter(item.title)
+          : capitalizeFirstLetter(item.slug.split("/").pop() || "");
+        const className = `
+        ${level === 0 ? "font-semibold" : "text-muted-foreground"}
+        ${pathname === "/" + item.slug ? "text-primary" : "no-underline"}
+        `.trim();
+        return (
+          <li class="w-full">
+            <a
+              href={`/${doc_folder}/${item.slug}`}
+              class={`${className}  text-sm leading-none w-full`}
+            >
+              {label}
+            </a>
+            {item.children.length > 0 && (
+              <Astro.self items={item.children} level={level + 1} />
+            )}
+          </li>
+        );
+      })
+  }
+</ul>
+
+
+
+
+<!-- ---
 import docs from "@/config/docs.json";
 const { currentPage } = Astro.props;
 const currentPageMatch = currentPage ? currentPage.slice(1) : null;
@@ -66,4 +132,4 @@ const { main }: { main: doc_parent[] } = docs;
       document.querySelector(".nav-groups").scrollTop = target.offsetTop;
     }
   });
-</script>
+</script> -->
