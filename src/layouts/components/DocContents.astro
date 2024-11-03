@@ -6,7 +6,6 @@ const { headings } = Astro.props as HeadingProps;
 const toc: HeadingHierarchy[] = createHeadingHierarchy(headings ?? []);
 const hasToC = toc.length > 1;
 
-// To pass the tailwindcss classes to the astro component
 const { class: className } = Astro.props;
 ---
 
@@ -26,43 +25,3 @@ const { class: className } = Astro.props;
     </div>
   )
 }
-
-
-
-
-
-
-<!-- ---
-const { headings } = Astro.props;
----
-
-{ headings &&
-  <nav
-    class="w-full ml-8 max-h-[75vh] overflow-y-auto rounded-lg bg-theme-light dark:bg-darkmode-theme-light"
-  >
-    <div class="mx-4 my-8">
-      <h3 class="my-4">On This Page</h3>
-      {
-          headings.map((heading: any) => {
-            let className = `block p-1 mb-1 rounded hover:bg-primary hover:text-white dark:hover:bg-darkmode-primary dark:hover:text-dark `;
-            const sizeAndIndent: { [key: number]: string } = {
-              1: `pl-0 text-2xl`,
-              2: `pl-2 text-xl`,
-              3: `pl-4 text-lg`,
-              4: `pl-6 text-base`,
-              5: `pl-8 text-sm`,
-              6: `pl-10 text-xs`,
-            };
-            className += sizeAndIndent[heading.depth] || "";
-            return (
-              <p>
-                <a href={`#${heading.slug}`} class={className}>
-                  {heading.text}
-                </a>
-              </p>
-            );
-          })
-      }
-    </div>
-  </nav>
-} -->
