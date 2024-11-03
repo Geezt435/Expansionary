@@ -23,7 +23,7 @@ const posts = await getSinglePage(config.settings.blog_folder);
 const filterByCategories = taxonomyFilter(posts, "tags", tag!);
 ---
 
-<Base meta_title={lowerHumanize(tag)}>
+<Base title={lowerHumanize(tag)}>
   <PageHeader title={lowerHumanize(tag)} />
   <div class="section-sm pb-0">
     <div class="container">

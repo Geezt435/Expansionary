@@ -7,7 +7,7 @@ import "@/styles/main.scss";
 
 // types for frontmatters
 export interface Props {
-  meta_title?: string;
+  title?: string;
   description?: string;
   image?: string;
   noindex?: boolean;
@@ -15,7 +15,7 @@ export interface Props {
 }
 
 // distructure frontmatters
-const { meta_title, description, image, noindex, canonical } =
+const { title, description, image, noindex, canonical } =
   Astro.props;
 ---
 
@@ -52,7 +52,7 @@ const { meta_title, description, image, noindex, canonical } =
 
     <!-- title -->
     <title>
-      {plainify(meta_title ? meta_title : config.site.title)}
+      {plainify(title ? title : config.site.title)}
     </title>
 
     <!-- canonical url -->
@@ -76,7 +76,7 @@ const { meta_title, description, image, noindex, canonical } =
     <meta
       property="og:title"
       content={plainify(
-        meta_title ? meta_title : config.site.title,
+        title ? title : config.site.title,
       )}
     />
 
@@ -97,7 +97,7 @@ const { meta_title, description, image, noindex, canonical } =
     <meta
       name="twitter:title"
       content={plainify(
-        meta_title ? meta_title : config.site.title,
+        title ? title : config.site.title,
       )}
     />
 

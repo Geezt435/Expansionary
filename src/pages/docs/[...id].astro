@@ -16,6 +16,6 @@ const { post } = Astro.props;
 const { title } = post.data;
 ---
 
-<Base meta_title={title}>
+<Base title={title}>
   <DocSingle post={post} />
 </Base>
