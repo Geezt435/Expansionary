@@ -13,23 +13,8 @@
       "url": "/docs/getting-started"
     },
     {
-      "name": "Pages",
-      "url": "",
-      "hasChildren": true,
-      "children": [
-        {
-          "name": "Blog",
-          "url": "/blog"
-        },
-        {
-          "name": "Authors",
-          "url": "/authors"
-        },
-        {
-          "name": "Terms",
-          "url": "/terms"
-        }
-      ]
+      "name": "Blog",
+      "url": "/blog"
     }
   ]
 }
