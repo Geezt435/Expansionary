@@ -10,7 +10,7 @@ import type {
   MenuItemWithDraft,
 } from "@/types/index";
 
-import { side_nav_menu_order } from "@/config/docconfig";
+import { doc_browser_order } from "@/config/docs.json";
 
 // for shadcn components
 export function cn(...inputs: ClassValue[]) {
@@ -26,7 +26,7 @@ export const capitalizeFirstLetter = (str: string) => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
-// Helper function to sort items according to side_nav_menu_order
+// Sort items according to side_nav_menu_order
 function sortItems(
   items: MenuItemWithDraft[],
   orderMap: Map<string, number>,
@@ -44,7 +44,7 @@ function buildMenu(items: DocsEntry[]): MenuItem[] {
 
   // Create a map to quickly look up the order of all items
   const orderMap = new Map(
-    side_nav_menu_order.map((item, index) => [item, index]),
+    doc_browser_order.map((item, index) => [item, index]),
   );
 
   // Helper function to sort top-level items

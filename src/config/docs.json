@@ -1,35 +1,7 @@
 {
-  "main": [
-    {
-      "name": "Get Started",
-      "children": [
-        {
-          "name": "Installation",
-          "url": "/docs/get-started/installation"
-        },
-        {
-          "name": "Introduction",
-          "url": "/docs/get-started/introduction"
-        }
-      ]
-    },
-    {
-      "name": "Guides",
-      "children": [
-        {
-          "name": "Migrate from Z",
-          "url": "/docs/guides/migrate-from-z"
-        }
-      ]
-    },
-    {
-      "name": "Tutorials",
-      "children": [
-        {
-          "name": "Build X",
-          "url": "/docs/tutorials/build-x"
-        }
-      ]
-    }
+  "doc_browser_order": [
+    "getting-started",
+    "tutorials",
+    "tutorials/elements"
   ]
 }
