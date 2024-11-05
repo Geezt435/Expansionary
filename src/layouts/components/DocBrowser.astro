@@ -3,11 +3,11 @@ import config from "@/config/config.json";
 import { capitalizeFirstLetter } from "@/lib/utils/docsUtils";
 import type { SideNavMenuProps } from "@/types/index";
 
-const { currentPage, items, level } = Astro.props as SideNavMenuProps;
+const { items, level } = Astro.props as SideNavMenuProps; // { currentPage, ... }
 const pathname: string = new URL(Astro.request.url).pathname;
-const {doc_folder} = config.settings;
+const {docs_folder} = config.settings;
 
-const currentPageMatch = currentPage ? currentPage.slice(1) : null;
+// const currentPageMatch = currentPage ? currentPage.slice(1) : null;
 
 // const isCurrentPage = (item: doc_child) => {
 //   if (item.url) {
@@ -28,7 +28,6 @@ const currentPageMatch = currentPage ? currentPage.slice(1) : null;
 
 // const { main }: { main: doc_parent[] } = docs;
 
-// To pass the tailwindcss classes to the astro component
 const { class: className } = Astro.props;
 ---
 
@@ -47,7 +46,7 @@ const { class: className } = Astro.props;
         return (
           <li class="w-full">
             <a
-              href={`/${doc_folder}/${item.slug}`}
+              href={`/${docs_folder}/${item.slug}`}
               class={`${className}  text-sm leading-none w-full`}
             >
               {label}

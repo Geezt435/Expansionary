@@ -10,4 +10,24 @@ export const getSinglePage = async (collection: any) => {
   });
   return removeDrafts;
 };
+
+// Fetch top-level folders as groups
+export const getGroups = async (collection: any) => {
+  const allPage = await getCollection(collection);
+  const groups = allPage.filter((data: any) => {
+    const segments = data.slug.split("/");
+    return segments.length === 1;
+  });
+  return groups;
+};
+
+// Fetch documents within a specific group
+export const getDocumentsInGroup = async (collection: any, groupSlug: string) => {
+  const allPage = await getCollection(collection);
+  const documents = allPage.filter((data: any) => {
+    const segments = data.slug.split("/");
+    return segments[0] === groupSlug && segments.length > 1;
+  });
+  return documents;
+};
 ---

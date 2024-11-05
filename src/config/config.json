@@ -3,8 +3,7 @@
     "title": "Pages",
     "base_url": "https://reednel.com",
     "base_path": "/",
-    "trailing_slash": false,
-    "favicon": "/images/favicon.png"
+    "trailing_slash": false
   },
 
   "settings": {
@@ -15,7 +14,7 @@
     "pagination": 4,
     "summary_length": 200,
     "blog_folder": "blog",
-    "doc_folder": "docs",
+    "docs_folder": "docs",
     "hide_doc_browser": false,
     "hide_doc_contents": false
   },

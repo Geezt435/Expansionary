@@ -2,6 +2,7 @@ import { defineCollection, z } from "astro:content";
 
 // Author collection schema
 const authorsCollection = defineCollection({
+  type: "content",
   schema: z.object({
     title: z.string(),
     email: z.string().optional(),
@@ -24,6 +25,7 @@ const authorsCollection = defineCollection({
 
 // Blog collection schema
 const blogCollection = defineCollection({
+  type: "content",
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),

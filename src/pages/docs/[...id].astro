@@ -1,21 +1,52 @@
 ---
 import Base from "@/layouts/Base.astro";
 import DocSingle from "@/layouts/DocSingle.astro";
-import { getSinglePage } from "@/lib/contentParser.astro";
+import { getSinglePage, getDocumentsInGroup } from "@/lib/contentParser.astro";
 import config from "@/config/config.json";
 
 export async function getStaticPaths() {
-  const docs = await getSinglePage(config.settings.doc_folder);
-  return docs.map((post) => ({
-    params: { id: post.slug },
-    props: { post },
-  }));
+  const docs = await getSinglePage(config.settings.docs_folder);
+  const paths = [];
+
+  docs.forEach((post) => {
+    const segments = post.slug.split("/");
+    if (segments.length === 1) {
+      paths.push({
+        params: { id: segments[0] },
+        props: { post, isGroup: true },
+      });
+    } else {
+      paths.push({
+        params: { id: post.slug },
+        props: { post, isGroup: false },
+      });
+    }
+  });
+
+  return paths;
 }
 
-const { post } = Astro.props;
+const { post, isGroup } = Astro.props;
 const { title } = post.data;
+
+const documents = isGroup ? await getDocumentsInGroup(config.settings.docs_folder, post.slug) : [];
 ---
 
 <Base title={title}>
-  <DocSingle post={post} />
+  {isGroup ? (
+    // Render document group view
+    <section>
+      <h1>{title}</h1>
+      <ul>
+        {documents.map((doc) => (
+          <li>
+            <a href={`/docs/${doc.slug}`} class="button">{doc.data.title}</a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ) : (
+    // Render single document view
+    <DocSingle post={post} />
+  )}
 </Base>

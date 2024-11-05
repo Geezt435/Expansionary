@@ -8,12 +8,16 @@ import config from "@/config/config.json";
 
 import { menu } from "@/lib/utils/docsUtils";
 
-const { settings } = config;
+import { getDocumentsInGroup } from "@/lib/contentParser.astro";
 
-const { post } = Astro.props;
+const { settings } = config;
+const { docs_folder } = config.settings;
+
+const { post, isGroup } = Astro.props;
 const { Content, headings } = await post.render();
 const { title } = post.data;
 const currentPage = new URL(Astro.request.url).pathname;
+const documents = isGroup ? await getDocumentsInGroup(docs_folder, post.slug) : [];
 
 const hide_toc = false;
 const hide_sidenav = false;
@@ -58,29 +62,3 @@ const max_width = false;
     </ScrollArea>
   </div>
 </section>
-<!-- 
-<section class="section pt-7">
-  <div class="container">
-    <div class="row justify-center">
-      <div class="flex">
-
-        <div class="col-3 sticky top-12 h-screen flex">
-          <DocBrowser currentPage={currentPage} />
-        </div>
-
-        <main class="py-4 col-9 lg:col-6 overflow-auto">
-          <article>
-            <h1 class="mb-4">{title}</h1>
-            <div class="content mb-10">
-              <Content />
-            </div>
-          </article>
-        </main>
-
-        <div class="col-3 sticky top-12 h-screen flex invisible lg:visible">
-          <DocContents headings={headings} />
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->

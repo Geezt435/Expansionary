@@ -1,17 +1,22 @@
 ---
+// import DocCard from "@/components/DocCard.astro";
+import config from "@/config/config.json";
 import Base from "@/layouts/Base.astro";
+import { getGroups } from "@/lib/contentParser.astro";
+
+const { docs_folder } = config.settings;
+const groups = await getGroups(docs_folder);
 ---
 
-<Base title={"Docs"}>
-  <section class="section pt-7">
-    <div class="container">
-      <div class="row justify-center">
-        <div class="grid grid-cols-12">
-          <p>DOCS</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<Base title="Documentation">
+  <h1>Documentation</h1>
+  <ul>
+    {groups.map((group) => (
+      <li>
+        <a href={`/docs/${group.slug}`} class="button">{group.data.title}</a>
+      </li>
+    ))}
+  </ul>
 </Base>
 
 <!-- ---
@@ -20,11 +25,11 @@ import config from "@/config/config.json";
 import Base from "@/layouts/Base.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import PageHeader from "@/components/PageHeader.astro";
-import { getEntryBySlug } from "astro:content";
+import { getEntry } from "astro:content";
 
-const { doc_folder } = config.settings;
-const postIndex = await getEntryBySlug<any, string>(doc_folder, "-index");
-const posts = await getSinglePage(doc_folder);
+const { docs_folder } = config.settings;
+const postIndex = await getEntry<any, string>(docs_folder, "-index");
+const posts = await getSinglePage(docs_folder);
 ---
 
 <Base
@@ -44,6 +49,22 @@ const posts = await getSinglePage(doc_folder);
               </div>
             ))
           }
+      </div>
+    </div>
+  </section>
+</Base> -->
+
+<!-- ---
+import Base from "@/layouts/Base.astro";
+---
+
+<Base title={"Docs"}>
+  <section class="section pt-7">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="grid grid-cols-12">
+          <p>DOCS</p>
+        </div>
       </div>
     </div>
   </section>
