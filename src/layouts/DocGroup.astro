@@ -1,0 +1,31 @@
+---
+import DocCard from "@/components/DocCard.astro";
+import PageHeader from "@/components/PageHeader.astro";
+
+import config from "@/config/config.json";
+import { getEntry } from "astro:content";
+
+const { settings } = config;
+const { docs_folder } = config.settings;
+
+const { documents } = Astro.props;
+const postIndex = await getEntry<any, string>(docs_folder, "index");
+
+const hide_sidenav = false;
+const max_width = false;
+---
+
+<PageHeader title={postIndex.data.title} />
+<section class="section">
+  <div class="container">
+    <div class="row">
+      {
+        documents.map((doc) => (
+          <div class="mb-4 md:mb-8 md:col-6 lg:col-4">
+            <DocCard data={doc} />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

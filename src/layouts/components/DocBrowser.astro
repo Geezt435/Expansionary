@@ -7,34 +7,13 @@ const { items, level } = Astro.props as SideNavMenuProps; // { currentPage, ... 
 const pathname: string = new URL(Astro.request.url).pathname;
 const {docs_folder} = config.settings;
 
-// const currentPageMatch = currentPage ? currentPage.slice(1) : null;
-
-// const isCurrentPage = (item: doc_child) => {
-//   if (item.url) {
-//     return item.url.includes(currentPageMatch);
-//   }
-//   return false;
-// };
-
-// export interface doc_child {
-//   name: string;
-//   url: string;
-// }
-
-// export interface doc_parent {
-//   name: string;
-//   children?: doc_child[];
-// }
-
-// const { main }: { main: doc_parent[] } = docs;
-
 const { class: className } = Astro.props;
 ---
 
 <ul class:list={["list-none m-0", className]}>
   {
     items
-      .filter((item) => !item.draft)
+      .filter((item) => !item.draft && !item.slug.includes("index"))
       .map((item) => {
         const label = item.title
           ? capitalizeFirstLetter(item.title)
@@ -59,76 +38,3 @@ const { class: className } = Astro.props;
       })
   }
 </ul>
-
-
-
-
-<!-- ---
-import docs from "@/config/docs.json";
-const { currentPage } = Astro.props;
-const currentPageMatch = currentPage ? currentPage.slice(1) : null;
-
-const isCurrentPage = (item: doc_child) => {
-  if (item.url) {
-    return item.url.includes(currentPageMatch);
-  }
-  return false;
-};
-
-const getLinkClasses = (item: doc_child) => {
-  const baseClasses =
-    "text-xl block py-1 px-2 my-1 rounded hover:bg-primary hover:text-white dark:hover:bg-darkmode-primary dark:hover:text-dark";
-
-  if (isCurrentPage(item)) {
-    return baseClasses + "rounded bg-white dark:bg-darkmode-body";
-  } else {
-    return baseClasses;
-  }
-};
-
-export interface doc_child {
-  name: string;
-  url: string;
-}
-
-export interface doc_parent {
-  name: string;
-  children?: doc_child[];
-}
-
-const { main }: { main: doc_parent[] } = docs;
----
-
-<nav
-  class="w-full mr-8 max-h-[75vh] overflow-y-auto rounded-lg bg-theme-light dark:bg-darkmode-theme-light my-0 px-0 py-0"
->
-  <div class="mx-4 my-8">
-    <ul>
-      {
-        main.map((parent) => (
-          <>
-            <h3 class="mt-4">{parent.name}</h3>
-            <>
-              {parent.children?.map((child) => (
-                <li>
-                  <a class={getLinkClasses(child)} href={child.url}>
-                    {child.name}
-                  </a>
-                </li>
-              ))}
-            </>
-          </>
-        ))
-      }
-    </ul>
-  </div>
-</nav>
-
-<script is:inline>
-  window.addEventListener("DOMContentLoaded", (event) => {
-    var target = document.querySelector('[aria-current="page"]');
-    if (target && target.offsetTop > window.innerHeight - 100) {
-      document.querySelector(".nav-groups").scrollTop = target.offsetTop;
-    }
-  });
-</script> -->

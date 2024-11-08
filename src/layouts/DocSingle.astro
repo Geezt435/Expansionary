@@ -3,21 +3,16 @@ import DocBrowser from "@/components/DocBrowser.astro";
 import DocContents from "@/components/DocContents.astro";
 
 import { ScrollArea } from "@/shortcodes/ScrollArea";
+import { menu } from "@/lib/utils/docsUtils";
 
 import config from "@/config/config.json";
 
-import { menu } from "@/lib/utils/docsUtils";
-
-import { getDocumentsInGroup } from "@/lib/contentParser.astro";
-
 const { settings } = config;
-const { docs_folder } = config.settings;
 
-const { post, isGroup } = Astro.props;
+const { post } = Astro.props;
 const { Content, headings } = await post.render();
 const { title } = post.data;
 const currentPage = new URL(Astro.request.url).pathname;
-const documents = isGroup ? await getDocumentsInGroup(docs_folder, post.slug) : [];
 
 const hide_toc = false;
 const hide_sidenav = false;

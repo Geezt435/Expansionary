@@ -16,9 +16,9 @@ title: "Elements"
 
 ### Paragraph
 
-Did you come here for something in particular or just general Riker-bashing? And blowing into maximum warp speed, you appeared for an instant to be in two places at once. We have a saboteur aboard. We know you’re dealing in stolen ore. But I wanna talk about the assassination attempt on Lieutenant Worf. Could someone survive inside a transporter buffer for 75 years? Fate. It protects fools, little children, and ships.
+Did you come here for something in particular or just general Riker-bashing? And blowing into maximum warp speed, you appeared for an instant to be in two places at once. We have a saboteur aboard. We know you’re dealing in stolen ore.
 
-Did you come here for something in particular or just general Riker-bashing? And blowing into maximum warp speed, you appeared for an instant to be in two places at once. We have a saboteur aboard. We know you’re dealing in stolen ore. But I wanna talk about the assassination attempt on Lieutenant Worf. Could someone survive inside a transporter buffer for 75 years? Fate. It protects fools, little children, and ships.
+Did you come here for something in particular or just general Riker-bashing? And blowing into maximum warp speed, you appeared for an instant to be in two places at once.
 
 ---
 
@@ -31,14 +31,6 @@ Did you come here for something in particular or just general Riker-bashing? And
 3. _Did you come here_
 
 4. Did you come here for **something** in particular
-
-5. Did you come here for something in particular
-
-6. Did you come here for something in particular
-
-7. URLs and URLs in angle brackets will automatically get turned into links. [http://www.example.com](http://www.example.com) or
-
-8. [http://www.example.com](http://www.example.com) and sometimes example.com (but not on Github, for example).
 
 ---
 
@@ -71,15 +63,11 @@ Some text to show that the reference links can follow later.
 1. List item
 2. List item
 3. List item
-4. List item
-5. List item
 
 ---
 
 ### Unordered List
 
-- List item
-- List item
 - List item
 - List item
 - List item
@@ -99,19 +87,6 @@ Some text to show that the reference links can follow later.
     <a class="nav-link" href="about/">About</a>
   </li>
 </ul>
-```
-
----
-
-#### CSS
-
-```css
-img {
-  vertical-align: middle;
-  border: 0;
-  max-width: 100%;
-  height: auto;
-}
 ```
 
 ---
@@ -203,8 +178,6 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 - This is a thing.
 - This is a thing.
 - This is a thing.
-- This is a thing.
-- This is a thing.
 
 </Accordion>
 
@@ -213,15 +186,11 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 - This is a thing.
 - This is a thing.
 - This is a thing.
-- This is a thing.
-- This is a thing.
 
 </Accordion>
 
 <Accordion client:load title="Should you use Negative margin?">
 
-- This is a thing.
-- This is a thing.
 - This is a thing.
 - This is a thing.
 - This is a thing.

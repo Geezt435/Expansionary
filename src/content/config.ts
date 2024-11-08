@@ -47,6 +47,7 @@ const docsCollection = defineCollection({
     author: z.string().default("Admin"),
     pubDatetime: z.date().optional(),
     modDatetime: z.date().optional().nullable(),
+    image: z.string().optional(),
     description: z.string().optional(),
     draft: z.boolean().default(false),
     tags: z.array(z.string()).default([]),
