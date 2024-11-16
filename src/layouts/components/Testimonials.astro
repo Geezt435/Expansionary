@@ -1,22 +1,22 @@
 ---
 import { markdownify } from "@/lib/utils/textConverter";
 import { Image } from "astro:assets";
-const { testimonial } = Astro.props;
+const { testimonials } = Astro.props;
 ---
 
 {
-  testimonial.data.enable && (
+  testimonials.enable && (
     <section class="section">
       <div class="container">
         <div class="row">
           <div class="mx-auto mb-12 text-center md:col-10 lg:col-8 xl:col-6">
-            <h2 set:html={markdownify(testimonial.data.title)} class="mb-4" />
-            <p set:html={markdownify(testimonial.data.description)} />
+            <h2 set:html={markdownify(testimonials.title)} class="mb-4" />
+            <p set:html={markdownify(testimonials.description)} />
           </div>
           <div class="col-12">
-            <div class="swiper testimonial-slider">
+            <div class="swiper testimonials-slider">
               <div class="swiper-wrapper">
-                {testimonial.data.testimonials.map(
+                {testimonials.items.map(
                   (item: {
                     avatar: string;
                     content: string;
@@ -70,7 +70,7 @@ const { testimonial } = Astro.props;
                   ),
                 )}
               </div>
-              <div class="testimonial-slider-pagination mt-9 flex items-center justify-center text-center" />
+              <div class="testimonials-slider-pagination mt-9 flex items-center justify-center text-center" />
             </div>
           </div>
         </div>
@@ -85,7 +85,7 @@ const { testimonial } = Astro.props;
   import "swiper/css/pagination";
   import { Autoplay, Pagination } from "swiper/modules";
 
-  new Swiper(".testimonial-slider", {
+  new Swiper(".testimonials-slider", {
     modules: [Pagination, Autoplay],
     spaceBetween: 24,
     loop: true,
@@ -96,7 +96,7 @@ const { testimonial } = Astro.props;
       disableOnInteraction: false,
     },
     pagination: {
-      el: ".testimonial-slider-pagination",
+      el: ".testimonials-slider-pagination",
       type: "bullets",
       clickable: true,
     },

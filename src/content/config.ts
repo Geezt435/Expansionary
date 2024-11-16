@@ -1,8 +1,18 @@
 import { defineCollection, z } from "astro:content";
+import { glob } from 'astro/loaders';
 
-// Author collection schema
-const authorsCollection = defineCollection({
-  type: "content",
+const about = defineCollection({
+  loader: glob({ pattern: '-index.md', base: "./src/content/about" }),
+  schema: z.object({
+    title: z.string(),
+    image: z.string().optional(),
+    description: z.string().optional(),
+    draft: z.boolean().optional(),
+  }),
+});
+
+const authors = defineCollection({
+  loader: glob({ pattern: '**\/[^_]*.md', base: "./src/content/authors" }),
   schema: z.object({
     title: z.string(),
     email: z.string().optional(),
@@ -23,9 +33,8 @@ const authorsCollection = defineCollection({
   }),
 });
 
-// Blog collection schema
-const blogCollection = defineCollection({
-  type: "content",
+const blog = defineCollection({
+  loader: glob({ pattern: '**\/[^_]*.md', base: "./src/content/blog" }),
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
@@ -39,9 +48,8 @@ const blogCollection = defineCollection({
   }),
 });
 
-// Docs collection schema
-const docsCollection = defineCollection({
-  type: "content",
+const docs = defineCollection({
+  loader: glob({ pattern: '**\/[^_]*.md', base: "./src/content/docs" }),
   schema: z.object({
     title: z.string(),
     author: z.string().default("Admin"),
@@ -58,9 +66,54 @@ const docsCollection = defineCollection({
   }),
 });
 
+const home = defineCollection({
+  loader: glob({ pattern: '-index.md', base: "./src/content/home" }),
+  schema: z.object({
+    banner: 
+      z.object({
+        title: z.string(),
+        content: z.string(),
+        button: 
+          z.object({
+            enable: z.boolean().optional(),
+            label: z.string().optional(),
+            link: z.string().optional(),
+          })
+          .optional(),
+    }).optional(),
+    testimonials:
+      z.object({
+        enable: z.boolean().optional(),
+        title: z.string().optional(),
+        description: z.string().optional(),
+        items: 
+          z.array(
+            z.object({
+              name: z.string(),
+              designation: z.string(),
+              avatar: z.string(),
+              content: z.string(),
+            }),
+          )
+          .optional(),
+      }).optional(),
+  }),
+});
+
+const terms = defineCollection({
+  loader: glob({ pattern: '-index.md', base: "./src/content/terms" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+  }),
+});
+
 // Export collections
 export const collections = {
-  authors: authorsCollection,
-  blog: blogCollection,
-  docs: docsCollection,
+  about,
+  authors,
+  blog,
+  docs,
+  home,
+  terms,
 };

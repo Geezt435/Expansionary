@@ -15,7 +15,7 @@ export const getSinglePage = async (collection: any) => {
 export const getGroups = async (collection: any) => {
   const allPage = await getCollection(collection);
   const groups = allPage.filter((data: any) => {
-    const segments = data.slug.split("/");
+    const segments = data.id.split("/");
     return segments.length === 1 && segments[0] !== "index";
   });
   return groups;
@@ -25,7 +25,7 @@ export const getGroups = async (collection: any) => {
 export const getDocumentsInGroup = async (collection: any, groupSlug: string) => {
   const allPage = await getCollection(collection);
   const documents = allPage.filter((data: any) => {
-    const segments = data.slug.split("/");
+    const segments = data.id.split("/");
     return segments[0] === groupSlug && segments.length > 1;
   });
   return documents;

@@ -1,7 +1,5 @@
 import type { MarkdownHeading } from "astro";
 import { getCollection } from "astro:content";
-import { type ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
 
 import type {
   DocsEntry,
@@ -12,10 +10,10 @@ import type {
 
 import { doc_browser_order } from "@/config/docs.json";
 
-// for shadcn components
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
+// // for shadcn components
+// export function cn(...inputs: ClassValue[]) {
+//   return twMerge(clsx(inputs));
+// }
 
 // Fetch the collection with type
 const docs: DocsEntry[] = await getCollection("docs");
@@ -32,8 +30,8 @@ function sortItems(
   orderMap: Map<string, number>,
 ): MenuItemWithDraft[] {
   return items.slice().sort((a, b) => {
-    const aIndex = orderMap.get(a.slug) ?? Infinity;
-    const bIndex = orderMap.get(b.slug) ?? Infinity;
+    const aIndex = orderMap.get(a.id) ?? Infinity;
+    const bIndex = orderMap.get(b.id) ?? Infinity;
     return aIndex - bIndex;
   });
 }
@@ -49,8 +47,8 @@ function buildMenu(items: DocsEntry[]): MenuItem[] {
 
   // Helper function to sort top-level items
   function sortTopLevel(items: MenuItemWithDraft[]): MenuItemWithDraft[] {
-    const topLevelItems = items.filter((item) => !item.slug.includes("/"));
-    const nestedItems = items.filter((item) => item.slug.includes("/"));
+    const topLevelItems = items.filter((item) => !item.id.includes("/"));
+    const nestedItems = items.filter((item) => item.id.includes("/"));
 
     // Sort top-level items
     const sortedTopLevelItems = sortItems(topLevelItems, orderMap);
@@ -58,19 +56,19 @@ function buildMenu(items: DocsEntry[]): MenuItem[] {
     // Sort nested items by their respective parent folders
     const nestedMenu: MenuItemWithDraft[] = [];
     nestedItems.forEach((item) => {
-      const parts = item.slug.split("/");
+      const parts = item.id.split("/");
       let currentLevel = nestedMenu;
 
       // Traverse and insert items into the correct position
       parts.forEach((part: string, index: number) => {
         let existingItem = currentLevel.find(
-          (i) => i.slug === parts.slice(0, index + 1).join("/"),
+          (i) => i.id === parts.slice(0, index + 1).join("/"),
         );
 
         if (!existingItem) {
           existingItem = {
             title: capitalizeFirstLetter(part),
-            slug: parts.slice(0, index + 1).join("/"),
+            id: parts.slice(0, index + 1).join("/"),
             draft: item.draft,
             children: [],
           };
@@ -91,13 +89,13 @@ function buildMenu(items: DocsEntry[]): MenuItem[] {
   }
 
   items.forEach((item) => {
-    const parts = item.slug.split("/"); // Split slug into parts
+    const parts = item.id.split("/"); // Split id into parts
     let currentLevel = menu;
 
     // Traverse the menu structure based on folder depth
     parts.forEach((part: string, index: number) => {
       let existingItem = currentLevel.find(
-        (i) => i.slug === parts.slice(0, index + 1).join("/"),
+        (i) => i.id === parts.slice(0, index + 1).join("/"),
       );
 
       if (!existingItem) {
@@ -106,7 +104,7 @@ function buildMenu(items: DocsEntry[]): MenuItem[] {
             index === parts.length - 1
               ? capitalizeFirstLetter(item.data.title || "")
               : capitalizeFirstLetter(part),
-          slug: parts.slice(0, index + 1).join("/"),
+          id: parts.slice(0, index + 1).join("/"),
           draft: item.data.draft,
           children: [],
         };
@@ -132,9 +130,9 @@ export const menu = buildMenu(docs);
 
 // Function to build breadcrumb structure
 // export function buildBreadcrumbs(
-//   slug: string,
+//   id: string,
 // ): { title: string; link: string }[] {
-//   const parts = slug.split("/");
+//   const parts = id.split("/");
 //   const breadcrumbs: { title: string; link: string }[] = [];
 //   let currentPath = "";
 

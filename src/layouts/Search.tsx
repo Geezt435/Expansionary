@@ -11,7 +11,7 @@ import {
 const { summary_length, blog_folder } = config.settings;
 
 export type SearchItem = {
-  slug: string;
+  id: string;
   data: any;
   content: any;
 };
@@ -116,7 +116,7 @@ const Search = ({ searchList }: Props) => {
                     />
                   )}
                   <h4 className="mb-3">
-                    <a href={`/${blog_folder}/${item.slug}`}>
+                    <a href={`/${blog_folder}/${item.id}`}>
                       {item.data.title}
                     </a>
                   </h4>
@@ -147,7 +147,7 @@ const Search = ({ searchList }: Props) => {
                   </p>
                   <a
                     className="btn btn-outline-primary btn-sm"
-                    href={`/${blog_folder}/${item.slug}`}
+                    href={`/${blog_folder}/${item.id}`}
                   >
                     read more
                   </a>

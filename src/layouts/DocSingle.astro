@@ -7,10 +7,13 @@ import { menu } from "@/lib/utils/docsUtils";
 
 import config from "@/config/config.json";
 
+import { render } from 'astro:content';
+
 const { settings } = config;
 
 const { post } = Astro.props;
-const { Content, headings } = await post.render();
+
+const { Content, headings } = await render(post);
 const { title } = post.data;
 const currentPage = new URL(Astro.request.url).pathname;
 

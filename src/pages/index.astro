@@ -1,25 +1,34 @@
 ---
 import Base from "@/layouts/Base.astro";
 import { markdownify } from "@/lib/utils/textConverter";
-import Testimonial from "@/components/Testimonial.astro";
-import type { Button, Feature } from "@/types";
+import Testimonials from "@/components/Testimonials.astro";
+import type { Button } from "@/types";
 import { Image } from "astro:assets";
 import { getEntry } from "astro:content";
+
+interface item {
+  name: string;
+  designation: string;
+  avatar: string;
+  content: string;
+}
 
 interface Homepage {
   banner: {
     title: string;
     content: string;
-    image: string;
     button: Button;
   };
-  features: Feature[];
+  testimonials: {
+    enable: boolean;
+    title: string;
+    description: string;
+    items: item[];
+  };
 }
 
-const homepage = await getEntry("homepage", "-index");
-const testimonial = await getEntry("sections", "testimonial");
-const call_to_action = await getEntry("sections", "call-to-action");
-const { banner, features }: Homepage = homepage.data;
+const homepage = await getEntry("home", "-index");
+const { banner, testimonials }: Homepage = homepage.data;
 ---
 
 <Base>
@@ -43,5 +52,5 @@ const { banner, features }: Homepage = homepage.data;
   </section>
   <!-- /Banner -->
 
-  <Testimonial testimonial={testimonial} />
+  <Testimonials testimonials={testimonials} />
 </Base>

@@ -13,19 +13,19 @@ const { class: className } = Astro.props;
 <ul class:list={["list-none m-0", className]}>
   {
     items
-      .filter((item) => !item.draft && !item.slug.includes("index"))
+      .filter((item) => !item.draft && !item.id.includes("index"))
       .map((item) => {
         const label = item.title
           ? capitalizeFirstLetter(item.title)
-          : capitalizeFirstLetter(item.slug.split("/").pop() || "");
+          : capitalizeFirstLetter(item.id.split("/").pop() || "");
         const className = `
         ${level === 0 ? "font-semibold" : "text-muted-foreground"}
-        ${pathname === "/" + item.slug ? "text-primary" : "no-underline"}
+        ${pathname === "/" + item.id ? "text-primary" : "no-underline"}
         `.trim();
         return (
           <li class="w-full">
             <a
-              href={`/${docs_folder}/${item.slug}`}
+              href={`/${docs_folder}/${item.id}`}
               class={`${className}  text-sm leading-none w-full`}
             >
               {label}

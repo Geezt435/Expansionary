@@ -1,4 +1,4 @@
-const similerItems = (currentItem: any, allItems: any, slug: string) => {
+const similerItems = (currentItem: any, allItems: any, id: string) => {
   let categories: string[] = [];
   let tags: string[] = [];
 
@@ -26,23 +26,23 @@ const similerItems = (currentItem: any, allItems: any, slug: string) => {
   const mergedItems = [...filterByCategories, ...filterByTags];
 
   // Remove self from list
-  const filterBySlug = mergedItems.filter((item) => item.slug !== slug);
+  const filterByID = mergedItems.filter((item) => item.id !== id);
 
   // count instances of each item
-  const itemCount = filterBySlug.reduce((accumulator: any, currentItem: any) => {
-    accumulator[currentItem.slug] = (accumulator[currentItem.slug] || 0) + 1;
+  const itemCount = filterByID.reduce((accumulator: any, currentItem: any) => {
+    accumulator[currentItem.id] = (accumulator[currentItem.id] || 0) + 1;
     return accumulator;
   }, {});
 
   // sort items by number of instances
-  const sortedItems = filterBySlug.sort((a: any, b: any) => itemCount[b.slug] - itemCount[a.slug]);
+  const sortedItems = filterByID.sort((a: any, b: any) => itemCount[b.id] - itemCount[a.id]);
 
   // remove items with fewer than 2 instances
-  const filteredItems = sortedItems.filter((item: any) => itemCount[item.slug] > 1);
+  const filteredItems = sortedItems.filter((item: any) => itemCount[item.id] > 1);
 
   // remove duplicates
-  const uniqueItems = [...new Set(filteredItems.map((item: any) => item.slug))].map((slug: string) => {
-    return filteredItems.find((item: any) => item.slug === slug);
+  const uniqueItems = [...new Set(filteredItems.map((item: any) => item.id))].map((id: string) => {
+    return filteredItems.find((item: any) => item.id === id);
   });
 
   return uniqueItems;

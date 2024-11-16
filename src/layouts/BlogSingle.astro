@@ -7,6 +7,7 @@ import dateFormat from "@/lib/utils/dateFormat";
 import similerItems from "@/lib/utils/similarItems";
 import { lowerHumanize, upperHumanize, markdownify, slugify } from "@/lib/utils/textConverter";
 import { Image } from "astro:assets";
+import { render } from 'astro:content';
 import {
   FaRegCalendarAlt,
   FaRegFolder,
@@ -16,8 +17,8 @@ import {
 const { blog_folder } = config.settings;
 const posts = await getSinglePage(blog_folder);
 const { post } = Astro.props;
-const similarPosts = similerItems(post, posts, post.slug);
-const { Content } = await post.render();
+const similarPosts = similerItems(post, posts, post.id);
+const { Content } = await render(post);
 const { title, description, author, categories, image, date, tags } = post.data;
 
 categories.sort((a: string, b: string) => a.localeCompare(b));
@@ -92,7 +93,7 @@ tags.sort((a: string, b: string) => a.localeCompare(b));
               title={title}
               description={description}
               folder={blog_folder}
-              slug={post.slug}
+              id={post.id}
             />
           </div>
         </div>

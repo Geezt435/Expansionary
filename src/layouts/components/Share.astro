@@ -11,15 +11,15 @@ const {
   title,
   description,
   folder,
-  slug,
+  id,
   className,
-}: { title?: string; description?: string; folder?: string; slug?: string; className?: string } =
+}: { title?: string; description?: string; folder?: string; id?: string; className?: string } =
   Astro.props;
 ---
 
 <ul class={`${className}`}>
   <li class="inline-block">
-    <a href=`mailto:?subject=${title}&amp;body=Check this out: ${base_url}/${folder}/${slug}%0D%0A%0D%0A${description}%0D%0A%0D%0A`
+    <a href=`mailto:?subject=${title}&amp;body=Check this out: ${base_url}/${folder}/${id}%0D%0A%0D%0A${description}%0D%0A%0D%0A`
        title="Share by Email"
        target="_blank"
       rel="noreferrer noopener"
@@ -30,7 +30,7 @@ const {
   <li class="inline-block">
     <a
       aria-label="facebook share button"
-      href={`https://facebook.com/sharer/sharer.php?u=${base_url}/${folder}/${slug}`}
+      href={`https://facebook.com/sharer/sharer.php?u=${base_url}/${folder}/${id}`}
       target="_blank"
       rel="noreferrer noopener"
     >
@@ -40,7 +40,7 @@ const {
   <li class="inline-block">
     <a
       aria-label="twitter share button"
-      href={`https://twitter.com/intent/tweet/?text=${title}&amp;url=${base_url}/${folder}/${slug}`}
+      href={`https://twitter.com/intent/tweet/?text=${title}&amp;url=${base_url}/${folder}/${id}`}
       target="_blank"
       rel="noreferrer noopener"
     >
@@ -50,7 +50,7 @@ const {
   <li class="inline-block">
     <a
       aria-label="pinterest share button"
-      href={`https://pinterest.com/pin/create/button/?url=${base_url}/${folder}/${slug}&media=&description=${description}`}
+      href={`https://pinterest.com/pin/create/button/?url=${base_url}/${folder}/${id}&media=&description=${description}`}
       target="_blank"
       rel="noreferrer noopener"
     >

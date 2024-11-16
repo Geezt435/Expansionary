@@ -10,7 +10,7 @@ export async function getStaticPaths() {
   const paths = [];
 
   docs.forEach((post) => {
-    const segments = post.slug.split("/");
+    const segments = post.id.split("/");
     if (segments.length === 1) {
       paths.push({
         params: { id: segments[0] },
@@ -18,7 +18,7 @@ export async function getStaticPaths() {
       });
     } else {
       paths.push({
-        params: { id: post.slug },
+        params: { id: post.id },
         props: { post, isGroup: false },
       });
     }
@@ -29,7 +29,7 @@ export async function getStaticPaths() {
 
 const { post, isGroup } = Astro.props;
 
-const documents = isGroup ? await getDocumentsInGroup(config.settings.docs_folder, post.slug) : [];
+const documents = isGroup ? await getDocumentsInGroup(config.settings.docs_folder, post.id) : [];
 ---
 
 <Base

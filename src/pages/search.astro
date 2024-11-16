@@ -11,7 +11,7 @@ const posts = await getSinglePage(blog_folder);
 
 // List of items to search in
 const searchList = posts.map((item) => ({
-  slug: item.slug,
+  id: item.id,
   data: item.data,
   content: item.body,
 }));
