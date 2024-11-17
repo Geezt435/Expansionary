@@ -59,10 +59,10 @@ const docs = defineCollection({
     description: z.string().optional(),
     draft: z.boolean().default(false),
     tags: z.array(z.string()).default([]),
-    hide_breadcrumbs: z.boolean().optional().default(false),
-    hide_toc: z.boolean().optional().default(false),
-    hide_sidenav: z.boolean().optional().default(false),
-    max_width: z.boolean().optional().default(false),
+    hide_breadcrumbs: z.boolean().default(false),
+    hide_toc: z.boolean().default(false),
+    hide_sidenav: z.boolean().default(false),
+    max_width: z.boolean().default(false),
   }),
 });
 

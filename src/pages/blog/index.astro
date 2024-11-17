@@ -1,16 +1,15 @@
 ---
-import BlogCard from "@/components/BlogCard.astro";
-import Pagination from "@/components/Pagination.astro";
 import config from "@/config/config.json";
 import Base from "@/layouts/Base.astro";
+import BlogGroup from "@/layouts/BlogGroup.astro";
 import { getSinglePages } from "@/lib/contentParser.astro";
 import { getAllTaxonomy, getTaxonomy } from "@/lib/taxonomyParser.astro";
 import { sortByDate } from "@/lib/utils/sortFunctions";
-import PageHeader from "@/components/PageHeader.astro";
-import BlogSidebar from "@/components/BlogSidebar.astro";
 import { getEntry } from "astro:content";
 import type { BlogEntry } from "@/types";
 
+const { slug } = Astro.params;
+const currentPage = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
 const postIndex = await getEntry("blog", "-index");
 const posts: BlogEntry[] = await getSinglePages("blog");
 const allCategories = await getAllTaxonomy("blog", "categories");
@@ -26,35 +25,13 @@ const currentPosts = sortedPosts.slice(0, config.settings.pagination);
   image={postIndex.data.image}
   description={postIndex.data.description}
 >
-  <PageHeader title={postIndex.data.title} />
-  <section class="section">
-    <div class="container">
-      <div class="row gx-5">
-        <!-- blog posts -->
-        <div class="lg:col-8">
-          <div class="row">
-            {
-              currentPosts.map((post) => (
-                <div class="pb-4 md:pb-8 md:col-6">
-                  <BlogCard data={post} />
-                </div>
-              ))
-            }
-          </div>
-          <Pagination
-            section={"blog"}
-            currentPage={1}
-            totalPages={totalPages}
-          />
-        </div>
-
-        <!-- sidebar -->
-        <BlogSidebar
-          categories={categories}
-          tags={tags}
-          allCategories={allCategories}
-        />
-      </div>
-    </div>
-  </section>
+  <BlogGroup
+    postIndex={postIndex}
+    currentPosts={currentPosts}
+    totalPages={totalPages}
+    categories={categories}
+    tags={tags}
+    allCategories={allCategories}
+    currentPage={currentPage}
+  />
 </Base>

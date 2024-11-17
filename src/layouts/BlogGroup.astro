@@ -1,0 +1,53 @@
+---
+import BlogCard from "@/components/BlogCard.astro";
+import Pagination from "@/components/Pagination.astro";
+import PageHeader from "@/components/PageHeader.astro";
+import BlogSidebar from "@/components/BlogSidebar.astro";
+import type { BlogEntry } from "@/types";
+import { ScrollArea } from "@/shortcodes/ScrollArea";
+
+interface Props {
+  postIndex: BlogEntry;
+  allCategories: string[];
+  categories: string[];
+  tags: string[];
+  totalPages: number;
+  currentPosts: BlogEntry[];
+  currentPage: number;
+}
+
+const { postIndex, allCategories, categories, tags, totalPages, currentPosts, currentPage }: Props = Astro.props;
+---
+
+<PageHeader title={postIndex.data.title} />
+<section class="section">
+  <div class="flex container">
+    <div class="row gx-5">
+      <!-- blog posts -->
+      <div class="lg:col-8">
+        <div class="row">
+          {
+            currentPosts.map((post) => (
+              <div class="pb-4">
+                <BlogCard data={post} />
+              </div>
+            ))
+          }
+        </div>
+        <Pagination section={"blog"} currentPage={currentPage} totalPages={totalPages} />
+      </div>
+      <!-- sidebar -->
+      <div
+        class="hidden lg:col-4 lg:flex max-h-static_sidemenu sticky top-[69px]"
+      >
+        <ScrollArea className="h-full w-full" client:only="react">
+          <BlogSidebar
+            categories={categories}
+            tags={tags}
+            allCategories={allCategories}
+          />
+        </ScrollArea>
+      </div>
+    </div>
+  </div>
+</section>

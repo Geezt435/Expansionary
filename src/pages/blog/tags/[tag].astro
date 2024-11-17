@@ -4,13 +4,12 @@ import BlogCard from "@/components/BlogCard.astro";
 import Base from "@/layouts/Base.astro";
 import { getSinglePages } from "@/lib/contentParser.astro";
 import { getTaxonomy } from "@/lib/taxonomyParser.astro";
-import { lowerHumanize } from "@/lib/utils/textConverter";
+import { upperHumanize } from "@/lib/utils/textConverter";
 import taxonomyFilter from "@/lib/utils/taxonomyFilter";
-import PageHeader from "@/components/PageHeader.astro";
+import DivisionSingle from "@/layouts/DivisionSingle.astro";
 
 export async function getStaticPaths() {
   const tags = await getTaxonomy("blog", "tags");
-
   return tags.map((tag) => {
     return {
       params: { tag },
@@ -20,22 +19,17 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.params;
 const posts: BlogEntry[] = await getSinglePages("blog");
-const filterByCategories: BlogEntry[] = taxonomyFilter(posts, "tags", tag!);
+const filterByTags: BlogEntry[] = taxonomyFilter(posts, "tags", tag!);
 ---
 
-<Base title={lowerHumanize(tag)}>
-  <PageHeader title={lowerHumanize(tag)} />
-  <div class="section-sm pb-0">
-    <div class="container">
-      <div class="row justify-center">
-        {
-          filterByCategories.map((post) => (
-            <div class="py-2 md:py-4 md:col-6 lg:col-4">
-              <BlogCard data={post} />
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </div>
+<Base title={upperHumanize(tag)}>
+  <DivisionSingle division="tags">
+    {
+      filterByTags.map((post) => (
+        <div class="py-2 md:py-4 md:col-6">
+          <BlogCard data={post} />
+        </div>
+      ))
+    }
+  </DivisionSingle>
 </Base>

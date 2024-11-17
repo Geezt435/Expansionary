@@ -1,36 +1,8 @@
 ---
 import Base from "@/layouts/Base.astro";
-import { getAllTaxonomy, getTaxonomy } from "@/lib/taxonomyParser.astro";
-import PageHeader from "@/components/PageHeader.astro";
-
-const tags = await getTaxonomy("blog", "tags");
-const allTags = await getAllTaxonomy("blog", "tags");
+import DivisionGroup from "@/layouts/DivisionGroup.astro";
 ---
 
-<Base title={"Tags"}>
-  <PageHeader title={"Tags"} />
-  <section class="section">
-    <div class="container text-center">
-      <ul>
-        {
-          tags.map((tag: any) => {
-            const count = allTags.filter((c) => c === tag).length;
-            return (
-              <li class="m-3 inline-block">
-                <a
-                  href={`/blog/tags/${tag}`}
-                  class="block rounded bg-theme-light px-4 py-2 text-xl text-dark dark:bg-darkmode-theme-light dark:text-darkmode-dark"
-                >
-                  {tag}{" "}
-                  <span class="ml-2 rounded bg-body px-2 dark:bg-darkmode-body">
-                    {count}
-                  </span>
-                </a>
-              </li>
-            );
-          })
-        }
-      </ul>
-    </div>
-  </section>
+<Base title="Tags">
+  <DivisionGroup collection="blog" division="tags">
 </Base>

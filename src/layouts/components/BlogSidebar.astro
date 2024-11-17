@@ -1,5 +1,9 @@
 ---
 import { lowerHumanize, upperHumanize } from "@/lib/utils/textConverter";
+import {
+  FaRegFolder,
+  FaHashtag,
+} from "react-icons/fa/index.js";
 
 interface Props {
   tags: string[];
@@ -10,14 +14,18 @@ interface Props {
 const { tags, categories, allCategories }: Props = Astro.props;
 ---
 
-<div class="lg:col-4">
+<div class="px-4">
   <!-- categories -->
   <div class="mb-8">
-    <div class="rounded bg-theme-light p-6 dark:bg-darkmode-theme-light">
-        <h4 class="mb-2 text-center">
-          <a href="/blog/categories">Categories</a>
+    <div>
+        <h4 class="mb-2">
+          <a href="/blog/categories">
+            <FaRegFolder className={"mr-1 -mt-1.5 inline-block"} />
+            Categories
+          </a>
         </h4>
-      <ul class="space-y-4">
+        <hr class="mb-2 -mt-1">
+      <ul class="space-y-2">
         {
           categories.map((category: any) => {
             const count = allCategories.filter(
@@ -26,10 +34,10 @@ const { tags, categories, allCategories }: Props = Astro.props;
             return (
               <li>
                 <a
-                  class="flex justify-between hover:text-primary dark:hover:text-darkmode-primary"
+                  class="hover:text-primary dark:hover:text-darkmode-primary"
                   href={`/blog/categories/${category}`}
                 >
-                  {upperHumanize(category)} <span>({count})</span>
+                  {upperHumanize(category)} <div class="inline-block pl-1">({count})</div>
                 </a>
               </li>
             );
@@ -40,17 +48,21 @@ const { tags, categories, allCategories }: Props = Astro.props;
   </div>
   <!-- tags -->
   <div class="mb-8">
-    <div class="rounded bg-theme-light p-6 dark:bg-darkmode-theme-light">
-      <h4 class="mb-2 text-center">
-        <a href="/blog/tags">Tags</a>
+    <div>
+      <h4 class="mb-2">
+        <a href="/blog/tags">
+          <FaHashtag className={"mr-1 -mt-1.5 inline-block"} />
+          Tags
+        </a>
       </h4>
+      <hr class="mb-2 -mt-1">
       <ul>
         {
           tags.map((tag: any) => {
             return (
               <li class="inline-block">
                 <a
-                  class="m-1 block rounded bg-white px-3 py-1 hover:bg-primary hover:text-white dark:bg-darkmode-body dark:hover:bg-darkmode-primary dark:hover:text-dark"
+                  class="m-1  block border border-light bg-transparent text-light rounded-sm px-2 dark:text-darkmode-light dark:border-darkmode-light"
                   href={`/blog/tags/${lowerHumanize(tag)}`}
                 >
                   {tag}

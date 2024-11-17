@@ -1,0 +1,18 @@
+---
+import PageHeader from "@/components/PageHeader.astro";
+
+interface Props {
+  division: string;
+}
+
+const { division }: Props = Astro.props;
+---
+
+<PageHeader title={division} />
+<div class="section-sm pb-0">
+  <div class="container">
+    <div class="row">
+      <slot />
+    </div>
+  </div>
+</div>

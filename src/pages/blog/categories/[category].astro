@@ -6,11 +6,10 @@ import { getSinglePages } from "@/lib/contentParser.astro";
 import { getTaxonomy } from "@/lib/taxonomyParser.astro";
 import { upperHumanize } from "@/lib/utils/textConverter";
 import taxonomyFilter from "@/lib/utils/taxonomyFilter";
-import PageHeader from "@/components/PageHeader.astro";
+import DivisionSingle from "@/layouts/DivisionSingle.astro";
 
 export async function getStaticPaths() {
   const categories = await getTaxonomy("blog", "categories");
-
   return categories.map((category) => {
     return {
       params: { category },
@@ -24,18 +23,13 @@ const filterByCategories: BlogEntry[] = taxonomyFilter(posts, "categories", cate
 ---
 
 <Base title={upperHumanize(category)}>
-  <PageHeader title={upperHumanize(category)} />
-  <div class="section-sm pb-0">
-    <div class="container">
-      <div class="row justify-center">
-        {
-          filterByCategories.map((post) => (
-            <div class="py-2 md:py-4 md:col-6 lg:col-4">
-              <BlogCard data={post} />
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </div>
+  <DivisionSingle division="categories">
+    {
+      filterByCategories.map((post) => (
+        <div class="py-2 md:py-4 md:col-6">
+          <BlogCard data={post} />
+        </div>
+      ))
+    }
+  </DivisionSingle>
 </Base>

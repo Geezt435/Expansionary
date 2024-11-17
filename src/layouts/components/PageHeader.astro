@@ -11,11 +11,11 @@ const { title = "" }: Props = Astro.props;
 
 <section>
   <div class="container text-center -mb-8">
-    <div
-      class="rounded-2xl bg-gradient-to-b from-body to-theme-light px-8 py-14 dark:from-darkmode-body dark:to-darkmode-theme-light"
-    >
-      <h1 set:text={upperHumanize(title)} />
-      <Breadcrumbs className="mt-6" />
+    <div class="rounded-md bg-gradient-to-b from-body to-theme-light p-1 dark:from-darkmode-body dark:to-darkmode-theme-light">
+      <div class="rounded-md bg-body dark:bg-darkmode-body px-8 py-6">
+        <h1 set:text={upperHumanize(title)} />
+        <Breadcrumbs className="mt-4" />
+      </div>
     </div>
   </div>
 </section>

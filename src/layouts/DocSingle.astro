@@ -30,7 +30,7 @@ const max_width = false;
   >
     <ScrollArea className="h-full w-full" client:only="react">
       {
-        config.settings.hide_doc_browser && !hide_sidenav && (
+        !config.settings.hide_doc_browser && !hide_sidenav && (
           <DocBrowser currentPage={currentPage} items={menu} level={0} />
         )
       }
@@ -54,7 +54,7 @@ const max_width = false;
   >
     <ScrollArea className="h-full w-full" client:only="react">
       {
-        config.settings.hide_doc_contents && !hide_toc && (
+        !config.settings.hide_doc_contents && !hide_toc && (
           <DocContents {headings} />
         )
       }

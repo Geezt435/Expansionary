@@ -1,0 +1,41 @@
+---
+import { getTaxonomy, getAllTaxonomy } from "@/lib/taxonomyParser.astro";
+import { upperHumanize } from "@/lib/utils/textConverter";
+import PageHeader from "@/components/PageHeader.astro";
+
+interface Props {
+  collection: string;
+  division: string;
+}
+
+const { collection, division }: Props = Astro.props;
+const subdivisions = await getTaxonomy(collection, division);
+const allSubdivisions = await getAllTaxonomy(collection, division);
+
+---
+
+<PageHeader title={division} />
+<section class="section">
+  <div class="container text-center">
+    <ul>
+      {
+        subdivisions.map((subdivision: string) => {
+          const count = allSubdivisions.filter((c) => c === subdivision).length;
+          return (
+            <li class="m-3 inline-block">
+              <a
+                href={`/${collection}/${division}/${subdivision}`}
+                class="m-1  block border border-light bg-transparent text-light rounded-sm px-2 dark:text-darkmode-light dark:border-darkmode-light"
+              >
+                {upperHumanize(subdivision)}{" "}
+                <span class="pl-2">
+                  {count}
+                </span>
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+</section>
