@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 
-export const getSinglePage = async (collection: any) => {
+export const getSinglePages = async (collection: any): Promise<any[]> => {
   const allPage = await getCollection(collection);
   const removeIndex = allPage.filter((data: any) => data.id.match(/^(?!-)/));
   const removeDrafts = removeIndex.filter((data: any) => !data.data.draft);
@@ -12,7 +12,7 @@ export const getSinglePage = async (collection: any) => {
 };
 
 // Fetch top-level folders as groups
-export const getGroups = async (collection: any) => {
+export const getGroups = async (collection: any): Promise<any[]> => {
   const allPage = await getCollection(collection);
   const groups = allPage.filter((data: any) => {
     const segments = data.id.split("/");
@@ -22,7 +22,7 @@ export const getGroups = async (collection: any) => {
 };
 
 // Fetch documents within a specific group
-export const getDocumentsInGroup = async (collection: any, groupSlug: string) => {
+export const getDocumentsInGroup = async (collection: any, groupSlug: string): Promise<any[]> => {
   const allPage = await getCollection(collection);
   const documents = allPage.filter((data: any) => {
     const segments = data.id.split("/");

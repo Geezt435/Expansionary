@@ -78,14 +78,13 @@ const home = defineCollection({
             enable: z.boolean().optional(),
             label: z.string().optional(),
             link: z.string().optional(),
-          })
-          .optional(),
-    }).optional(),
+          }),
+    }),
     testimonials:
       z.object({
-        enable: z.boolean().optional(),
-        title: z.string().optional(),
-        description: z.string().optional(),
+        enable: z.boolean().default(true),
+        title: z.string(),
+        description: z.string(),
         items: 
           z.array(
             z.object({
@@ -94,9 +93,8 @@ const home = defineCollection({
               avatar: z.string(),
               content: z.string(),
             }),
-          )
-          .optional(),
-      }).optional(),
+          ),
+      }),
   }),
 });
 

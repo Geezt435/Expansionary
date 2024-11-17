@@ -3,21 +3,21 @@ import BlogCard from "@/components/BlogCard.astro";
 import Pagination from "@/components/Pagination.astro";
 import config from "@/config/config.json";
 import Base from "@/layouts/Base.astro";
-import { getSinglePage } from "@/lib/contentParser.astro";
+import { getSinglePages } from "@/lib/contentParser.astro";
 import { getAllTaxonomy, getTaxonomy } from "@/lib/taxonomyParser.astro";
 import { sortByDate } from "@/lib/utils/sortFunctions";
 import PageHeader from "@/components/PageHeader.astro";
 import BlogSidebar from "@/components/BlogSidebar.astro";
 import { getEntry } from "astro:content";
+import type { BlogEntry } from "@/types";
 
-const { blog_folder } = config.settings;
 const { id } = Astro.params;
-const postIndex = await getEntry<any, string>(blog_folder, "-index");
-const posts = await getSinglePage(blog_folder);
-const allCategories = await getAllTaxonomy(blog_folder, "categories");
-const categories = await getTaxonomy(blog_folder, "categories");
-const tags = await getTaxonomy(blog_folder, "tags");
-const sortedPosts = sortByDate(posts);
+const postIndex = await getEntry("blog", "-index");
+const posts: BlogEntry[] = await getSinglePages("blog");
+const allCategories = await getAllTaxonomy("blog", "categories");
+const categories = await getTaxonomy("blog", "categories");
+const tags = await getTaxonomy("blog", "tags");
+const sortedPosts: BlogEntry[] = sortByDate(posts);
 const totalPages = Math.ceil(posts.length / config.settings.pagination);
 const currentPage = id && !isNaN(Number(id)) ? Number(id) : 1;
 const indexOfLastPost = currentPage * config.settings.pagination;
@@ -25,7 +25,7 @@ const indexOfFirstPost = indexOfLastPost - config.settings.pagination;
 const currentPosts = sortedPosts.slice(indexOfFirstPost, indexOfLastPost);
 
 export async function getStaticPaths() {
-  const posts = await getSinglePage(config.settings.blog_folder);
+  const posts = await getSinglePages("blog");
   const totalPages = Math.ceil(posts.length / config.settings.pagination);
   const paths = [];
 
@@ -61,7 +61,7 @@ export async function getStaticPaths() {
             }
           </div>
           <Pagination
-            section={blog_folder}
+            section={"blog"}
             currentPage={currentPage}
             totalPages={totalPages}
           />

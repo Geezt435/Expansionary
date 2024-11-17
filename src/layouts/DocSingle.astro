@@ -1,17 +1,18 @@
 ---
+import type { DocsEntry } from "@/types";
 import DocBrowser from "@/components/DocBrowser.astro";
 import DocContents from "@/components/DocContents.astro";
-
 import { ScrollArea } from "@/shortcodes/ScrollArea";
 import { menu } from "@/lib/utils/docsUtils";
-
 import config from "@/config/config.json";
 
 import { render } from 'astro:content';
 
-const { settings } = config;
+interface Props {
+  post: DocsEntry;
+}
 
-const { post } = Astro.props;
+const { post }: Props = Astro.props;
 
 const { Content, headings } = await render(post);
 const { title } = post.data;
@@ -29,7 +30,7 @@ const max_width = false;
   >
     <ScrollArea className="h-full w-full" client:only="react">
       {
-        !settings.hide_doc_browser && !hide_sidenav && (
+        config.settings.hide_doc_browser && !hide_sidenav && (
           <DocBrowser currentPage={currentPage} items={menu} level={0} />
         )
       }
@@ -53,7 +54,7 @@ const max_width = false;
   >
     <ScrollArea className="h-full w-full" client:only="react">
       {
-        !settings.hide_doc_contents && !hide_toc && (
+        config.settings.hide_doc_contents && !hide_toc && (
           <DocContents {headings} />
         )
       }

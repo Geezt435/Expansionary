@@ -1,7 +1,13 @@
 ---
+import type { HomeEntry } from "@/types";
 import { markdownify } from "@/lib/utils/textConverter";
 import { Image } from "astro:assets";
-const { testimonials } = Astro.props;
+
+interface Props {
+  testimonials: HomeEntry["data"]["testimonials"];
+}
+
+const { testimonials }: Props = Astro.props;
 ---
 
 {

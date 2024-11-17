@@ -1,17 +1,17 @@
 ---
-import config from "@/config/config.json";
+import type { DocsEntry } from "@/types";
 
-const {
-  summary_length,
-  docs_folder,
-}: { summary_length: number; docs_folder: string } = config.settings;
-const { data } = Astro.props;
+interface Props {
+  data: DocsEntry;
+}
+
+const { data }: Props = Astro.props;
 const { title, description } = data.data;
 ---
 
 <div class="min-h-full block border border-light bg-transparent text-light rounded-sm dark:text-darkmode-light dark:border-darkmode-light">
   <div class="m-6">
-    <a href={`/${docs_folder}/${data.id}`}>
+    <a href={`/docs/${data.id}`}>
       <h4 class="mb-3">
         {title}
       </h4>

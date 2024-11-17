@@ -1,11 +1,11 @@
 ---
-import config from "@/config/config.json";
+import type { BlogEntry } from "@/types";
 import Base from "@/layouts/Base.astro";
 import BlogSingle from "@/layouts/BlogSingle.astro";
-import { getSinglePage } from "@/lib/contentParser.astro";
+import { getSinglePages } from "@/lib/contentParser.astro";
 
 export async function getStaticPaths() {
-  const posts = await getSinglePage(config.settings.blog_folder);
+  const posts: BlogEntry[] = await getSinglePages("blog");
   const paths = posts.map((post) => ({
     params: {
       single: post.id,

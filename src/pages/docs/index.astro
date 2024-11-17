@@ -1,14 +1,13 @@
 ---
 import DocCard from "@/components/DocCard.astro";
-import config from "@/config/config.json";
 import Base from "@/layouts/Base.astro";
 import PageHeader from "@/components/PageHeader.astro";
 import { getEntry } from "astro:content";
 import { getGroups } from "@/lib/contentParser.astro";
+import type { DocsEntry } from "@/types";
 
-const { docs_folder } = config.settings;
-const groups = await getGroups(docs_folder);
-const postIndex = await getEntry<any, string>(docs_folder, "index");
+const groups: DocsEntry[] = await getGroups("docs");
+const postIndex = await getEntry("docs", "index");
 ---
 
 <Base

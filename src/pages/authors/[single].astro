@@ -1,15 +1,15 @@
 ---
+import type { AuthorsEntry, BlogEntry } from "@/types";
 import BlogCard from "@/components/BlogCard.astro";
 import Social from "@/components/Social.astro";
-import config from "@/config/config.json";
 import Base from "@/layouts/Base.astro";
-import { getSinglePage } from "@/lib/contentParser.astro";
+import { getSinglePages } from "@/lib/contentParser.astro";
 import { slugify } from "@/lib/utils/textConverter";
 import { Image } from "astro:assets";
 import { render } from 'astro:content';
 
 export async function getStaticPaths() {
-  const authors = await getSinglePage("authors");
+  const authors: AuthorsEntry[] = await getSinglePages("authors");
 
   const paths = authors.map((author) => ({
     params: {
@@ -19,14 +19,12 @@ export async function getStaticPaths() {
   }));
   return paths;
 }
-
-const { blog_folder }: { blog_folder: string } = config.settings;
 const { author } = Astro.props;
 const { title, social, description, image } = author.data;
 const { Content } = await render(author);
-const posts = await getSinglePage(blog_folder);
+const posts: BlogEntry[] = await getSinglePages("blog");
 const postFilterByAuthor = posts.filter(
-  (post: any) => slugify(post.data.author) === slugify(title),
+  (post: BlogEntry) => slugify(post.data.author) === slugify(title),
 );
 ---
 

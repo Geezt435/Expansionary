@@ -1,13 +1,12 @@
 ---
-import config from "@/config/config.json";
 import { capitalizeFirstLetter } from "@/lib/utils/docsUtils";
 import type { SideNavMenuProps } from "@/types/index";
 
 const { items, level } = Astro.props as SideNavMenuProps; // { currentPage, ... }
 const pathname: string = new URL(Astro.request.url).pathname;
-const {docs_folder} = config.settings;
 
 const { class: className } = Astro.props;
+// FIX THESE TYPES
 ---
 
 <ul class:list={["list-none m-0", className]}>
@@ -25,7 +24,7 @@ const { class: className } = Astro.props;
         return (
           <li class="w-full">
             <a
-              href={`/${docs_folder}/${item.id}`}
+              href={`/docs/${item.id}`}
               class={`${className}  text-sm leading-none w-full`}
             >
               {label}

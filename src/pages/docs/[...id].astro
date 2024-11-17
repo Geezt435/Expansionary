@@ -1,13 +1,21 @@
 ---
+import type { DocsEntry } from "@/types";
 import Base from "@/layouts/Base.astro";
 import DocSingle from "@/layouts/DocSingle.astro";
 import DocGroup from "@/layouts/DocGroup.astro";
-import { getSinglePage, getDocumentsInGroup } from "@/lib/contentParser.astro";
-import config from "@/config/config.json";
+import { getSinglePages, getDocumentsInGroup } from "@/lib/contentParser.astro";
 
 export async function getStaticPaths() {
-  const docs = await getSinglePage(config.settings.docs_folder);
-  const paths = [];
+  type path_type = {
+    params: { id: string };
+    props: {
+      post: DocsEntry;
+      isGroup: boolean;
+    };
+  };
+
+  const docs: DocsEntry[] = await getSinglePages("docs");
+  const paths: path_type[] = [];
 
   docs.forEach((post) => {
     const segments = post.id.split("/");
@@ -29,7 +37,7 @@ export async function getStaticPaths() {
 
 const { post, isGroup } = Astro.props;
 
-const documents = isGroup ? await getDocumentsInGroup(config.settings.docs_folder, post.id) : [];
+const documents: DocsEntry[] | [] = isGroup ? await getDocumentsInGroup("docs", post.id) : [];
 ---
 
 <Base

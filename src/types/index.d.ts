@@ -1,3 +1,13 @@
+import type { CollectionEntry, InferEntrySchema } from "astro:content";
+import type { MarkdownHeading } from "astro";
+
+export type AboutEntry = CollectionEntry<"about">;
+export type AuthorsEntry = CollectionEntry<"authors">;
+export type BlogEntry = CollectionEntry<"blog">;
+export type DocsEntry = CollectionEntry<"docs">;
+export type HomeEntry = CollectionEntry<"home">;
+export type TermsEntry = CollectionEntry<"terms">;
+
 export type Feature = {
   button: button;
   image: string;
@@ -12,9 +22,6 @@ export type Button = {
   link: string;
 };
 
-import type { CollectionEntry } from "astro:content";
-import type { MarkdownHeading } from "astro";
-
 // Make similar changes to config.ts in content folder
 export type DocsData = {
   title: string;
@@ -28,11 +35,6 @@ export type DocsData = {
   hide_toc: boolean;
   hide_sidenav: boolean;
   max_width: boolean;
-};
-
-// Define the type for docs collection
-export type DocsEntry = CollectionEntry<"docs"> & {
-  data: DocsData;
 };
 
 // For BaseLayout.astro

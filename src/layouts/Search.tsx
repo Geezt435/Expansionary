@@ -8,8 +8,6 @@ import {
   FaSearch,
 } from "react-icons/fa/index.js";
 
-const { summary_length, blog_folder } = config.settings;
-
 export type SearchItem = {
   id: string;
   data: any;
@@ -116,7 +114,7 @@ const Search = ({ searchList }: Props) => {
                     />
                   )}
                   <h4 className="mb-3">
-                    <a href={`/${blog_folder}/${item.id}`}>
+                    <a href={`/blog/${item.id}`}>
                       {item.data.title}
                     </a>
                   </h4>
@@ -143,11 +141,11 @@ const Search = ({ searchList }: Props) => {
                     </li>
                   </ul>
                   <p className="mb-6">
-                    {plainify(item.content?.slice(0, Number(summary_length)))}
+                    {plainify(item.content?.slice(0, Number(config.settings.summary_length)))}
                   </p>
                   <a
                     className="btn btn-outline-primary btn-sm"
-                    href={`/${blog_folder}/${item.id}`}
+                    href={`/blog/${item.id}`}
                   >
                     read more
                   </a>

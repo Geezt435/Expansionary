@@ -1,7 +1,13 @@
 ---
 import { lowerHumanize, upperHumanize } from "@/lib/utils/textConverter";
 
-const { tags, categories, allCategories } = Astro.props;
+interface Props {
+  tags: string[];
+  categories: string[];
+  allCategories: string[];
+}
+
+const { tags, categories, allCategories }: Props = Astro.props;
 ---
 
 <div class="lg:col-4">

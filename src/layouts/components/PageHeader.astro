@@ -2,7 +2,11 @@
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import { upperHumanize } from "@/lib/utils/textConverter";
 
-const { title = "" }: { title?: string } = Astro.props;
+interface Props {
+  title?: string;
+}
+
+const { title = "" }: Props = Astro.props;
 ---
 
 <section>

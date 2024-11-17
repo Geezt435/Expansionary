@@ -1,11 +1,12 @@
 ---
+import type { BlogEntry } from "@/types";
 import BlogCard from "@/components/BlogCard.astro";
 import Share from "@/components/Share.astro";
-import config from "@/config/config.json";
-import { getSinglePage } from "@/lib/contentParser.astro";
+import { getSinglePages } from "@/lib/contentParser.astro";
 import dateFormat from "@/lib/utils/dateFormat";
 import similerItems from "@/lib/utils/similarItems";
 import { lowerHumanize, upperHumanize, markdownify, slugify } from "@/lib/utils/textConverter";
+
 import { Image } from "astro:assets";
 import { render } from 'astro:content';
 import {
@@ -14,12 +15,21 @@ import {
   FaRegUserCircle,
 } from "react-icons/fa/index.js";
 
-const { blog_folder } = config.settings;
-const posts = await getSinglePage(blog_folder);
+interface Data {
+  title: string;
+  author: string;
+  categories: string[];
+  tags: string[];
+  date: Date;
+  image?: string;
+  description?: string;
+}
+
+const posts = await getSinglePages("blog");
 const { post } = Astro.props;
 const similarPosts = similerItems(post, posts, post.id);
 const { Content } = await render(post);
-const { title, description, author, categories, image, date, tags } = post.data;
+const { title, description, author, categories, image, date, tags }: Data = post.data;
 
 categories.sort((a: string, b: string) => a.localeCompare(b));
 tags.sort((a: string, b: string) => a.localeCompare(b));
@@ -92,7 +102,7 @@ tags.sort((a: string, b: string) => a.localeCompare(b));
               className="social-icons"
               title={title}
               description={description}
-              folder={blog_folder}
+              folder={"blog"}
               id={post.id}
             />
           </div>

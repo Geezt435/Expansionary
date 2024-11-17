@@ -6,4 +6,7 @@
 - [ ] Make Docs browser bold on the current doc
 - [x] Structure Docs folder pages to be visually appealing
 - [ ] Centralize customizable items to enable more rapid personalization of the template
-- [ ] Create explicit types for all the objects
+- [x] Create explicit types across the app
+- [x] Prep for upgrade to Astro v5
+- [ ] Tighten up the Blog post browser
+- [ ] Highlight active section on Doc Contents?

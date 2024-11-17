@@ -1,12 +1,13 @@
 ---
+import type { AuthorsEntry } from "@/types";
 import AuthorCard from "@/components/AuthorCard.astro";
 import Base from "@/layouts/Base.astro";
-import { getSinglePage } from "@/lib/contentParser.astro";
+import { getSinglePages } from "@/lib/contentParser.astro";
 import PageHeader from "@/components/PageHeader.astro";
 import { getEntry } from "astro:content";
 
-const authorIndex = await getEntry<any, string>("authors", "-index");
-const authors = await getSinglePage("authors");
+const authorIndex = await getEntry("authors", "-index");
+const authors: AuthorsEntry[] = await getSinglePages("authors");
 ---
 
 <Base title={authorIndex.data.title}>

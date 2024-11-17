@@ -6,15 +6,21 @@ import {
   IoLogoPinterest,
   IoLogoTwitter,
 } from "react-icons/io5/index.js";
-const { base_url }: { base_url: string } = config.site;
-const {
-  title,
-  description,
-  folder,
-  id,
-  className,
-}: { title?: string; description?: string; folder?: string; id?: string; className?: string } =
-  Astro.props;
+
+interface Site {
+  base_url: string;
+}
+
+interface Props { 
+  title?: string;
+  description?: string;
+  folder?: string;
+  id?: string;
+  className?: string
+}
+
+const { base_url }: Site = config.site;
+const { title, description, folder, id, className }: Props = Astro.props;
 ---
 
 <ul class={`${className}`}>

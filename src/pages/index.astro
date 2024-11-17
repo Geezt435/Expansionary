@@ -2,33 +2,10 @@
 import Base from "@/layouts/Base.astro";
 import { markdownify } from "@/lib/utils/textConverter";
 import Testimonials from "@/components/Testimonials.astro";
-import type { Button } from "@/types";
-import { Image } from "astro:assets";
 import { getEntry } from "astro:content";
 
-interface item {
-  name: string;
-  designation: string;
-  avatar: string;
-  content: string;
-}
-
-interface Homepage {
-  banner: {
-    title: string;
-    content: string;
-    button: Button;
-  };
-  testimonials: {
-    enable: boolean;
-    title: string;
-    description: string;
-    items: item[];
-  };
-}
-
 const homepage = await getEntry("home", "-index");
-const { banner, testimonials }: Homepage = homepage.data;
+const { banner, testimonials } = homepage.data;
 ---
 
 <Base>

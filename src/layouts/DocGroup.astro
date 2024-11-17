@@ -1,15 +1,10 @@
 ---
 import DocCard from "@/components/DocCard.astro";
 import PageHeader from "@/components/PageHeader.astro";
-
-import config from "@/config/config.json";
 import { getEntry } from "astro:content";
 
-const { settings } = config;
-const { docs_folder } = config.settings;
-
 const { documents } = Astro.props;
-const postIndex = await getEntry<any, string>(docs_folder, "index");
+const postIndex = await getEntry("docs", "index");
 
 const hide_sidenav = false;
 const max_width = false;

@@ -1,4 +1,5 @@
 ---
+import type { BlogEntry } from "@/types";
 import config from "@/config/config.json";
 import { upperHumanize, plainify, slugify } from "@/lib/utils/textConverter";
 import { Image } from "astro:assets";
@@ -9,11 +10,11 @@ import {
 } from "react-icons/fa/index.js";
 import readingTime from "@/lib/utils/readingTime";
 
-const {
-  summary_length,
-  blog_folder,
-}: { summary_length: number; blog_folder: string } = config.settings;
-const { data } = Astro.props;
+interface Props {
+  data: BlogEntry;
+}
+
+const { data }: Props = Astro.props;
 const { title, image, date, author, categories, complexity } = data.data;
 ---
 
@@ -31,7 +32,7 @@ const { title, image, date, author, categories, complexity } = data.data;
     )
   }
   <h4 class="mb-3">
-    <a href={`/${blog_folder}/${data.id}`}>
+    <a href={`/blog/${data.id}`}>
       {title}
     </a>
   </h4>
@@ -58,10 +59,10 @@ const { title, image, date, author, categories, complexity } = data.data;
       {readingTime(data.body, complexity)}
     </li>
   </ul>
-  <p class="mb-6">{plainify(data.body?.slice(0, Number(summary_length)))}</p>
+  <p class="mb-6">{plainify(data.body?.slice(0, Number(config.settings.summary_length)))}</p>
   <a
     class="btn btn-outline-primary btn-sm"
-    href={`/${blog_folder}/${data.id}`}
+    href={`/blog/${data.id}`}
   >
     read more
   </a>
