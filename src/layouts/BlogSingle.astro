@@ -3,8 +3,10 @@ import BlogCard from "@/components/BlogCard.astro";
 import Share from "@/components/Share.astro";
 import { getSinglePages } from "@/lib/contentParser.astro";
 import dateFormat from "@/lib/utils/dateFormat";
+import readingTime from "@/lib/utils/readingTime";
 import similerItems from "@/lib/utils/similarItems";
 import { lowerHumanize, upperHumanize, markdownify, slugify } from "@/lib/utils/textConverter";
+import type { BlogEntry } from "@/types";
 
 import { Image } from "astro:assets";
 import { render } from 'astro:content';
@@ -12,23 +14,19 @@ import {
   FaRegCalendarAlt,
   FaRegFolder,
   FaRegUserCircle,
+  FaHashtag,
+  FaRegClock,
 } from "react-icons/fa/index.js";
 
-interface Data {
-  title: string;
-  author: string;
-  categories: string[];
-  tags: string[];
-  date: Date;
-  image?: string;
-  description?: string;
+interface Props {
+  post: BlogEntry;
 }
 
-const posts = await getSinglePages("blog");
-const { post } = Astro.props;
+const posts: BlogEntry[] = await getSinglePages("blog");
+const { post }: Props = Astro.props;
+const { title, description, author, categories, image, date, tags, complexity } = post.data;
 const similarPosts = similerItems(post, posts, post.id);
 const { Content } = await render(post);
-const { title, description, author, categories, image, date, tags }: Data = post.data;
 
 categories.sort((a: string, b: string) => a.localeCompare(b));
 tags.sort((a: string, b: string) => a.localeCompare(b));
@@ -54,49 +52,53 @@ tags.sort((a: string, b: string) => a.localeCompare(b));
         }
         <h1 set:html={markdownify(title)} class="mb-4" />
         <ul class="mb-4">
-          <li class="mr-4 inline-block">
-            <FaRegUserCircle className={"mr-2 -mt-1 inline-block"} />
+          <li class="mr-1 inline-block">
+            <FaRegUserCircle className={"-mt-1 inline-block"} />
             {upperHumanize(author)}
           </li>
-          <li class="mr-4 inline-block">
-            <FaRegCalendarAlt className={"mr-2 -mt-1 inline-block"} />
-            {dateFormat(date)}
-          </li>
-          <li class="mr-4 inline-block">
-            <FaRegFolder className={"mr-2 -mt-1 inline-block"} />
-            {
-              categories.map((category: string, index: number) => (
-                <a href={`/blog/categories/${slugify(category)}`}>
-                  {upperHumanize(category)}
-                  {index !== categories.length - 1 && ","}
-                </a>
-              ))
-            }
-          </li>
+          { date && (
+            <li class="mr-1 inline-block">
+              <FaRegCalendarAlt className={"ml-2 -mt-1 inline-block"} />
+              {dateFormat(date)}
+            </li>
+          )}
+          { complexity > 0 && (
+            <li class="mr-1 inline-block">
+              <FaRegClock className={"ml-2 -mt-1 inline-block"} />
+              {readingTime(post.body, complexity)}
+            </li>
+          )}
+          { categories && (
+            <li class="mr-1 inline-block">
+              {
+                categories.map((category: string, index: number) => (
+                  <a href={`/blog/categories/${slugify(category)}`}>
+                    <FaRegFolder className={"ml-2 -mt-1 inline-block"} />
+                    {upperHumanize(category)}
+                  </a>
+                ))
+              }
+            </li>
+          )}
+          { tags && (
+            <li class="mr-1 inline-block">
+              {
+                tags.map((tag: string, index: number) => (
+                  <a href={`/blog/tags/${slugify(tag)}`}>
+                    <FaHashtag className={"ml-2 -mt-1 inline-block"} />
+                    {lowerHumanize(tag)}
+                  </a>
+                ))
+              }
+            </li>
+          )}
         </ul>
         <div class="content mb-10">
           <Content />
         </div>
         <hr>
         <div class="row items-start justify-between mt-4">
-          <div class="mb-4 flex justify-center items-center lg:justify-start lg:col-8 lg:mb-0">
-            <h4 class="mr-3">Tags:</h4>
-            <ul>
-              {
-                tags.map((tag: string) => (
-                  <li class="inline-block">
-                    <a
-                      class="m-1 block rounded bg-theme-light px-3 py-1 hover:bg-primary hover:text-white dark:bg-darkmode-theme-light dark:hover:bg-darkmode-primary dark:hover:text-dark"
-                      href={`/blog/tags/${slugify(tag)}`}
-                    >
-                      {lowerHumanize(tag)}
-                    </a>
-                  </li>
-                ))
-              }
-            </ul>
-          </div>
-          <div class="flex items-center justify-center lg:justify-end lg:col-4">
+          <div class="flex items-center justify-center lg:justify-end">
             <Share
               className="social-icons"
               title={title}

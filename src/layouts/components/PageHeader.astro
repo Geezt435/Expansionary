@@ -11,7 +11,7 @@ const { title = "" }: Props = Astro.props;
 
 <section>
   <div class="container text-center -mb-8">
-    <div class="rounded-md bg-gradient-to-b from-body to-theme-light p-1 dark:from-darkmode-body dark:to-darkmode-theme-light">
+    <div class="rounded-md bg-gradient-to-b from-transparent via-transparent to-text p-0.5 dark:to-darkmode-text">
       <div class="rounded-md bg-body dark:bg-darkmode-body px-8 py-6">
         <h1 set:text={upperHumanize(title)} />
         <Breadcrumbs className="mt-4" />

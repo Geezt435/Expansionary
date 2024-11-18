@@ -10,11 +10,6 @@ import type {
 
 import { doc_browser_order } from "@/config/docs.json";
 
-// // for shadcn components
-// export function cn(...inputs: ClassValue[]) {
-//   return twMerge(clsx(inputs));
-// }
-
 // Fetch the collection with type
 const docs: DocsEntry[] = await getCollection("docs");
 
@@ -127,27 +122,6 @@ function buildMenu(items: DocsEntry[]): MenuItem[] {
 }
 
 export const menu = buildMenu(docs);
-
-// Function to build breadcrumb structure
-// export function buildBreadcrumbs(
-//   id: string,
-// ): { title: string; link: string }[] {
-//   const parts = id.split("/");
-//   const breadcrumbs: { title: string; link: string }[] = [];
-//   let currentPath = "";
-
-//   parts.forEach((part, index) => {
-//     if (part) {
-//       currentPath += `/${part}`;
-//       breadcrumbs.push({
-//         title: part,
-//         link: `${currentPath}`,
-//       });
-//     }
-//   });
-
-//   return breadcrumbs;
-// }
 
 // create headings for ToC
 export function createHeadingHierarchy(headings: MarkdownHeading[]) {

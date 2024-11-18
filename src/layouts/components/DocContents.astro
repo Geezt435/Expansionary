@@ -1,23 +1,26 @@
 ---
-import type { HeadingHierarchy, HeadingProps } from "@/types/index";
+import type { HeadingHierarchy } from "@/types/index";
+import type { MarkdownHeading } from "astro";
 import { createHeadingHierarchy } from "@/lib/utils/docsUtils";
 
-const { headings } = Astro.props as HeadingProps;
-const toc: HeadingHierarchy[] = createHeadingHierarchy(headings ?? []);
-const hasToC = toc.length > 1;
+interface Props {
+  headings: MarkdownHeading[];
+  tocDepth?: number;
+}
 
-const { class: className } = Astro.props;
-// FIX THESE TYPES
+const { headings, tocDepth = 3 } = Astro.props;
+const heirarchy: HeadingHierarchy[] = createHeadingHierarchy(headings);
+const toc = heirarchy.filter((heading) => heading.depth <= tocDepth);
 ---
 
 {
-  hasToC && (
-    <div class:list={["relative", className]}>
+  toc.length > 1 && (
+    <div class="relative">
       <h2 class="text-xl border-none italic">On This Page</h2>
       <ul class="list-none m-0">
         {toc.map((heading) => (
           <li class=`${heading.depth === 2 ? "font-semibold" : "text-muted-foreground"}`>
-            <a href={`#${heading.id}`} class="text-sm w-full leading-none no-underline">
+            <a href={`#${heading.slug}`} class="text-sm w-full leading-none no-underline">
               {heading.text}
               </a>
           </li>

@@ -24,7 +24,7 @@ const { tags, categories, allCategories }: Props = Astro.props;
             Categories
           </a>
         </h4>
-        <hr class="mb-2 -mt-1">
+        <hr class="mb-2 -mt-1 border-text dark:border-darkmode-text">
       <ul class="space-y-2">
         {
           categories.map((category: any) => {
@@ -55,7 +55,7 @@ const { tags, categories, allCategories }: Props = Astro.props;
           Tags
         </a>
       </h4>
-      <hr class="mb-2 -mt-1">
+      <hr class="mb-2 -mt-1 border-text dark:border-darkmode-text">
       <ul>
         {
           tags.map((tag: any) => {

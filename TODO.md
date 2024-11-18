@@ -8,6 +8,4 @@
 - [ ] Centralize customizable items to enable more rapid personalization of the template
 - [x] Create explicit types across the app
 - [x] Prep for upgrade to Astro v5
-- [ ] Tighten up the Blog post browser
-- [ ] Highlight active section on Doc Contents?
-- [ ] Add an [RSS Feed](https://5-0-0-beta.docs.astro.build/en/tutorial/5-astro-api/4/)
+- [x] Tighten up the Blog post browser

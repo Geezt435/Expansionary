@@ -5,7 +5,7 @@ draft: false
 
 ## Copyright
 
-&copy; 2024 Jane Doe. All rights reserved.
+&copy; 2025 Jane Doe. All rights reserved.
 
 ## Reuse
 
@@ -16,7 +16,7 @@ The source code for janedoe.com is protected under the MIT License. In short, yo
 ```md
 The MIT License (MIT)
 
-Copyright (c) 2024 Jane Doe
+Copyright (c) 2025 Jane Doe
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -53,7 +53,7 @@ This source code is derivative of [pages](https://github.com/reednel/pages) by [
 ```md
 The MIT License (MIT)
 
-Copyright (c) 2024 Reed Nelson
+Copyright (c) 2025 Reed Nelson
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
