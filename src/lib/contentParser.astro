@@ -11,6 +11,16 @@ export const getSinglePages = async (collection: any): Promise<any[]> => {
   return removeDrafts;
 };
 
+// Fetch all pages in all searchable collections
+export const getSinglePagesPlus = async (collections: string[]): Promise<any[]> => {
+  const allCollections = await Promise.all(
+    collections.map(async (collection) => {
+      return await getSinglePages(collection);
+    })
+  );
+  return allCollections.flat();
+};
+
 // Fetch top-level folders as groups
 export const getGroups = async (collection: any): Promise<any[]> => {
   const allPage = await getCollection(collection);

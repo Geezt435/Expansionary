@@ -1,18 +1,11 @@
 ---
-import type { BlogEntry } from "@/types";
+import type { SearchableEntry } from "@/types";
 import Base from "@/layouts/Base.astro";
 import SearchComponent from "@/layouts/Search";
-import { getSinglePages } from "@/lib/contentParser.astro";
+import { getSinglePagesPlus } from "@/lib/contentParser.astro";
 
 // Retrieve all articles
-const posts: BlogEntry[] = await getSinglePages("blog");
-
-// List of items to search in
-const searchList = posts.map((item) => ({
-  id: item.id,
-  data: item.data,
-  content: item.body,
-}));
+const searchList: SearchableEntry[] = await getSinglePagesPlus(["about", "authors", "blog", "docs", "terms"]);
 ---
 
 <Base title={`Search`}>

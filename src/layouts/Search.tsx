@@ -1,25 +1,21 @@
-import config from "@/config/config.json";
-import { upperHumanize, plainify, slugify } from "@/lib/utils/textConverter";
+import type { SearchableEntry } from "@/types"
 import Fuse from "fuse.js";
 import React, { useEffect, useRef, useState } from "react";
+import { FaSearch } from "react-icons/fa";
+import config from "@/config/config.json";
+import { upperHumanize, plainify, slugify, lowerHumanize } from "@/lib/utils/textConverter";
 import {
   FaRegFolder,
-  FaRegUserCircle,
-  FaSearch,
+  FaHashtag,
 } from "react-icons/fa/index.js";
 
-export type SearchItem = {
-  id: string;
-  data: any;
-  content: any;
-};
 
 interface Props {
-  searchList: SearchItem[];
+  searchList: SearchableEntry[];
 }
 
 interface SearchResult {
-  item: SearchItem;
+  item: SearchableEntry;
   refIndex: number;
 }
 
@@ -33,7 +29,7 @@ const Search = ({ searchList }: Props) => {
   };
 
   const fuse = new Fuse(searchList, {
-    keys: ["data.title", "data.categories", "data.tags"],
+    keys: ["data.title", "body"],
     includeMatches: true,
     minMatchCharLength: 3,
     threshold: 0.5,
@@ -92,11 +88,11 @@ const Search = ({ searchList }: Props) => {
           {searchResults?.length < 1 ? (
             <div className="mx-auto pt-5 text-center">
               <h1 className="h2 mb-4">
-                {inputVal.length < 1 ? "Search Blog Here" : "No Search Found!"}
+                {inputVal.length < 1 ? "Search Here" : "No Search Found!"}
               </h1>
               <p>
                 {inputVal.length < 1
-                  ? "Search for posts by title, category, or tag."
+                  ? "Search by title, category, or tag."
                   : "We couldn't find what you searched for. Try searching again."}
               </p>
             </div>
@@ -104,65 +100,22 @@ const Search = ({ searchList }: Props) => {
             searchResults?.map(({ item }, index) => (
               <div className="mb-12 md:col-6 lg:col-4" key={`search-${index}`}>
                 <div className="bg-body dark:bg-darkmode-body">
-                  {item.data.image && (
-                    <img
-                      className="mb-6 w-full rounded"
-                      src={item.data.image}
-                      alt={item.data.title}
-                      width={445}
-                      height={230}
-                    />
-                  )}
-                  <h4 className="mb-3">
-                    <a href={`/blog/${item.id}`}>
+                  <h4 className="mb-2">
+                    <a href={`/${item.collection}/${item.id}`}>
                       {item.data.title}
                     </a>
                   </h4>
-                  <ul className="mb-4">
-                    <li className="mr-4 inline-block">
-                      <FaRegUserCircle
-                        className={"-mt-1 mr-2 inline-block"}
-                      />
-                      {upperHumanize(item.data.author)}
-                    </li>
-                    <li className="mr-4 inline-block">
-                      <FaRegFolder className={"-mt-1 mr-2 inline-block"} />
-                      {item.data.categories.map(
-                        (category: string, index: number) => (
-                          <a
-                            href={`/blog/categories/${slugify(category)}`}
-                            key={category}
-                          >
-                            {upperHumanize(category)}
-                            {index !== item.data.categories.length - 1 && ", "}
-                          </a>
-                        ),
-                      )}
-                    </li>
-                  </ul>
-                  <p className="mb-6">
-                    {plainify(item.content?.slice(0, Number(config.settings.summary_length)))}
-                  </p>
-                  <a
-                    className="btn btn-outline-primary btn-sm"
-                    href={`/blog/${item.id}`}
-                  >
-                    read more
-                  </a>
+                  { item.data.description && (
+                    <p className="mb-6">{item.data.description}</p>
+                  )}
+                  {  !item.data.description && item.data.autodescription && (
+                    <p className="mb-6">{plainify(item.body?.slice(0, Number(config.settings.summary_length)))}</p>
+                  )}
                 </div>
               </div>
             ))
           )}
         </div>
-        {/* {inputVal.length > 1 && (
-          <div className="mt-4 mx-auto text-center">
-            Found {searchResults?.length}
-            {searchResults?.length && searchResults?.length === 1
-              ? " result"
-              : " results"}{" "}
-            for '{inputVal}'
-          </div>
-        )} */}
       </div>
     </section>
   );
