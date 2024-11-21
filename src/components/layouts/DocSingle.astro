@@ -1,9 +1,9 @@
 ---
 import type { DocsEntry } from "@/types";
 import DocBrowser from "@/components/DocBrowser.astro";
-import DocContents from "@/components/DocContents.astro";
+import TableOfContents from "@/components/TableOfContents.astro";
 import { ScrollArea } from "@/components/shortcodes/ScrollArea";
-import { menu } from "@/lib/utils/docsUtils";
+import { menu } from "@/lib/utils/docUtils";
 import config from "@/config/config.json";
 
 import { render } from 'astro:content';
@@ -15,11 +15,9 @@ interface Props {
 const { post }: Props = Astro.props;
 
 const { Content, headings } = await render(post);
-const { title } = post.data;
+const { title, hide_sidenav, hide_toc } = post.data;
 const currentPage = new URL(Astro.request.url).pathname;
 
-const hide_toc = false;
-const hide_sidenav = false;
 const max_width = false;
 ---
 
@@ -39,7 +37,6 @@ const max_width = false;
   <div
     class=`w-full ${hide_toc && hide_sidenav && max_width ? "" : "md:w-3/4 lg:w-3/5"}`
   >
-    <!-- <Content /> -->
     <main class="py-4 overflow-auto">
       <article>
         <h1 class="mb-4">{title}</h1>
@@ -52,9 +49,9 @@ const max_width = false;
   <div
     class=`py-4 hidden lg:flex max-h-static_sidemenu sticky top-[69px] ${hide_toc && hide_sidenav && max_width ? "" : "px-6 lg:w-1/5"}`
   >
-    { !config.settings.hide_doc_contents && !hide_toc && (
+    { !config.settings.hide_doc_toc && !hide_toc && (
       <ScrollArea className="h-full w-full" client:only="react">
-        <DocContents {headings} />
+        <TableOfContents {headings} />
       </ScrollArea>
     )}
   </div>

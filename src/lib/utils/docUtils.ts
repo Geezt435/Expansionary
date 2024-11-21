@@ -1,9 +1,7 @@
-import type { MarkdownHeading } from "astro";
 import { getCollection } from "astro:content";
 
 import type {
   DocsEntry,
-  HeadingHierarchy,
   MenuItem,
   MenuItemWithDraft,
 } from "@/types/index";
@@ -122,26 +120,3 @@ function buildMenu(items: DocsEntry[]): MenuItem[] {
 }
 
 export const menu = buildMenu(docs);
-
-// create headings for ToC
-export function createHeadingHierarchy(headings: MarkdownHeading[]) {
-  const topLevelHeadings: HeadingHierarchy[] = [];
-
-  headings.forEach((heading) => {
-    const h = {
-      ...heading,
-      subheadings: [],
-    };
-
-    if (h.depth >= 2) {
-      topLevelHeadings.push(h);
-    } else {
-      let parent = topLevelHeadings[topLevelHeadings.length - 1];
-      if (parent) {
-        parent.subheadings.push(h);
-      }
-    }
-  });
-
-  return topLevelHeadings;
-}

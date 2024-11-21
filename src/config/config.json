@@ -15,7 +15,8 @@
     "pagination": 4,
     "summary_length": 200,
     "hide_doc_browser": false,
-    "hide_doc_contents": false
+    "hide_doc_toc": false,
+    "hide_blog_toc": false
   },
 
   "metadata": {

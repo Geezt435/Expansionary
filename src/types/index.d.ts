@@ -10,13 +10,6 @@ export type TermsEntry = CollectionEntry<"terms">;
 
 export type SearchableEntry = AboutEntry | AuthorsEntry | BlogEntry | DocsEntry | TermsEntry;
 
-export type SearchableData = {
-  title: string;
-  description?: string;
-  autodescription: boolean;
-  draft: boolean;
-}
-
 // Define heading hierarchy so that we can generate ToC
 export interface HeadingHierarchy extends MarkdownHeading {
   subheadings: HeadingHierarchy[];
