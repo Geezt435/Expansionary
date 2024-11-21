@@ -7,7 +7,8 @@
   },
 
   "settings": {
-    "search": true,
+    "search_enabled": true,
+    "searchable_collections": ["about", "authors", "blog", "docs", "terms"],
     "sticky_header": false,
     "theme_switcher": true,
     "default_theme": "system",
@@ -20,6 +21,6 @@
   "metadata": {
     "meta_author": "Jane Doe",
     "meta_image": "/images/og-image.png",
-    "meta_description": "astro and tailwind boilerplate"
+    "meta_description": "Template website"
   }
 }

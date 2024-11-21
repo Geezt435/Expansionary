@@ -2,7 +2,6 @@
 title: Jane Doe
 email: janedoe@email.com
 image: /images/avatar.png
-description: this is meta description
 social:
   - name: github
     icon: FaGithub

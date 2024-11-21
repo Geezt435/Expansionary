@@ -1,6 +1,6 @@
 ---
 title: How to build an Application with modern Technology
-description: this is meta description
+description: this is the description
 date: 2022-04-04T05:00:00Z
 image: /images/image-placeholder.png
 categories: [Technology]

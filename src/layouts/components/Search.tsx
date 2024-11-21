@@ -1,13 +1,9 @@
 import type { SearchableEntry } from "@/types"
 import Fuse from "fuse.js";
 import React, { useEffect, useRef, useState } from "react";
-import { FaSearch } from "react-icons/fa";
 import config from "@/config/config.json";
 import { upperHumanize, plainify, slugify, lowerHumanize } from "@/lib/utils/textConverter";
-import {
-  FaRegFolder,
-  FaHashtag,
-} from "react-icons/fa/index.js";
+import { FaSearch } from "react-icons/fa/index.js";
 
 
 interface Props {
@@ -19,6 +15,11 @@ interface SearchResult {
   refIndex: number;
 }
 
+// This is used because docs doesn't use the {collection}/{id} structure
+const getPath = (path: string) => {
+  return path.replace("src/content/", "").replace("/index", "").replace(/\.mdx?$/, "");
+};
+
 const Search = ({ searchList }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [inputVal, setInputVal] = useState("");
@@ -29,7 +30,7 @@ const Search = ({ searchList }: Props) => {
   };
 
   const fuse = new Fuse(searchList, {
-    keys: ["data.title", "body"],
+    keys: ["data.title", "data.description", "id", "collection", "body"],
     includeMatches: true,
     minMatchCharLength: 3,
     threshold: 0.5,
@@ -87,21 +88,18 @@ const Search = ({ searchList }: Props) => {
         <div className="row">
           {searchResults?.length < 1 ? (
             <div className="mx-auto pt-5 text-center">
-              <h1 className="h2 mb-4">
-                {inputVal.length < 1 ? "Search Here" : "No Search Found!"}
-              </h1>
               <p>
                 {inputVal.length < 1
-                  ? "Search by title, category, or tag."
+                  ? "Looking for something?"
                   : "We couldn't find what you searched for. Try searching again."}
               </p>
             </div>
           ) : (
             searchResults?.map(({ item }, index) => (
-              <div className="mb-12 md:col-6 lg:col-4" key={`search-${index}`}>
-                <div className="bg-body dark:bg-darkmode-body">
+              <div className="py-2 md:py-4 md:col-6" key={`search-${index}`}>
+                <div className="">
                   <h4 className="mb-2">
-                    <a href={`/${item.collection}/${item.id}`}>
+                    <a href={getPath(item.filePath)}>
                       {item.data.title}
                     </a>
                   </h4>

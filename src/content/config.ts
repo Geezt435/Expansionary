@@ -1,7 +1,8 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from 'astro/loaders';
 
-export const searchable = z.object({
+// Also update /src/types/index.d.ts when updating these signatures
+const searchable = z.object({
   title: z.string(),
   description: z.string().optional(),
   autodescription: z.boolean().default(true),

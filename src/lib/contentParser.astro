@@ -12,7 +12,7 @@ export const getSinglePages = async (collection: any): Promise<any[]> => {
 };
 
 // Fetch all pages in all searchable collections
-export const getSinglePagesPlus = async (collections: string[]): Promise<any[]> => {
+export const getSinglePagesBatch = async (collections: string[]): Promise<any[]> => {
   const allCollections = await Promise.all(
     collections.map(async (collection) => {
       return await getSinglePages(collection);

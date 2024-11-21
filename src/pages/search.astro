@@ -1,13 +1,14 @@
 ---
 import type { SearchableEntry } from "@/types";
 import Base from "@/layouts/Base.astro";
-import SearchComponent from "@/layouts/Search";
-import { getSinglePagesPlus } from "@/lib/contentParser.astro";
+import SearchComponent from "@/components/Search";
+import { getSinglePagesBatch } from "@/lib/contentParser.astro";
+import { settings } from "@/config/config.json";
 
 // Retrieve all articles
-const searchList: SearchableEntry[] = await getSinglePagesPlus(["about", "authors", "blog", "docs", "terms"]);
+const searchList: SearchableEntry[] = await getSinglePagesBatch(settings.searchable_collections);
 ---
 
-<Base title={`Search`}>
+<Base title="Search">
   <SearchComponent client:load searchList={searchList} />
 </Base>
