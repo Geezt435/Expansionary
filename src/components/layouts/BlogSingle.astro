@@ -28,8 +28,8 @@ const { title, description, author, categories, image, date, tags, complexity } 
 const similarPosts = similerItems(post, posts, post.id);
 const { Content } = await render(post);
 
-categories.sort((a: string, b: string) => a.localeCompare(b));
-tags.sort((a: string, b: string) => a.localeCompare(b));
+categories?.sort((a: string, b: string) => a.localeCompare(b));
+tags?.sort((a: string, b: string) => a.localeCompare(b));
 ---
 
 <section class="section pt-7">
@@ -52,10 +52,12 @@ tags.sort((a: string, b: string) => a.localeCompare(b));
         }
         <h1 set:html={markdownify(title)} class="mb-4" />
         <ul class="mb-4">
-          <li class="mr-1 inline-block">
-            <FaRegUserCircle className={"-mt-1 inline-block"} />
-            {upperHumanize(author)}
-          </li>
+          { author && (
+            <li class="mr-1 inline-block">
+              <FaRegUserCircle className={"-mt-1 inline-block"} />
+              {upperHumanize(author)}
+            </li>
+          )}
           { date && (
             <li class="mr-1 inline-block">
               <FaRegCalendarAlt className={"ml-2 -mt-1 inline-block"} />

@@ -7,6 +7,7 @@ import { getSinglePages } from "@/lib/contentParser.astro";
 import { slugify } from "@/lib/utils/textConverter";
 import { Image } from "astro:assets";
 import { render } from 'astro:content';
+import { metadata } from "@/config/config.json";
 
 export async function getStaticPaths() {
   const authors: AuthorsEntry[] = await getSinglePages("authors");
@@ -24,7 +25,9 @@ const { title, social, description, image } = author.data;
 const { Content } = await render(author);
 const posts: BlogEntry[] = await getSinglePages("blog");
 const postFilterByAuthor = posts.filter(
-  (post: BlogEntry) => slugify(post.data.author) === slugify(title),
+  (post: BlogEntry) => slugify(
+    post.data.author? post.data.author : metadata.meta_author
+  ) === slugify(title),
 );
 ---
 
