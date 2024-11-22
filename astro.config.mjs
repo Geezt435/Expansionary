@@ -33,5 +33,4 @@ export default defineConfig({
     },
     extendDefaultPlugins: true
   },
-  // experimental: { contentLayer: true }
 });

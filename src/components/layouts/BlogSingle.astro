@@ -5,14 +5,19 @@ import { getSinglePages } from "@/lib/contentParser.astro";
 import dateFormat from "@/lib/utils/dateFormat";
 import readingTime from "@/lib/utils/readingTime";
 import similerItems from "@/lib/utils/similarItems";
-import { lowerHumanize, upperHumanize, markdownify, slugify } from "@/lib/utils/textConverter";
+import {
+  lowerHumanize,
+  upperHumanize,
+  markdownify,
+  slugify,
+} from "@/lib/utils/textConverter";
 import type { BlogEntry } from "@/types";
 import TableOfContents from "@/components/TableOfContents.astro";
 import { ScrollArea } from "@/components/shortcodes/ScrollArea";
 import { settings } from "@/config/config.json";
 
 import { Image } from "astro:assets";
-import { render } from 'astro:content';
+import { render } from "astro:content";
 import {
   FaRegCalendarAlt,
   FaRegFolder,
@@ -27,7 +32,17 @@ interface Props {
 
 const posts: BlogEntry[] = await getSinglePages("blog");
 const { post }: Props = Astro.props;
-const { title, description, author, categories, image, date, tags, complexity, hide_toc } = post.data;
+const {
+  title,
+  description,
+  author,
+  categories,
+  image,
+  date,
+  tags,
+  complexity,
+  hide_toc,
+} = post.data;
 const similarPosts = similerItems(post, posts, post.id);
 const { Content, headings } = await render(post);
 
@@ -35,117 +50,119 @@ categories?.sort((a: string, b: string) => a.localeCompare(b));
 tags?.sort((a: string, b: string) => a.localeCompare(b));
 ---
 
-<!-- <section class="section pt-7">
-  <div class="container">
-    
-  </div>
-</section> -->
-
-<section class="flex flex-1 flex-col md:flex-row container">
-  <div
-    class=`w-full ${hide_toc ? "" : "md:w-3/4 lg:w-3/5"}`
-  >
-    <main class="py-4 overflow-auto">
-      <article>
-        { image && (
-          <div class="mb-10">
-            <Image
-              src={image}
-              height={500}
-              width={1200}
-              alt={title}
-              class="w-full rounded"
-              format="webp"
-            />
-          </div>
-        )}
+<section class="flex container">
+  <div class=`w-full ${hide_toc ? "" : "md:col-9"}`>
+    <article>
+      <section>
+        {
+          image && (
+            <div class="mb-10">
+              <Image
+                src={image}
+                height={500}
+                width={1200}
+                alt={title}
+                class="w-full rounded"
+                format="webp"
+              />
+            </div>
+          )
+        }
         <h1 set:html={markdownify(title)} class="mb-4" />
         <ul class="mb-4">
-          { author && (
-            <li class="mr-1 inline-block">
-              <FaRegUserCircle className={"-mt-1 inline-block"} />
-              {upperHumanize(author)}
-            </li>
-          )}
-          { date && (
-            <li class="mr-1 inline-block">
-              <FaRegCalendarAlt className={"ml-2 -mt-1 inline-block"} />
-              {dateFormat(date)}
-            </li>
-          )}
-          { complexity > 0 && (
-            <li class="mr-1 inline-block">
-              <FaRegClock className={"ml-2 -mt-1 inline-block"} />
-              {readingTime(post.body, complexity)}
-            </li>
-          )}
-          { categories && (
-            <li class="mr-1 inline-block">
-              {
-                categories.map((category: string, index: number) => (
+          {
+            author && (
+              <li class="mr-1 inline-block">
+                <FaRegUserCircle className={"-mt-1 inline-block"} />
+                {upperHumanize(author)}
+              </li>
+            )
+          }
+          {
+            date && (
+              <li class="mr-1 inline-block">
+                <FaRegCalendarAlt className={"ml-2 -mt-1 inline-block"} />
+                {dateFormat(date)}
+              </li>
+            )
+          }
+          {
+            complexity > 0 && (
+              <li class="mr-1 inline-block">
+                <FaRegClock className={"ml-2 -mt-1 inline-block"} />
+                {readingTime(post.body, complexity)}
+              </li>
+            )
+          }
+          {
+            categories && (
+              <li class="mr-1 inline-block">
+                {categories.map((category: string, index: number) => (
                   <a href={`/blog/categories/${slugify(category)}`}>
                     <FaRegFolder className={"ml-2 -mt-1 inline-block"} />
                     {upperHumanize(category)}
                   </a>
-                ))
-              }
-            </li>
-          )}
-          { tags && (
-            <li class="mr-1 inline-block">
-              {
-                tags.map((tag: string, index: number) => (
+                ))}
+              </li>
+            )
+          }
+          {
+            tags && (
+              <li class="mr-1 inline-block">
+                {tags.map((tag: string, index: number) => (
                   <a href={`/blog/tags/${slugify(tag)}`}>
                     <FaHashtag className={"ml-2 -mt-1 inline-block"} />
                     {lowerHumanize(tag)}
                   </a>
-                ))
-              }
-            </li>
-          )}
+                ))}
+              </li>
+            )
+          }
         </ul>
-        <div class="content mb-10">
-          <Content />
+      </section>
+      <section class="content mb-10">
+        <Content />
+      </section>
+      <hr />
+      <section class="row items-start justify-between mt-4">
+        <div class="flex items-center justify-center lg:justify-end">
+          <Share
+            className="social-icons"
+            title={title}
+            description={description}
+            folder={"blog"}
+            id={post.id}
+          />
         </div>
-        <hr>
-        <div class="row items-start justify-between mt-4">
-          <div class="flex items-center justify-center lg:justify-end">
-            <Share
-              className="social-icons"
-              title={title}
-              description={description}
-              folder={"blog"}
-              id={post.id}
-            />
-          </div>
-        </div>
-      </article>
-  
-      <!-- Related posts -->
-      { similarPosts.length > 0 && (
-        <div class="row justify-center pt-12 pb-0">
+      </section>
+    </article>
+    <!-- Related posts -->
+    {
+      similarPosts.length > 0 && (
+        <section class="row justify-center pt-12 pb-0">
           <h2 class="h3 mb-4 text-center">Related Posts</h2>
           <div class="lg:col-10">
             <div class="row justify-center">
-              { similarPosts.slice(0, 2).map((post) => (
+              {similarPosts.slice(0, 2).map((post) => (
                 <div class="md:col-6 px-4 py-2">
                   <BlogCard data={post} />
                 </div>
               ))}
             </div>
           </div>
-        </div>
-      )}
-    </main>
+        </section>
+      )
+    }
   </div>
   <div
-    class=`py-4 hidden lg:flex max-h-static_sidemenu sticky top-[69px] ${hide_toc ? "" : "px-6 lg:w-1/5"}`
+    class=`py-4 hidden md:flex max-h-static_sidemenu sticky top-[69px] ${hide_toc ? "" : "px-6 md:col-3"}`
   >
-    { !settings.hide_blog_toc && !hide_toc && (
-      <ScrollArea className="h-full w-full" client:only="react">
-        <TableOfContents {headings} />
-      </ScrollArea>
-    )}
+    {
+      !settings.hide_blog_toc && !hide_toc && (
+        <ScrollArea className="h-full w-full" client:only="react">
+          <TableOfContents {headings} />
+        </ScrollArea>
+      )
+    }
   </div>
 </section>
-
