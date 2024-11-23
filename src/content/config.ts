@@ -10,14 +10,14 @@ const searchable = z.object({
 });
 
 const about = defineCollection({
-  loader: glob({ pattern: '-index.md', base: "./src/content/about" }),
+  loader: glob({ pattern: '-index.{md,mdx}', base: "./src/content/about" }),
   schema: searchable.extend({
     image: z.string().optional(),
   }),
 });
 
 const authors = defineCollection({
-  loader: glob({ pattern: '**\/[^_]*.md', base: "./src/content/authors" }),
+  loader: glob({ pattern: '**\/[^_]*.{md,mdx}', base: "./src/content/authors" }),
   schema: searchable.extend({
     email: z.string().optional(),
     image: z.string().optional(),
@@ -32,7 +32,7 @@ const authors = defineCollection({
 });
 
 const blog = defineCollection({
-  loader: glob({ pattern: '**\/[^_]*.md', base: "./src/content/blog" }),
+  loader: glob({ pattern: '**\/[^_]*.{md,mdx}', base: "./src/content/blog" }),
   schema: searchable.extend({
     date: z.date().optional(),
     image: z.string().optional(),
@@ -45,7 +45,7 @@ const blog = defineCollection({
 });
 
 const docs = defineCollection({
-  loader: glob({ pattern: '**\/[^_]*.md', base: "./src/content/docs" }),
+  loader: glob({ pattern: '**\/[^_]*.{md,mdx}', base: "./src/content/docs" }),
   schema: searchable.extend({
     pubDatetime: z.date().optional(),
     modDatetime: z.date().optional(),
@@ -56,16 +56,15 @@ const docs = defineCollection({
 });
 
 const home = defineCollection({
-  loader: glob({ pattern: '-index.md', base: "./src/content/home" }),
+  loader: glob({ pattern: '-index.{md,mdx}', base: "./src/content/home" }),
   schema: z.object({
     banner: z.object({
       title: z.string(),
       content: z.string(),
       button: z.object({
-        enable: z.boolean().optional(),
-        label: z.string().optional(),
+        label: z.string(),
         link: z.string().optional(),
-      }),
+      }).optional(),
     }),
     testimonials: z.object({
       enable: z.boolean().default(true),
@@ -84,7 +83,7 @@ const home = defineCollection({
 });
 
 const terms = defineCollection({
-  loader: glob({ pattern: '-index.md', base: "./src/content/terms" }),
+  loader: glob({ pattern: '-index.{md,mdx}', base: "./src/content/terms" }),
   schema: searchable,
 });
 

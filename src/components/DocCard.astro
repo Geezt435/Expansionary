@@ -1,5 +1,6 @@
 ---
 import type { DocsEntry } from "@/types";
+import Card from "@/components/Card.astro";
 
 interface Props {
   data: DocsEntry;
@@ -9,15 +10,13 @@ const { data }: Props = Astro.props;
 const { title, description } = data.data;
 ---
 
-<div class="min-h-full block border border-light bg-transparent text-light rounded-sm dark:text-darkmode-light dark:border-darkmode-light">
-  <div class="m-6">
-    <a href={`/docs/${data.id}`}>
-      <h4 class="mb-3">
-        {title}
-      </h4>
-    </a>
-    <p>
-      {description}
-    </p>
-  </div>
-</div>
+<Card>
+  <a href={`/docs/${data.id}`}>
+    <h4 class="mb-3">
+      {title}
+    </h4>
+  </a>
+  <p>
+    {description}
+  </p>
+</Card>

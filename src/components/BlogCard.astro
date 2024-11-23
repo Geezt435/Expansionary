@@ -9,6 +9,7 @@ import {
   FaRegCalendarAlt,
 } from "react-icons/fa/index.js";
 import readingTime from "@/lib/utils/readingTime";
+import Card from "@/components/Card.astro";
 
 interface Props {
   data: BlogEntry;
@@ -18,7 +19,7 @@ const { data }: Props = Astro.props;
 const { title, date, author, categories, tags, complexity } = data.data;
 ---
 
-<div class="bg-body dark:bg-darkmode-body">
+<Card>
   <h4 class="mb-2">
     <a href={`/blog/${data.id}`}>
       {title}
@@ -62,5 +63,5 @@ const { title, date, author, categories, tags, complexity } = data.data;
       </li>
     )}
   </ul>
-  <p class="mb-6">{plainify(data.body?.slice(0, Number(config.settings.summary_length)))}</p>
-</div>
+  <p class="">{plainify(data.body?.slice(0, Number(config.settings.summary_length)))}</p>
+</Card>

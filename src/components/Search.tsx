@@ -2,9 +2,7 @@ import type { SearchableEntry } from "@/types"
 import Fuse from "fuse.js";
 import React, { useEffect, useRef, useState } from "react";
 import config from "@/config/config.json";
-import { upperHumanize, plainify, slugify, lowerHumanize } from "@/lib/utils/textConverter";
-import { FaSearch } from "react-icons/fa/index.js";
-
+import { plainify } from "@/lib/utils/textConverter";
 
 interface Props {
   searchList: SearchableEntry[];
@@ -69,7 +67,7 @@ const Search = ({ searchList }: Props) => {
           <div className="lg:col-8">
             <div className="flex flex-nowrap">
               <input
-                className="form-input rounded-r-none"
+                className="form-input"
                 placeholder="search posts"
                 type="search"
                 name="search"
@@ -79,9 +77,6 @@ const Search = ({ searchList }: Props) => {
                 autoFocus
                 ref={inputRef}
               />
-              <button className="btn btn-primary rounded-l-none" type="submit">
-                <FaSearch />
-              </button>
             </div>
           </div>
         </div>

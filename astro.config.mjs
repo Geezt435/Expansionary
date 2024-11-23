@@ -20,7 +20,7 @@ export default defineConfig({
       applyBaseStyles: false
     }
   }), AutoImport({
-    imports: ["@/shortcodes/Button", "@/shortcodes/Accordion", "@/shortcodes/Notice", "@/shortcodes/Youtube", "@/shortcodes/Tabs", "@/shortcodes/Tab"]
+    imports: ["@/components/Button.astro", "@/shortcodes/Accordion", "@/shortcodes/Notice", "@/shortcodes/Youtube", "@/shortcodes/Tabs", "@/shortcodes/Tab"]
   }), mdx()],
   markdown: {
     remarkPlugins: [remarkToc, [remarkCollapse, {

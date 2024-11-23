@@ -2,6 +2,7 @@
 import { getTaxonomy, getAllTaxonomy } from "@/lib/taxonomyParser.astro";
 import { upperHumanize } from "@/lib/utils/textConverter";
 import PageHeader from "@/components/PageHeader.astro";
+import Button from "@/components/Button.astro";
 
 interface Props {
   collection: string;
@@ -23,15 +24,11 @@ const allSubdivisions = await getAllTaxonomy(collection, division);
           const count = allSubdivisions.filter((c) => c === subdivision).length;
           return (
             <li class="m-3 inline-block">
-              <a
-                href={`/${collection}/${division}/${subdivision}`}
-                class="m-1  block border border-light bg-transparent text-light rounded-sm px-2 dark:text-darkmode-light dark:border-darkmode-light"
-              >
-                {upperHumanize(subdivision)}{" "}
-                <span class="pl-2">
-                  {count}
-                </span>
-              </a>
+              <Button
+                label=`${upperHumanize(subdivision)} (${count})`
+                link={`/${collection}/${division}/${subdivision}`}
+                hoverInvert
+              />
             </li>
           );
         })

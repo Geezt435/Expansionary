@@ -4,6 +4,7 @@ import {
   FaRegFolder,
   FaHashtag,
 } from "react-icons/fa/index.js";
+import Button from "@/components/Button.astro";
 
 interface Props {
   tags: string[];
@@ -60,13 +61,12 @@ const { tags, categories, allCategories }: Props = Astro.props;
         {
           tags.map((tag: any) => {
             return (
-              <li class="inline-block">
-                <a
-                  class="m-1  block border border-light bg-transparent text-light rounded-sm px-2 dark:text-darkmode-light dark:border-darkmode-light"
-                  href={`/blog/tags/${lowerHumanize(tag)}`}
-                >
-                  {tag}
-                </a>
+              <li class="inline-block m-1">
+                <Button
+                  label={tag} 
+                  link={`/blog/tags/${lowerHumanize(tag)}`}
+                  type="secondary" 
+                />
               </li>
             );
           })

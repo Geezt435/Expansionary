@@ -1,5 +1,6 @@
 ---
 import Base from "@/layouts/Base.astro";
+import Button from "@/components/Button.astro";
 ---
 
 <Base title="Page Not Found">
@@ -19,7 +20,11 @@ import Base from "@/layouts/Base.astro";
               changed, or is temporarily unavailable.
             </p>
           </div>
-          <a href="/" class="btn btn-primary mt-8">Back to home</a>
+          <Button
+            link="/"
+            label="Back to Home"
+            hoverInvert
+          />
         </div>
       </div>
     </div>

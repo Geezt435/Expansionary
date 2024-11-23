@@ -3,6 +3,7 @@ import Base from "@/layouts/Base.astro";
 import { markdownify } from "@/lib/utils/textConverter";
 import Testimonials from "@/components/Testimonials.astro";
 import { getEntry } from "astro:content";
+import Button from "@/components/Button.astro";
 
 const homepage = await getEntry("home", "-index");
 const { banner, testimonials } = homepage.data;
@@ -17,10 +18,13 @@ const { banner, testimonials } = homepage.data;
           <h1 set:html={markdownify(banner.title)} class="mb-4" />
           <p set:html={markdownify(banner.content)} class="mb-8" />
           {
-            banner.button.enable && (
-              <a class="btn btn-primary" href={banner.button.link}>
-                {banner.button.label}
-              </a>
+            banner.button && (
+              <Button
+                label={banner.button.label}
+                link={banner.button.link}
+                newtab
+                hoverInvert
+              />
             )
           }
         </div>
@@ -28,6 +32,5 @@ const { banner, testimonials } = homepage.data;
     </div>
   </section>
   <!-- /Banner -->
-
   <Testimonials testimonials={testimonials} />
 </Base>
