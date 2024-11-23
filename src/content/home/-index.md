@@ -14,21 +14,25 @@ testimonials:
   items:
     - name: Marvin McKinney
       designation: Web Designer
-      avatar: /images/avatar-sm.png
+      avatar: "@/assets/avatar-sm.png"
+      avatarAlt: "avatar photo"
       content: Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui iusto illo molestias, assumenda expedita commodi inventore non itaque molestiae voluptatum dolore, facilis sapiente, repellat veniam.
 
     - name: Marvin McKinney
       designation: Web Designer
-      avatar: /images/avatar-sm.png
+      avatar: "@/assets/avatar-sm.png"
+      avatarAlt: "avatar photo"
       content: Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui iusto illo molestias, assumenda expedita commodi inventore non itaque molestiae voluptatum dolore, facilis sapiente, repellat veniam.
 
     - name: Marvin McKinney
       designation: Web Designer
-      avatar: /images/avatar-sm.png
+      avatar: "@/assets/avatar-sm.png"
+      avatarAlt: "avatar photo"
       content: Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui iusto illo molestias, assumenda expedita commodi inventore non itaque molestiae voluptatum dolore, facilis sapiente, repellat veniam.
 
     - name: Marvin McKinney
       designation: Web Designer
-      avatar: /images/avatar-sm.png
+      avatar: "@/assets/avatar-sm.png"
+      avatarAlt: "avatar photo"
       content: Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui iusto illo molestias, assumenda expedita commodi inventore non itaque molestiae voluptatum dolore, facilis sapiente, repellat veniam.
 ---

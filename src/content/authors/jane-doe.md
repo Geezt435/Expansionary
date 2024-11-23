@@ -1,7 +1,7 @@
 ---
 title: Jane Doe
 email: janedoe@email.com
-image: /images/avatar.png
+image: "@/assets/avatar.png"
 social:
   - name: github
     icon: FaGithub

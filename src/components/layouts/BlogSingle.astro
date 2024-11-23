@@ -38,6 +38,7 @@ const {
   author,
   categories,
   image,
+  imageAlt,
   date,
   tags,
   complexity,
@@ -61,7 +62,7 @@ tags?.sort((a: string, b: string) => a.localeCompare(b));
                 src={image}
                 height={500}
                 width={1200}
-                alt={title}
+                alt={imageAlt}
                 class="w-full rounded"
                 format="webp"
               />

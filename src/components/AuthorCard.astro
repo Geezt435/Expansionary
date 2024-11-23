@@ -9,7 +9,7 @@ interface Props {
 }
 
 const { data }: Props = Astro.props;
-const { title, image, social } = data.data;
+const { title, image, imageAlt, social } = data.data;
 ---
 
 <div
@@ -20,7 +20,7 @@ const { title, image, social } = data.data;
       <Image
         class="mx-auto mb-6 rounded"
         src={image}
-        alt={title}
+        alt={imageAlt}
         width={120}
         height={120}
         format="webp"

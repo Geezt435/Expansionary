@@ -21,7 +21,7 @@ export async function getStaticPaths() {
   return paths;
 }
 const { author } = Astro.props;
-const { title, social, description, image } = author.data;
+const { title, social, description, image, imageAlt } = author.data;
 const { Content } = await render(author);
 const posts: BlogEntry[] = await getSinglePages("blog");
 const postFilterByAuthor = posts.filter(
@@ -49,7 +49,7 @@ const postFilterByAuthor = posts.filter(
                 class="mx-auto mb-10 rounded"
                 height={200}
                 width={200}
-                alt={title}
+                alt={imageAlt}
                 format="webp"
               />
             )

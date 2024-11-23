@@ -93,7 +93,7 @@ This is a template for a static, content-driven website. Currently supported con
 - `images/` is where you put all images that will be displayed on the site. Preferably, don't dump every image right in there, make subdirectories. For example, if you keep the blog content collection, make a folder `blog`, and put any images your blog uses in there.
 - `fonts/` holds the actual font files that all text on your site will be displayed in.
   - Use the [Google Webfonts Helper](https://gwfh.mranftl.com/fonts) to download your fonts. You do not want to be downloading/importing more files than you actually need, so make sure you don't. There's more details here, but I will be happy to help if you need.
-- Important note: Whenever you reference an image within the project, the root directory for it is assumed by Astro to be `public`. That means, for example, if you're writing a blog post and want to pull in an image `apple.png`, you'd reference it by just `/images/blog/apple.png`, or whichever subdirectory you put it in.
+- Important note: Whenever you reference an image within the project, the root directory for it is assumed by Astro to be `public`. That means, for example, if you're writing a blog post and want to pull in an image `apple.png`, you'd reference it by just `"@/assets/blog/apple.png"`, or whichever subdirectory you put it in.
 - `CNAME` must hold the value `www.yourdomain.com`. Without going into detail, this is necessary to link your domain to the site, and get all the necessary certificates set up.
 - `robots.txt` generally directs web-crawling bots. This one doesn't specify much, but it's fine how it is.
 - `.htaccess` is also probably fine for you as it is.

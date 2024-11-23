@@ -1,7 +1,7 @@
 ---
 title: How to build an Application with modern Technology
 date: 2022-04-04T05:00:00Z
-image: /images/image-placeholder.png
+image: "@/assets/image-placeholder.png"
 categories: [Architecture]
 author: Jane Doe
 tags: [silicon, technology]

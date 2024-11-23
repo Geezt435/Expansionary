@@ -11,31 +11,34 @@ const searchable = z.object({
 
 const about = defineCollection({
   loader: glob({ pattern: '-index.{md,mdx}', base: "./src/content/about" }),
-  schema: searchable.extend({
-    image: z.string().optional(),
+  schema: ({ image }) => searchable.extend({
+    image: image().optional(),
+    imageAlt: z.string().default("image"),
   }),
 });
 
 const authors = defineCollection({
   loader: glob({ pattern: '**\/[^_]*.{md,mdx}', base: "./src/content/authors" }),
-  schema: searchable.extend({
+  schema: ({ image }) => searchable.extend({
     email: z.string().optional(),
-    image: z.string().optional(),
+    image: image().optional(),
+    imageAlt: z.string().default("image"),
     social: z.array(
       z.object({
-        name: z.string().optional(),
-        icon: z.string().optional(),
-        link: z.string().optional(),
-      }).optional(),
+        name: z.string(),
+        icon: z.string(),
+        link: z.string(),
+      }),
     ).optional(),
   }),
 });
 
 const blog = defineCollection({
   loader: glob({ pattern: '**\/[^_]*.{md,mdx}', base: "./src/content/blog" }),
-  schema: searchable.extend({
+  schema: ({ image }) => searchable.extend({
     date: z.date().optional(),
-    image: z.string().optional(),
+    image: image().optional(),
+    imageAlt: z.string().default("image"),
     author: z.string().optional(),
     categories: z.array(z.string()).optional(),
     tags: z.array(z.string()).optional(),
@@ -46,10 +49,13 @@ const blog = defineCollection({
 
 const docs = defineCollection({
   loader: glob({ pattern: '**\/[^_]*.{md,mdx}', base: "./src/content/docs" }),
-  schema: searchable.extend({
+  schema: ({ image }) => searchable.extend({
     pubDatetime: z.date().optional(),
     modDatetime: z.date().optional(),
-    image: z.string().optional(),
+    image: image().refine((img) => img.width >= 1080, {
+      message: "Image must be at least 1080 pixels wide!",
+    }).optional(),
+    imageAlt: z.string().default("image"),
     hide_toc: z.boolean().default(false),
     hide_sidenav: z.boolean().default(false),
   }),
@@ -57,7 +63,7 @@ const docs = defineCollection({
 
 const home = defineCollection({
   loader: glob({ pattern: '-index.{md,mdx}', base: "./src/content/home" }),
-  schema: z.object({
+  schema: ({ image }) => z.object({
     banner: z.object({
       title: z.string(),
       content: z.string(),
@@ -74,7 +80,8 @@ const home = defineCollection({
         z.object({
           name: z.string(),
           designation: z.string(),
-          avatar: z.string(),
+          avatar: image().optional(),
+          avatarAlt: z.string().default("avatar image"),
           content: z.string(),
         }),
       ),
