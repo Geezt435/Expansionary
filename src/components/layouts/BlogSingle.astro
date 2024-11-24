@@ -53,75 +53,77 @@ tags?.sort((a: string, b: string) => a.localeCompare(b));
 
 <section class="flex container">
   <div class=`w-full ${hide_toc ? "" : "md:col-9"}`>
-    <article>
-      <section>
+    <article class="">
+      <section >
         {
           image && (
-            <div class="mb-10">
+            <div class="mb-8">
               <Image
                 src={image}
                 height={500}
                 width={1200}
                 alt={imageAlt}
-                class="w-full rounded"
+                class="w-full rounded-lg"
                 format="webp"
               />
             </div>
           )
         }
-        <h1 set:html={markdownify(title)} class="mb-4" />
-        <ul class="mb-4">
-          {
-            author && (
-              <li class="mr-1 inline-block">
-                <FaRegUserCircle className={"-mt-1 inline-block"} />
-                {upperHumanize(author)}
-              </li>
-            )
-          }
-          {
-            date && (
-              <li class="mr-1 inline-block">
-                <FaRegCalendarAlt className={"ml-2 -mt-1 inline-block"} />
-                {dateFormat(date)}
-              </li>
-            )
-          }
-          {
-            complexity > 0 && (
-              <li class="mr-1 inline-block">
-                <FaRegClock className={"ml-2 -mt-1 inline-block"} />
-                {readingTime(post.body, complexity)}
-              </li>
-            )
-          }
-          {
-            categories && (
-              <li class="mr-1 inline-block">
-                {categories.map((category: string, index: number) => (
-                  <a href={`/blog/categories/${slugify(category)}`}>
-                    <FaRegFolder className={"ml-2 -mt-1 inline-block"} />
-                    {upperHumanize(category)}
-                  </a>
-                ))}
-              </li>
-            )
-          }
-          {
-            tags && (
-              <li class="mr-1 inline-block">
-                {tags.map((tag: string, index: number) => (
-                  <a href={`/blog/tags/${slugify(tag)}`}>
-                    <FaHashtag className={"ml-2 -mt-1 inline-block"} />
-                    {lowerHumanize(tag)}
-                  </a>
-                ))}
-              </li>
-            )
-          }
-        </ul>
+        <div class="glass mb-8 p-4 rounded-lg">
+          <h1 set:html={markdownify(title)} class="mb-4" />
+          <ul class="mb-4">
+            {
+              author && (
+                <li class="mr-1 inline-block">
+                  <FaRegUserCircle className={"-mt-1 inline-block"} />
+                  {upperHumanize(author)}
+                </li>
+              )
+            }
+            {
+              date && (
+                <li class="mr-1 inline-block">
+                  <FaRegCalendarAlt className={"ml-2 -mt-1 inline-block"} />
+                  {dateFormat(date)}
+                </li>
+              )
+            }
+            {
+              complexity > 0 && (
+                <li class="mr-1 inline-block">
+                  <FaRegClock className={"ml-2 -mt-1 inline-block"} />
+                  {readingTime(post.body, complexity)}
+                </li>
+              )
+            }
+            {
+              categories && (
+                <li class="mr-1 inline-block">
+                  {categories.map((category: string, index: number) => (
+                    <a href={`/blog/categories/${slugify(category)}`}>
+                      <FaRegFolder className={"ml-2 -mt-1 inline-block"} />
+                      {upperHumanize(category)}
+                    </a>
+                  ))}
+                </li>
+              )
+            }
+            {
+              tags && (
+                <li class="mr-1 inline-block">
+                  {tags.map((tag: string, index: number) => (
+                    <a href={`/blog/tags/${slugify(tag)}`}>
+                      <FaHashtag className={"ml-2 -mt-1 inline-block"} />
+                      {lowerHumanize(tag)}
+                    </a>
+                  ))}
+                </li>
+              )
+            }
+          </ul>
+        </div>
       </section>
-      <section class="content mb-10">
+      <section class="content mb-4 glass p-4 rounded-lg">
         <Content />
       </section>
       <hr />
@@ -156,7 +158,7 @@ tags?.sort((a: string, b: string) => a.localeCompare(b));
     }
   </div>
   <div
-    class=`py-4 hidden md:flex max-h-static_sidemenu sticky top-[69px] ${hide_toc ? "" : "px-6 md:col-3"}`
+    class=`py-4 hidden md:flex max-h-static_sidemenu sticky top-[4rem] ${hide_toc ? "" : "px-6 md:col-3"}`
   >
     {
       !settings.hide_blog_toc && !hide_toc && (

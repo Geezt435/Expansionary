@@ -64,10 +64,10 @@ const Search = ({ searchList }: Props) => {
     <section className="section-sm">
       <div className="container">
         <div className="row mb-10 justify-center">
-          <div className="lg:col-8">
+          <div className="lg:col-8 px-0">
             <div className="flex flex-nowrap">
               <input
-                className="form-input"
+                className="w-full glass rounded border-transparent px-6 py-4 text-dark placeholder:text-light focus:border-transparent focus:ring-transparent dark:text-darkmode-light"
                 placeholder="search posts"
                 type="search"
                 name="search"
@@ -82,7 +82,7 @@ const Search = ({ searchList }: Props) => {
         </div>
         <div className="row">
           {searchResults?.length < 1 ? (
-            <div className="mx-auto pt-5 text-center">
+            <div className="lg:col-8 mx-auto p-2 text-center glass rounded-md">
               <p>
                 {inputVal.length < 1
                   ? "Looking for something?"
@@ -91,18 +91,18 @@ const Search = ({ searchList }: Props) => {
             </div>
           ) : (
             searchResults?.map(({ item }, index) => (
-              <div className="py-2 md:py-4 md:col-6" key={`search-${index}`}>
-                <div className="">
+              <div className="py-2 px-2 md:col-6 " key={`search-${index}`}>
+                <div className="h-full glass rounded-lg p-4">
                   <h4 className="mb-2">
                     <a href={getPath(item.filePath)}>
                       {item.data.title}
                     </a>
                   </h4>
                   { item.data.description && (
-                    <p className="mb-6">{item.data.description}</p>
+                    <p className="">{item.data.description}</p>
                   )}
                   {  !item.data.description && item.data.autodescription && (
-                    <p className="mb-6">{plainify(item.body?.slice(0, Number(config.settings.summary_length)))}</p>
+                    <p className="">{plainify(item.body?.slice(0, Number(config.settings.summary_length)))}</p>
                   )}
                 </div>
               </div>

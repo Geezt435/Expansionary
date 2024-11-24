@@ -38,8 +38,15 @@ html {
   @apply text-base h-screen;
 }
 
-body {
-  @apply bg-body font-primary font-normal leading-relaxed text-text dark:bg-darkmode-body dark:text-darkmode-text flex flex-col min-h-screen sm:mx-0 lg:mx-8;
+body { 
+  @apply font-primary font-normal leading-relaxed text-text dark:text-darkmode-text;
+  @apply bg-body dark:bg-darkmode-body;
+  @apply flex flex-col min-h-screen sm:mx-0 lg:mx-8;
+  background: url(/src/assets/docs/mtn-lake.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 h1,

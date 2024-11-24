@@ -22,7 +22,7 @@ const { title, description, image } = post.data;
 <Base
   title={title}
   description={description}
-  image={image}
+  image={image?.src}
 >
   <BlogSingle post={post} />
 </Base>

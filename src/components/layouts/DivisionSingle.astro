@@ -9,10 +9,13 @@ const { division }: Props = Astro.props;
 ---
 
 <PageHeader title={division} />
-<div class="section-sm pb-0">
-  <div class="container">
-    <div class="row">
-      <slot />
+<section class="section-sm">
+  <div class="pb-0">
+    <div class="container">
+      <div class="row">
+        <slot />
+      </div>
     </div>
   </div>
-</div>
+</section>
+

@@ -9,7 +9,7 @@
   "settings": {
     "search_enabled": true,
     "searchable_collections": ["about", "authors", "blog", "docs", "terms"],
-    "sticky_header": false,
+    "sticky_header": true,
     "theme_switcher": true,
     "default_theme": "system",
     "pagination": 4,

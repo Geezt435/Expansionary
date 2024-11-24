@@ -21,8 +21,8 @@ const { settings } = config;
 const { pathname } = Astro.url;
 ---
 
-<header class={`header z-30 ${settings.sticky_header && "sticky top-0"}`}>
-  <nav class="navbar container">
+<header class={`container glass my-4 py-2 z-30 rounded-lg ${settings.sticky_header && "sticky top-0"}`}>
+  <nav class="relative flex flex-wrap items-center justify-between">
     <!-- navbar toggler -->
     <input id="nav-toggle" type="checkbox" class="hidden" />
     <label
@@ -43,14 +43,14 @@ const { pathname } = Astro.url;
     <!-- /navbar toggler -->
     <ul
       id="nav-menu"
-      class="navbar-nav order-3 hidden w-full pb-6 md:order-1 md:flex md:w-auto md:space-x-2 md:pb-0 lg:space-x-4"
+      class="text-center lg:text-left order-3 hidden w-full pb-6 md:order-1 md:flex md:w-auto md:space-x-2 md:pb-0 lg:space-x-4"
     >
       {
         main.map((menu) => (
-          <li class="nav-item">
+          <li class="">
             <a
               href={menu.url}
-              class={`nav-link block ${
+              class={`block p-3 font-primary font-semibold text-dark transition hover:text-primary dark:text-darkmode-dark lg:px-2 lg:py-3 ${
                 (pathname === `${menu.url}/` || pathname === menu.url) &&
                 "active"
               }`}

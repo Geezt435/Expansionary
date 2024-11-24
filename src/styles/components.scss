@@ -11,15 +11,6 @@
   @apply mx-auto max-w-[1200px] px-4;
 }
 
-// form style
-.form-input {
-  @apply w-full rounded border-transparent bg-theme-light px-6 py-4 text-dark placeholder:text-light focus:border-primary focus:ring-transparent dark:border-darkmode-border dark:bg-darkmode-theme-light dark:text-darkmode-light;
-}
-
-.form-label {
-  @apply mb-4 block font-secondary text-xl font-normal text-dark dark:text-darkmode-light;
-}
-
 // social icons
 .social-icons {
   @apply space-x-4;
@@ -36,14 +27,14 @@
 
 // notice
 .notice {
-  @apply mb-6 rounded-lg border px-8 py-6;
+  @apply mb-6 rounded-lg border p-4;
   &-head {
     @apply flex items-center;
     svg {
-      @apply mr-3;
+      @apply mr-2;
     }
     p {
-      @apply font-secondary text-xl font-semibold text-dark dark:text-darkmode-light;
+      @apply font-secondary text-xl font-semibold text-dark dark:text-darkmode-light -mb-1;
     }
   }
   .notice-body {
@@ -116,22 +107,22 @@
 
 // accordion
 .accordion {
-  @apply mb-6 overflow-hidden rounded-lg border border-border bg-theme-light dark:border-darkmode-border dark:bg-darkmode-theme-light;
+  @apply mb-6 overflow-hidden rounded-lg border border-border dark:border-darkmode-border;
   &-header {
-    @apply flex w-full cursor-pointer items-center justify-between px-8 py-4 text-lg text-dark dark:bg-darkmode-theme-light dark:text-darkmode-light;
+    @apply flex w-full cursor-pointer items-center justify-between p-4 pb-2 text-lg text-dark dark:bg-darkmode-theme-light dark:text-darkmode-light;
   }
   &-icon {
     @apply ml-auto h-[.8em] w-[.8em] rotate-[-90deg] transition-transform duration-200;
   }
   &-content {
-    @apply max-h-0 overflow-hidden px-8 py-0;
+    @apply max-h-0 overflow-hidden px-4 py-0;
   }
   &.active {
     .accordion-icon {
       @apply rotate-0;
     }
     .accordion-content {
-      @apply max-h-screen;
+      @apply max-h-screen py-0;
     }
   }
 }
@@ -167,7 +158,7 @@
   @apply prose-li:text-text prose-li:dark:text-darkmode-text;
   @apply prose-table:relative prose-table:overflow-hidden prose-table:rounded-lg prose-table:before:absolute prose-table:before:left-0 prose-table:before:top-0 prose-table:before:h-full prose-table:before:w-full prose-table:before:rounded-[inherit] prose-table:before:border prose-table:before:content-[""] prose-table:before:dark:border-darkmode-border;
   @apply prose-thead:border-border prose-thead:bg-theme-light prose-thead:dark:border-darkmode-border prose-thead:dark:bg-darkmode-theme-light;
-  @apply prose-th:relative prose-th:z-10 prose-th:px-4 prose-th:py-[18px] prose-th:text-dark prose-th:dark:text-darkmode-text;
+  @apply prose-th:relative prose-th:z-10 prose-th:px-4 prose-th:py-[10px] prose-th:text-dark prose-th:dark:text-darkmode-text;
   @apply prose-tr:border-border prose-tr:dark:border-darkmode-border;
-  @apply prose-td:relative prose-td:z-10 prose-td:px-3 prose-td:py-[18px] prose-td:dark:text-darkmode-text;
+  @apply prose-td:relative prose-td:z-10 prose-td:px-3 prose-td:py-[10px] prose-td:dark:text-darkmode-text;
 }

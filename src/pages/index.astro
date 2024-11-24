@@ -4,6 +4,8 @@ import { markdownify } from "@/lib/utils/textConverter";
 import Testimonials from "@/components/Testimonials.astro";
 import { getEntry } from "astro:content";
 import Button from "@/components/Button.astro";
+import { Image } from "astro:assets";
+import mtn from "@assets/docs/mtn-lake.jpg";
 
 const homepage = await getEntry("home", "-index");
 const { banner, testimonials } = homepage.data;
@@ -31,6 +33,19 @@ const { banner, testimonials } = homepage.data;
       </div>
     </div>
   </section>
+
+  <!-- <div class="relative">
+    <Image
+      class="mx-auto mb-6 rounded-lg"
+      src={mtn}
+      width={mtn.width}
+      height={mtn.height}
+      alt={"mtn"}
+      format="webp"
+    />
+    <div class="hover:frost absolute bottom-0 w-full h-full rounded-lg"/>
+  </div> -->
+
   <!-- /Banner -->
   <Testimonials testimonials={testimonials} />
 </Base>

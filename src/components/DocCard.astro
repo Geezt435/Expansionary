@@ -10,7 +10,7 @@ const { data }: Props = Astro.props;
 const { title, description } = data.data;
 ---
 
-<Card>
+<Card style="p-4">
   <a href={`/docs/${data.id}`}>
     <h4 class="mb-3">
       {title}
