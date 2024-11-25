@@ -19,7 +19,7 @@ All pages share a customizable set of frontmatter properties that control their 
 ```yaml
 ---
 title: Sample
-author: reednel
+author: Jane Doe
 pubDatetime: 2024-04-09T12:00:00-05:30
 modDatetime: 2024-08-01T12:00:00-05:30 
 description: 'Sample description'
