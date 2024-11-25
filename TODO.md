@@ -1,11 +1,22 @@
 # TO DO
 
-- [ ] Make the search work across collection types
-- [ ] Make search check content in addition to title, category, and tag
+- [x] Make the search work across collection types
+- [x] Make search check content in addition to title, category, and tag
 - [ ] Make Docs table of contents bold on the current heading
 - [ ] Make Docs browser bold on the current doc
 - [x] Structure Docs folder pages to be visually appealing
-- [ ] Centralize customizable items to enable more rapid personalization of the template
+- [x] Centralize customizable items to enable more rapid personalization of the template
 - [x] Create explicit types across the app
 - [x] Prep for upgrade to Astro v5
 - [x] Tighten up the Blog post browser
+- [x] Make everything turn to glass in an instant
+- [x] Add border/shadow functionality to glass panes
+- [ ] Tighten up the CSS/Tailwind Config pipeline
+- [ ] Make a Customization Quickstart guide, to explain the most significant areas of interest
+- [ ] Untangle the mess that is DocBrowser
+- [ ] Import the food collection from `origin/develop`, update it accordingly
+- [ ] Turn the carousel into a proper component and use it to display author posts?
+- [ ] Add images to docCards, build their style around that
+- [ ] Either clean up and domesticate the shortcodes, or replace them with ones from other templates.
+- [ ] Create a component that puts an image on the left and text on the right and vice-versa for Advynt prep
+- [ ] We might want an "opaque glass" component that has translucency and contrast on glass, but turns opaque instead of transparent on "no-glass" mode. It's only relevant in a few places.
