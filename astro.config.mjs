@@ -28,8 +28,7 @@ export default defineConfig({
     }], remarkMath],
     rehypePlugins: [[rehypeKatex, {}]],
     shikiConfig: {
-      theme: "one-dark-pro",
-      wrap: true
+      theme: "dark-plus", // https://shiki.style/themes
     },
     extendDefaultPlugins: true
   },

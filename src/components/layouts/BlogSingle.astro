@@ -13,7 +13,6 @@ import {
 } from "@/lib/utils/textConverter";
 import type { BlogEntry } from "@/types";
 import TableOfContents from "@/components/TableOfContents.astro";
-import { ScrollArea } from "@/components/shortcodes/ScrollArea";
 import { settings } from "@/config/config.json";
 
 import { Image } from "astro:assets";
@@ -57,7 +56,7 @@ tags?.sort((a: string, b: string) => a.localeCompare(b));
       <section >
         {
           image && (
-            <div class="mb-8">
+            <div class="mb-8 mt-2">
               <Image
                 src={image}
                 height={500}
@@ -158,13 +157,11 @@ tags?.sort((a: string, b: string) => a.localeCompare(b));
     }
   </div>
   <div
-    class=`py-4 hidden md:flex max-h-static_sidemenu sticky top-[4rem] ${hide_toc ? "" : "px-6 md:col-3"}`
+    class=`hidden md:flex max-h-static_sidemenu sticky top-[5rem] ${hide_toc ? "" : "mx-4 md:col-3"}`
   >
     {
       !settings.hide_blog_toc && !hide_toc && (
-        <ScrollArea className="h-full w-full" client:only="react">
-          <TableOfContents {headings} />
-        </ScrollArea>
+        <TableOfContents {headings} />
       )
     }
   </div>

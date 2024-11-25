@@ -9,8 +9,8 @@ interface Props {
 const { title = "" }: Props = Astro.props;
 ---
 
-<section>
-  <div class="container text-center -mb-8">
+<section class="flex justify-center">
+  <div class="container text-center m-2">
     <div class="rounded-lg p-0 bg-gradient-to-t gradient-1c">
       <div class="rounded-lg glass px-8 py-6">
         <h1 set:text={upperHumanize(title)} />

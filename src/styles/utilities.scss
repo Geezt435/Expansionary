@@ -11,16 +11,24 @@
   @apply rounded-[16px];
 }
 
-.gradient-1c {
-  // @apply from-text dark:from-darkmode-text via-transparent to-transparent;
-  @apply from-transparent via-transparent to-transparent;
-}
-
+/* No Glass */
+// .glass {
+//   @apply bg-body dark:bg-darkmode-body;
+//   @apply bg-opacity-100;
+// }
+// .gradient-1c {
+//   @apply from-text via-transparent to-transparent;
+//   @apply dark:from-darkmode-text dark:via-transparent dark:to-transparent;
+// }
+/* Glass */
 .glass {
   @apply bg-body dark:bg-darkmode-body;
-  @apply bg-opacity-40 dark:bg-opacity-30;
+  @apply bg-opacity-40 dark:bg-opacity-40;
   @apply backdrop-blur-md;
   @apply bg-clip-padding backdrop-filter backdrop-saturate-100 backdrop-contrast-100;
-  // @apply border border-[rgba(255,255,255,0.6)] dark:border-[rgba(255,255,255,0.2)];
-  // box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+  @apply border border-[rgba(255,255,255,0.6)] dark:border-[rgba(255,255,255,0.15)];
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+.gradient-1c {
+  @apply from-transparent via-transparent to-transparent;
 }

@@ -67,7 +67,7 @@ const Search = ({ searchList }: Props) => {
           <div className="lg:col-8 px-0">
             <div className="flex flex-nowrap">
               <input
-                className="w-full glass rounded border-transparent px-6 py-4 text-dark placeholder:text-light focus:border-transparent focus:ring-transparent dark:text-darkmode-light"
+                className="w-full glass rounded px-6 py-4 text-dark placeholder:text-light dark:placeholder:text-darkmode-light focus:border-darkmode-light focus:ring-transparent dark:text-darkmode-light"
                 placeholder="search posts"
                 type="search"
                 name="search"

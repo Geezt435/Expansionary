@@ -2,13 +2,13 @@
 # Banner
 banner:
   title: Pages
-  content: A starter template for a blog and things.
+  content: A rapidly-customizable template for a blog, documentation, and more.
   button:
-    label: Get Started on Github
+    label: See the Code
     link: https://github.com/reednel/pages
 
 testimonials:
-  enable: true
+  enable: false
   title: What Users Are Saying About Pages
   description: Don't just take our word for it - hear from some of our satisfied users!
   items:

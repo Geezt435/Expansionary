@@ -5,17 +5,31 @@ interface Props {
   newtab?: boolean;
   type?: "primary" | "secondary";
   color?: string;
-  hoverInvert?: boolean;
+  hoverInvert: boolean;
+  glass?: boolean;
 }
 
-const { label, link, newtab=false, type="primary", color, hoverInvert=false }: Props = Astro.props;
+const { label, link, newtab=false, type="primary", color, hoverInvert=false, glass=false }: Props = Astro.props;
 ---
 
-<a 
+{ glass ? (
+  <a 
+    href={link} 
+    target=`${newtab ? "_blank" : ""}`
+    class="no-underline inline-block hover:opacity-100"
+  >
+    <div class=`glass hover:bg-opacity-20 hover:backdrop-blur-none
+      ${type == "primary" ? "px-4 py-2 rounded-md font-bold" : "px-2 py-0.5 rounded-sm"}`
+    >
+      {label}
+    </div>
+  </a>
+) : (
+  <a 
   href={link} 
   target=`${newtab ? "_blank" : ""}`
   class=`no-underline inline-block group ${hoverInvert ? "hover:opacity-100" : ""}`
->
+  >
   <div class=`
     ${color ? color : "bg-light dark:bg-darkmode-light"}
     ${type == "primary" ? "p-0.5 rounded-md" : "p-[1.5px] rounded-sm"}`
@@ -33,4 +47,5 @@ const { label, link, newtab=false, type="primary", color, hoverInvert=false }: P
       </div>
     </div>
   </div>
-</a>
+  </a>
+)}

@@ -6,9 +6,7 @@ interface Props {
 const { style="" }: Props = Astro.props;
 ---
 
-<!-- Gradient: bg-gradient-to-r from-text via-transparent to-transparent dark:from-darkmode-text -->
-
-<div class="h-full pl-0 bg-gradient-to-r gradient-1c rounded-l-lg">
+<div class="h-full m-2 pl-0 bg-gradient-to-br gradient-1c rounded-lg">
   <div class="glass h-full rounded-lg">
     <div class={style}>
       <slot />

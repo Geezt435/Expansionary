@@ -19,31 +19,27 @@ const { post }: Props = Astro.props;
 const { Content, headings } = await render(post);
 const { title, hide_sidenav, hide_toc, image, imageAlt } = post.data;
 const currentPage = new URL(Astro.request.url).pathname;
-
-const max_width = false;
 ---
 
-<section class="flex flex-1 flex-col md:flex-row container px-0">
+<section class="flex flex-1 flex-col md:flex-row container">
   <div
-    class=`py-4 hidden md:flex max-h-static_sidemenu sticky top-[4rem]
-    ${hide_toc && hide_sidenav && max_width ? "w-screen" : "pr-8 md:w-1/4 lg:w-1/5"}`
+    class=`hidden md:flex max-h-static_sidemenu sticky top-[5rem]
+    ${hide_toc && hide_sidenav ? "w-screen" : "mr-4 md:w-1/4 lg:w-1/5"}`
   >
-    <ScrollArea className="h-full w-full" client:only="react">
-      {
-        !config.settings.hide_doc_browser && !hide_sidenav && (
-          <DocBrowser currentPage={currentPage} items={menu} level={0} />
-        )
-      }
-    </ScrollArea>
+    {
+      !config.settings.hide_doc_browser && !hide_sidenav && (
+        <DocBrowser currentPage={currentPage} items={menu} level={0} />
+      )
+    }
   </div>
   <div
-    class=`w-full ${hide_toc && hide_sidenav && max_width ? "" : "md:w-3/4 lg:w-3/5"}`
+    class=`w-full ${hide_toc && hide_sidenav ? "" : "md:w-3/4 lg:w-3/5"}`
   >
     <article class="">
-      <section>
+      <section class="">
         {
           image && (
-            <div class="mb-8">
+            <div class="mb-8 mt-2">
               <Image
                 src={image}
                 height={500}
@@ -55,23 +51,20 @@ const max_width = false;
             </div>
           )
         }
-        <div class="glass mb-8 mt-4 p-4 rounded-lg">
-          <h1 set:html={markdownify(title)} class="" />
-        </div>
       </section>
-      <section class="content mb-4 glass p-4 rounded-lg">
+      <section class="content m-2 glass p-4 rounded-lg">
+        <h1 set:html={markdownify(title)} class="mt-2" />
+        <hr class="my-2" />
         <Content />
       </section>
     </article>
   </div>
   <div
-    class=`py-4 hidden lg:flex max-h-static_sidemenu sticky top-[4rem] ${hide_toc && hide_sidenav && max_width ? "" : "pl-8 lg:w-1/5"}`
+    class=`hidden lg:flex max-h-static_sidemenu sticky top-[5rem] ${hide_toc && hide_sidenav ? "" : "ml-4 lg:w-1/5"}`
   >
     {
       !config.settings.hide_doc_toc && !hide_toc && (
-        <ScrollArea className="h-full w-full" client:only="react">
-          <TableOfContents {headings} />
-        </ScrollArea>
+        <TableOfContents {headings} />
       )
     }
   </div>
