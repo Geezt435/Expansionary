@@ -1,37 +1,30 @@
 ---
 import config from "@/config/config.json";
 import Base from "@layouts/Base.astro";
-import BlogGroup from "@layouts/BlogGroup.astro";
+import RecipeGroup from "@layouts/RecipeGroup.astro";
 import { getSinglePages } from "@/lib/contentParser.astro";
-import { getAllTaxonomy, getTaxonomy } from "@/lib/taxonomyParser.astro";
 import { sortByDate } from "@/lib/utils/sortFunctions";
 import { getEntry } from "astro:content";
-import type { BlogEntry } from "@/types";
+import type { RecipesEntry } from "@/types";
 
 const { slug } = Astro.params;
 const currentPage = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
-const postIndex = await getEntry("blog", "-index");
-const posts: BlogEntry[] = await getSinglePages("blog");
-const allCategories = await getAllTaxonomy("blog", "categories");
-const categories = await getTaxonomy("blog", "categories");
-const tags = await getTaxonomy("blog", "tags");
-const sortedPosts: BlogEntry[]  = sortByDate(posts);
+const postIndex = await getEntry("recipes", "-index");
+const posts: RecipesEntry[] = await getSinglePages("recipes");
+const sortedPosts: RecipesEntry[]  = sortByDate(posts);
 const totalPages: number = Math.ceil(posts.length / config.settings.pagination);
 const currentPosts = sortedPosts.slice(0, config.settings.pagination);
 ---
 
 <Base
   title={postIndex.data.title}
-  image={postIndex.data.image}
+  image={postIndex.data.image?.src}
   description={postIndex.data.description}
 >
-  <BlogGroup
+  <RecipeGroup
     postIndex={postIndex}
     currentPosts={currentPosts}
-    totalPages={totalPages}
-    categories={categories}
-    tags={tags}
-    allCategories={allCategories}
     currentPage={currentPage}
+    totalPages={totalPages}
   />
 </Base>

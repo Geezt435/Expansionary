@@ -14,13 +14,16 @@ import remarkMath from "remark-math";
 export default defineConfig({
   site: config.site.base_url,
   base: config.site.base_path,
-  trailingSlash: config.site.trailing_slash ? "always" : "never",
+  trailingSlash: "ignore",
+  prefetch: {
+    prefetchAll: true
+  },
   integrations: [react(), sitemap(), tailwind({
     config: {
       applyBaseStyles: false
     }
   }), AutoImport({
-    imports: ["@/components/Button.astro", "@/shortcodes/Accordion", "@/shortcodes/Notice", "@/shortcodes/Youtube", "@/shortcodes/Tabs", "@/shortcodes/Tab"]
+    imports: ["@components/Button.astro", "@shortcodes/Accordion", "@shortcodes/Notice", "@shortcodes/Youtube", "@shortcodes/Tabs", "@shortcodes/Tab"]
   }), mdx()],
   markdown: {
     remarkPlugins: [remarkToc, [remarkCollapse, {

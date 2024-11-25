@@ -1,0 +1,40 @@
+---
+import RecipeCard from "@components/RecipeCard.astro";
+import Pagination from "@components/Pagination.astro";
+import PageHeader from "@components/PageHeader.astro";
+import type { RecipesEntry } from "@/types";
+
+interface Props {
+  postIndex: RecipesEntry;
+  currentPosts: RecipesEntry[];
+  currentPage: number;
+  totalPages: number;
+}
+
+const {
+  postIndex,
+  currentPosts,
+  currentPage,
+  totalPages,
+}: Props = Astro.props;
+---
+
+<PageHeader title={postIndex.data.title} />
+<section class="section">
+  <div class="container">
+    <div class="row">
+      {
+        currentPosts.map((post) => (
+          <div class="mb-4 md:mb-8 md:col-6 lg:col-4">
+            <RecipeCard data={post} />
+          </div>
+        ))
+      }
+    </div>
+    <Pagination
+      section="recipes"
+      currentPage={currentPage}
+      totalPages={totalPages}
+    />
+  </div>
+</section>

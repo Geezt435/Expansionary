@@ -14,7 +14,7 @@
 - [ ] Tighten up the CSS/Tailwind Config pipeline
 - [ ] Make a Customization Quickstart guide, to explain the most significant areas of interest
 - [ ] Untangle the mess that is DocBrowser
-- [ ] Import the food collection from `origin/develop`, update it accordingly
+- [ ] Import the recipes collection from `origin/develop`, update it accordingly
 - [ ] Turn the carousel into a proper component and use it to display author posts?
 - [ ] Add images to docCards, build their style around that
 - [ ] Either clean up and domesticate the shortcodes, or replace them with ones from other templates.

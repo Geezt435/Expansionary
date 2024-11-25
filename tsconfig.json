@@ -14,9 +14,10 @@
     "types": ["@astrojs/client"],
     "paths": {
       "@assets/*": ["./src/assets/*"],
-      "@/layouts/*": ["src/components/layouts/*"],
-      "@/shortcodes/*": ["src/components/shortcodes/*"],
-      "@/helpers/*": ["src/components/helpers/*"],
+      "@components/*": ["./src/components/*"],
+      "@layouts/*": ["src/components/layouts/*"],
+      "@shortcodes/*": ["src/components/shortcodes/*"],
+      "@helpers/*": ["src/components/helpers/*"],
       "@/*": ["./src/*"]
     }
   },

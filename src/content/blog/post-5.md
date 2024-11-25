@@ -2,7 +2,7 @@
 title: Why to build an Application with modern Technology
 description: this is meta description
 date: 2022-05-04T05:00:00Z
-image: "@/assets/image-placeholder.png"
+image: "@assets/image-placeholder.png"
 categories: [Technology]
 author: Sam Wilson
 tags: [technology, tailwind]

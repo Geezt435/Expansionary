@@ -1,0 +1,35 @@
+---
+import { Image } from "astro:assets";
+import type { RecipesEntry } from "@/types";
+
+interface Props {
+  data: RecipesEntry;
+}
+
+const { data } = Astro.props;
+const { title, image } = data.data;
+---
+
+<div class="bg-body dark:bg-darkmode-body">
+  <a href={`/recipes/${data.id}`}>
+    <div class="relative">
+      {
+        image && (
+          <Image
+            class="mb-2 w-full rounded"
+            src={image}
+            alt={title}
+            width={1280}
+            height={720}
+            format="webp"
+          />
+        )
+      }
+      <div class="bg-theme-light bg-opacity-50 dark:bg-darkmode-theme-light dark:bg-opacity-60 rounded absolute bottom-0 px-2 py-1">
+        <h4 class="opacity-70 dark:opacity-70 font-normal">
+          {title}
+        </h4>
+      </div>
+    </div>
+  </a>
+</div>

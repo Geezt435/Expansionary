@@ -1,11 +1,9 @@
 ---
-import Base from "@/layouts/Base.astro";
+import Base from "@layouts/Base.astro";
 import { markdownify } from "@/lib/utils/textConverter";
-import Testimonials from "@/components/Testimonials.astro";
+import Testimonials from "@components/Testimonials.astro";
 import { getEntry } from "astro:content";
-import Button from "@/components/Button.astro";
-import { Image } from "astro:assets";
-import mtn from "@assets/docs/mtn-lake.jpg";
+import Button from "@components/Button.astro";
 
 const homepage = await getEntry("home", "-index");
 const { banner, testimonials } = homepage.data;

@@ -6,9 +6,10 @@ export type AuthorsEntry = CollectionEntry<"authors">;
 export type BlogEntry = CollectionEntry<"blog">;
 export type DocsEntry = CollectionEntry<"docs">;
 export type HomeEntry = CollectionEntry<"home">;
+export type RecipesEntry = CollectionEntry<"recipes">;
 export type TermsEntry = CollectionEntry<"terms">;
 
-export type SearchableEntry = AboutEntry | AuthorsEntry | BlogEntry | DocsEntry | TermsEntry;
+export type SearchableEntry = AboutEntry | AuthorsEntry | BlogEntry | DocsEntry | RecipesEntry | TermsEntry;
 
 // Define heading hierarchy so that we can generate ToC
 export interface HeadingHierarchy extends MarkdownHeading {

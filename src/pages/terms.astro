@@ -1,6 +1,6 @@
 ---
-import Base from "@/layouts/Base.astro";
-import PageHeader from "@/components/PageHeader.astro";
+import Base from "@layouts/Base.astro";
+import PageHeader from "@components/PageHeader.astro";
 import { getEntry, render } from 'astro:content';
 
 const terms = await getEntry("terms", "-index");

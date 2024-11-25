@@ -1,10 +1,10 @@
 ---
-import BlogCard from "@/components/BlogCard.astro";
-import Pagination from "@/components/Pagination.astro";
-import PageHeader from "@/components/PageHeader.astro";
-import BlogSidebar from "@/components/BlogSidebar.astro";
+import BlogCard from "@components/BlogCard.astro";
+import Pagination from "@components/Pagination.astro";
+import PageHeader from "@components/PageHeader.astro";
+import BlogSidebar from "@components/BlogSidebar.astro";
 import type { BlogEntry } from "@/types";
-import { ScrollArea } from "@/components/shortcodes/ScrollArea";
+import { ScrollArea } from "@components/shortcodes/ScrollArea";
 
 interface Props {
   postIndex: BlogEntry;
@@ -16,7 +16,15 @@ interface Props {
   currentPage: number;
 }
 
-const { postIndex, allCategories, categories, tags, totalPages, currentPosts, currentPage }: Props = Astro.props;
+const {
+  postIndex,
+  allCategories,
+  categories,
+  tags,
+  totalPages,
+  currentPosts,
+  currentPage,
+}: Props = Astro.props;
 ---
 
 <PageHeader title={postIndex.data.title} />
@@ -34,7 +42,11 @@ const { postIndex, allCategories, categories, tags, totalPages, currentPosts, cu
             ))
           }
         </div>
-        <Pagination section={"blog"} currentPage={currentPage} totalPages={totalPages} />
+        <Pagination
+          section="blog"
+          currentPage={currentPage}
+          totalPages={totalPages}
+        />
       </div>
       <!-- sidebar -->
       <div

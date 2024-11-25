@@ -2,8 +2,7 @@
   "site": {
     "title": "Pages",
     "base_url": "https://janedoe.com",
-    "base_path": "/",
-    "trailing_slash": false
+    "base_path": "/"
   },
 
   "settings": {
@@ -21,7 +20,7 @@
 
   "metadata": {
     "meta_author": "Jane Doe",
-    "meta_image": "@/assets/og-image.png",
+    "meta_image": "@assets/og-image.png",
     "meta_description": "Template website"
   }
 }

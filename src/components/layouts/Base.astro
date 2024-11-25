@@ -1,10 +1,11 @@
 ---
 import config from "@/config/config.json";
 import { plainify } from "@/lib/utils/textConverter";
-import Footer from "@/components/Footer.astro";
-import Header from "@/components/Header.astro";
+import Footer from "@components/Footer.astro";
+import Header from "@components/Header.astro";
 import "@/styles/main.scss";
 import type { ImageMetadata } from "astro";
+import { ClientRouter } from 'astro:transitions';
 
 // types for frontmatters
 export interface Props {
@@ -26,7 +27,7 @@ const { title, description, image, noindex, canonical }: Props = Astro.props;
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="sitemap" href="/sitemap-index.xml" />
 
     <!-- theme meta -->
     <meta name="theme-name" content="pages" />
@@ -133,10 +134,17 @@ const { title, description, image, noindex, canonical }: Props = Astro.props;
       integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ"
       crossorigin="anonymous"
     />
+
+    <!-- 
+     <ClientRouter />
+     transition:animate="slide"
+     https://5-0-0-beta.docs.astro.build/en/guides/view-transitions/#_top
+     -->
+    
   </head>
   <body>
-    <Header />
-    <main id="main-content" class="flex-1">
+    <Header/>
+    <main id="main-content" class="flex-1" >
       <slot />
     </main>
     <Footer />
