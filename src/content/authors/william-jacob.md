@@ -1,7 +1,7 @@
 ---
 title: William Jacob
 email: williamjacob@email.com
-image: "@assets/avatar.png"
+image: "@assets/profile/avatar.png"
 autodescription: false
 social:
   - name: github
