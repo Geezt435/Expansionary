@@ -11,6 +11,37 @@ export type TermsEntry = CollectionEntry<"terms">;
 
 export type SearchableEntry = AboutEntry | AuthorsEntry | BlogEntry | DocsEntry | RecipesEntry | TermsEntry;
 
+export type AboutData = CollectionEntry<"about">["data"];
+export type AuthorsData = CollectionEntry<"authors">["data"];
+export type BlogData = CollectionEntry<"blog">["data"];
+export type DocsData = CollectionEntry<"docs">["data"];
+export type HomeData = CollectionEntry<"home">["data"];
+export type RecipesData = CollectionEntry<"recipes">["data"];
+export type TermsData = CollectionEntry<"terms">["data"];
+
+export type AuthorsIndex = {
+  title: string;
+  description: string | null;
+};
+
+export type BlogIndex = {
+  title: string;
+  description: string | null;
+};
+
+export type DocsIndex = {
+  title: string;
+  description: string | null;
+  image: string | null;
+  imageAlt: string | null;
+  draft: boolean | null;
+};
+
+export type RecipesIndex = {
+  title: string;
+  description: string | null;
+};
+
 // Define heading hierarchy so that we can generate ToC
 export interface HeadingHierarchy extends MarkdownHeading {
   subheadings: HeadingHierarchy[];

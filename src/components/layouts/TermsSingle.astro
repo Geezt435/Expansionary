@@ -1,0 +1,28 @@
+---
+import Base from "@layouts/Base.astro";
+import PageHeader from "@components/PageHeader.astro";
+import type { TermsData } from "@/types";
+
+interface Props {
+    data: TermsData
+}
+
+const { data } = Astro.props;
+const { title, description } = data;
+---
+
+<Base 
+    title={title}
+    description={description}
+>
+  <PageHeader title={title} />
+  <section class="section-sm">
+    <div class="">
+      <div class="row justify-center">
+        <div class="col-10 content glass rounded-lg p-4">
+          <slot />
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

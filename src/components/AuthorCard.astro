@@ -12,26 +12,26 @@ const { data }: Props = Astro.props;
 const { title, image, imageAlt, social } = data.data;
 ---
 
-<div
-  class="glass rounded-lg p-4 text-center"
->
-  {
-    image && (
-      <Image
-        class="mx-auto mb-6 rounded"
-        src={image}
-        alt={imageAlt}
-        width={120}
-        height={120}
-        format="webp"
-      />
-    )
-  }
-  <h4 class="mb-3">
-    <a href={`/authors/${data.id}`}>{title}</a>
-  </h4>
-  <p class="mb-4">
-    {plainify(data.body?.slice(0, 100))}
-  </p>
-  <Social source={social} className="social-icons" />
+<div class="mb-14 md:col-6 lg:col-4">
+  <div class="glass rounded-lg p-4 text-center">
+    {
+      image && (
+        <Image
+          class="mx-auto mb-6 rounded"
+          src={image}
+          alt={imageAlt}
+          width={120}
+          height={120}
+          format="webp"
+        />
+      )
+    }
+    <h4 class="mb-3">
+      <a href={`/authors/${data.id}`}>{title}</a>
+    </h4>
+    <p class="mb-4">
+      {plainify(data.body?.slice(0, 100))}
+    </p>
+    <Social source={social} className="social-icons" />
+  </div>
 </div>

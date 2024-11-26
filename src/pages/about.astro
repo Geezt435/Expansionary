@@ -1,42 +1,13 @@
 ---
-import Base from "@layouts/Base.astro";
-import { markdownify } from "@/lib/utils/textConverter";
+import AboutSingle from '@layouts/AboutSingle.astro';
 import { getEntry, render } from 'astro:content';
-import { Image } from "astro:assets";
-import profile from "@assets/profile/avatar.png";
 
 const about = await getEntry("about", "-index");
 const { Content } = await render(about);
-const { title, description, image, imageAlt } = about.data;
 ---
 
-<Base
-  title={title}
-  description={description}
-  image={image?.src}
+<AboutSingle
+  data={about.data}
 >
-  <section class="section-sm">
-    <div class="container">
-      <div class="row justify-center">
-        <div class="glass rounded-lg text-center p-8 md:col-10 lg:col-7">
-          {
-            profile && (
-              <Image
-                class="mx-auto mb-6 rounded-lg  w-64"
-                src={profile}
-                width={1024}
-                height={1024}
-                alt={imageAlt}
-                format="webp"
-              />
-            )
-          }
-          <h2 set:html={markdownify(title)} class="h3 mb-6" />
-          <div class="content">
-            <Content />
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</Base>
+  <Content />
+</AboutSingle>

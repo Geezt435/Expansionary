@@ -1,0 +1,45 @@
+---
+import Base from "@layouts/Base.astro";
+import { markdownify } from "@/lib/utils/textConverter";
+import { Image } from "astro:assets";
+import profile from "@assets/profile/avatar.png";
+import type { AboutData } from "@/types";
+
+interface Props {
+    data: AboutData;
+}
+
+const { data } = Astro.props;
+const { title, description, image, imageAlt } = data;
+---
+
+<Base
+  title={title}
+  description={description}
+  image={image?.src}
+>
+  <section class="section-sm">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="glass rounded-lg text-center p-8 md:col-10 lg:col-7">
+          {
+            profile && (
+              <Image
+                class="mx-auto mb-6 rounded-lg  w-64"
+                src={profile}
+                width={1024}
+                height={1024}
+                alt={imageAlt}
+                format="webp"
+              />
+            )
+          }
+          <h2 set:html={markdownify(title)} class="h3 mb-6" />
+          <div class="content">
+            <slot />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

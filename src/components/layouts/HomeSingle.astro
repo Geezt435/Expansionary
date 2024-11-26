@@ -1,0 +1,40 @@
+---
+import Base from "@layouts/Base.astro";
+import { markdownify } from "@/lib/utils/textConverter";
+import Testimonials from "@components/Testimonials.astro";
+import Button from "@components/Button.astro";
+import type { HomeData } from "@/types";
+
+interface Props {
+    data: HomeData
+}
+
+const { data } = Astro.props;
+const { banner, testimonials } = data;
+---
+
+<Base>
+  <!-- Banner -->
+  <section class="section pt-14">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="text-center lg:col-7">
+          <h1 set:html={markdownify(banner.title)} class="mb-4" />
+          <p set:html={markdownify(banner.content)} class="mb-8" />
+          {
+            banner.button && (
+              <Button
+                label={banner.button.label}
+                link={banner.button.link}
+                newtab
+                hoverInvert
+              />
+            )
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /Banner -->
+  <Testimonials testimonials={testimonials} />
+</Base>

@@ -1,0 +1,23 @@
+---
+import type { AuthorsIndex } from "@/types";
+import Base from "@layouts/Base.astro";
+import PageHeader from "@components/PageHeader.astro";
+
+interface Props {
+  data: AuthorsIndex;
+}
+
+const { data } = Astro.props;
+const { title } = data;
+---
+
+<Base title={title}>
+  <PageHeader title={title} />
+  <section class="section-sm pb-0">
+    <div class="container">
+      <div class="row justify-center">
+        <slot />
+      </div>
+    </div>
+  </section>
+</Base>

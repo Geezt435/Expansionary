@@ -1,7 +1,12 @@
 ---
 import type { BlogEntry } from "@/types";
 import config from "@/config/config.json";
-import { upperHumanize, plainify, slugify, lowerHumanize } from "@/lib/utils/textConverter";
+import {
+  upperHumanize,
+  plainify,
+  slugify,
+  lowerHumanize,
+} from "@/lib/utils/textConverter";
 import {
   FaRegFolder,
   FaRegClock,
@@ -26,18 +31,18 @@ const { title, date, author, categories, tags, complexity } = data.data;
     </a>
   </h4>
   <ul class="mb-2">
-    { categories && (
-      <li class="mr-0 inline-block">
-        {
-          categories.map((category: string, index: number) => (
+    {
+      categories && (
+        <li class="mr-0 inline-block">
+          {categories.map((category: string, index: number) => (
             <a href={`/blog/categories/${slugify(category)}`}>
               <FaRegFolder className={"ml-2 -mt-1 inline-block"} />
               {upperHumanize(category)}
             </a>
-          ))
-        }
-      </li>
-    )}
+          ))}
+        </li>
+      )
+    }
     <!-- { tags && (
       <li class="mr-0 inline-block">
         {
@@ -50,18 +55,24 @@ const { title, date, author, categories, tags, complexity } = data.data;
         }
       </li>
     )} -->
-    { date && (
-      <li class="mr-0 inline-block">
-        <FaRegCalendarAlt className={"ml-2 -mt-1 inline-block"} />
-        {new Date(date).toLocaleDateString()}
-      </li>
-    )}
-    { complexity > 0 && (
-      <li class="mr-0 inline-block">
-        <FaRegClock className={"ml-2 -mt-1 inline-block"} />
-        {readingTime(data.body, complexity)}
-      </li>
-    )}
+    {
+      date && (
+        <li class="mr-0 inline-block">
+          <FaRegCalendarAlt className={"ml-2 -mt-1 inline-block"} />
+          {new Date(date).toLocaleDateString()}
+        </li>
+      )
+    }
+    {
+      complexity > 0 && (
+        <li class="mr-0 inline-block">
+          <FaRegClock className={"ml-2 -mt-1 inline-block"} />
+          {readingTime(data.body, complexity)}
+        </li>
+      )
+    }
   </ul>
-  <p class="">{plainify(data.body?.slice(0, Number(config.settings.summary_length)))}</p>
+  <p class="">
+    {plainify(data.body?.slice(0, Number(config.settings.summary_length)))}
+  </p>
 </Card>
