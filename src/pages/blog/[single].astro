@@ -1,28 +1,20 @@
 ---
 import type { BlogEntry } from "@/types";
-import Base from "@layouts/Base.astro";
+import { sortByDate } from "@/lib/utils/sortFunctions";
 import BlogSingle from "@layouts/BlogSingle.astro";
-import { getSinglePages } from "@/lib/contentParser.astro";
+import { getPages } from "@/lib/contentParser.astro";
 
 export async function getStaticPaths() {
-  const posts: BlogEntry[] = await getSinglePages("blog");
-  const paths = posts.map((post) => ({
+  const entries = (await getPages("blog", sortByDate)) as BlogEntry[];
+  const paths = entries.map((entry) => ({
     params: {
-      single: post.id,
+      single: entry.id,
     },
-    props: { post },
+    props: { entry },
   }));
   return paths;
 }
 
-const { post } = Astro.props;
-const { title, description, image } = post.data;
+const { entry } = Astro.props;
 ---
-
-<Base
-  title={title}
-  description={description}
-  image={image?.src}
->
-  <BlogSingle post={post} />
-</Base>
+<BlogSingle entry={entry} />

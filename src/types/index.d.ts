@@ -1,5 +1,7 @@
-import type { CollectionEntry } from "astro:content";
+import type { CollectionEntry, CollectionKey } from "astro:content";
 import type { MarkdownHeading } from "astro";
+
+export type GenericEntry = CollectionEntry<CollectionKey>;
 
 export type AboutEntry = CollectionEntry<"about">;
 export type AuthorsEntry = CollectionEntry<"authors">;
@@ -9,15 +11,13 @@ export type HomeEntry = CollectionEntry<"home">;
 export type RecipesEntry = CollectionEntry<"recipes">;
 export type TermsEntry = CollectionEntry<"terms">;
 
-export type SearchableEntry = AboutEntry | AuthorsEntry | BlogEntry | DocsEntry | RecipesEntry | TermsEntry;
-
-export type AboutData = CollectionEntry<"about">["data"];
-export type AuthorsData = CollectionEntry<"authors">["data"];
-export type BlogData = CollectionEntry<"blog">["data"];
-export type DocsData = CollectionEntry<"docs">["data"];
-export type HomeData = CollectionEntry<"home">["data"];
-export type RecipesData = CollectionEntry<"recipes">["data"];
-export type TermsData = CollectionEntry<"terms">["data"];
+export type SearchableEntry =
+  | AboutEntry
+  | AuthorsEntry
+  | BlogEntry
+  | DocsEntry
+  | RecipesEntry
+  | TermsEntry;
 
 export type AuthorsIndex = {
   title: string;
@@ -26,12 +26,12 @@ export type AuthorsIndex = {
 
 export type BlogIndex = {
   title: string;
-  description: string | null;
+  description?: string;
 };
 
 export type DocsIndex = {
   title: string;
-  description: string | null;
+  description?: string;
   image: string | null;
   imageAlt: string | null;
   draft: boolean | null;

@@ -1,4 +1,5 @@
 ---
+import Base from "@layouts/Base.astro";
 import BlogCard from "@components/BlogCard.astro";
 import Share from "@components/Share.astro";
 import { getSinglePages } from "@/lib/contentParser.astro";
@@ -26,11 +27,11 @@ import {
 } from "react-icons/fa/index.js";
 
 interface Props {
-  post: BlogEntry;
+  entry: BlogEntry;
 }
 
 const posts: BlogEntry[] = await getSinglePages("blog");
-const { post }: Props = Astro.props;
+const { entry }: Props = Astro.props;
 const {
   title,
   description,
@@ -42,14 +43,18 @@ const {
   tags,
   complexity,
   hide_toc,
-} = post.data;
-const similarPosts = similerItems(post, posts, post.id);
-const { Content, headings } = await render(post);
+} = entry.data;
+const similarPosts = similerItems(entry, posts, entry.id);
+const { Content, headings } = await render(entry);
 
 categories?.sort((a: string, b: string) => a.localeCompare(b));
 tags?.sort((a: string, b: string) => a.localeCompare(b));
 ---
-
+<Base
+  title={title}
+  description={description}
+  image={image?.src}
+>
 <section class="flex container">
   <div class=`w-full ${hide_toc ? "" : "md:col-9"}`>
     <article class="">
@@ -91,7 +96,7 @@ tags?.sort((a: string, b: string) => a.localeCompare(b));
               complexity > 0 && (
                 <li class="mr-1 inline-block">
                   <FaRegClock className={"ml-2 -mt-1 inline-block"} />
-                  {readingTime(post.body, complexity)}
+                  {readingTime(entry.body, complexity)}
                 </li>
               )
             }
@@ -133,7 +138,7 @@ tags?.sort((a: string, b: string) => a.localeCompare(b));
             title={title}
             description={description}
             folder={"blog"}
-            id={post.id}
+            id={entry.id}
           />
         </div>
       </section>
@@ -166,3 +171,4 @@ tags?.sort((a: string, b: string) => a.localeCompare(b));
     }
   </div>
 </section>
+</Base>
