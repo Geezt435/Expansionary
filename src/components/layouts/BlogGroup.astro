@@ -4,24 +4,21 @@ import BlogCard from "@components/BlogCard.astro";
 import Pagination from "@components/Pagination.astro";
 import PageHeader from "@components/PageHeader.astro";
 import BlogSidebar from "@components/BlogSidebar.astro";
-import type { BlogIndex } from "@/types";
-
 import config from "@/config/config.json";
-import { getPages } from "@/lib/contentParser.astro";
-import { sortByDate } from "@/lib/utils/sortFunctions";
-import { getEntry } from "astro:content";
 import type { BlogEntry } from "@/types";
 
 interface Props {
-  currentPage: number;
+  blogIndex: BlogEntry;
+  entries: BlogEntry[];
+  tags: string[];
+  categories: string[];
+  allCategories: string[];
+  pageNumber: number;
 }
 
-const { currentPage } = Astro.props;
+const { blogIndex, entries, tags, categories, allCategories, pageNumber } = Astro.props;
 
-const blogIndex = await getEntry("blog", "-index");
-const entries = (await getPages("blog", sortByDate)) as BlogEntry[];
-
-const indexOfLastEntry = currentPage * config.settings.pagination;
+const indexOfLastEntry = pageNumber * config.settings.pagination;
 const indexOfFirstEntry = indexOfLastEntry - config.settings.pagination;
 const currentEntries = entries.slice(indexOfFirstEntry, indexOfLastEntry);
 
@@ -41,14 +38,14 @@ const totalPages: number = Math.ceil(
             {
               currentEntries.map((entry) => (
                 <div class="pb-4">
-                  <BlogCard data={entry} />
+                  <BlogCard entry={entry} />
                 </div>
               ))
             }
           </div>
           <Pagination
             section="blog"
-            currentPage={currentPage}
+            pageNumber={pageNumber}
             totalPages={totalPages}
           />
         </div>
@@ -56,7 +53,11 @@ const totalPages: number = Math.ceil(
         <div
           class="hidden lg:col-4 lg:flex max-h-static_sidemenu sticky top-[4rem]"
         >
-          <BlogSidebar />
+          <BlogSidebar
+            tags={tags}
+            categories={categories}
+            allCategories={allCategories}
+          />
         </div>
       </div>
     </div>

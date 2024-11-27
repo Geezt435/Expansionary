@@ -4,7 +4,7 @@ import type { GenericEntry } from "@/types";
 
 export const getPages = async (
   collection: CollectionKey,
-  sortFunction: (array: any[]) => any[],
+  sortFunction?: ((array: any[]) => any[]),
   noIndex = true,
   noDrafts = true
 ): Promise<GenericEntry[]> => {

@@ -1,35 +1,24 @@
 ---
 import type { BlogEntry } from "@/types";
-import BlogCard from "@components/BlogCard.astro";
-import Base from "@layouts/Base.astro";
-import { getSinglePages } from "@/lib/contentParser.astro";
-import { getTaxonomy } from "@/lib/taxonomyParser.astro";
-import { upperHumanize } from "@/lib/utils/textConverter";
+import { getPages } from "@/lib/contentParser.astro";
+import { getTaxa } from "@/lib/taxonomyParser.astro";
 import taxonomyFilter from "@/lib/utils/taxonomyFilter";
-import DivisionSingle from "@layouts/DivisionSingle.astro";
+import TaxonSingle from "@layouts/TaxonSingle.astro";
 
 export async function getStaticPaths() {
-  const tags = await getTaxonomy("blog", "tags");
-  return tags.map((tag) => {
-    return {
-      params: { tag },
-    };
-  });
+  const taxa = await getTaxa("blog", "tags");
+  const paths = taxa.map((taxon) => ({
+    params: {
+      tag: taxon,
+    },
+    props: { taxon },
+  }));
+  return paths;
 }
 
-const { tag } = Astro.params;
-const posts: BlogEntry[] = await getSinglePages("blog");
-const filterByTags: BlogEntry[] = taxonomyFilter(posts, "tags", tag!);
+const { taxon } = Astro.props;
+const entries = await getPages("blog") as BlogEntry[];
+const filteredEntries: BlogEntry[] = taxonomyFilter(entries, "tags", taxon!);
 ---
 
-<Base title={upperHumanize(tag)}>
-  <DivisionSingle division="tags">
-    {
-      filterByTags.map((post) => (
-        <div class="py-2 md:py-4 md:col-6">
-          <BlogCard data={post} />
-        </div>
-      ))
-    }
-  </DivisionSingle>
-</Base>
+<TaxonSingle taxon={taxon} entries={filteredEntries} />

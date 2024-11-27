@@ -3,6 +3,7 @@ import type { BlogEntry } from "@/types";
 import { sortByDate } from "@/lib/utils/sortFunctions";
 import BlogSingle from "@layouts/BlogSingle.astro";
 import { getPages } from "@/lib/contentParser.astro";
+import similerItems from "@/lib/utils/similarItems";
 
 export async function getStaticPaths() {
   const entries = (await getPages("blog", sortByDate)) as BlogEntry[];
@@ -10,11 +11,13 @@ export async function getStaticPaths() {
     params: {
       single: entry.id,
     },
-    props: { entry },
+    props: { entry, entries },
   }));
   return paths;
 }
 
-const { entry } = Astro.props;
+const { entry, entries } = Astro.props;
+const relatedEntries = similerItems(entry, entries, entry.id);
 ---
-<BlogSingle entry={entry} />
+
+<BlogSingle entry={entry} relatedEntries={relatedEntries} />

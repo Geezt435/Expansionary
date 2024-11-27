@@ -1,16 +1,20 @@
 ---
-import type { AuthorsData } from "@/types";
 import BlogCard from "@components/BlogCard.astro";
 import Social from "@components/Social.astro";
 import Base from "@layouts/Base.astro";
 import { Image } from "astro:assets";
+import { render } from "astro:content";
+import type { AuthorsEntry, BlogEntry } from "@/types";
 
 interface Props {
-  data: AuthorsData;
+  entry: AuthorsEntry;
+  recentBlogEntries: BlogEntry[];
 }
 
-const { data } = Astro.props;
-const { title, social, description, image, imageAlt } = data;
+const { entry, recentBlogEntries } = Astro.props;
+const { title, social, description, image, imageAlt } = entry.data;
+
+const { Content } = await render(entry);
 ---
 
 <Base title={title} description={description} image={image?.src}>
@@ -34,14 +38,20 @@ const { title, social, description, image, imageAlt } = data;
           }
           <h1 class="h3 mb-6">{title}</h1>
           <div class="content">
-            <slot name="content" />
+            <Content />
           </div>
           <Social source={social} className="social-icons" />
         </div>
       </div>
 
       <div class="row justify-center pb-16 pt-14">
-        <slot name="authoredPosts" />
+        {
+          recentBlogEntries.map((entry) => (
+            <div class="mb-12 md:col-6 lg:col-4">
+              <BlogCard entry={entry} />
+            </div>
+          ))
+        }
       </div>
     </div>
   </section>

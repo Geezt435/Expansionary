@@ -17,16 +17,16 @@ import readingTime from "@/lib/utils/readingTime";
 import Card from "@components/Card.astro";
 
 interface Props {
-  data: BlogEntry;
+  entry: BlogEntry;
 }
 
-const { data }: Props = Astro.props;
-const { title, date, author, categories, tags, complexity } = data.data;
+const { entry }: Props = Astro.props;
+const { title, date, author, categories, tags, complexity } = entry.data;
 ---
 
 <Card style="p-4">
   <h4 class="mb-2">
-    <a href={`/blog/${data.id}`}>
+    <a href={`/blog/${entry.id}`}>
       {title}
     </a>
   </h4>
@@ -67,12 +67,12 @@ const { title, date, author, categories, tags, complexity } = data.data;
       complexity > 0 && (
         <li class="mr-0 inline-block">
           <FaRegClock className={"ml-2 -mt-1 inline-block"} />
-          {readingTime(data.body, complexity)}
+          {readingTime(entry.body, complexity)}
         </li>
       )
     }
   </ul>
   <p class="">
-    {plainify(data.body?.slice(0, Number(config.settings.summary_length)))}
+    {plainify(entry.body?.slice(0, Number(config.settings.summary_length)))}
   </p>
 </Card>

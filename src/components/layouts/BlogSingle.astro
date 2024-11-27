@@ -2,10 +2,8 @@
 import Base from "@layouts/Base.astro";
 import BlogCard from "@components/BlogCard.astro";
 import Share from "@components/Share.astro";
-import { getSinglePages } from "@/lib/contentParser.astro";
 import dateFormat from "@/lib/utils/dateFormat";
 import readingTime from "@/lib/utils/readingTime";
-import similerItems from "@/lib/utils/similarItems";
 import {
   lowerHumanize,
   upperHumanize,
@@ -28,10 +26,10 @@ import {
 
 interface Props {
   entry: BlogEntry;
+  relatedEntries: BlogEntry[];
 }
 
-const posts: BlogEntry[] = await getSinglePages("blog");
-const { entry }: Props = Astro.props;
+const { entry, relatedEntries }: Props = Astro.props;
 const {
   title,
   description,
@@ -44,131 +42,123 @@ const {
   complexity,
   hide_toc,
 } = entry.data;
-const similarPosts = similerItems(entry, posts, entry.id);
 const { Content, headings } = await render(entry);
 
 categories?.sort((a: string, b: string) => a.localeCompare(b));
 tags?.sort((a: string, b: string) => a.localeCompare(b));
 ---
-<Base
-  title={title}
-  description={description}
-  image={image?.src}
->
-<section class="flex container">
-  <div class=`w-full ${hide_toc ? "" : "md:col-9"}`>
-    <article class="">
-      <section >
-        {
-          image && (
-            <div class="mb-8 mt-2">
-              <Image
-                src={image}
-                height={500}
-                width={1200}
-                alt={imageAlt}
-                class="w-full rounded-lg"
-                format="webp"
-              />
-            </div>
-          )
-        }
-        <div class="glass mb-8 p-4 rounded-lg">
-          <h1 set:html={markdownify(title)} class="mb-4" />
-          <ul class="mb-4">
-            {
-              author && (
-                <li class="mr-1 inline-block">
-                  <FaRegUserCircle className={"-mt-1 inline-block"} />
-                  {upperHumanize(author)}
-                </li>
-              )
-            }
-            {
-              date && (
-                <li class="mr-1 inline-block">
-                  <FaRegCalendarAlt className={"ml-2 -mt-1 inline-block"} />
-                  {dateFormat(date)}
-                </li>
-              )
-            }
-            {
-              complexity > 0 && (
-                <li class="mr-1 inline-block">
-                  <FaRegClock className={"ml-2 -mt-1 inline-block"} />
-                  {readingTime(entry.body, complexity)}
-                </li>
-              )
-            }
-            {
-              categories && (
-                <li class="mr-1 inline-block">
-                  {categories.map((category: string, index: number) => (
-                    <a href={`/blog/categories/${slugify(category)}`}>
-                      <FaRegFolder className={"ml-2 -mt-1 inline-block"} />
-                      {upperHumanize(category)}
-                    </a>
-                  ))}
-                </li>
-              )
-            }
-            {
-              tags && (
-                <li class="mr-1 inline-block">
-                  {tags.map((tag: string, index: number) => (
-                    <a href={`/blog/tags/${slugify(tag)}`}>
-                      <FaHashtag className={"ml-2 -mt-1 inline-block"} />
-                      {lowerHumanize(tag)}
-                    </a>
-                  ))}
-                </li>
-              )
-            }
-          </ul>
-        </div>
-      </section>
-      <section class="content mb-4 glass p-4 rounded-lg">
-        <Content />
-      </section>
-      <hr />
-      <section class="row items-start justify-between mt-4">
-        <div class="flex items-center justify-center lg:justify-end">
-          <Share
-            className="social-icons"
-            title={title}
-            description={description}
-            folder={"blog"}
-            id={entry.id}
-          />
-        </div>
-      </section>
-    </article>
-    <!-- Related posts -->
-    {
-      similarPosts.length > 0 && (
-        <section class="row justify-center pt-12 pb-0">
-          <h2 class="h3 mb-4 text-center">Related Posts</h2>
-          <div class="lg:col-10">
-            <div class="row justify-center">
-              {similarPosts.slice(0, 2).map((post) => (
-                <div class="md:col-6 px-4 py-2">
-                  <BlogCard data={post} />
-                </div>
-              ))}
-            </div>
+
+<Base title={title} description={description} image={image?.src}>
+  <section class="flex container">
+    <div class=`w-full ${hide_toc ? "" : "md:col-9"}`>
+      <article class="">
+        <section>
+          {
+            image && (
+              <div class="mb-8 mt-2">
+                <Image
+                  src={image}
+                  height={500}
+                  width={1200}
+                  alt={imageAlt}
+                  class="w-full rounded-lg"
+                  format="webp"
+                />
+              </div>
+            )
+          }
+          <div class="glass mb-8 p-4 rounded-lg">
+            <h1 set:html={markdownify(title)} class="mb-4" />
+            <ul class="mb-4">
+              {
+                author && (
+                  <li class="mr-1 inline-block">
+                    <FaRegUserCircle className={"-mt-1 inline-block"} />
+                    {upperHumanize(author)}
+                  </li>
+                )
+              }
+              {
+                date && (
+                  <li class="mr-1 inline-block">
+                    <FaRegCalendarAlt className={"ml-2 -mt-1 inline-block"} />
+                    {dateFormat(date)}
+                  </li>
+                )
+              }
+              {
+                complexity > 0 && (
+                  <li class="mr-1 inline-block">
+                    <FaRegClock className={"ml-2 -mt-1 inline-block"} />
+                    {readingTime(entry.body, complexity)}
+                  </li>
+                )
+              }
+              {
+                categories && (
+                  <li class="mr-1 inline-block">
+                    {categories.map((category: string, index: number) => (
+                      <a href={`/blog/categories/${slugify(category)}`}>
+                        <FaRegFolder className={"ml-2 -mt-1 inline-block"} />
+                        {upperHumanize(category)}
+                      </a>
+                    ))}
+                  </li>
+                )
+              }
+              {
+                tags && (
+                  <li class="mr-1 inline-block">
+                    {tags.map((tag: string, index: number) => (
+                      <a href={`/blog/tags/${slugify(tag)}`}>
+                        <FaHashtag className={"ml-2 -mt-1 inline-block"} />
+                        {lowerHumanize(tag)}
+                      </a>
+                    ))}
+                  </li>
+                )
+              }
+            </ul>
           </div>
         </section>
-      )
-    }
-  </div>
-  <div
-    class=`hidden md:flex max-h-static_sidemenu sticky top-[5rem] ${hide_toc ? "" : "mx-4 md:col-3"}`
-  >
-    {
-      !settings.hide_blog_toc && !hide_toc && (
-        <TableOfContents {headings} />
-      )
-    }
-  </div>
-</section>
+        <section class="content mb-4 glass p-4 rounded-lg">
+          <Content />
+        </section>
+        <hr />
+        <section class="row items-start justify-between mt-4">
+          <div class="flex items-center justify-center lg:justify-end">
+            <Share
+              className="social-icons"
+              title={title}
+              description={description}
+              folder={"blog"}
+              id={entry.id}
+            />
+          </div>
+        </section>
+      </article>
+      <!-- Related posts -->
+      {
+        relatedEntries.length > 0 && (
+          <section class="row justify-center pt-12 pb-0">
+            <h2 class="h3 mb-4 text-center">Related Posts</h2>
+            <div class="lg:col-10">
+              <div class="row justify-center">
+                {relatedEntries.slice(0, 2).map((entry) => (
+                  <div class="md:col-6 px-4 py-2">
+                    <BlogCard entry={entry} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )
+      }
+    </div>
+    <div
+      class=`hidden md:flex max-h-static_sidemenu sticky top-[5rem] ${hide_toc ? "" : "mx-4 md:col-3"}`
+    >
+      {!settings.hide_blog_toc && !hide_toc && <TableOfContents {headings} />}
+    </div>
+  </section>
 </Base>

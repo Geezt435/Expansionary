@@ -3,7 +3,7 @@ import { capitalizeFirstLetter } from "@/lib/utils/docUtils";
 import { ScrollArea } from "@shortcodes/ScrollArea";
 import type { SideNavMenuProps } from "@/types/index";
 
-const { items, level } = Astro.props as SideNavMenuProps; // { currentPage, ... }
+const { items, level } = Astro.props as SideNavMenuProps; // { pageNumber, ... }
 const pathname: string = new URL(Astro.request.url).pathname;
 ---
 

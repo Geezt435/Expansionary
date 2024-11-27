@@ -1,13 +1,16 @@
 ---
 import { lowerHumanize, upperHumanize } from "@/lib/utils/textConverter";
-import { getAllTaxonomy, getTaxonomy } from "@/lib/taxonomyParser.astro";
 import { FaRegFolder, FaHashtag } from "react-icons/fa/index.js";
 import Button from "@components/Button.astro";
 import { ScrollArea } from "@shortcodes/ScrollArea";
 
-const allCategories = await getAllTaxonomy("blog", "categories");
-const categories = await getTaxonomy("blog", "categories");
-const tags = await getTaxonomy("blog", "tags");
+interface Props {
+  tags: string[];
+  categories: string[];
+  allCategories: string[];
+}
+
+const { tags, categories, allCategories }: Props = Astro.props;
 ---
 
 <ScrollArea className="h-full" client:only="react">
@@ -24,9 +27,7 @@ const tags = await getTaxonomy("blog", "tags");
       <ul class="space-y-2">
         {
           categories.map((category) => {
-            const count = allCategories.filter(
-              (c) => c === category
-            ).length;
+            const count = allCategories.filter((c) => c === category).length;
             return (
               <li>
                 <a

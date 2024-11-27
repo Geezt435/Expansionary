@@ -1,43 +1,30 @@
 ---
 import type { AuthorsEntry, BlogEntry } from "@/types";
-import BlogCard from "@components/BlogCard.astro";
 import AuthorSingle from "@layouts/AuthorSingle.astro";
-import { getSinglePages } from "@/lib/contentParser.astro";
 import { slugify } from "@/lib/utils/textConverter";
-import { render } from "astro:content";
 import { metadata } from "@/config/config.json";
+import { getPages } from "@/lib/contentParser.astro";
+import { sortByDate } from "@/lib/utils/sortFunctions";
 
 export async function getStaticPaths() {
-  const authors: AuthorsEntry[] = await getSinglePages("authors");
-
-  const paths = authors.map((author) => ({
+  const entries = (await getPages("authors")) as AuthorsEntry[];
+  const paths = entries.map((entry) => ({
     params: {
-      single: author.id,
+      single: entry.id,
     },
-    props: { author },
+    props: { entry },
   }));
   return paths;
 }
-const { author } = Astro.props;
-const { title } = author.data;
-const { Content } = await render(author);
-const posts: BlogEntry[] = await getSinglePages("blog");
-const postFilterByAuthor = posts.filter(
-  (post: BlogEntry) =>
-    slugify(post.data.author ? post.data.author : metadata.meta_author) ===
+
+const { entry } = Astro.props;
+const { title } = entry.data;
+const blogEntries = (await getPages("blog", sortByDate)) as BlogEntry[];
+const filteredBlogEntries = blogEntries.filter(
+  (entry: BlogEntry) =>
+    slugify(entry.data.author ? entry.data.author : metadata.meta_author) ===
     slugify(title)
 );
 ---
 
-<AuthorSingle data={author.data}>
-  <Content slot="content" />
-  <Fragment slot="authoredPosts">
-    {
-      postFilterByAuthor.map((post) => (
-        <div class="mb-12 md:col-6 lg:col-4">
-          <BlogCard data={post} />
-        </div>
-      ))
-    }
-  </Fragment>
-</AuthorSingle>
+<AuthorSingle entry={entry} recentBlogEntries={filteredBlogEntries} />

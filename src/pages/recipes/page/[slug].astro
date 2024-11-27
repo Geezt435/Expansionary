@@ -8,12 +8,12 @@ import type { RecipesEntry } from "@/types";
 import RecipeGroup from "@layouts/RecipeGroup.astro";
 
 const { slug } = Astro.params;
-const currentPage = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
+const pageNumber = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
 const postIndex = await getEntry("recipes", "-index");
 const posts: RecipesEntry[] = await getSinglePages("recipes");
 const sortedPosts: RecipesEntry[] = sortByDate(posts);
 const totalPages = Math.ceil(posts.length / config.settings.pagination);
-const indexOfLastPost = currentPage * config.settings.pagination;
+const indexOfLastPost = pageNumber * config.settings.pagination;
 const indexOfFirstPost = indexOfLastPost - config.settings.pagination;
 const currentPosts = sortedPosts.slice(indexOfFirstPost, indexOfLastPost);
 
@@ -41,7 +41,7 @@ export async function getStaticPaths() {
   <RecipeGroup
     postIndex={postIndex}
     currentPosts={currentPosts}
-    currentPage={currentPage}
+    pageNumber={pageNumber}
     totalPages={totalPages}
   />
 </Base>

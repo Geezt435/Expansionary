@@ -8,7 +8,7 @@ import { getEntry } from "astro:content";
 import type { RecipesEntry } from "@/types";
 
 const { slug } = Astro.params;
-const currentPage = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
+const pageNumber = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
 const postIndex = await getEntry("recipes", "-index");
 const posts: RecipesEntry[] = await getSinglePages("recipes");
 const sortedPosts: RecipesEntry[]  = sortByDate(posts);
@@ -24,7 +24,7 @@ const currentPosts = sortedPosts.slice(0, config.settings.pagination);
   <RecipeGroup
     postIndex={postIndex}
     currentPosts={currentPosts}
-    currentPage={currentPage}
+    pageNumber={pageNumber}
     totalPages={totalPages}
   />
 </Base>

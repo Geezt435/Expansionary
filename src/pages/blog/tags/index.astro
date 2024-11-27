@@ -1,8 +1,11 @@
 ---
-import Base from "@layouts/Base.astro";
-import DivisionGroup from "@layouts/DivisionGroup.astro";
+import TaxonGroup from "@layouts/TaxonGroup.astro";
+import { getTaxa, getTaxaMultiset } from "@/lib/taxonomyParser.astro";
+
+const collection = "blog";
+const taxonomy = "tags";
+const taxa = await getTaxa(collection, taxonomy);
+const allTaxa = await getTaxaMultiset(collection, taxonomy);
 ---
 
-<Base title="Tags">
-  <DivisionGroup collection="blog" division="tags">
-</Base>
+<TaxonGroup collection={collection} taxonomy={taxonomy} taxa={taxa} allTaxa={allTaxa} />

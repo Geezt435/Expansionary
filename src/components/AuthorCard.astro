@@ -5,11 +5,11 @@ import { Image } from "astro:assets";
 import Social from "./Social.astro";
 
 interface Props {
-  data: AuthorsEntry;
+  entry: AuthorsEntry;
 }
 
-const { data }: Props = Astro.props;
-const { title, image, imageAlt, social } = data.data;
+const { entry }: Props = Astro.props;
+const { title, image, imageAlt, social } = entry.data;
 ---
 
 <div class="mb-14 md:col-6 lg:col-4">
@@ -27,10 +27,10 @@ const { title, image, imageAlt, social } = data.data;
       )
     }
     <h4 class="mb-3">
-      <a href={`/authors/${data.id}`}>{title}</a>
+      <a href={`/authors/${entry.id}`}>{title}</a>
     </h4>
     <p class="mb-4">
-      {plainify(data.body?.slice(0, 100))}
+      {plainify(entry.body?.slice(0, 100))}
     </p>
     <Social source={social} className="social-icons" />
   </div>

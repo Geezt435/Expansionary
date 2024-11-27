@@ -7,14 +7,14 @@ import type { RecipesEntry } from "@/types";
 interface Props {
   postIndex: RecipesEntry;
   currentPosts: RecipesEntry[];
-  currentPage: number;
+  pageNumber: number;
   totalPages: number;
 }
 
 const {
   postIndex,
   currentPosts,
-  currentPage,
+  pageNumber,
   totalPages,
 }: Props = Astro.props;
 ---
@@ -33,7 +33,7 @@ const {
     </div>
     <Pagination
       section="recipes"
-      currentPage={currentPage}
+      pageNumber={pageNumber}
       totalPages={totalPages}
     />
   </div>

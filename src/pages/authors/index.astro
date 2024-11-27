@@ -1,18 +1,12 @@
 ---
 import type { AuthorsEntry } from "@/types";
-import AuthorCard from "@components/AuthorCard.astro";
 import AuthorGroup from "@layouts/AuthorGroup.astro";
-import { getSinglePages } from "@/lib/contentParser.astro";
+import { getPages } from "@/lib/contentParser.astro";
 import { getEntry } from "astro:content";
+import { sortByTitle } from "@/lib/utils/sortFunctions";
 
 const authorIndex = await getEntry("authors", "-index");
-const authors: AuthorsEntry[] = await getSinglePages("authors");
+const entries = await getPages("authors", sortByTitle) as AuthorsEntry[];
 ---
 
-<AuthorGroup data={authorIndex.data}>
-  {
-    authors.map((author) => (
-      <AuthorCard data={author} />
-    ))
-  }
-</AuthorGroup>
+<AuthorGroup authorIndex={authorIndex} entries={entries} />

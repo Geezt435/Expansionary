@@ -1,6 +1,8 @@
 ---
+import { getEntry } from "astro:content";
 import config from "@/config/config.json";
 import { getPages } from "@/lib/contentParser.astro";
+import { getTaxaMultiset, getTaxa } from "@/lib/taxonomyParser.astro";
 import { sortByDate } from "@/lib/utils/sortFunctions";
 import BlogGroup from "@layouts/BlogGroup.astro";
 import type { BlogEntry } from "@/types";
@@ -21,7 +23,22 @@ export async function getStaticPaths() {
 }
 
 const { slug } = Astro.params;
-const currentPage = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
+const currentPageNumber = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
+
+const blogIndex = await getEntry("blog", "-index");
+const entries = (await getPages("blog", sortByDate)) as BlogEntry[];
+
+const allCategories = await getTaxaMultiset("blog", "categories");
+const categories = await getTaxa("blog", "categories");
+const tags = await getTaxa("blog", "tags");
 ---
 
-<BlogGroup currentPage={currentPage}/>
+<BlogGroup
+  blogIndex={blogIndex}
+  entries={entries}
+  categories={categories}
+  tags={tags}
+  allCategories={allCategories}
+  pageNumber={currentPageNumber}
+/>
+

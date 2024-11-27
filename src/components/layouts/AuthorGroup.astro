@@ -1,22 +1,23 @@
 ---
-import type { AuthorsIndex } from "@/types";
+import type { AuthorsEntry } from "@/types";
 import Base from "@layouts/Base.astro";
 import PageHeader from "@components/PageHeader.astro";
+import AuthorCard from "@components/AuthorCard.astro";
 
 interface Props {
-  data: AuthorsIndex;
+  authorIndex: AuthorsEntry;
+  entries: AuthorsEntry[];
 }
 
-const { data } = Astro.props;
-const { title } = data;
+const { authorIndex, entries } = Astro.props;
 ---
 
-<Base title={title}>
-  <PageHeader title={title} />
+<Base title={authorIndex.data.title} description={authorIndex.data.description}>
+  <PageHeader title={authorIndex.data.title} />
   <section class="section-sm pb-0">
     <div class="container">
       <div class="row justify-center">
-        <slot />
+        {entries.map((entry) => <AuthorCard entry={entry} />)}
       </div>
     </div>
   </section>

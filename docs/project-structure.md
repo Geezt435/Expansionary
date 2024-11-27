@@ -23,12 +23,18 @@
 - `assets/` is where you put all images that will be displayed on the site. Preferably, don't dump every image right in there, make subdirectories. For example, if you keep the blog content collection, make a folder `blog`, and put any images your blog uses in there.
 - `content/` is where all your collections of content live.
   - Once development is pretty much done on your site and you're happy with how everything looks and is structured, the expectation is that you will rarely need to interact with anything outside of this folder.
-- `components/` contains all components, which are modular pieces of HTML/CSS/JS. They can reference each other and ultimately are all referenced by the files in `pages/`.
-  - `layouts/` contains the layouts (the structure) for each of your pages.
+  - For uniformity, a collection is defined for each "original content" driven page on the website, even if it's a solitary piece of content, such as the `terms` or `about` page.
+  - The data type for each content collection is defined in the `config.ts` file. It will need to be updated if you want to edit the schema of a collection or add a new collection altogether.
 - `pages/` contains all the pages.
   - The structure of this folder defines the routing structure for your site. So if in the `pages` folder you have `blog/categories/index.astro`, you will have that page `index.astro` located at `example.com/blog/categories`.
   - The Docs collection actually breaks this rule, because its content is 2 layers deep. I implemented a workaround so the docs pages follow the structure of the `content/docs/` folder.
-- These three folders form a core trio for most of the code. There are a number of other pieces that don't fit into this pipeline, but the big idea is that `content` holds the actual written content displayed to your site, `layouts` is where you give structure and style to that content, and `pages` is where you link it all up to actually appear on the site.
+  - The following are artificial constraints made to give a bit more structure and predictability to the astro code:
+    - Each file in `pages/` will directly reference exactly one `layout`, and no other components. 
+    - Almost all data is "queried" at this layer. For now, "querying" just refers to a function call, (e.g. `getEntry()` or `getCollection()`) that returns a freshly minted copy of one or multiple `CollectionEntry` objects (which are derived straight from the contents of `content/`).
+    - In this way, we decouple the routing and data querying from the structure/style of the pages themselves. You'd be encouraged to appreciate this design choice and stick to it, unless you specifically have other plans.
+- `components/` contains all components, which are modular pieces of HTML/CSS/JS. They can reference each other and ultimately are all referenced by the files in `layouts/`.
+  - `layouts/` contains the layouts each of your pages. These do count as components, but to maintain a clear project structure, we prefer to treat them specially, as they are in all cases meant to be the top-level component within a page.
+- These three folders form a core trio for most of the code. There are a number of other pieces that don't fit into this pipeline, but the big idea is that `content` holds the actual written content displayed to your site, `pages` dictates how the site will be traversed and where the data from `content` gets sent, and `components` is where you give structure and style to that content.
 
 ## public/
 
