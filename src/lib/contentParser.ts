@@ -1,7 +1,12 @@
-import { getCollection, type CollectionKey } from "astro:content";
+import { getEntry, getCollection, type CollectionKey } from "astro:content";
 import type { GenericEntry } from "@/types";
 
-export const getPages = async (
+export const getIndex = async (collection: CollectionKey): Promise<GenericEntry | null> => {
+  const index = await getEntry(collection, "-index");
+  return ('draft' in index.data && index.data.draft) ? null : index;
+}
+
+export const getEntries = async (
   collection: CollectionKey,
   sortFunction?: ((array: any[]) => any[]),
   noIndex = true,
@@ -18,47 +23,44 @@ export const getPages = async (
   return entries;
 };
 
-export const getSinglePages = async (collection: any): Promise<any[]> => {
-  const allPage = await getCollection(collection);
-  const removeIndex = allPage.filter((data: any) => data.id.match(/^(?!-)/));
-  const removeDrafts = removeIndex.filter((data: any) => !data.data.draft);
-  removeDrafts.sort((a, b) => {
-    return a.data.order - b.data.order;
-  });
-  return removeDrafts;
-};
-
-// Fetch all pages in all searchable collections
-export const getSinglePagesBatch = async (
-  collections: string[]
-): Promise<any[]> => {
+// Fetch all pages in all specified collections, flattened into a single array
+export const getEntriesBatch = async (
+  collections: CollectionKey[],
+  sortFunction?: ((array: any[]) => any[]),
+  noIndex = true,
+  noDrafts = true
+): Promise<GenericEntry[]> => {
   const allCollections = await Promise.all(
     collections.map(async (collection) => {
-      return await getSinglePages(collection);
+      return await getEntries(collection, sortFunction, noIndex, noDrafts);
     })
   );
   return allCollections.flat();
 };
 
-// Fetch top-level folders as groups
-export const getGroups = async (collection: any): Promise<any[]> => {
-  const allPage = await getCollection(collection);
-  const groups = allPage.filter((data: any) => {
+// Fetch top-level folders within a collection
+export const getGroups = async (
+  collection: CollectionKey,
+  sortFunction?: ((array: any[]) => any[]),
+  noDrafts = true
+): Promise<GenericEntry[]> => {
+  let entries = await getEntries(collection, sortFunction, false, noDrafts);
+  entries = entries.filter((data: any) => {
     const segments = data.id.split("/");
     return segments.length === 1 && segments[0] !== "index";
   });
-  return groups;
+  return entries;
 };
 
-// Fetch documents within a specific group
-export const getDocumentsInGroup = async (
-  collection: any,
+// Fetch entries within the specified collection and group
+export const getEntriesInGroup = async (
+  collection: CollectionKey,
   groupSlug: string
-): Promise<any[]> => {
-  const allPage = await getCollection(collection);
-  const documents = allPage.filter((data: any) => {
+): Promise<GenericEntry[]> => {
+  let entries: GenericEntry[] = await getCollection(collection);
+  entries = entries.filter((data: any) => {
     const segments = data.id.split("/");
     return segments[0] === groupSlug && segments.length > 1;
   });
-  return documents;
+  return entries;
 };

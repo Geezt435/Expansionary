@@ -1,28 +1,20 @@
 ---
 import type { RecipesEntry } from "@/types";
-import Base from "@layouts/Base.astro";
 import RecipeSingle from "@layouts/RecipeSingle.astro";
 import { getSinglePages } from "@/lib/contentParser";
 
 export async function getStaticPaths() {
-  const posts: RecipesEntry[] = await getSinglePages("recipes");
-  const paths = posts.map((post) => ({
+  const entries: RecipesEntry[] = await getSinglePages("recipes");
+  const paths = entries.map((entry) => ({
     params: {
-      single: post.id,
+      single: entry.id,
     },
-    props: { post },
+    props: { entry },
   }));
   return paths;
 }
 
-const { post } = Astro.props;
-const { title, description, image } = post.data;
+const { entry } = Astro.props;
 ---
 
-<Base
-  title={title}
-  description={description}
-  image={image?.src}
->
-  <RecipeSingle post={post} />
-</Base>
+<RecipeSingle entry={entry} />

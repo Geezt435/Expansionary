@@ -1,23 +1,23 @@
 ---
 type Props = {
   section?: string;
-  pageNumber?: number;
-  totalPages?: number;
+  pageIndex?: number;
+  pageCount?: number;
 };
-const { section, pageNumber = 1, totalPages = 1 }: Props = Astro.props;
+const { section, pageIndex = 1, pageCount = 1 }: Props = Astro.props;
 
-const indexPageLink = pageNumber === 2;
-const hasPrevPage = pageNumber > 1;
-const hasNextPage = totalPages > pageNumber!;
+const indexPageLink = pageIndex === 2;
+const hasPrevPage = pageIndex > 1;
+const hasNextPage = pageCount > pageIndex!;
 
 let pageList: number[] = [];
-for (let i = 1; i <= totalPages; i++) {
+for (let i = 1; i <= pageCount; i++) {
   pageList.push(i);
 }
 ---
 
 {
-  totalPages > 1 && (
+  pageCount > 1 && (
     <nav
       class="flex items-center justify-center pb-8"
       aria-label="Pagination"
@@ -29,7 +29,7 @@ for (let i = 1; i <= totalPages; i++) {
             href={
               indexPageLink
                 ? `${section ? "/" + section : "/"}`
-                : `${section ? "/" + section : ""}/page/${pageNumber - 1}`
+                : `${section ? "/" + section : ""}/page/${pageIndex - 1}`
             }
             class="col rounded px-2 py-1.5 text-dark hover:bg-theme-light dark:text-darkmode-dark dark:hover:bg-darkmode-theme-light"
           >
@@ -69,7 +69,7 @@ for (let i = 1; i <= totalPages; i++) {
 
         {/* page index */}
         {pageList.map((pagination, i) =>
-          pagination === pageNumber ? (
+          pagination === pageIndex ? (
             <span
               aria-current="page"
               class="col rounded bg-primary px-4 py-2 text-white dark:bg-darkmode-primary dark:text-dark"
@@ -94,7 +94,7 @@ for (let i = 1; i <= totalPages; i++) {
         {/* next page */}
         {hasNextPage ? (
           <a
-            href={`${section ? "/" + section : ""}/page/${pageNumber + 1}`}
+            href={`${section ? "/" + section : ""}/page/${pageIndex + 1}`}
             class="col rounded px-2 py-1.5 text-dark hover:bg-theme-light dark:text-darkmode-dark dark:hover:bg-darkmode-theme-light"
           >
             <span class="sr-only">Next</span>

@@ -3,15 +3,15 @@ import type { DocsEntry } from "@/types";
 import Card from "@components/Card.astro";
 
 interface Props {
-  data: DocsEntry;
+  entry: DocsEntry;
 }
 
-const { data }: Props = Astro.props;
-const { title, description } = data.data;
+const { entry } = Astro.props;
+const { title, description } = entry.data;
 ---
 
 <Card style="p-4">
-  <a href={`/docs/${data.id}`}>
+  <a href={`/docs/${entry.id}`}>
     <h4 class="mb-3">
       {title}
     </h4>

@@ -1,6 +1,6 @@
 ---
 import type { BlogEntry } from "@/types";
-import { getPages } from "@/lib/contentParser";
+import { getEntries } from "@/lib/contentParser";
 import { getTaxa } from "@/lib/taxonomyParser";
 import taxonomyFilter from "@/lib/taxonomyFilter";
 import TaxonSingle from "@layouts/TaxonSingle.astro";
@@ -17,7 +17,7 @@ export async function getStaticPaths() {
 }
 
 const { taxon } = Astro.props;
-const entries = await getPages("blog") as BlogEntry[];
+const entries = await getEntries("blog") as BlogEntry[];
 const filteredEntries: BlogEntry[] = taxonomyFilter(entries, "categories", taxon!);
 ---
 

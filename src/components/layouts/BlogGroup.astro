@@ -4,31 +4,23 @@ import BlogCard from "@components/BlogCard.astro";
 import Pagination from "@components/Pagination.astro";
 import PageHeader from "@components/PageHeader.astro";
 import BlogSidebar from "@components/BlogSidebar.astro";
-import config from "@/config/config.json";
 import type { BlogEntry } from "@/types";
 
 interface Props {
-  blogIndex: BlogEntry;
+  entryIndex: BlogEntry;
   entries: BlogEntry[];
   tags: string[];
   categories: string[];
   allCategories: string[];
-  pageNumber: number;
+  pageIndex: number;
+  pageCount: number;
 }
 
-const { blogIndex, entries, tags, categories, allCategories, pageNumber } = Astro.props;
-
-const indexOfLastEntry = pageNumber * config.settings.pagination;
-const indexOfFirstEntry = indexOfLastEntry - config.settings.pagination;
-const currentEntries = entries.slice(indexOfFirstEntry, indexOfLastEntry);
-
-const totalPages: number = Math.ceil(
-  entries.length / config.settings.pagination
-);
+const { entryIndex, entries, tags, categories, allCategories, pageIndex, pageCount } = Astro.props;
 ---
 
-<Base title={blogIndex.data.title} description={blogIndex.data.description}>
-  <PageHeader title={blogIndex.data.title} />
+<Base title={entryIndex.data.title} description={entryIndex.data.description}>
+  <PageHeader title={entryIndex.data.title} />
   <section class="section">
     <div class="flex container">
       <div class="row gx-5">
@@ -36,7 +28,7 @@ const totalPages: number = Math.ceil(
         <div class="lg:col-8">
           <div class="row">
             {
-              currentEntries.map((entry) => (
+              entries.map((entry) => (
                 <div class="pb-4">
                   <BlogCard entry={entry} />
                 </div>
@@ -45,8 +37,8 @@ const totalPages: number = Math.ceil(
           </div>
           <Pagination
             section="blog"
-            pageNumber={pageNumber}
-            totalPages={totalPages}
+            pageIndex={pageIndex}
+            pageCount={pageCount}
           />
         </div>
         <!-- sidebar -->

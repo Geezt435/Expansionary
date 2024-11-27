@@ -1,53 +1,36 @@
 ---
 import type { DocsEntry } from "@/types";
-import Base from "@layouts/Base.astro";
 import DocSingle from "@layouts/DocSingle.astro";
 import DocGroup from "@layouts/DocGroup.astro";
-import { getSinglePages, getDocumentsInGroup } from "@/lib/contentParser";
+import { getEntries, getEntriesInGroup } from "@/lib/contentParser";
+import { sortByTitle } from "@/lib/sortFunctions";
 
 export async function getStaticPaths() {
-  type path_type = {
-    params: { id: string };
-    props: {
-      post: DocsEntry;
-      isGroup: boolean;
-    };
-  };
+  const entries = await getEntries("docs", sortByTitle, false) as DocsEntry[];
 
-  const docs: DocsEntry[] = await getSinglePages("docs");
-  const paths: path_type[] = [];
-
-  docs.forEach((post) => {
-    const segments = post.id.split("/");
+  const paths = entries.map((entry) => {
+    const segments = entry.id.split("/");
     if (segments.length === 1) {
-      paths.push({
+      return {
         params: { id: segments[0] },
-        props: { post, isGroup: true },
-      });
+        props: { entry, isGroup: true },
+      };
     } else {
-      paths.push({
-        params: { id: post.id },
-        props: { post, isGroup: false },
-      });
+      return {
+        params: { id: entry.id },
+        props: { entry, isGroup: false },
+      };
     }
   });
 
   return paths;
 }
 
-const { post, isGroup } = Astro.props;
+const { entry, isGroup } = Astro.props;
 
-const documents: DocsEntry[] | [] = isGroup ? await getDocumentsInGroup("docs", post.id) : [];
+const groupEntries: DocsEntry[] | [] = isGroup
+  ? await getEntriesInGroup("docs", entry.id)
+  : [];
 ---
 
-<Base
-  title={post.data.title}
-  image={post.data.image}
-  description={post.data.description}
->
-  {isGroup ? (
-    <DocGroup documents={documents} />
-  ) : (
-    <DocSingle post={post} />
-  )}
-</Base>
+{isGroup ? <DocGroup collectionIndex={entry} entries={groupEntries} /> : <DocSingle entry={entry} />}

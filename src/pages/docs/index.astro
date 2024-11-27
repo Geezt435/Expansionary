@@ -1,32 +1,11 @@
 ---
-import DocCard from "@components/DocCard.astro";
-import Base from "@layouts/Base.astro";
-import PageHeader from "@components/PageHeader.astro";
+import DocGroup from "@layouts/DocGroup.astro";
 import { getEntry } from "astro:content";
 import { getGroups } from "@/lib/contentParser";
 import type { DocsEntry } from "@/types";
 
-const groups: DocsEntry[] = await getGroups("docs");
-const postIndex = await getEntry("docs", "index");
+const groupIndices = await getGroups("docs") as DocsEntry[];
+const collectionIndex = await getEntry("docs", "index");
 ---
 
-<Base
-  title={postIndex.data.title}
-  image={postIndex.data.image}
-  description={postIndex.data.description}
->
-  <PageHeader title={postIndex.data.title} />
-  <section class="section">
-    <div class="container">
-      <div class="row">
-        {
-          groups.map((group) => (
-            <div class="mb-4 md:mb-8 md:col-6 lg:col-4">
-              <DocCard data={group} />
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-</Base>
+<DocGroup entries={groupIndices} collectionIndex={collectionIndex} />

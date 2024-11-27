@@ -1,9 +1,9 @@
-import { getPages } from "./contentParser";
+import { getEntries } from "./contentParser";
 import { slugify } from "./textConverter";
 import type { CollectionKey } from "astro:content";
 
 export const getTaxa = async (collection: CollectionKey, name: string) => {
-  const entries = await getPages(collection);
+  const entries = await getEntries(collection);
   const taxonomyPages = entries.map((entry: any) => entry.data[name]);
   let taxonomies: string[] = [];
   for (let i = 0; i < taxonomyPages.length; i++) {
@@ -18,7 +18,7 @@ export const getTaxa = async (collection: CollectionKey, name: string) => {
 };
 
 export const getTaxaMultiset = async (collection: CollectionKey, name: string) => {
-  const entries = await getPages(collection);
+  const entries = await getEntries(collection);
   const taxonomyPages = entries.map((entry: any) => entry.data[name]);
   let taxonomies: string[] = [];
   for (let i = 0; i < taxonomyPages.length; i++) {

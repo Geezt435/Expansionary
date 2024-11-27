@@ -1,4 +1,5 @@
 ---
+import Base from "@layouts/Base.astro";
 import type { DocsEntry } from "@/types";
 import DocBrowser from "@components/DocBrowser.astro";
 import TableOfContents from "@components/TableOfContents.astro";
@@ -10,61 +11,65 @@ import { render } from "astro:content";
 import { Image } from "astro:assets";
 
 interface Props {
-  post: DocsEntry;
+  entry: DocsEntry;
 }
 
-const { post }: Props = Astro.props;
+const { entry } = Astro.props;
 
-const { Content, headings } = await render(post);
-const { title, hide_sidenav, hide_toc, image, imageAlt } = post.data;
-const pageNumber = new URL(Astro.request.url).pathname;
+const { Content, headings } = await render(entry);
+const { title, description, hide_sidenav, hide_toc, image, imageAlt } = entry.data;
+const pageIndex = new URL(Astro.request.url).pathname;
 ---
 
-<section class="flex flex-1 flex-col md:flex-row container">
-  <div
-    class=`hidden md:flex max-h-static_sidemenu sticky top-[5rem]
+<Base
+  title={title}
+  image={image?.src}
+  description={description}
+>
+  <section class="flex flex-1 flex-col md:flex-row container">
+    <div
+      class=`hidden md:flex max-h-static_sidemenu sticky top-[5rem]
     ${hide_toc && hide_sidenav ? "w-screen" : "mr-4 md:w-1/4 lg:w-1/5"}`
-  >
-    {
-      !config.settings.hide_doc_browser && !hide_sidenav && (
-        <DocBrowser pageNumber={pageNumber} items={menu} level={0} />
-      )
-    }
-  </div>
-  <div
-    class=`w-full ${hide_toc && hide_sidenav ? "" : "md:w-3/4 lg:w-3/5"}`
-  >
-    <article class="">
-      <section class="">
-        {
-          image && (
-            <div class="mb-8 mt-2">
-              <Image
-                src={image}
-                height={500}
-                width={1200}
-                alt={imageAlt}
-                class="w-full rounded-lg"
-                format="webp"
-              />
-            </div>
-          )
-        }
-      </section>
-      <section class="content m-2 glass p-4 rounded-lg">
-        <h1 set:html={markdownify(title)} class="mt-2" />
-        <hr class="my-2" />
-        <Content />
-      </section>
-    </article>
-  </div>
-  <div
-    class=`hidden lg:flex max-h-static_sidemenu sticky top-[5rem] ${hide_toc && hide_sidenav ? "" : "ml-4 lg:w-1/5"}`
-  >
-    {
-      !config.settings.hide_doc_toc && !hide_toc && (
-        <TableOfContents {headings} />
-      )
-    }
-  </div>
-</section>
+    >
+      {
+        !config.settings.hide_doc_browser && !hide_sidenav && (
+          <DocBrowser pageIndex={pageIndex} items={menu} level={0} />
+        )
+      }
+    </div>
+    <div class=`w-full ${hide_toc && hide_sidenav ? "" : "md:w-3/4 lg:w-3/5"}`>
+      <article class="">
+        <section class="">
+          {
+            image && (
+              <div class="mb-8 mt-2">
+                <Image
+                  src={image}
+                  height={500}
+                  width={1200}
+                  alt={imageAlt}
+                  class="w-full rounded-lg"
+                  format="webp"
+                />
+              </div>
+            )
+          }
+        </section>
+        <section class="content m-2 glass p-4 rounded-lg">
+          <h1 set:html={markdownify(title)} class="mt-2" />
+          <hr class="my-2" />
+          <Content />
+        </section>
+      </article>
+    </div>
+    <div
+      class=`hidden lg:flex max-h-static_sidemenu sticky top-[5rem] ${hide_toc && hide_sidenav ? "" : "ml-4 lg:w-1/5"}`
+    >
+      {
+        !config.settings.hide_doc_toc && !hide_toc && (
+          <TableOfContents {headings} />
+        )
+      }
+    </div>
+  </section>
+</Base>

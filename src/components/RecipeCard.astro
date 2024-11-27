@@ -3,15 +3,15 @@ import { Image } from "astro:assets";
 import type { RecipesEntry } from "@/types";
 
 interface Props {
-  data: RecipesEntry;
+  entry: RecipesEntry;
 }
 
-const { data } = Astro.props;
-const { title, image } = data.data;
+const { entry } = Astro.props;
+const { title, image } = entry.data;
 ---
 
 <div class="bg-body dark:bg-darkmode-body">
-  <a href={`/recipes/${data.id}`}>
+  <a href={`/recipes/${entry.id}`}>
     <div class="relative">
       {
         image && (

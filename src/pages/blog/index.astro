@@ -1,27 +1,37 @@
 ---
 import BlogGroup from "@layouts/BlogGroup.astro";
 import { getTaxaMultiset, getTaxa } from "@/lib/taxonomyParser";
-import { getPages } from "@/lib/contentParser";
+import { getEntries } from "@/lib/contentParser";
 import { sortByDate } from "@/lib/sortFunctions";
 import { getEntry } from "astro:content";
 import type { BlogIndex, BlogEntry } from "@/types";
+import config from "@/config/config.json";
 
 const { slug } = Astro.params;
-const currentPageNumber = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
+const currentPageIndex = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
 
-const blogIndex = await getEntry("blog", "-index");
-const entries = (await getPages("blog", sortByDate)) as BlogEntry[];
+const entryIndex = await getEntry("blog", "-index");
+const entries = (await getEntries("blog", sortByDate)) as BlogEntry[];
 
 const allCategories = await getTaxaMultiset("blog", "categories");
 const categories = await getTaxa("blog", "categories");
 const tags = await getTaxa("blog", "tags");
+
+const indexOfLastEntry = currentPageIndex * config.settings.pagination;
+const indexOfFirstEntry = indexOfLastEntry - config.settings.pagination;
+const currentEntries = entries.slice(indexOfFirstEntry, indexOfLastEntry);
+
+const pageCount: number = Math.ceil(
+  entries.length / config.settings.pagination
+);
 ---
 
 <BlogGroup
-  blogIndex={blogIndex}
-  entries={entries}
+  entryIndex={entryIndex}
+  entries={currentEntries}
   categories={categories}
   tags={tags}
   allCategories={allCategories}
-  pageNumber={currentPageNumber}
+  pageIndex={currentPageIndex}
+  pageCount={pageCount}
 />

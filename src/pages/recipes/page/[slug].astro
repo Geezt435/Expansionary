@@ -1,28 +1,17 @@
 ---
 import config from "@/config/config.json";
-import Base from "@layouts/Base.astro";
-import { getSinglePages } from "@/lib/contentParser";
+import { getEntries } from "@/lib/contentParser";
 import { sortByDate } from "@/lib/sortFunctions";
 import { getEntry } from "astro:content";
 import type { RecipesEntry } from "@/types";
 import RecipeGroup from "@layouts/RecipeGroup.astro";
 
-const { slug } = Astro.params;
-const pageNumber = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
-const postIndex = await getEntry("recipes", "-index");
-const posts: RecipesEntry[] = await getSinglePages("recipes");
-const sortedPosts: RecipesEntry[] = sortByDate(posts);
-const totalPages = Math.ceil(posts.length / config.settings.pagination);
-const indexOfLastPost = pageNumber * config.settings.pagination;
-const indexOfFirstPost = indexOfLastPost - config.settings.pagination;
-const currentPosts = sortedPosts.slice(indexOfFirstPost, indexOfLastPost);
-
 export async function getStaticPaths() {
-  const posts: RecipesEntry[] = await getSinglePages("recipes");
-  const totalPages = Math.ceil(posts.length / config.settings.pagination);
+  const entries = await getEntries("recipes", sortByDate) as RecipesEntry[];
+  const pageCount = Math.ceil(entries.length / config.settings.pagination);
   const paths = [];
 
-  for (let i = 1; i < totalPages; i++) {
+  for (let i = 1; i < pageCount; i++) {
     paths.push({
       params: {
         slug: (i + 1).toString(),
@@ -31,17 +20,21 @@ export async function getStaticPaths() {
   }
   return paths;
 }
+
+const entryIndex = await getEntry("recipes", "-index");
+const entries = await getEntries("recipes", sortByDate) as RecipesEntry[];
+
+const { slug } = Astro.params;
+const currentPageIndex = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
+const pageCount = Math.ceil(entries.length / config.settings.pagination);
+const indexOfLastEntry = currentPageIndex * config.settings.pagination;
+const indexOfFirstEntry = indexOfLastEntry - config.settings.pagination;
+const currentEntries = entries.slice(indexOfFirstEntry, indexOfLastEntry);
 ---
 
-<Base
-  title={postIndex.data.title}
-  image={postIndex.data.image?.src}
-  description={postIndex.data.description}
->
-  <RecipeGroup
-    postIndex={postIndex}
-    currentPosts={currentPosts}
-    pageNumber={pageNumber}
-    totalPages={totalPages}
-  />
-</Base>
+<RecipeGroup
+  entryIndex={entryIndex}
+  entries={currentEntries}
+  pageIndex={currentPageIndex}
+  pageCount={pageCount}
+/>

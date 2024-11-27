@@ -3,11 +3,11 @@ import type { AuthorsEntry, BlogEntry } from "@/types";
 import AuthorSingle from "@layouts/AuthorSingle.astro";
 import { slugify } from "@/lib/textConverter";
 import { metadata } from "@/config/config.json";
-import { getPages } from "@/lib/contentParser";
+import { getEntries } from "@/lib/contentParser";
 import { sortByDate } from "@/lib/sortFunctions";
 
 export async function getStaticPaths() {
-  const entries = (await getPages("authors")) as AuthorsEntry[];
+  const entries = (await getEntries("authors")) as AuthorsEntry[];
   const paths = entries.map((entry) => ({
     params: {
       single: entry.id,
@@ -19,7 +19,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { title } = entry.data;
-const blogEntries = (await getPages("blog", sortByDate)) as BlogEntry[];
+const blogEntries = (await getEntries("blog", sortByDate)) as BlogEntry[];
 const filteredBlogEntries = blogEntries.filter(
   (entry: BlogEntry) =>
     slugify(entry.data.author ? entry.data.author : metadata.meta_author) ===
