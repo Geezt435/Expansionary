@@ -2,7 +2,7 @@
 import type { RecipesEntry } from "@/types";
 import Base from "@layouts/Base.astro";
 import RecipeSingle from "@layouts/RecipeSingle.astro";
-import { getSinglePages } from "@/lib/contentParser.astro";
+import { getSinglePages } from "@/lib/contentParser";
 
 export async function getStaticPaths() {
   const posts: RecipesEntry[] = await getSinglePages("recipes");

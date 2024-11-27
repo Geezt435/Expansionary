@@ -2,7 +2,7 @@ import type { SearchableEntry } from "@/types"
 import Fuse from "fuse.js";
 import React, { useEffect, useRef, useState } from "react";
 import config from "@/config/config.json";
-import { plainify } from "@/lib/utils/textConverter";
+import { plainify } from "@/lib/textConverter";
 
 interface Props {
   searchList: SearchableEntry[];

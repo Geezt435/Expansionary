@@ -1,4 +1,4 @@
-import { upperHumanize } from "@/lib/utils/textConverter";
+import { upperHumanize } from "@/lib/textConverter";
 import React from "react";
 
 function Notice({

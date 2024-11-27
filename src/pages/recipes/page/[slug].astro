@@ -1,8 +1,8 @@
 ---
 import config from "@/config/config.json";
 import Base from "@layouts/Base.astro";
-import { getSinglePages } from "@/lib/contentParser.astro";
-import { sortByDate } from "@/lib/utils/sortFunctions";
+import { getSinglePages } from "@/lib/contentParser";
+import { sortByDate } from "@/lib/sortFunctions";
 import { getEntry } from "astro:content";
 import type { RecipesEntry } from "@/types";
 import RecipeGroup from "@layouts/RecipeGroup.astro";

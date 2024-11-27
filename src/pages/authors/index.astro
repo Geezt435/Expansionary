@@ -1,9 +1,9 @@
 ---
 import type { AuthorsEntry } from "@/types";
 import AuthorGroup from "@layouts/AuthorGroup.astro";
-import { getPages } from "@/lib/contentParser.astro";
+import { getPages } from "@/lib/contentParser";
 import { getEntry } from "astro:content";
-import { sortByTitle } from "@/lib/utils/sortFunctions";
+import { sortByTitle } from "@/lib/sortFunctions";
 
 const authorIndex = await getEntry("authors", "-index");
 const entries = await getPages("authors", sortByTitle) as AuthorsEntry[];

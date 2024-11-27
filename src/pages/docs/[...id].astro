@@ -3,7 +3,7 @@ import type { DocsEntry } from "@/types";
 import Base from "@layouts/Base.astro";
 import DocSingle from "@layouts/DocSingle.astro";
 import DocGroup from "@layouts/DocGroup.astro";
-import { getSinglePages, getDocumentsInGroup } from "@/lib/contentParser.astro";
+import { getSinglePages, getDocumentsInGroup } from "@/lib/contentParser";
 
 export async function getStaticPaths() {
   type path_type = {

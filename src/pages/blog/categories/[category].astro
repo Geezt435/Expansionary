@@ -1,8 +1,8 @@
 ---
 import type { BlogEntry } from "@/types";
-import { getPages } from "@/lib/contentParser.astro";
-import { getTaxa } from "@/lib/taxonomyParser.astro";
-import taxonomyFilter from "@/lib/utils/taxonomyFilter";
+import { getPages } from "@/lib/contentParser";
+import { getTaxa } from "@/lib/taxonomyParser";
+import taxonomyFilter from "@/lib/taxonomyFilter";
 import TaxonSingle from "@layouts/TaxonSingle.astro";
 
 export async function getStaticPaths() {

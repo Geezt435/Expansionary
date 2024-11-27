@@ -1,6 +1,5 @@
----
-import { getPages } from "./contentParser.astro";
-import { slugify } from "./utils/textConverter";
+import { getPages } from "./contentParser";
+import { slugify } from "./textConverter";
 import type { CollectionKey } from "astro:content";
 
 export const getTaxa = async (collection: CollectionKey, name: string) => {
@@ -30,4 +29,3 @@ export const getTaxaMultiset = async (collection: CollectionKey, name: string) =
   }
   return taxonomies;
 };
----

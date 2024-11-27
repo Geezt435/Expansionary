@@ -1,4 +1,3 @@
----
 import { getCollection, type CollectionKey } from "astro:content";
 import type { GenericEntry } from "@/types";
 
@@ -63,4 +62,3 @@ export const getDocumentsInGroup = async (
   });
   return documents;
 };
----

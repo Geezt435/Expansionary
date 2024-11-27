@@ -2,14 +2,14 @@
 import Base from "@layouts/Base.astro";
 import BlogCard from "@components/BlogCard.astro";
 import Share from "@components/Share.astro";
-import dateFormat from "@/lib/utils/dateFormat";
-import readingTime from "@/lib/utils/readingTime";
+import dateFormat from "@/lib/dateFormat";
+import readingTime from "@/lib/readingTime";
 import {
   lowerHumanize,
   upperHumanize,
   markdownify,
   slugify,
-} from "@/lib/utils/textConverter";
+} from "@/lib/textConverter";
 import type { BlogEntry } from "@/types";
 import TableOfContents from "@components/TableOfContents.astro";
 import { settings } from "@/config/config.json";

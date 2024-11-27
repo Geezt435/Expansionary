@@ -1,10 +1,10 @@
 ---
 import type { AuthorsEntry, BlogEntry } from "@/types";
 import AuthorSingle from "@layouts/AuthorSingle.astro";
-import { slugify } from "@/lib/utils/textConverter";
+import { slugify } from "@/lib/textConverter";
 import { metadata } from "@/config/config.json";
-import { getPages } from "@/lib/contentParser.astro";
-import { sortByDate } from "@/lib/utils/sortFunctions";
+import { getPages } from "@/lib/contentParser";
+import { sortByDate } from "@/lib/sortFunctions";
 
 export async function getStaticPaths() {
   const entries = (await getPages("authors")) as AuthorsEntry[];

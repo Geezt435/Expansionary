@@ -3,7 +3,7 @@ import DocCard from "@components/DocCard.astro";
 import Base from "@layouts/Base.astro";
 import PageHeader from "@components/PageHeader.astro";
 import { getEntry } from "astro:content";
-import { getGroups } from "@/lib/contentParser.astro";
+import { getGroups } from "@/lib/contentParser";
 import type { DocsEntry } from "@/types";
 
 const groups: DocsEntry[] = await getGroups("docs");
