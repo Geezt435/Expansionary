@@ -15,9 +15,11 @@
     "paths": {
       "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
-      "@layouts/*": ["src/components/layouts/*"],
-      "@shortcodes/*": ["src/components/shortcodes/*"],
       "@helpers/*": ["src/components/helpers/*"],
+      "@layouts/*": ["src/components/layouts/*"],
+      "@lib/*": ["src/lib/*"],
+      "@shortcodes/*": ["src/components/shortcodes/*"],
+      "@types/*": ["src/types/*"],
       "@/*": ["./src/*"]
     }
   },

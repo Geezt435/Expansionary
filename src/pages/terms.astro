@@ -1,11 +1,9 @@
 ---
 import TermsSingle from "@layouts/TermsSingle.astro";
-import { getEntry, render } from 'astro:content';
+import { getIndex } from "@lib/contentParser";
+import type { TermsEntry } from "@/types";
 
-const terms = await getEntry("terms", "-index");
-const { Content } = await render(terms);
+const entry = await getIndex("terms") as TermsEntry;
 ---
 
-<TermsSingle data={terms.data}>
-  <Content />
-</TermsSingle>
+<TermsSingle entry={entry} />

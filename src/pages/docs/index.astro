@@ -1,11 +1,11 @@
 ---
 import DocGroup from "@layouts/DocGroup.astro";
-import { getEntry } from "astro:content";
-import { getGroups } from "@/lib/contentParser";
+import { getIndex, getGroups } from "@/lib/contentParser";
 import type { DocsEntry } from "@/types";
+import { sortByTitle } from "@lib/sortFunctions";
 
-const groupIndices = await getGroups("docs") as DocsEntry[];
-const collectionIndex = await getEntry("docs", "index");
+const collectionIndex = (await getIndex("docs")) as DocsEntry;
+const groupIndices = (await getGroups("docs", sortByTitle)) as DocsEntry[];
 ---
 
 <DocGroup entries={groupIndices} collectionIndex={collectionIndex} />

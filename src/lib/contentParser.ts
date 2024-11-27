@@ -1,9 +1,9 @@
 import { getEntry, getCollection, type CollectionKey } from "astro:content";
 import type { GenericEntry } from "@/types";
 
-export const getIndex = async (collection: CollectionKey): Promise<GenericEntry | null> => {
+export const getIndex = async (collection: CollectionKey): Promise<GenericEntry> => {
   const index = await getEntry(collection, "-index");
-  return ('draft' in index.data && index.data.draft) ? null : index;
+  return index;
 }
 
 export const getEntries = async (
@@ -14,7 +14,7 @@ export const getEntries = async (
 ): Promise<GenericEntry[]> => {
   let entries: GenericEntry[] = await getCollection(collection);
   entries = noIndex
-    ? entries.filter((entry: GenericEntry) => entry.id.match(/^(?!-)/))
+    ? entries.filter((entry: GenericEntry) => !entry.id.match(/^-|\/-/))
     : entries;
   entries = noDrafts
     ? entries.filter((entry: GenericEntry) => 'draft' in entry.data && !entry.data.draft)
@@ -44,9 +44,9 @@ export const getGroups = async (
   sortFunction?: ((array: any[]) => any[]),
   noDrafts = true
 ): Promise<GenericEntry[]> => {
-  let entries = await getEntries(collection, sortFunction, false, noDrafts);
-  entries = entries.filter((data: any) => {
-    const segments = data.id.split("/");
+  let entries = await getEntries(collection, sortFunction, true, noDrafts);
+  entries = entries.filter((entry: GenericEntry) => {
+    const segments = entry.id.split("/");
     return segments.length === 1 && segments[0] !== "index";
   });
   return entries;
@@ -55,9 +55,10 @@ export const getGroups = async (
 // Fetch entries within the specified collection and group
 export const getEntriesInGroup = async (
   collection: CollectionKey,
-  groupSlug: string
+  groupSlug: string,
+  sortFunction?: ((array: any[]) => any[]),
 ): Promise<GenericEntry[]> => {
-  let entries: GenericEntry[] = await getCollection(collection);
+  let entries = await getEntries(collection, sortFunction);
   entries = entries.filter((data: any) => {
     const segments = data.id.split("/");
     return segments[0] === groupSlug && segments.length > 1;

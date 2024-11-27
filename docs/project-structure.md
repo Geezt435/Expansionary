@@ -29,8 +29,8 @@
   - The structure of this folder defines the routing structure for your site. So if in the `pages` folder you have `blog/categories/index.astro`, you will have that page `index.astro` located at `example.com/blog/categories`.
   - The Docs collection actually breaks this rule, because its content is 2 layers deep. I implemented a workaround so the docs pages follow the structure of the `content/docs/` folder.
   - The following are artificial constraints made to give a bit more structure and predictability to the astro code:
-    - Each file in `pages/` will directly reference exactly one `layout`, and no other components. 
-    - Almost all data is "queried" at this layer. For now, "querying" just refers to a function call, (e.g. `getEntry()` or `getCollection()`) that returns a freshly minted copy of one or multiple `CollectionEntry` objects (which are derived straight from the contents of `content/`).
+    - Each file in `pages/` will directly reference exactly one `layout`, and no other components.
+    - Almost all data is "queried" at this layer. For now, "querying" just refers to a function call, (e.g. `getIndex()` or `getEntries()`) that returns a freshly minted copy of one or multiple `CollectionEntry` objects (which are derived straight from the contents of `content/`).
     - In this way, we decouple the routing and data querying from the structure/style of the pages themselves. You'd be encouraged to appreciate this design choice and stick to it, unless you specifically have other plans.
 - `components/` contains all components, which are modular pieces of HTML/CSS/JS. They can reference each other and ultimately are all referenced by the files in `layouts/`.
   - `layouts/` contains the layouts each of your pages. These do count as components, but to maintain a clear project structure, we prefer to treat them specially, as they are in all cases meant to be the top-level component within a page.

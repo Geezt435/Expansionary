@@ -10,7 +10,7 @@
 - [x] Make everything turn to glass in an instant
 - [x] Add border/shadow functionality to glass panes
 - [x] Formalize existing documentation
-- [ ] Make uniform the page/layout/component structure across the project
+- [x] Make uniform the page/layout/component structure across the project
 - [ ] Parametrize (in config) pagination, related posts count on BlogSingle and AuthorSingle
 - [ ] Import the recipes collection from `origin/develop`, update it accordingly
 - [ ] Make a Customization Quickstart guide, to explain the most significant areas of interest

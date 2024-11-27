@@ -1,16 +1,15 @@
 ---
 import BlogGroup from "@layouts/BlogGroup.astro";
 import { getTaxaMultiset, getTaxa } from "@/lib/taxonomyParser";
-import { getEntries } from "@/lib/contentParser";
+import { getEntries, getIndex } from "@/lib/contentParser";
 import { sortByDate } from "@/lib/sortFunctions";
-import { getEntry } from "astro:content";
-import type { BlogIndex, BlogEntry } from "@/types";
+import type { BlogEntry } from "@/types";
 import config from "@/config/config.json";
 
 const { slug } = Astro.params;
 const currentPageIndex = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
 
-const entryIndex = await getEntry("blog", "-index");
+const entryIndex = await getIndex("blog");
 const entries = (await getEntries("blog", sortByDate)) as BlogEntry[];
 
 const allCategories = await getTaxaMultiset("blog", "categories");

@@ -1,10 +1,9 @@
 ---
-import { getEntry } from "astro:content";
+import { getIndex } from "@lib/contentParser";
 import HomeSingle from "@layouts/HomeSingle.astro";
+import type { HomeEntry } from "@/types";
 
-const homepage = await getEntry("home", "-index");
+const entry = (await getIndex("home")) as HomeEntry;
 ---
 
-<HomeSingle
-  data={homepage.data}
->
+<HomeSingle entry={entry} />

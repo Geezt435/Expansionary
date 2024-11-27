@@ -7,7 +7,7 @@
 
   "settings": {
     "search_enabled": true,
-    "searchable_collections": ["about", "authors", "blog", "docs", "terms"],
+    "searchable_collections": ["about", "authors", "blog", "docs", "recipes", "terms"],
     "sticky_header": true,
     "theme_switcher": true,
     "default_theme": "system",

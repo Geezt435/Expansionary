@@ -1,10 +1,11 @@
 ---
 import type { RecipesEntry } from "@/types";
 import RecipeSingle from "@layouts/RecipeSingle.astro";
-import { getSinglePages } from "@/lib/contentParser";
+import { getEntries } from "@/lib/contentParser";
+import { sortByTitle } from "@/lib/sortFunctions";
 
 export async function getStaticPaths() {
-  const entries: RecipesEntry[] = await getSinglePages("recipes");
+  const entries = await getEntries("recipes", sortByTitle) as RecipesEntry[];
   const paths = entries.map((entry) => ({
     params: {
       single: entry.id,

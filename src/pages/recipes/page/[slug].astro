@@ -1,13 +1,12 @@
 ---
 import config from "@/config/config.json";
-import { getEntries } from "@/lib/contentParser";
+import { getIndex, getEntries } from "@/lib/contentParser";
 import { sortByDate } from "@/lib/sortFunctions";
-import { getEntry } from "astro:content";
 import type { RecipesEntry } from "@/types";
 import RecipeGroup from "@layouts/RecipeGroup.astro";
 
 export async function getStaticPaths() {
-  const entries = await getEntries("recipes", sortByDate) as RecipesEntry[];
+  const entries = (await getEntries("recipes", sortByDate)) as RecipesEntry[];
   const pageCount = Math.ceil(entries.length / config.settings.pagination);
   const paths = [];
 
@@ -21,8 +20,8 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const entryIndex = await getEntry("recipes", "-index");
-const entries = await getEntries("recipes", sortByDate) as RecipesEntry[];
+const entryIndex = (await getIndex("recipes")) as RecipesEntry;
+const entries = (await getEntries("recipes", sortByDate)) as RecipesEntry[];
 
 const { slug } = Astro.params;
 const currentPageIndex = slug && !isNaN(Number(slug)) ? Number(slug) : 1;

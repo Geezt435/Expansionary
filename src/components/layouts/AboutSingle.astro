@@ -3,21 +3,19 @@ import Base from "@layouts/Base.astro";
 import { markdownify } from "@/lib/textConverter";
 import { Image } from "astro:assets";
 import profile from "@assets/profile/avatar.png";
-import type { AboutData } from "@/types";
+import type { AboutEntry } from "@/types";
+import { render } from "astro:content";
 
 interface Props {
-    data: AboutData;
+  entry: AboutEntry;
 }
 
-const { data } = Astro.props;
-const { title, description, image, imageAlt } = data;
+const { entry } = Astro.props;
+const { title, description, image, imageAlt } = entry.data;
+const { Content } = await render(entry);
 ---
 
-<Base
-  title={title}
-  description={description}
-  image={image?.src}
->
+<Base title={title} description={description} image={image?.src}>
   <section class="section-sm">
     <div class="container">
       <div class="row justify-center">
@@ -36,7 +34,7 @@ const { title, description, image, imageAlt } = data;
           }
           <h2 set:html={markdownify(title)} class="h3 mb-6" />
           <div class="content">
-            <slot />
+            <Content />
           </div>
         </div>
       </div>

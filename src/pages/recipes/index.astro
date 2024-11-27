@@ -1,13 +1,12 @@
 ---
 import RecipeGroup from "@layouts/RecipeGroup.astro";
-import { getEntries } from "@/lib/contentParser";
+import { getIndex, getEntries } from "@/lib/contentParser";
 import { sortByDate } from "@/lib/sortFunctions";
-import { getEntry } from "astro:content";
 import type { RecipesEntry } from "@/types";
 import config from "@/config/config.json";
 
-const entryIndex = await getEntry("recipes", "-index");
-const entries = await getEntries("recipes", sortByDate) as RecipesEntry[];
+const entryIndex = (await getIndex("recipes")) as RecipesEntry;
+const entries = (await getEntries("recipes", sortByDate)) as RecipesEntry[];
 
 const { slug } = Astro.params;
 const currentPageIndex = slug && !isNaN(Number(slug)) ? Number(slug) : 1;

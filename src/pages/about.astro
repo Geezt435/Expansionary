@@ -1,13 +1,9 @@
 ---
-import AboutSingle from '@layouts/AboutSingle.astro';
-import { getEntry, render } from 'astro:content';
+import type { AboutEntry } from "@/types";
+import AboutSingle from "@layouts/AboutSingle.astro";
+import { getIndex } from "@lib/contentParser";
 
-const about = await getEntry("about", "-index");
-const { Content } = await render(about);
+const entry = (await getIndex("about")) as AboutEntry;
 ---
 
-<AboutSingle
-  data={about.data}
->
-  <Content />
-</AboutSingle>
+<AboutSingle entry={entry} />

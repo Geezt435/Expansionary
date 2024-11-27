@@ -6,7 +6,7 @@ import { getEntries, getEntriesInGroup } from "@/lib/contentParser";
 import { sortByTitle } from "@/lib/sortFunctions";
 
 export async function getStaticPaths() {
-  const entries = await getEntries("docs", sortByTitle, false) as DocsEntry[];
+  const entries = (await getEntries("docs", sortByTitle)) as DocsEntry[];
 
   const paths = entries.map((entry) => {
     const segments = entry.id.split("/");
@@ -27,10 +27,15 @@ export async function getStaticPaths() {
 }
 
 const { entry, isGroup } = Astro.props;
-
-const groupEntries: DocsEntry[] | [] = isGroup
-  ? await getEntriesInGroup("docs", entry.id)
+const groupEntries = isGroup
+  ? ((await getEntriesInGroup("docs", entry.id, sortByTitle)) as DocsEntry[])
   : [];
 ---
 
-{isGroup ? <DocGroup collectionIndex={entry} entries={groupEntries} /> : <DocSingle entry={entry} />}
+{
+  isGroup ? (
+    <DocGroup collectionIndex={entry} entries={groupEntries} />
+  ) : (
+    <DocSingle entry={entry} />
+  )
+}

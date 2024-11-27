@@ -1,15 +1,15 @@
-import { getCollection } from "astro:content";
+import { getEntries } from "@lib/contentParser";
 
 import type {
   DocsEntry,
   MenuItem,
   MenuItemWithDraft,
-} from "@/types/index";
+} from "@/types";
 
 import { doc_browser_order } from "@/config/docs.json";
 
 // Fetch the collection with type
-const docs: DocsEntry[] = await getCollection("docs");
+const docs = await getEntries("docs") as DocsEntry[];
 
 // Helper function to capitalize the first letter of a string
 export const capitalizeFirstLetter = (str: string) => {
