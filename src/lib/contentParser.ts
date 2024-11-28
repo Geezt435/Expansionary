@@ -14,7 +14,7 @@ export const getEntries = async (
 ): Promise<GenericEntry[]> => {
   let entries: GenericEntry[] = await getCollection(collection);
   entries = noIndex
-    ? entries.filter((entry: GenericEntry) => !entry.id.match(/^-|\/-/))
+    ? entries.filter((entry: GenericEntry) => !entry.id.match(/^-/))
     : entries;
   entries = noDrafts
     ? entries.filter((entry: GenericEntry) => 'draft' in entry.data && !entry.data.draft)
@@ -41,13 +41,12 @@ export const getEntriesBatch = async (
 // Fetch top-level folders within a collection
 export const getGroups = async (
   collection: CollectionKey,
-  sortFunction?: ((array: any[]) => any[]),
-  noDrafts = true
+  sortFunction?: ((array: any[]) => any[])
 ): Promise<GenericEntry[]> => {
-  let entries = await getEntries(collection, sortFunction, true, noDrafts);
+  let entries = await getEntries(collection, sortFunction, false);
   entries = entries.filter((entry: GenericEntry) => {
     const segments = entry.id.split("/");
-    return segments.length === 1 && segments[0] !== "index";
+    return segments.length === 2 && segments[1] == "-index";
   });
   return entries;
 };
@@ -61,7 +60,7 @@ export const getEntriesInGroup = async (
   let entries = await getEntries(collection, sortFunction);
   entries = entries.filter((data: any) => {
     const segments = data.id.split("/");
-    return segments[0] === groupSlug && segments.length > 1;
+    return segments[0] === groupSlug && segments.length > 1 && segments[1] !== "-index";
   });
   return entries;
 };

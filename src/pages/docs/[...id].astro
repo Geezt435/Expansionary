@@ -9,13 +9,14 @@ export async function getStaticPaths() {
   const entries = (await getEntries("docs", sortByTitle)) as DocsEntry[];
 
   const paths = entries.map((entry) => {
-    const segments = entry.id.split("/");
+    const segments = entry.id.replace("/-index", "").split("/");
+
     if (segments.length === 1) {
       return {
         params: { id: segments[0] },
         props: { entry, isGroup: true },
       };
-    } else {
+    } else if (segments.length === 2) {
       return {
         params: { id: entry.id },
         props: { entry, isGroup: false },
@@ -26,9 +27,18 @@ export async function getStaticPaths() {
   return paths;
 }
 
+const entries = (await getEntries("docs", sortByTitle)) as DocsEntry[];
+entries.forEach((entry) => {
+  // console.log(entry.id);
+  // console.log(entry.id.replace("-index", "").split("/"));
+  console.log( entry.id.replace("/-index", "").split("/"));
+});
+  
+
 const { entry, isGroup } = Astro.props;
+const groupName = entry.id.replace("/-index", "");
 const groupEntries = isGroup
-  ? ((await getEntriesInGroup("docs", entry.id, sortByTitle)) as DocsEntry[])
+  ? ((await getEntriesInGroup("docs", groupName, sortByTitle)) as DocsEntry[])
   : [];
 ---
 

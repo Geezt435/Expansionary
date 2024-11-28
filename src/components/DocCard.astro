@@ -8,10 +8,12 @@ interface Props {
 
 const { entry } = Astro.props;
 const { title, description } = entry.data;
+
+// const id = entry.id.replace("-index", "");
 ---
 
 <Card style="p-4">
-  <a href={`/docs/${entry.id}`}>
+  <a href={`/docs/${entry.id.replace("/-index", "")}`}>
     <h4 class="mb-3">
       {title}
     </h4>
