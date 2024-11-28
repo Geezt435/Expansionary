@@ -17,7 +17,7 @@ interface Props {
 const { entry } = Astro.props;
 
 const { Content, headings } = await render(entry);
-const { title, description, hide_sidenav, hide_toc, image, imageAlt } = entry.data;
+const { title, description, hideNav, hideToc, image, imageAlt } = entry.data;
 const pageIndex = new URL(Astro.request.url).pathname;
 ---
 
@@ -29,15 +29,15 @@ const pageIndex = new URL(Astro.request.url).pathname;
   <section class="flex flex-1 flex-col md:flex-row container">
     <div
       class=`hidden md:flex max-h-static_sidemenu sticky top-[5rem]
-    ${hide_toc && hide_sidenav ? "w-screen" : "mr-4 md:w-1/4 lg:w-1/5"}`
+    ${hideToc && hideNav ? "w-screen" : "mr-4 md:w-1/4 lg:w-1/5"}`
     >
       {
-        !config.settings.hide_doc_browser && !hide_sidenav && (
+        !config.settings.hide_doc_browser && !hideNav && (
           <DocBrowser pageIndex={pageIndex} items={menu} level={0} />
         )
       }
     </div>
-    <div class=`w-full ${hide_toc && hide_sidenav ? "" : "md:w-3/4 lg:w-3/5"}`>
+    <div class=`w-full ${hideToc && hideNav ? "" : "md:w-3/4 lg:w-3/5"}`>
       <article class="">
         <section class="">
           {
@@ -63,10 +63,10 @@ const pageIndex = new URL(Astro.request.url).pathname;
       </article>
     </div>
     <div
-      class=`hidden lg:flex max-h-static_sidemenu sticky top-[5rem] ${hide_toc && hide_sidenav ? "" : "ml-4 lg:w-1/5"}`
+      class=`hidden lg:flex max-h-static_sidemenu sticky top-[5rem] ${hideToc && hideNav ? "" : "ml-4 lg:w-1/5"}`
     >
       {
-        !config.settings.hide_doc_toc && !hide_toc && (
+        !config.settings.hide_doc_toc && !hideToc && (
           <TableOfContents {headings} />
         )
       }

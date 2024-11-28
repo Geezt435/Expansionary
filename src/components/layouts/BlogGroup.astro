@@ -16,7 +16,15 @@ interface Props {
   pageCount: number;
 }
 
-const { entryIndex, entries, tags, categories, allCategories, pageIndex, pageCount } = Astro.props;
+const {
+  entryIndex,
+  entries,
+  tags,
+  categories,
+  allCategories,
+  pageIndex,
+  pageCount,
+} = Astro.props;
 ---
 
 <Base title={entryIndex.data.title} description={entryIndex.data.description}>
@@ -26,15 +34,13 @@ const { entryIndex, entries, tags, categories, allCategories, pageIndex, pageCou
       <div class="row gx-5">
         <!-- blog posts -->
         <div class="lg:col-8">
-          <div class="row">
-            {
-              entries.map((entry) => (
-                <div class="pb-4">
-                  <BlogCard entry={entry} />
-                </div>
-              ))
-            }
-          </div>
+          {
+            entries.map((entry) => (
+              <div class="mb-4">
+                <BlogCard entry={entry} />
+              </div>
+            ))
+          }
           <Pagination
             section="blog"
             pageIndex={pageIndex}

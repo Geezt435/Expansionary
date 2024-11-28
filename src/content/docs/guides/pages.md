@@ -28,8 +28,8 @@ tags:
 - anything
 - you
 - want
-hide_toc: 
-hide_sidenav: 
+hideToc: 
+hideNav: 
 hide_breadcrumbs: 
 ---
 ```

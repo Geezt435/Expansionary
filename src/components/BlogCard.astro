@@ -15,7 +15,7 @@ import {
 } from "react-icons/fa/index.js";
 import readingTime from "@/lib/readingTime";
 import Card from "@components/Card.astro";
-import dateFormat from "@lib/dateFormat";
+import { formatDate } from "@lib/formatDate";
 
 interface Props {
   entry: BlogEntry;
@@ -27,13 +27,12 @@ const {
   description,
   autodescription,
   date,
-  author,
   categories,
   tags,
   complexity,
 } = entry.data;
 
-const entryDate = date ? dateFormat(date) : null;
+const entryDate = date ? formatDate(date) : null;
 const entryReadingTime = readingTime(entry.body, complexity);
 const entryDescription =
   description ||
@@ -44,7 +43,7 @@ const entryDescription =
     : null);
 ---
 
-<Card style="p-4">
+<Card style="m-4">
   <h4 class="mb-2">
     <a href={`/blog/${entry.id}`}>
       {title}

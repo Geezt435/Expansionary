@@ -1,4 +1,4 @@
 ---
 title: Blog Posts
-description: this is meta description
+description: The blog of Jane and John Doe
 ---

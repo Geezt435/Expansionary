@@ -2,7 +2,7 @@
 import Base from "@layouts/Base.astro";
 import BlogCard from "@components/BlogCard.astro";
 import Share from "@components/Share.astro";
-import dateFormat from "@/lib/dateFormat";
+import { formatDate } from "@/lib/formatDate";
 import readingTime from "@/lib/readingTime";
 import {
   lowerHumanize,
@@ -42,14 +42,14 @@ const {
   date,
   tags,
   complexity,
-  hide_toc,
+  hideToc,
 } = entry.data;
 const { Content, headings } = await render(entry);
 
 categories?.sort((a: string, b: string) => a.localeCompare(b));
 tags?.sort((a: string, b: string) => a.localeCompare(b));
 
-const entryDate = date ? dateFormat(date) : null;
+const entryDate = date ? formatDate(date) : null;
 const entryReadingTime = readingTime(entry.body, complexity);
 const entryDescription =
   description ||
@@ -62,7 +62,9 @@ const entryDescription =
 
 <Base title={title} description={entryDescription} image={image?.src}>
   <section class="flex container">
-    <div class=`w-full ${!config.settings.hide_blog_toc && !hide_toc ? "md:col-9" : ""}`>
+    <div
+      class=`w-full ${config.settings.hide_blog_toc || hideToc ? "" : "md:col-9"}`
+    >
       <article class="">
         <section>
           {
@@ -81,12 +83,14 @@ const entryDescription =
           }
           <div class="glass mb-8 p-4 rounded-lg">
             <h1 set:html={markdownify(title)} class="mb-4" />
-            <ul class="mb-4">
+            <ul>
               {
                 author && (
                   <li class="mr-1 inline-block">
-                    <FaRegUserCircle className={"-mt-1 inline-block"} />
-                    {upperHumanize(author)}
+                    <a href={`/authors/${slugify(author)}`}>
+                      <FaRegUserCircle className={"-mt-1 inline-block"} />
+                      {upperHumanize(author)}
+                    </a>
                   </li>
                 )
               }
@@ -139,16 +143,16 @@ const entryDescription =
       </article>
     </div>
     <div
-      class=`hidden md:flex max-h-static_sidemenu sticky top-[5rem] ${!config.settings.hide_blog_toc && !hide_toc ? "mx-4 md:col-3" : ""}`
+      class=`hidden md:flex max-h-static_sidemenu sticky top-[5rem] ${config.settings.hide_blog_toc || hideToc ? "" : "mx-4 md:col-3"}`
     >
       {
-        !config.settings.hide_blog_toc && !hide_toc && (
+        !(config.settings.hide_blog_toc || hideToc) && (
           <TableOfContents {headings} />
         )
       }
     </div>
   </section>
-  
+
   <section class=`container items-start justify-between mt-4`>
     <hr />
     <div class="flex items-center justify-center lg:justify-end mt-4">

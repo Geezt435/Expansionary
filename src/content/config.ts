@@ -43,7 +43,7 @@ const blog = defineCollection({
     categories: z.array(z.string()).optional(),
     tags: z.array(z.string()).optional(),
     complexity: z.number().default(1),
-    hide_toc: z.boolean().default(false),
+    hideToc: z.boolean().default(false),
   }),
 });
 
@@ -56,8 +56,8 @@ const docs = defineCollection({
       message: "Image must be at least 1080 pixels wide!",
     }).optional(),
     imageAlt: z.string().default("image"),
-    hide_toc: z.boolean().default(false),
-    hide_sidenav: z.boolean().default(false),
+    hideToc: z.boolean().default(false),
+    hideNav: z.boolean().default(false),
   }),
 });
 

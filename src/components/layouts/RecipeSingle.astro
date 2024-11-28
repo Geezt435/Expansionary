@@ -3,7 +3,7 @@ import type { RecipesEntry } from "@/types";
 import Share from "@components/Share.astro";
 import { Image } from "astro:assets";
 import Base from "@layouts/Base.astro";
-import { upperHumanize, markdownify } from "@/lib/textConverter";
+import { upperHumanize, markdownify, slugify } from "@/lib/textConverter";
 
 import {
   FaRegClock,
@@ -17,7 +17,18 @@ interface Props {
 }
 
 const { entry } = Astro.props;
-const { title, author, description, image, prep_time, servings, diet, ingredients, instructions, notes } = entry.data;
+const {
+  title,
+  author,
+  description,
+  image,
+  prep_time,
+  servings,
+  diet,
+  ingredients,
+  instructions,
+  notes,
+} = entry.data;
 ---
 
 <Base title={title} description={description} image={image?.src}>
@@ -25,7 +36,7 @@ const { title, author, description, image, prep_time, servings, diet, ingredient
     <div class="container">
       <div class="row justify-center">
         <article class="lg:col-10">
-           <!-- Title -->
+          <!-- Title -->
           <h1 set:html={title} class="mb-4" />
           <div class="row">
             <!-- Cover Photo -->
@@ -53,10 +64,10 @@ const { title, author, description, image, prep_time, servings, diet, ingredient
                   {
                     author && (
                       <div class="m-4">
-                        <FaRegUserCircle
-                          className={"mr-2 -mt-1 inline-block"}
-                        />
-                        {upperHumanize(author)}
+                        <a href={`/authors/${slugify(author)}`}>
+                          <FaRegUserCircle className={"-mt-1 inline-block"} />
+                          {upperHumanize(author)}
+                        </a>
                       </div>
                     )
                   }

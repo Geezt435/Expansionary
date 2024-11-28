@@ -15,7 +15,8 @@
 - [ ] Import the recipes collection from `origin/develop`, update it accordingly
 - [ ] Add images to docCards, build their style around that
 - [ ] Add in a bunch of stock content so the might of the template is more apparent
-- [ ] Either clean up and domesticate the shortcodes, or replace them with ones from other templates.
+- [ ] Make it so Authors searches all colections for potential authors, not just the blog.
+- [ ] Either clean up and tame the shortcodes, or replace them with ones from other templates.
 - [ ] Make a Customization Quickstart guide, to explain the most significant areas of interest
 - [ ] Tighten up the CSS/Tailwind Config pipeline
 - [ ] Untangle the mess that is DocBrowser
