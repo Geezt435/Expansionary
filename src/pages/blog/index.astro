@@ -9,19 +9,19 @@ import config from "@/config/config.json";
 const { slug } = Astro.params;
 const currentPageIndex = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
 
-const entryIndex = await getIndex("blog");
+const entryIndex = await getIndex("blog") as BlogEntry;
 const entries = (await getEntries("blog", sortByDate)) as BlogEntry[];
 
 const allCategories = await getTaxaMultiset("blog", "categories");
 const categories = await getTaxa("blog", "categories");
 const tags = await getTaxa("blog", "tags");
 
-const indexOfLastEntry = currentPageIndex * config.settings.pagination;
-const indexOfFirstEntry = indexOfLastEntry - config.settings.pagination;
+const indexOfLastEntry = currentPageIndex * config.settings.blog_pagination;
+const indexOfFirstEntry = indexOfLastEntry - config.settings.blog_pagination;
 const currentEntries = entries.slice(indexOfFirstEntry, indexOfLastEntry);
 
 const pageCount: number = Math.ceil(
-  entries.length / config.settings.pagination
+  entries.length / config.settings.blog_pagination
 );
 ---
 

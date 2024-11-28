@@ -10,9 +10,9 @@ const entries = (await getEntries("recipes", sortByDate)) as RecipesEntry[];
 
 const { slug } = Astro.params;
 const currentPageIndex = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
-const pageCount = Math.ceil(entries.length / config.settings.pagination);
-const indexOfLastEntry = currentPageIndex * config.settings.pagination;
-const indexOfFirstEntry = indexOfLastEntry - config.settings.pagination;
+const pageCount = Math.ceil(entries.length / config.settings.recipe_pagination);
+const indexOfLastEntry = currentPageIndex * config.settings.recipe_pagination;
+const indexOfFirstEntry = indexOfLastEntry - config.settings.recipe_pagination;
 const currentEntries = entries.slice(indexOfFirstEntry, indexOfLastEntry);
 ---
 

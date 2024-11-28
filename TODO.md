@@ -11,15 +11,16 @@
 - [x] Add border/shadow functionality to glass panes
 - [x] Formalize existing documentation
 - [x] Make uniform the page/layout/component structure across the project
-- [ ] Parametrize (in config) pagination, related posts count on BlogSingle and AuthorSingle
+- [x] Parametrize (in config) pagination, related posts count on BlogSingle and AuthorSingle
 - [ ] Import the recipes collection from `origin/develop`, update it accordingly
+- [ ] Add images to docCards, build their style around that
+- [ ] Add in a bunch of stock content so the might of the template is more apparent
+- [ ] Either clean up and domesticate the shortcodes, or replace them with ones from other templates.
 - [ ] Make a Customization Quickstart guide, to explain the most significant areas of interest
 - [ ] Tighten up the CSS/Tailwind Config pipeline
 - [ ] Untangle the mess that is DocBrowser
 - [ ] Make Docs browser bold on the current doc
 - [ ] Make Docs table of contents bold on the current heading?
-- [ ] Add images to docCards, build their style around that
-- [ ] Either clean up and domesticate the shortcodes, or replace them with ones from other templates.
 - [ ] Create a component that puts an image on the left and text on the right and vice-versa for Advynt prep
 - [ ] We might want an "opaque glass" component that has translucency and contrast on glass, but turns opaque instead of transparent on "no-glass" mode. It's only relevant in a few places.
 - [ ] Turn the carousel into a proper component and use it to display author posts?

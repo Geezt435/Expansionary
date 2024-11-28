@@ -15,13 +15,33 @@ import {
 } from "react-icons/fa/index.js";
 import readingTime from "@/lib/readingTime";
 import Card from "@components/Card.astro";
+import dateFormat from "@lib/dateFormat";
 
 interface Props {
   entry: BlogEntry;
 }
 
 const { entry }: Props = Astro.props;
-const { title, date, author, categories, tags, complexity } = entry.data;
+const {
+  title,
+  description,
+  autodescription,
+  date,
+  author,
+  categories,
+  tags,
+  complexity,
+} = entry.data;
+
+const entryDate = date ? dateFormat(date) : null;
+const entryReadingTime = readingTime(entry.body, complexity);
+const entryDescription =
+  description ||
+  (autodescription
+    ? plainify(
+        entry.body?.slice(0, Number(config.settings.blog_description_length))
+      )
+    : null);
 ---
 
 <Card style="p-4">
@@ -56,10 +76,10 @@ const { title, date, author, categories, tags, complexity } = entry.data;
       </li>
     )} -->
     {
-      date && (
+      entryDate && (
         <li class="mr-0 inline-block">
           <FaRegCalendarAlt className={"ml-2 -mt-1 inline-block"} />
-          {new Date(date).toLocaleDateString()}
+          {entryDate}
         </li>
       )
     }
@@ -67,12 +87,12 @@ const { title, date, author, categories, tags, complexity } = entry.data;
       complexity > 0 && (
         <li class="mr-0 inline-block">
           <FaRegClock className={"ml-2 -mt-1 inline-block"} />
-          {readingTime(entry.body, complexity)}
+          {entryReadingTime}
         </li>
       )
     }
   </ul>
   <p class="">
-    {plainify(entry.body?.slice(0, Number(config.settings.summary_length)))}
+    {entryDescription}
   </p>
 </Card>

@@ -9,10 +9,11 @@ import {
   upperHumanize,
   markdownify,
   slugify,
+  plainify,
 } from "@/lib/textConverter";
 import type { BlogEntry } from "@/types";
 import TableOfContents from "@components/TableOfContents.astro";
-import { settings } from "@/config/config.json";
+import config from "@/config/config.json";
 
 import { Image } from "astro:assets";
 import { render } from "astro:content";
@@ -33,6 +34,7 @@ const { entry, relatedEntries }: Props = Astro.props;
 const {
   title,
   description,
+  autodescription,
   author,
   categories,
   image,
@@ -46,11 +48,21 @@ const { Content, headings } = await render(entry);
 
 categories?.sort((a: string, b: string) => a.localeCompare(b));
 tags?.sort((a: string, b: string) => a.localeCompare(b));
+
+const entryDate = date ? dateFormat(date) : null;
+const entryReadingTime = readingTime(entry.body, complexity);
+const entryDescription =
+  description ||
+  (autodescription
+    ? plainify(
+        entry.body?.slice(0, Number(config.settings.blog_description_length))
+      )
+    : null);
 ---
 
-<Base title={title} description={description} image={image?.src}>
+<Base title={title} description={entryDescription} image={image?.src}>
   <section class="flex container">
-    <div class=`w-full ${hide_toc ? "" : "md:col-9"}`>
+    <div class=`w-full ${!config.settings.hide_blog_toc && !hide_toc ? "md:col-9" : ""}`>
       <article class="">
         <section>
           {
@@ -79,10 +91,10 @@ tags?.sort((a: string, b: string) => a.localeCompare(b));
                 )
               }
               {
-                date && (
+                entryDate && (
                   <li class="mr-1 inline-block">
                     <FaRegCalendarAlt className={"ml-2 -mt-1 inline-block"} />
-                    {dateFormat(date)}
+                    {entryDate}
                   </li>
                 )
               }
@@ -90,7 +102,7 @@ tags?.sort((a: string, b: string) => a.localeCompare(b));
                 complexity > 0 && (
                   <li class="mr-1 inline-block">
                     <FaRegClock className={"ml-2 -mt-1 inline-block"} />
-                    {readingTime(entry.body, complexity)}
+                    {entryReadingTime}
                   </li>
                 )
               }
@@ -124,41 +136,45 @@ tags?.sort((a: string, b: string) => a.localeCompare(b));
         <section class="content mb-4 glass p-4 rounded-lg">
           <Content />
         </section>
-        <hr />
-        <section class="row items-start justify-between mt-4">
-          <div class="flex items-center justify-center lg:justify-end">
-            <Share
-              className="social-icons"
-              title={title}
-              description={description}
-              folder={"blog"}
-              id={entry.id}
-            />
-          </div>
-        </section>
       </article>
-      <!-- Related posts -->
+    </div>
+    <div
+      class=`hidden md:flex max-h-static_sidemenu sticky top-[5rem] ${!config.settings.hide_blog_toc && !hide_toc ? "mx-4 md:col-3" : ""}`
+    >
       {
-        relatedEntries.length > 0 && (
-          <section class="row justify-center pt-12 pb-0">
-            <h2 class="h3 mb-4 text-center">Related Posts</h2>
-            <div class="lg:col-10">
-              <div class="row justify-center">
-                {relatedEntries.slice(0, 2).map((entry) => (
-                  <div class="md:col-6 px-4 py-2">
-                    <BlogCard entry={entry} />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
+        !config.settings.hide_blog_toc && !hide_toc && (
+          <TableOfContents {headings} />
         )
       }
     </div>
-    <div
-      class=`hidden md:flex max-h-static_sidemenu sticky top-[5rem] ${hide_toc ? "" : "mx-4 md:col-3"}`
-    >
-      {!settings.hide_blog_toc && !hide_toc && <TableOfContents {headings} />}
+  </section>
+  
+  <section class=`container items-start justify-between mt-4`>
+    <hr />
+    <div class="flex items-center justify-center lg:justify-end mt-4">
+      <Share
+        title={title}
+        description={entryDescription}
+        folder={"blog"}
+        id={entry.id}
+      />
     </div>
   </section>
+  <!-- Related posts -->
+  {
+    relatedEntries.length > 0 && (
+      <section class="row justify-center my-8">
+        <h2 class="h3 mb-4 text-center">Related Posts</h2>
+        <div class="lg:col-10">
+          <div class="row justify-center">
+            {relatedEntries.slice(0, 2).map((entry) => (
+              <div class="md:col-6 px-4 py-2">
+                <BlogCard entry={entry} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
 </Base>

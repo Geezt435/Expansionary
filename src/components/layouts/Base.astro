@@ -10,7 +10,7 @@ import { ClientRouter } from 'astro:transitions';
 // types for frontmatters
 export interface Props {
   title?: string;
-  description?: string;
+  description?: string | null;
   image?: string;
   noindex?: boolean;
   canonical?: string;

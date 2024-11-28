@@ -6,13 +6,15 @@
   },
 
   "settings": {
-    "search_enabled": true,
-    "searchable_collections": ["about", "authors", "blog", "docs", "recipes", "terms"],
     "sticky_header": true,
     "theme_switcher": true,
     "default_theme": "system",
-    "pagination": 4,
-    "summary_length": 200,
+    "search_enabled": true,
+    "searchable_collections": ["about", "authors", "blog", "docs", "recipes", "terms"],
+    "blog_pagination": 4,
+    "blog_description_length": 200,
+    "search_description_length": 200,
+    "recipe_pagination": 6,
     "hide_doc_browser": false,
     "hide_doc_toc": false,
     "hide_blog_toc": false

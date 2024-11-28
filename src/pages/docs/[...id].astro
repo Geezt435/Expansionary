@@ -27,14 +27,6 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const entries = (await getEntries("docs", sortByTitle)) as DocsEntry[];
-entries.forEach((entry) => {
-  // console.log(entry.id);
-  // console.log(entry.id.replace("-index", "").split("/"));
-  console.log( entry.id.replace("/-index", "").split("/"));
-});
-  
-
 const { entry, isGroup } = Astro.props;
 const groupName = entry.id.replace("/-index", "");
 const groupEntries = isGroup

@@ -13,17 +13,16 @@ interface Site {
 
 interface Props { 
   title?: string;
-  description?: string;
+  description?: string | null;
   folder?: string;
   id?: string;
-  className?: string
 }
 
 const { base_url }: Site = config.site;
-const { title, description, folder, id, className }: Props = Astro.props;
+const { title, description, folder, id }: Props = Astro.props;
 ---
 
-<ul class={`${className}`}>
+<ul class="social-icons">
   <li class="inline-block">
     <a href=`mailto:?subject=${title}&amp;body=Check this out: ${base_url}/${folder}/${id}%0D%0A%0D%0A${description}%0D%0A%0D%0A`
        title="Share by Email"
