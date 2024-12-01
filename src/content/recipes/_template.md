@@ -1,11 +1,12 @@
 ---
-title: ""
-description: ""
+title:
+description:
 image: "@assets/recipes/.jpg"
-author: Reed Nelson
+imageAlt:
+author:
 prep_time: 0
 servings: 0
-diet: ""
+diet:
 draft: true
 
 ingredients:

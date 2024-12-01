@@ -15,10 +15,10 @@ const { banner, testimonials } = entry.data;
 
 <Base>
   <!-- Banner -->
-  <section class="section pt-14">
+  <section class="section">
     <div class="container">
       <div class="row justify-center">
-        <div class="text-center lg:col-7">
+        <div class="text-center lg:col-6">
           <h1 set:html={markdownify(banner.title)} class="mb-4" />
           <p set:html={markdownify(banner.content)} class="mb-8" />
           {
@@ -28,6 +28,7 @@ const { banner, testimonials } = entry.data;
                 link={banner.button.link}
                 newtab
                 hoverInvert
+                color=""
               />
             )
           }

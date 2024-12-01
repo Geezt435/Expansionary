@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import Card from "@components/Card.astro";
 import type { RecipesEntry } from "@/types";
 
 interface Props {
@@ -10,13 +11,13 @@ const { entry } = Astro.props;
 const { title, image } = entry.data;
 ---
 
-<div class="bg-body dark:bg-darkmode-body">
+<Card style="">
   <a href={`/recipes/${entry.id}`}>
     <div class="relative">
       {
         image && (
           <Image
-            class="mb-2 w-full rounded"
+            class="rounded-lg"
             src={image}
             alt={title}
             width={1280}
@@ -25,11 +26,11 @@ const { title, image } = entry.data;
           />
         )
       }
-      <div class="bg-theme-light bg-opacity-50 dark:bg-darkmode-theme-light dark:bg-opacity-60 rounded absolute bottom-0 px-2 py-1">
-        <h4 class="opacity-70 dark:opacity-70 font-normal">
+      <div class="glass text-center rounded-lg px-2 py-1 absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
+        <h4 class="">
           {title}
         </h4>
       </div>
     </div>
   </a>
-</div>
+</Card>
