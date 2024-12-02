@@ -1,9 +1,8 @@
 ---
 import Base from "@layouts/Base.astro";
-import type { DocsEntry } from "@/types";
+import type { DocsEntry, MenuItem } from "@/types";
 import DocBrowser from "@components/DocBrowser.astro";
 import TableOfContents from "@components/TableOfContents.astro";
-import { menu } from "@/lib/docUtils";
 import config from "@/config/config.json";
 import { markdownify } from "@/lib/textConverter";
 
@@ -12,13 +11,13 @@ import { Image } from "astro:assets";
 
 interface Props {
   entry: DocsEntry;
+  browserMenu: MenuItem[];
 }
 
-const { entry } = Astro.props;
+const { entry, browserMenu } = Astro.props;
 
 const { Content, headings } = await render(entry);
 const { title, description, hideNav, hideToc, image, imageAlt } = entry.data;
-const pageIndex = new URL(Astro.request.url).pathname;
 ---
 
 <Base
@@ -33,7 +32,7 @@ const pageIndex = new URL(Astro.request.url).pathname;
     >
       {
         !config.settings.hide_doc_browser && !hideNav && (
-          <DocBrowser pageIndex={pageIndex} items={menu} level={0} />
+          <DocBrowser menu={browserMenu} currentPage={entry.id.replace("/-index", "")} />
         )
       }
     </div>

@@ -1,8 +1,8 @@
 ---
-import type { DocsEntry } from "@/types";
+import type { DocsEntry, MenuItem } from "@/types";
 import DocSingle from "@layouts/DocSingle.astro";
 import DocGroup from "@layouts/DocGroup.astro";
-import { getEntries, getEntriesInGroup } from "@/lib/contentParser";
+import { getEntries, getEntriesInGroup, getGroups } from "@/lib/contentParser";
 import { sortByTitle } from "@/lib/sortFunctions";
 
 export async function getStaticPaths() {
@@ -32,12 +32,34 @@ const groupName = entry.id.replace("/-index", "");
 const groupEntries = isGroup
   ? ((await getEntriesInGroup("docs", groupName, sortByTitle)) as DocsEntry[])
   : [];
+
+// Construct Doc Browser menu
+const browserMenu: MenuItem[] = [];
+const groups = (await getGroups("docs", sortByTitle)) as DocsEntry[];
+await Promise.all(
+  groups.map(async (group) => {
+    const groupEntries = (await getEntriesInGroup(
+      "docs",
+      group.id.replace("/-index", ""),
+      sortByTitle
+    )) as DocsEntry[];
+    browserMenu.push({
+      title: group.data.title,
+      id: group.id.replace("/-index", ""),
+      children: groupEntries.map((groupEntry) => ({
+        title: groupEntry.data.title,
+        id: groupEntry.id,
+        children: [],
+      })),
+    });
+  })
+);
 ---
 
 {
   isGroup ? (
     <DocGroup collectionIndex={entry} entries={groupEntries} />
   ) : (
-    <DocSingle entry={entry} />
+    <DocSingle entry={entry} browserMenu={browserMenu} />
   )
 }
