@@ -42,14 +42,16 @@ const {
           {
             image && (
               <div class="col basis-2/3 p-2 min-w-72">
-                <Image
-                  src={image}
-                  width={1920}
-                  height={1080}
-                  alt={title}
-                  class="w-full rounded-lg"
-                  format="webp"
-                />
+                <div class="glass rounded-lg">
+                  <Image
+                    src={image}
+                    width={1920}
+                    height={1080}
+                    alt={title}
+                    class="w-full rounded-lg"
+                    format="webp"
+                  />
+                </div>
               </div>
             )
           }
@@ -172,7 +174,9 @@ const {
           }
         </article>
         <!-- Share -->
-        <div class="flex col-10 p-2 items-center justify-center lg:justify-end px-6">
+        <div
+          class="flex col-10 p-2 items-center justify-center lg:justify-end px-6"
+        >
           <Share
             title={title}
             description={description}

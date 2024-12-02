@@ -1,0 +1,12 @@
+---
+import PoetryGroup from "@layouts/PoetryGroup.astro";
+import { getEntries } from "@/lib/contentParser";
+import { sortByDate } from "@/lib/sortFunctions";
+import type { PoetryEntry } from "@/types";
+import { getIndex } from "@/lib/contentParser";
+
+const entryIndex = (await getIndex("poetry")) as PoetryEntry;
+const entries = (await getEntries("poetry", sortByDate)) as PoetryEntry[];
+---
+
+<PoetryGroup entryIndex={entryIndex} entries={entries} />

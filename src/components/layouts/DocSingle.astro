@@ -57,7 +57,7 @@ const pageIndex = new URL(Astro.request.url).pathname;
         </section>
         <section class="content m-2 glass p-4 rounded-lg">
           <h1 set:html={markdownify(title)} class="mt-2" />
-          <hr class="my-2" />
+          <hr class="content my-2" />
           <Content />
         </section>
       </article>

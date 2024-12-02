@@ -1,0 +1,108 @@
+---
+import Base from "@layouts/Base.astro";
+import Pagination from "@components/Pagination.astro";
+import Share from "@components/Share.astro";
+import { formatDate } from "@/lib/formatDate";
+import {
+  upperHumanize,
+  markdownify,
+  slugify,
+  plainify,
+} from "@/lib/textConverter";
+import type { PoetryEntry } from "@/types";
+import config from "@/config/config.json";
+
+import { Image } from "astro:assets";
+import { render } from "astro:content";
+import { FaRegCalendarAlt, FaRegUserCircle } from "react-icons/fa/index.js";
+
+interface Props {
+  entry: PoetryEntry;
+  pageIDs: string[];
+  pageIndex: number;
+  pageCount: number;
+}
+
+const { entry, pageIDs, pageIndex, pageCount }: Props = Astro.props;
+const { title, description, autodescription, author, image, imageAlt, date } =
+  entry.data;
+const { Content } = await render(entry);
+
+const entryDate = date ? formatDate(date) : null;
+const entryDescription =
+  description ||
+  (autodescription
+    ? plainify(
+        entry.body?.slice(0, Number(config.settings.blog_description_length))
+      )
+    : null);
+---
+
+<Base title={title} description={entryDescription} image={image?.src}>
+  <section class="flex container justify-center my-8">
+    <div class="col md:col-8">
+      <article class="">
+        <section>
+          {
+            image && (
+              <div class="mb-8 mt-2 glass rounded-lg">
+                <Image
+                  src={image}
+                  height={500}
+                  width={1200}
+                  alt={imageAlt}
+                  class="w-full rounded-lg"
+                  format="webp"
+                />
+              </div>
+            )
+          }
+          <div class="glass mb-8 p-4 rounded-lg">
+            <h1 set:html={markdownify(title)} class="" />
+            <ul>
+              {
+                author && (
+                  <li class="mt-2 mr-1 inline-block ">
+                    <a href={`/authors/${slugify(author)}`}>
+                      <FaRegUserCircle className={"-mt-1 inline-block"} />
+                      {upperHumanize(author)}
+                    </a>
+                  </li>
+                )
+              }
+              {
+                entryDate && (
+                  <li class="mt-2 mr-1 inline-block">
+                    <FaRegCalendarAlt className={"ml-2 -mt-1 inline-block"} />
+                    {entryDate}
+                  </li>
+                )
+              }
+            </ul>
+          </div>
+        </section>
+        <section class="content mb-4 glass px-4 rounded-lg">
+          <Content />
+        </section>
+      </article>
+    </div>
+  </section>
+
+  <section class=`container mt-4 mb-8 col md:col-8`>
+    <hr />
+    <div class="flex items-center justify-center lg:justify-end mt-4 ">
+      <Share
+        title={title}
+        description={entryDescription}
+        folder={"poetry"}
+        id={entry.id}
+      />
+    </div>
+  </section>
+  <Pagination
+    collection="poetry"
+    pageIDs={pageIDs}
+    pageIndex={pageIndex}
+    pageCount={pageCount}
+  />
+</Base>

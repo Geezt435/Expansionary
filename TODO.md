@@ -12,7 +12,8 @@
 - [x] Formalize existing documentation
 - [x] Make uniform the page/layout/component structure across the project
 - [x] Parametrize (in config) pagination, related posts count on BlogSingle and AuthorSingle
-- [ ] Import the recipes collection from `origin/develop`, update it accordingly
+- [x] Import the recipes collection from `origin/develop`, update it accordingly
+- [x] Create a new collection for poetry style content.
 - [ ] Add images to docCards, build their style around that
 - [ ] Add in a bunch of stock content so the might of the template is more apparent
 - [ ] Make it so Authors searches all colections for potential authors, not just the blog.
@@ -24,5 +25,3 @@
 - [ ] Make Docs table of contents bold on the current heading?
 - [ ] Create a component that puts an image on the left and text on the right and vice-versa for Advynt prep
 - [ ] We might want an "opaque glass" component that has translucency and contrast on glass, but turns opaque instead of transparent on "no-glass" mode. It's only relevant in a few places.
-- [ ] Turn the carousel into a proper component and use it to display author posts?
-- [ ] Create a new collection for poetry style content? Idea: pagination at 1 item / page, except it doesn't follow the pagination/slug format, there's just a deterministic ordering (datetime or alpha?) and a previous/next button to take you to the "next" single. The group gives a simple list of poems.
