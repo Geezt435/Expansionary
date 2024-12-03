@@ -50,8 +50,8 @@ const blog = defineCollection({
 const docs = defineCollection({
   loader: glob({ pattern: '**\/[^_]*.{md,mdx}', base: "./src/content/docs" }),
   schema: ({ image }) => searchable.extend({
-    pubDatetime: z.date().optional(),
-    modDatetime: z.date().optional(),
+    pubDate: z.date().optional(),
+    modDate: z.date().optional(),
     image: image().optional(),
     imageAlt: z.string().default("image"),
     hideToc: z.boolean().default(false),

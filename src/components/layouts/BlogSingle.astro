@@ -2,28 +2,12 @@
 import Base from "@layouts/Base.astro";
 import BlogCard from "@components/BlogCard.astro";
 import Share from "@components/Share.astro";
-import { formatDate } from "@/lib/formatDate";
-import readingTime from "@/lib/readingTime";
-import {
-  lowerHumanize,
-  upperHumanize,
-  markdownify,
-  slugify,
-  plainify,
-} from "@/lib/textConverter";
+import { plainify } from "@/lib/textConverter";
 import type { BlogEntry } from "@/types";
 import TableOfContents from "@components/TableOfContents.astro";
 import config from "@/config/config.json";
-
-import { Image } from "astro:assets";
 import { render } from "astro:content";
-import {
-  FaRegCalendarAlt,
-  FaRegFolder,
-  FaRegUserCircle,
-  FaHashtag,
-  FaRegClock,
-} from "react-icons/fa/index.js";
+import EntryHeader from "@components/EntryHeader.astro";
 
 interface Props {
   entry: BlogEntry;
@@ -31,26 +15,9 @@ interface Props {
 }
 
 const { entry, relatedEntries }: Props = Astro.props;
-const {
-  title,
-  description,
-  autodescription,
-  author,
-  categories,
-  image,
-  imageAlt,
-  date,
-  tags,
-  complexity,
-  hideToc,
-} = entry.data;
+const { title, description, autodescription, image, hideToc } = entry.data;
 const { Content, headings } = await render(entry);
 
-categories?.sort((a: string, b: string) => a.localeCompare(b));
-tags?.sort((a: string, b: string) => a.localeCompare(b));
-
-const entryDate = date ? formatDate(date) : null;
-const entryReadingTime = readingTime(entry.body, complexity);
 const entryDescription =
   description ||
   (autodescription
@@ -67,75 +34,15 @@ const entryDescription =
     >
       <article class="">
         <section>
-          {
-            image && (
-              <div class="mb-8 mt-2 glass rounded-lg">
-                <Image
-                  src={image}
-                  height={500}
-                  width={1200}
-                  alt={imageAlt}
-                  class="w-full rounded-lg"
-                  format="webp"
-                />
-              </div>
-            )
-          }
-          <div class="glass mb-8 p-4 rounded-lg">
-            <h1 set:html={markdownify(title)} class="mb-4" />
-            <ul>
-              {
-                author && (
-                  <li class="mr-1 inline-block">
-                    <a href={`/authors/${slugify(author)}`}>
-                      <FaRegUserCircle className={"-mt-1 inline-block"} />
-                      {upperHumanize(author)}
-                    </a>
-                  </li>
-                )
-              }
-              {
-                entryDate && (
-                  <li class="mr-1 inline-block">
-                    <FaRegCalendarAlt className={"ml-2 -mt-1 inline-block"} />
-                    {entryDate}
-                  </li>
-                )
-              }
-              {
-                complexity > 0 && (
-                  <li class="mr-1 inline-block">
-                    <FaRegClock className={"ml-2 -mt-1 inline-block"} />
-                    {entryReadingTime}
-                  </li>
-                )
-              }
-              {
-                categories && (
-                  <li class="mr-1 inline-block">
-                    {categories.map((category: string, index: number) => (
-                      <a href={`/blog/categories/${slugify(category)}`}>
-                        <FaRegFolder className={"ml-2 -mt-1 inline-block"} />
-                        {upperHumanize(category)}
-                      </a>
-                    ))}
-                  </li>
-                )
-              }
-              {
-                tags && (
-                  <li class="mr-1 inline-block">
-                    {tags.map((tag: string, index: number) => (
-                      <a href={`/blog/tags/${slugify(tag)}`}>
-                        <FaHashtag className={"ml-2 -mt-1 inline-block"} />
-                        {lowerHumanize(tag)}
-                      </a>
-                    ))}
-                  </li>
-                )
-              }
-            </ul>
-          </div>
+          <EntryHeader
+            entry={entry}
+            showImage
+            showAuthor
+            showDate
+            showReadingTime
+            showCategories
+            showTags
+          />
         </section>
         <section class="content mb-4 glass px-4 rounded-lg">
           <Content />
