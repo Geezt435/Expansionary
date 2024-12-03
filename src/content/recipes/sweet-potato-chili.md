@@ -3,7 +3,7 @@ title: Sweet Potato and Black Bean Chili
 description: A hearty, warming chili packed with sweet potatoes, black beans, and spices, perfect for a cozy meal.
 image: "@assets/recipes/sweet-potato-chili.jpg"
 author: Jane Doe
-prep_time: 45
+prepTime: 45
 servings: 6
 diet: Vegan
 

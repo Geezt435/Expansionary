@@ -3,7 +3,7 @@ title: Banana Bread
 description: A moist, flavorful banana bread made with overripe bananas, perfect for breakfast or a snack.
 image: "@assets/recipes/banana-bread.jpg"
 author: Ray Crow
-prep_time: 15
+prepTime: 15
 cook_time: 60
 servings: 8
 diet: Vegetarian

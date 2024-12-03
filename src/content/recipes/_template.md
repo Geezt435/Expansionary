@@ -4,7 +4,7 @@ description:
 image: "@assets/recipes/.jpg"
 imageAlt:
 author:
-prep_time: 0
+prepTime: 0
 servings: 0
 diet:
 draft: true

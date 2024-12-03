@@ -22,7 +22,7 @@ const {
   author,
   description,
   image,
-  prep_time,
+  prepTime,
   servings,
   diet,
   ingredients,
@@ -71,10 +71,10 @@ const {
               }
               <!-- Prep Time -->
               {
-                prep_time && (
+                prepTime && (
                   <div class="m-4">
                     <FaRegClock className={"mr-2 -mt-1 inline-block"} />
-                    {prep_time + " minutes"}
+                    {prepTime + " minutes"}
                   </div>
                 )
               }
@@ -100,7 +100,7 @@ const {
               {
                 description && (
                   <div>
-                    {author || prep_time || servings || diet ? (
+                    {author || prepTime || servings || diet ? (
                       <hr class="my-2" />
                     ) : null}
                     <div class="m-4">
