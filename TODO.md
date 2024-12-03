@@ -17,9 +17,11 @@
 - [x] Untangle the mess that is DocBrowser
 - [x] Make Docs browser bold on the current doc
 - [ ] Add images to docCards, build their style around that
-- [ ] Add in a bunch of stock content so the might of the template is more apparent
+- [x] Add in a bunch of stock content so the might of the template is more apparent
 - [ ] Make it so Authors searches all colections for potential authors, not just the blog.
 - [ ] Make it so across the site, authors hyperlink only if they have a page to link to.
+- [ ] Make an EntryHeader component? It would be an extension of what exists for the blog's glass pane, consisting of title, author?, date?, categories?, tags?, etc.
+- [ ] Add an entry header to documentation.
 - [ ] Either clean up and tame the shortcodes, or replace them with ones from other templates.
 - [ ] Make a Customization Quickstart guide, to explain the most significant areas of interest
 - [ ] Tighten up the CSS/Tailwind Config pipeline

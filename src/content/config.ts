@@ -52,9 +52,7 @@ const docs = defineCollection({
   schema: ({ image }) => searchable.extend({
     pubDatetime: z.date().optional(),
     modDatetime: z.date().optional(),
-    image: image().refine((img) => img.width >= 1080, {
-      message: "Image must be at least 1080 pixels wide!",
-    }).optional(),
+    image: image().optional(),
     imageAlt: z.string().default("image"),
     hideToc: z.boolean().default(false),
     hideNav: z.boolean().default(false),
@@ -106,7 +104,7 @@ const recipes = defineCollection({
     image: image().optional(),
     imageAlt: z.string().default("image"),
     author: z.string().optional(),
-    prep_time: z.number().optional(),
+    prepTime: z.number().optional(),
     servings: z.number().optional(),
     diet: z.string().optional(),
     ingredients: z.object({
