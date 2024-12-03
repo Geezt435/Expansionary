@@ -1,28 +1,139 @@
 ---
-const { source, className } = Astro.props;
-import DynamicIcon from "@components/helpers/DynamicIcon";
+import {
+  FaFacebook,
+  FaTwitter,
+  FaLinkedin,
+  FaGithub,
+  FaInstagram,
+  FaYoutube,
+  FaMastodon,
+} from "react-icons/fa";
 
-export interface ISocial {
-  name: string;
-  icon: string;
-  link: string;
+interface Props {
+  facebookLink?: string;
+  twitterLink?: string;
+  linkedinLink?: string;
+  githubLink?: string;
+  instagramLink?: string;
+  youtubeLink?: string;
+  mastodonLink?: string;
 }
+
+const {
+  facebookLink,
+  twitterLink,
+  linkedinLink,
+  githubLink,
+  instagramLink,
+  youtubeLink,
+  mastodonLink,
+} = Astro.props;
 ---
 
-<ul class={className}>
+<ul class="social-icons m-2">
   {
-    source.map((social: ISocial) => (
+    facebookLink && (
       <li>
         <a
-          aria-label={social.name}
-          href={social.link}
+          aria-label="Facebook"
+          href={facebookLink}
           target="_blank"
           rel="noopener noreferrer nofollow"
         >
-          <span class="sr-only">{social.name}</span>
-          <DynamicIcon className="inline-block" icon={social.icon} />
+          <span class="sr-only">Facebook</span>
+          <FaFacebook className="w-6 h-6" />
         </a>
       </li>
-    ))
+    )
+  }
+  {
+    twitterLink && (
+      <li>
+        <a
+          aria-label="Twitter"
+          href={twitterLink}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <span class="sr-only">Twitter</span>
+          <FaTwitter className="w-6 h-6" />
+        </a>
+      </li>
+    )
+  }
+  {
+    linkedinLink && (
+      <li>
+        <a
+          aria-label="LinkedIn"
+          href={linkedinLink}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <span class="sr-only">LinkedIn</span>
+          <FaLinkedin className="w-6 h-6" />
+        </a>
+      </li>
+    )
+  }
+  {
+    githubLink && (
+      <li>
+        <a
+          aria-label="GitHub"
+          href={githubLink}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <span class="sr-only">GitHub</span>
+          <FaGithub className="w-6 h-6" />
+        </a>
+      </li>
+    )
+  }
+  {
+    instagramLink && (
+      <li>
+        <a
+          aria-label="Instagram"
+          href={instagramLink}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <span class="sr-only">Instagram</span>
+          <FaInstagram className="w-6 h-6" />
+        </a>
+      </li>
+    )
+  }
+  {
+    youtubeLink && (
+      <li>
+        <a
+          aria-label="YouTube"
+          href={youtubeLink}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <span class="sr-only">YouTube</span>
+          <FaYoutube className="w-6 h-6" />
+        </a>
+      </li>
+    )
+  }
+  {
+    mastodonLink && (
+      <li>
+        <a
+          aria-label="Mastodon"
+          href={mastodonLink}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <span class="sr-only">Mastodon</span>
+          <FaMastodon className="w-6 h-6" />
+        </a>
+      </li>
+    )
   }
 </ul>

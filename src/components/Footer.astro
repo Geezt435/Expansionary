@@ -1,6 +1,5 @@
 ---
 import Social from "@components/Social.astro";
-import social from "@/config/social.json";
 ---
 
 <footer class="glass container lg:my-4 lg:rounded-lg">
@@ -13,7 +12,12 @@ import social from "@/config/social.json";
       </ul>
     </div>
     <div class="text-center lg:col-6 lg:my-0 lg:text-right">
-      <Social source={social.main} className="social-icons m-2" />
+      <Social
+        facebookLink="https://www.facebook.com/"
+        twitterLink="https://twitter.com/"
+        githubLink="https://www.github.com/"
+        linkedinLink="https://www.linkedin.com/"
+      />
     </div>
   </div>
 </footer>
