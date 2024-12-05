@@ -1,4 +1,4 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection, reference, z } from "astro:content";
 import { glob } from 'astro/loaders';
 
 // Also update /src/types/index.d.ts when updating these signatures
@@ -39,7 +39,7 @@ const blog = defineCollection({
     date: z.date().optional(),
     image: image().optional(),
     imageAlt: z.string().default("image"),
-    author: z.string().optional(),
+    author: reference('authors').optional(),
     categories: z.array(z.string()).optional(),
     tags: z.array(z.string()).optional(),
     complexity: z.number().default(1),
@@ -93,7 +93,7 @@ const poetry = defineCollection({
     date: z.date().optional(),
     image: image().optional(),
     imageAlt: z.string().default("image"),
-    author: z.string().optional(),
+    author: reference('authors').optional(),
   }),
 });
 
@@ -103,7 +103,7 @@ const recipes = defineCollection({
     date: z.date().optional(),
     image: image().optional(),
     imageAlt: z.string().default("image"),
-    author: z.string().optional(),
+    author: reference('authors').optional(),
     prepTime: z.number().optional(),
     servings: z.number().optional(),
     diet: z.string().optional(),

@@ -1,6 +1,6 @@
 ---
-title: Sam Wilson
-email: samwilson@email.com
+title: John Doe
+email: johndoe@email.com
 image: "@assets/profile/avatar.png"
 description: This is the description. Just an example of a description, which is bad. A most not good description indeed, but characters on the page.
 social:

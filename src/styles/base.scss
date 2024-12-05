@@ -41,7 +41,7 @@ html {
 body { 
   @apply font-primary font-normal leading-relaxed text-text dark:text-darkmode-text;
   @apply bg-body dark:bg-darkmode-body;
-  @apply flex flex-col min-h-screen sm:mx-0 lg:mx-8;
+  @apply flex flex-col min-h-screen lg:mx-8;
   // background: url(/src/assets/backgrounds/mtn-lake.jpg) no-repeat center center fixed; 
   // -webkit-background-size: cover;
   // -moz-background-size: cover;

@@ -1,6 +1,6 @@
 ---
 title: Freedom's Cost
-author: Armin Arlert
+author: john-doe
 date: 2024-10-10
 ---
 

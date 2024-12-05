@@ -1,5 +1,6 @@
 ---
 import type { DocsEntry } from "@/types";
+import { Image } from "astro:assets";
 import Card from "@components/Card.astro";
 
 interface Props {
@@ -7,18 +8,29 @@ interface Props {
 }
 
 const { entry } = Astro.props;
-const { title, description } = entry.data;
-
-// const id = entry.id.replace("-index", "");
+const { title, image, imageAlt } = entry.data;
 ---
 
-<Card style="p-4">
+<Card style="">
   <a href={`/docs/${entry.id.replace("/-index", "")}`}>
-    <h4 class="mb-3">
-      {title}
-    </h4>
+    <div class="relative">
+      {
+        image && (
+          <Image
+            class="rounded-lg"
+            src={image}
+            alt={imageAlt}
+            width={1280}
+            height={720}
+            format="webp"
+          />
+        )
+      }
+      <div class="glass text-center rounded-lg px-2 py-1 absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
+        <h4 class="">
+          {title}
+        </h4>
+      </div>
+    </div>
   </a>
-  <p>
-    {description}
-  </p>
 </Card>

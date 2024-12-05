@@ -23,7 +23,7 @@ const { collectionIndex, entries } = Astro.props;
       <div class="row">
         {
           entries.map((entry) => (
-            <div class="mb-4 md:mb-8 md:col-6 lg:col-4">
+            <div class="md:col-6 lg:col-4 h-min p-2">
               <DocCard entry={entry} />
             </div>
           ))

@@ -1,6 +1,6 @@
 ---
 title: Upon the Hill
-author: Jane Doe
+author: jane-doe
 date: 2024-06-15
 ---
 

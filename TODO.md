@@ -19,11 +19,12 @@
 - [x] Make Docs browser bold on the current doc
 - [x] Make a generic EntryHeader component, consisting of title, author?, date?, categories?, tags?, etc.
 - [x] Add an entry header to docs.
-- [ ] Add images to docCards, build their style around that
-- [ ] Clean up Docs flex structure in cases of DocBrowser or ToC absence
-- [ ] Make it so across the site, authors hyperlink only if they have a page to link to.
+- [x] Add images to docCards, build their style around that
+- [x] Make it so across the site, authors hyperlink only if they have a page to link to.
+- [ ] Mature Social usages, namely for Authors.
+- [ ] Clean up Docs flex structure in cases of DocBrowser or ToC absence.
 - [ ] Either clean up and tame the shortcodes, or replace them with ones from other templates.
-- [ ] Tighten up the CSS/Tailwind Config pipeline
-- [ ] Make a Customization Quickstart guide, to explain the most significant areas of interest
-- [ ] Create a component that puts an image on the left and text on the right and vice-versa for Advynt prep
+- [ ] Tighten up the CSS/Tailwind Config pipeline.
+- [ ] Make a Customization Quickstart guide, to explain the most significant areas of interest.
+- [ ] Create a component that puts an image on the left and text on the right and vice-versa for Advynt prep.
 - [ ] Make an "opaque glass" component that has translucency and contrast on glass, but turns opaque instead of transparent on "no-glass" mode. It's only relevant in a few places.

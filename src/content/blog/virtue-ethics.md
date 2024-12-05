@@ -3,7 +3,7 @@ title: Aristotle's Virtue Ethics
 description: An exploration of Aristotle's philosophy of virtue and its relevance today.
 date: 2024-03-15
 categories: [Philosophy]
-author: John Doe
+author: john-doe
 tags: [ethics, ancient]
 hideToc: true
 ---

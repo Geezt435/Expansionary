@@ -21,7 +21,7 @@ const { title, description, hideNav, hideToc, image } = entry.data;
 ---
 
 <Base title={title} image={image?.src} description={description}>
-  <section class="flex flex-1 flex-col md:flex-row container">
+  <section class="flex flex-1 flex-col md:flex-row container p-4 lg:p-0">
     <div
       class=`hidden md:flex max-h-static_sidemenu sticky top-[5rem]
     ${hideToc && hideNav ? "w-screen" : "mr-4 md:w-1/4 lg:w-1/5"}`

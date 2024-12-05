@@ -3,7 +3,7 @@ title: The Elements of Stoicism
 description: Discover the enduring wisdom of the Stoics and their approach to a meaningful life.
 date: 2024-01-25
 categories: [Philosophy]
-author: John Doe
+author: john-doe
 tags: [ancient, stoicism]
 hideToc: true
 ---

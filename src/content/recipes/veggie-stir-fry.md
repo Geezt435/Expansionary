@@ -2,7 +2,7 @@
 title: Veggie Stir-Fry with Tofu
 description: A vibrant, healthy stir-fry featuring crispy tofu and colorful vegetables, tossed in a savory sauce.
 image: "@assets/recipes/veggie-stir-fry.jpg"
-author: Jane Doe
+author: jane-doe
 prepTime: 40
 servings: 4
 diet: Vegan

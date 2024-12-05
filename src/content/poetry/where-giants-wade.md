@@ -1,6 +1,6 @@
 ---
 title: Where Giants Wade
-author: Jane Doe
+author: jane-doe
 date: 2024-01-15
 ---
 

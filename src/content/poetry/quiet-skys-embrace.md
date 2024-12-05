@@ -1,6 +1,6 @@
 ---
 title: The Quiet Sky's Embrace
-author: Jane Doe
+author: jane-doe
 date: 2024-05-15
 ---
 
