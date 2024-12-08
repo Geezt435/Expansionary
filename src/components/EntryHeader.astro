@@ -15,14 +15,14 @@ import {
   FaRegUserCircle,
   FaHashtag,
   FaRegClock,
-} from "react-icons/fa/index.js";
-import type { GenericEntry } from "@/types";
+} from "react-icons/fa";
+import type { GenericEntry, EntryReference } from "@/types";
 
 interface EntryData {
   title: string;
   image?: string;
   imageAlt?: string;
-  author?: string;
+  author?: EntryReference;
   date?: string;
   pubDate?: string;
   modDate?: string;
@@ -97,9 +97,9 @@ tags?.sort((a: string, b: string) => a.localeCompare(b));
         <ul>
           {author && showAuthor && (
             <li class="mr-1 inline-block">
-              <a href={`/authors/${slugify(author)}`}>
+              <a href={`/authors/${slugify(author.id)}`}>
                 <FaRegUserCircle className={"-mt-1 inline-block"} />
-                {upperHumanize(author)}
+                {upperHumanize(author.id)}
               </a>
             </li>
           )}

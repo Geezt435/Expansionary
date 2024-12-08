@@ -10,7 +10,7 @@ import {
   FaRegUserCircle,
   FaUtensils,
   FaSeedling,
-} from "react-icons/fa/index.js";
+} from "react-icons/fa";
 
 interface Props {
   entry: RecipesEntry;
@@ -62,9 +62,9 @@ const {
               {
                 author && (
                   <div class="m-4">
-                    <a href={`/authors/${slugify(author)}`}>
+                    <a href={`/authors/${slugify(author.id)}`}>
                       <FaRegUserCircle className={"mr-2 -mt-1 inline-block"} />
-                      {upperHumanize(author)}
+                      {upperHumanize(author.id)}
                     </a>
                   </div>
                 )

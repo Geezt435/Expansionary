@@ -21,6 +21,11 @@ export type SearchableEntry =
   | RecipesEntry
   | TermsEntry;
 
+export type EntryReference = {
+  id: string;
+  collection: string;
+};
+
 export type AuthorsIndex = {
   title: string;
   description: string | null;
