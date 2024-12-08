@@ -22,7 +22,7 @@ if (theme.fonts.font_family.secondary) {
   fontSecondaryType = theme.fonts.font_family.secondary_type;
 }
 
-/** @type {import('tailwindcss').Config} */
+/** @type {import("tailwindcss").Config} */
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   safelist: [],
@@ -62,14 +62,12 @@ module.exports = {
           "theme-dark": theme.colors.darkmode.theme_color.theme_dark,
         },
       },
-
       minHeight: {
         static_sidemenu: "calc(100vh - 6rem)",
       },
       maxHeight: {
         static_sidemenu: "calc(100vh - 6rem)",
       },
-
       fontSize: {
         base: font_base + "px",
         h1: h1 + "rem",
@@ -85,6 +83,31 @@ module.exports = {
       fontFamily: {
         primary: [fontPrimary, fontPrimaryType],
         secondary: [fontSecondary, fontSecondaryType],
+      },
+      spacing: {
+        "1/2": "50%",
+        "1/3": "33.333333%",
+        "2/3": "66.666667%",
+        "1/4": "25%",
+        "2/4": "50%",
+        "3/4": "75%",
+        "1/6": "16.666667%",
+        "2/6": "33.333333%",
+        "3/6": "50%",
+        "4/6": "66.666667%",
+        "5/6": "83.333333%",
+        "1/12": "8.333333%",
+        "2/12": "16.666667%",
+        "3/12": "25%",
+        "4/12": "33.333333%",
+        "5/12": "41.666667%",
+        "6/12": "50%",
+        "7/12": "58.333333%",
+        "8/12": "66.666667%",
+        "9/12": "75%",
+        "10/12": "83.333333%",
+        "11/12": "91.666667%",
+        "9/16": "56.25%",
       },
     },
   },

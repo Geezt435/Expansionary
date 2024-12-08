@@ -13,11 +13,11 @@ const { title, image, imageAlt } = entry.data;
 
 <Card style="">
   <a href={`/docs/${entry.id.replace("/-index", "")}`}>
-    <div class="relative">
+    <div class="relative pb-9/16">
       {
         image && (
           <Image
-            class="rounded-lg"
+            class="absolute rounded-lg object-cover w-full h-full"
             src={image}
             alt={imageAlt}
             width={1280}
@@ -26,7 +26,7 @@ const { title, image, imageAlt } = entry.data;
           />
         )
       }
-      <div class="glass text-center rounded-lg px-2 py-1 absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
+      <div class="glass absolute text-center rounded-lg px-2 py-1 top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
         <h4 class="">
           {title}
         </h4>
