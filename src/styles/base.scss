@@ -82,10 +82,12 @@ h6,
 .h6 {
   @apply text-h6 font-medium;
 }
+
 b,
 strong {
   @apply font-semibold;
 }
+
 code {
   @apply after:border-none;
 }
@@ -94,10 +96,7 @@ img {
   @apply mx-auto;
 }
 
-a:hover {
-  @apply opacity-60;
-}
-
+a:hover,
 .a:hover {
   @apply opacity-60;
 }
