@@ -47,7 +47,7 @@ if (pageIDs) {
         {prevPage ? (
           <a
             href={prevPage}
-            class="col rounded px-2 py-1.5 text-dark hover:bg-theme-light dark:text-darkmode-dark dark:hover:bg-darkmode-theme-light"
+            class="col rounded px-2 py-1.5 text-txt-p hover:bg-bg-t dark:text-darkmode-txt-p dark:hover:bg-darkmode-bg-t"
           >
             <span class="sr-only">Previous</span>
             <svg
@@ -65,7 +65,7 @@ if (pageIDs) {
             </svg>
           </a>
         ) : (
-          <span class="col rounded px-2 py-1.5 text-light">
+          <span class="col rounded px-2 py-1.5 text-txt-light">
             <span class="sr-only">Previous</span>
             <svg
               viewBox="0 0 20 20"
@@ -86,7 +86,7 @@ if (pageIDs) {
         {pageIDs ? (
           <div
             aria-current="page"
-            class="col rounded px-4 py-2 text-dark  dark:text-darkmode-dark"
+            class="col rounded px-4 py-2 text-txt-p  dark:text-darkmode-txt-p"
           >
             {pageIndex + 1}
           </div>
@@ -95,7 +95,7 @@ if (pageIDs) {
             pagination === pageIndex ? (
               <span
                 aria-current="page"
-                class="col rounded bg-primary px-4 py-2 text-white dark:bg-darkmode-primary dark:text-dark"
+                class="col rounded bg-bg-t px-4 py-2 text-txt-p dark:bg-darkmode-bg-t dark:text-txt-p"
               >
                 {pagination}
               </span>
@@ -107,7 +107,7 @@ if (pageIDs) {
                     : `${collection ? "/" + collection : ""}/page/${pagination}`
                 }
                 aria-current="page"
-                class="col rounded px-4 py-2 text-dark hover:bg-theme-light dark:text-darkmode-dark dark:hover:bg-darkmode-theme-light"
+                class="col rounded px-4 py-2 text-txt-p hover:bg-bg-t dark:text-darkmode-txt-p dark:hover:bg-darkmode-bg-t"
               >
                 {pagination}
               </a>
@@ -119,7 +119,7 @@ if (pageIDs) {
         {nextPage ? (
           <a
             href={nextPage}
-            class="col rounded px-2 py-1.5 text-dark hover:bg-theme-light dark:text-darkmode-dark dark:hover:bg-darkmode-theme-light"
+            class="col rounded px-2 py-1.5 text-txt-p hover:bg-bg-t dark:text-darkmode-txt-p dark:hover:bg-darkmode-bg-t"
           >
             <span class="sr-only">Next</span>
             <svg
@@ -137,7 +137,7 @@ if (pageIDs) {
             </svg>
           </a>
         ) : (
-          <span class="col rounded px-2 py-1.5 text-light">
+          <span class="col rounded px-2 py-1.5 text-txt-light">
             <span class="sr-only">Next</span>
             <svg
               viewBox="0 0 20 20"

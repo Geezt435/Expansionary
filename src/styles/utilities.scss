@@ -13,16 +13,16 @@
 
 /* No Glass */
 // .glass {
-//   @apply bg-body dark:bg-darkmode-body;
+//   @apply bg-bg-p dark:bg-darkmode-bg-p;
 //   @apply bg-opacity-100;
 // }
 // .gradient-1c {
-//   @apply from-text via-transparent to-transparent;
-//   @apply dark:from-darkmode-text dark:via-transparent dark:to-transparent;
+//   @apply from-txt-s via-transparent to-transparent;
+//   @apply dark:from-darkmode-txt-s dark:via-transparent dark:to-transparent;
 // }
 /* Glass */
 .glass {
-  @apply bg-body dark:bg-darkmode-body;
+  @apply bg-bg-p dark:bg-darkmode-bg-p;
   @apply bg-opacity-40 dark:bg-opacity-40;
   @apply backdrop-blur-md;
   @apply bg-clip-padding backdrop-filter backdrop-saturate-100 backdrop-contrast-100;

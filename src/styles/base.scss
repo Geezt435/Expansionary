@@ -39,14 +39,14 @@ html {
 }
 
 body { 
-  @apply font-primary font-normal leading-relaxed text-text dark:text-darkmode-text;
-  @apply bg-body dark:bg-darkmode-body;
+  @apply font-primary font-normal leading-relaxed text-txt-s dark:text-darkmode-txt-s;
+  @apply bg-bg-p dark:bg-darkmode-bg-p;
   @apply flex flex-col min-h-screen lg:mx-8;
-  background: url(/src/assets/backgrounds/mtn-lake.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  // background: url(/src/assets/backgrounds/mtn-lake.jpg) no-repeat center center fixed; 
+  // -webkit-background-size: cover;
+  // -moz-background-size: cover;
+  // -o-background-size: cover;
+  // background-size: cover;
 }
 
 h1,
@@ -55,7 +55,7 @@ h3,
 h4,
 h5,
 h6 {
-  @apply font-secondary font-bold leading-tight text-dark dark:text-darkmode-dark;
+  @apply font-secondary font-bold leading-tight text-txt-p dark:text-darkmode-txt-p;
   // @apply font-secondary font-bold leading-tight bg-gradient-to-r from-orange-500 via-indigo-500 to-green-500 text-transparent bg-clip-text;
 }
 h1,
@@ -103,5 +103,5 @@ a:hover {
 }
 
 hr {
-  @apply dark:border-light;
+  @apply border-border dark:border-darkmode-border;
 }

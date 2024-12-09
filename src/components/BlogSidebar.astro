@@ -23,7 +23,7 @@ const { tags, categories, allCategories }: Props = Astro.props;
            Categories
         </a>
       </h4>
-      <hr class="mb-2 -mt-1 border-text dark:border-darkmode-text" />
+      <hr class="mb-2 -mt-1" />
       <ul class="space-y-2">
         {
           categories.map((category) => {
@@ -31,7 +31,7 @@ const { tags, categories, allCategories }: Props = Astro.props;
             return (
               <li>
                 <a
-                  class="hover:text-primary dark:hover:text-darkmode-primary"
+                  class=""
                   href={`/blog/categories/${category}`}
                 >
                   {upperHumanize(category)}{" "}
@@ -53,7 +53,7 @@ const { tags, categories, allCategories }: Props = Astro.props;
            Tags
         </a>
       </h4>
-      <hr class="mb-2 -mt-1 border-text dark:border-darkmode-text" />
+      <hr class="mb-2 -mt-1" />
       <ul>
         {
           tags.map((tag: any) => {

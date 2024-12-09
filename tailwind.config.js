@@ -41,25 +41,29 @@ module.exports = {
     },
     extend: {
       colors: {
-        text: theme.colors.default.text_color.default,
-        light: theme.colors.default.text_color.light,
-        dark: theme.colors.default.text_color.dark,
-        primary: theme.colors.default.theme_color.primary,
-        secondary: theme.colors.default.theme_color.secondary,
-        body: theme.colors.default.theme_color.body,
-        border: theme.colors.default.theme_color.border,
-        "theme-light": theme.colors.default.theme_color.theme_light,
-        "theme-dark": theme.colors.default.theme_color.theme_dark,
+        txt: {
+          p: theme.colors.default.txt.primary,
+          s: theme.colors.default.txt.secondary,
+          light: theme.colors.default.txt.light,
+        },
+        bg: {
+          p: theme.colors.default.bg.primary,
+          s: theme.colors.default.bg.secondary,
+          t: theme.colors.default.bg.tertiary,
+        },
+        border: theme.colors.default.border,
         darkmode: {
-          text: theme.colors.darkmode.text_color.default,
-          light: theme.colors.darkmode.text_color.light,
-          dark: theme.colors.darkmode.text_color.dark,
-          primary: theme.colors.darkmode.theme_color.primary,
-          secondary: theme.colors.darkmode.theme_color.secondary,
-          body: theme.colors.darkmode.theme_color.body,
-          border: theme.colors.darkmode.theme_color.border,
-          "theme-light": theme.colors.darkmode.theme_color.theme_light,
-          "theme-dark": theme.colors.darkmode.theme_color.theme_dark,
+          txt: {
+            p: theme.colors.darkmode.txt.primary,
+            s: theme.colors.darkmode.txt.secondary,
+            light: theme.colors.darkmode.txt.light,
+          },
+          bg: {
+            p: theme.colors.darkmode.bg.primary,
+            s: theme.colors.darkmode.bg.secondary,
+            t: theme.colors.darkmode.bg.tertiary,
+          },
+          border: theme.colors.darkmode.border,
         },
       },
       minHeight: {
