@@ -3,7 +3,6 @@ import React, { useState } from "react";
 const Accordion = ({
   title,
   children,
-  className,
 }: {
   title: string;
   children: React.ReactNode;
@@ -12,11 +11,14 @@ const Accordion = ({
   const [show, setShow] = useState(false);
 
   return (
-    <div className={`accordion ${show && "active"} ${className}`}>
-      <button className="accordion-header" onClick={() => setShow(!show)}>
+    <div className="mb-6 overflow-hidden rounded-lg border border-border dark:border-darkmode-border">
+      <button
+        className="glass-t flex w-full cursor-pointer items-center justify-between px-4 py-2 text-lg text-txt-p dark:text-darkmode-txt-p"
+        onClick={() => setShow(!show)}
+      >
         {title}
         <svg
-          className="accordion-icon"
+          className={`ml-auto h-[.8em] w-[.8em] transition-transform duration-200 ${show ? "rotate-0" : "rotate-[-90deg]"}`}
           x="0px"
           y="0px"
           viewBox="0 0 512 512"
@@ -28,7 +30,11 @@ const Accordion = ({
           ></path>
         </svg>
       </button>
-      <div className="accordion-content">{children}</div>
+      <div
+        className={`max-h-0 overflow-hidden px-4 py-0 ${show && "max-h-screen py-0"}`}
+      >
+        {children}
+      </div>
     </div>
   );
 };

@@ -11,20 +11,6 @@
   @apply mx-auto max-w-[1200px] px-4;
 }
 
-// social icons
-.social-icons {
-  @apply space-x-4;
-  li {
-    @apply inline-block;
-    a {
-      @apply flex h-9 w-9 items-center justify-center rounded bg-bg-t text-center leading-9 text-white dark:bg-darkmode-bg-t dark:text-txt-p;
-      svg {
-        @apply h-5 w-5;
-      }
-    }
-  }
-}
-
 // notice
 .notice {
   @apply mb-6 rounded-lg border p-4;
@@ -74,59 +60,6 @@
   }
 }
 
-// tab
-.tab {
-  @apply overflow-hidden rounded-lg border border-border dark:border-darkmode-border;
-  &-nav {
-    @apply flex border-b border-border bg-bg-t dark:border-darkmode-border dark:bg-darkmode-bg-t;
-    @apply m-0 #{!important};
-    @apply list-none #{!important};
-
-    &-item {
-      @apply cursor-pointer border-b-[3px] border-border py-2 text-lg text-txt-p opacity-80 dark:border-darkmode-border;
-      @apply my-0 #{!important};
-      @apply px-8 #{!important};
-
-      &.active {
-        @apply border-b-[3px] border-txt-p opacity-100 dark:border-darkmode-border;
-      }
-    }
-  }
-  &-content {
-    &-panel {
-      @apply p-8;
-      p {
-        @apply mb-0;
-      }
-      &.active {
-        @apply block;
-      }
-    }
-  }
-}
-
-// accordion
-.accordion {
-  @apply mb-6 overflow-hidden rounded-lg border border-border dark:border-darkmode-border;
-  &-header {
-    @apply flex w-full cursor-pointer items-center justify-between p-4 pb-2 text-lg text-txt-p dark:bg-darkmode-bg-t dark:text-darkmode-txt-light;
-  }
-  &-icon {
-    @apply ml-auto h-[.8em] w-[.8em] rotate-[-90deg] transition-transform duration-200;
-  }
-  &-content {
-    @apply max-h-0 overflow-hidden px-4 py-0;
-  }
-  &.active {
-    .accordion-icon {
-      @apply rotate-0;
-    }
-    .accordion-content {
-      @apply max-h-screen py-0;
-    }
-  }
-}
-
 // modal
 .modal {
   @apply fixed inset-0 z-40 hidden h-full w-full overflow-auto;
@@ -151,13 +84,15 @@
   @apply prose-img:max-w-full prose-img:rounded;
   @apply prose-hr:border-border prose-hr:dark:border-darkmode-border;
   @apply prose-p:text-base prose-p:text-txt-s prose-p:dark:text-darkmode-txt-s;
-  @apply prose-blockquote:rounded-lg prose-blockquote:border prose-blockquote:border-l-[10px] prose-blockquote:border-border prose-blockquote:bg-bg-t prose-blockquote:px-4 prose-blockquote:py-0 prose-blockquote:font-secondary prose-blockquote:text-2xl prose-blockquote:not-italic prose-blockquote:text-txt-p prose-blockquote:dark:border-darkmode-border prose-blockquote:dark:bg-darkmode-bg-t prose-blockquote:dark:text-darkmode-txt-light;
+  @apply prose-blockquote:rounded-lg prose-blockquote:border prose-blockquote:border-l-[10px] prose-blockquote:px-4 prose-blockquote:py-0 prose-blockquote:font-secondary prose-blockquote:text-2xl prose-blockquote:not-italic;
+  @apply prose-blockquote:glass-t prose-blockquote:border-border prose-blockquote:dark:border-darkmode-border prose-blockquote:text-txt-s prose-blockquote:dark:text-darkmode-txt-s;
   @apply prose-blockquote:prose-p:m-0;
   @apply prose-pre:rounded-lg prose-pre:bg-bg-t prose-pre:dark:bg-darkmode-bg-t;
   @apply prose-code:px-1 prose-code:text-txt-p prose-code:dark:text-darkmode-txt-p;
   @apply prose-strong:text-txt-p prose-strong:dark:text-darkmode-txt-s;
   @apply prose-a:text-txt-s prose-a:underline hover:prose-a:text-txt-p prose-a:dark:text-darkmode-txt-s hover:prose-a:dark:text-darkmode-txt-p;
   @apply prose-li:text-txt-s prose-li:dark:text-darkmode-txt-s;
+
   @apply prose-table:relative prose-table:overflow-hidden prose-table:rounded-lg prose-table:before:absolute prose-table:before:left-0 prose-table:before:top-0 prose-table:before:h-full prose-table:before:w-full prose-table:before:rounded-[inherit] prose-table:before:border prose-table:before:content-[""] prose-table:before:dark:border-darkmode-border;
   @apply prose-thead:border-border prose-thead:bg-bg-t prose-thead:dark:border-darkmode-border prose-thead:dark:bg-darkmode-bg-t;
   @apply prose-th:relative prose-th:z-10 prose-th:px-4 prose-th:py-[10px] prose-th:text-txt-p prose-th:dark:text-darkmode-txt-s;

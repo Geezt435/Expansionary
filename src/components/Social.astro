@@ -28,13 +28,17 @@ const {
   youtubeLink,
   mastodonLink,
 } = Astro.props;
+
+const iconClass =
+  "glass rounded text-txt-p dark:text-darkmode-txt-p flex h-9 w-9 items-center justify-center text-center";
 ---
 
-<ul class="social-icons m-2">
+<ul class="py-2 flex items-center">
   {
     facebookLink && (
-      <li>
+      <li class="inline-block px-1">
         <a
+          class={iconClass}
           aria-label="Facebook"
           href={facebookLink}
           target="_blank"
@@ -48,8 +52,9 @@ const {
   }
   {
     twitterLink && (
-      <li>
+      <li class="inline-block px-1">
         <a
+          class={iconClass}
           aria-label="Twitter"
           href={twitterLink}
           target="_blank"
@@ -63,8 +68,9 @@ const {
   }
   {
     linkedinLink && (
-      <li>
+      <li class="inline-block px-1">
         <a
+          class={iconClass}
           aria-label="LinkedIn"
           href={linkedinLink}
           target="_blank"
@@ -78,8 +84,9 @@ const {
   }
   {
     githubLink && (
-      <li>
+      <li class="inline-block px-1">
         <a
+          class={iconClass}
           aria-label="GitHub"
           href={githubLink}
           target="_blank"
@@ -93,8 +100,9 @@ const {
   }
   {
     instagramLink && (
-      <li>
+      <li class="inline-block px-1">
         <a
+          class={iconClass}
           aria-label="Instagram"
           href={instagramLink}
           target="_blank"
@@ -108,8 +116,9 @@ const {
   }
   {
     youtubeLink && (
-      <li>
+      <li class="inline-block px-1">
         <a
+          class={iconClass}
           aria-label="YouTube"
           href={youtubeLink}
           target="_blank"
@@ -123,8 +132,9 @@ const {
   }
   {
     mastodonLink && (
-      <li>
+      <li class="inline-block px-1">
         <a
+          class={iconClass}
           aria-label="Mastodon"
           href={mastodonLink}
           target="_blank"

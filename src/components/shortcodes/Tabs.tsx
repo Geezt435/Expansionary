@@ -41,13 +41,15 @@ const Tabs = ({ children }: { children: React.ReactElement }) => {
   };
 
   return (
-    <div className="tab">
-      <ul className="tab-nav">
+    <div className="overflow-hidden rounded-lg border border-border dark:border-darkmode-border">
+      <ul className="glass-t m-0 list-none flex border-b border-border bg-bg-t dark:border-darkmode-border dark:bg-darkmode-bg-t">
         {tabLinks.map(
           (item: { name: string; children: string }, index: number) => (
             <li
               key={index}
-              className={`tab-nav-item ${index === active && "active"}`}
+              className={`my-0 px-8 cursor-pointer border-b-[3px] pt-2 pb-1 text-lg text-txt-s dark:text-darkmode-txt-s border-border dark:border-darkmode-border 
+                ${index === active && "border-b-[3px] text-txt-p dark:text-darkmode-txt-p border-txt-p dark:border-darkmode-txt-p"}
+              `}
               role="tab"
               tabIndex={index === active ? 0 : -1}
               onKeyDown={(event) => handleKeyDown(event, index)}

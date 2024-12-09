@@ -22,7 +22,7 @@
 // }
 /* Glass */
 .glass {
-  @apply bg-bg-p dark:bg-darkmode-bg-p;
+  @apply bg-bg-s dark:bg-darkmode-bg-s;
   @apply bg-opacity-40 dark:bg-opacity-40;
   @apply backdrop-blur-md;
   @apply bg-clip-padding backdrop-filter backdrop-saturate-100 backdrop-contrast-100;
@@ -31,4 +31,11 @@
 }
 .gradient-1c {
   @apply from-transparent via-transparent to-transparent;
+}
+
+.glass-t {
+  @apply bg-bg-t dark:bg-darkmode-bg-t;
+  @apply bg-opacity-40 dark:bg-opacity-40;
+  @apply backdrop-blur-md;
+  @apply bg-clip-padding backdrop-filter backdrop-saturate-100 backdrop-contrast-100;
 }
