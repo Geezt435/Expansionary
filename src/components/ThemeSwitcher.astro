@@ -1,21 +1,16 @@
 ---
 import config from "@/config/config.json";
 
-interface Props {
-  className?: string;
-}
-
-const { className }: Props = Astro.props;
 const { theme_switcher, default_theme } = config.settings;
 ---
 
 {
   theme_switcher && (
-    <div class={`theme-switcher a ${className}`}>
-      <input id="theme-switcher" data-theme-switcher type="checkbox" />
-      <label for="theme-switcher">
+    <div class="inline-flex a mr-2">
+      <input class="absolute opacity-0" id="theme-switcher" data-theme-switcher type="checkbox" />
+      <label class="relative inline-block h-4 w-6 cursor-pointer" for="theme-switcher">
         <span class="sr-only">theme switcher</span>
-        <span>
+        <span class="absolute -top-1 left-0 flex h-6 w-6 items-center justify-center rounded-full">
           <svg
             class="absolute z-10 opacity-100 dark:opacity-0"
             viewBox="0 0 24 24"

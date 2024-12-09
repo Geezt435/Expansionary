@@ -9,10 +9,18 @@ function Notice({
   children: React.ReactNode;
 }) {
   return (
-    <div className={`notice ${type}`}>
-      <div className="notice-head">
+    <div
+      className={`mb-6 rounded-lg border border-current py-2 px-4
+      ${type === "note" && "text-[#1B83E2]"}
+      ${type === "tip" && "text-[#40D294]"}
+      ${type === "info" && "text-[#E3A72C]"}
+      ${type === "warning" && "text-[#DB2C23]"}
+    `}
+    >
+      <div className="flex items-center">
         {type === "tip" ? (
           <svg
+            className="mr-2"
             width="20"
             height="20"
             viewBox="0 0 24 24"
@@ -28,9 +36,10 @@ function Notice({
           </svg>
         ) : type === "info" ? (
           <svg
+            className="mr-2"
             width="20"
             height="20"
-            viewBox="0 0 18 20"
+            viewBox="0 0 20 20"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -45,6 +54,7 @@ function Notice({
           </svg>
         ) : type === "warning" ? (
           <svg
+            className="mr-2"
             width="20"
             height="20"
             viewBox="0 0 20 20"
@@ -60,6 +70,7 @@ function Notice({
           </svg>
         ) : (
           <svg
+            className="mr-2"
             width="20"
             height="20"
             viewBox="0 0 20 20"
@@ -75,9 +86,11 @@ function Notice({
             />
           </svg>
         )}
-        <p className="my-0 ml-1.5">{upperHumanize(type)}</p>
+        <p className="font-secondary text-xl font-semibold text-txt-p dark:text-darkmode-txt-light my-0">
+          {upperHumanize(type)}
+        </p>
       </div>
-      <div className="notice-body">{children}</div>
+      <div className="mt-3">{children}</div>
     </div>
   );
 }

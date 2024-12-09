@@ -1,98 +1,25 @@
-// section style
-.section {
-  @apply py-12 xl:py-16;
-  &-sm {
-    @apply py-8 xl:py-12;
-  }
-}
-
-// container
-.container {
-  @apply mx-auto max-w-[1200px] px-4;
-}
-
-// notice
-.notice {
-  @apply mb-6 rounded-lg border p-4;
-  &-head {
-    @apply flex items-center;
-    svg {
-      @apply mr-2;
-    }
-    p {
-      @apply font-secondary text-xl font-semibold text-txt-p dark:text-darkmode-txt-light -mb-1;
-    }
-  }
-  .notice-body {
-    @apply mt-3;
-    p {
-      @apply my-0;
-    }
-  }
-
-  &.note {
-    @apply text-[#1B83E2];
-    @apply border-current;
-  }
-
-  &.tip {
-    @apply text-[#40D294];
-    @apply border-current;
-  }
-
-  &.info {
-    @apply text-[#E3A72C];
-    @apply border-current;
-  }
-
-  &.warning {
-    @apply text-[#DB2C23];
-    @apply border-current;
-  }
-}
-
-// swiper pagination
-.swiper-pagination-bullet {
-  @apply h-2.5 w-2.5 bg-bg-t opacity-100 dark:bg-darkmode-bg-t;
-
-  &-active {
-    @apply h-4 w-4 bg-bg-t dark:bg-darkmode-bg-t;
-  }
-}
-
-// modal
-.modal {
-  @apply fixed inset-0 z-40 hidden h-full w-full overflow-auto;
-  &-overlay {
-    @apply fixed inset-0 z-40 hidden h-full w-full bg-black bg-opacity-40;
-  }
-  &-content {
-    @apply relative top-1/2 z-50 mx-auto max-w-[90%] -translate-y-1/2 rounded-lg bg-bg-p p-8 dark:bg-darkmode-bg-p;
-  }
-  &-close {
-    @apply absolute right-3 top-3 h-8 w-8 rounded-full bg-bg-t text-center leading-8 text-txt-p dark:bg-darkmode-bg-t dark:text-darkmode-txt-p;
-  }
-}
-
-// content style
+// Markdown Content
 .content {
+  // Base
   @apply prose max-w-none;
   @apply prose-headings:mb-[.3em] prose-headings:mt-[.6em];
   @apply prose-h1:text-h1-sm md:prose-h1:text-h1;
   @apply prose-h2:text-h2-sm md:prose-h2:text-h2;
   @apply prose-h3:text-h3-sm md:prose-h3:text-h3;
+  @apply prose-p:text-base prose-p:text-txt-s prose-p:dark:text-darkmode-txt-s;
+  @apply prose-a:text-txt-s prose-a:underline hover:prose-a:text-txt-p prose-a:dark:text-darkmode-txt-s hover:prose-a:dark:text-darkmode-txt-p;
   @apply prose-img:max-w-full prose-img:rounded;
   @apply prose-hr:border-border prose-hr:dark:border-darkmode-border;
-  @apply prose-p:text-base prose-p:text-txt-s prose-p:dark:text-darkmode-txt-s;
+  @apply prose-strong:text-txt-p prose-strong:dark:text-darkmode-txt-s;
+  @apply prose-li:text-txt-s prose-li:dark:text-darkmode-txt-s;
+  @apply prose-pre:rounded-lg prose-pre:bg-bg-t prose-pre:dark:bg-darkmode-bg-t;
+  // Code
+  @apply prose-code:px-1 prose-code:text-txt-p prose-code:dark:text-darkmode-txt-p;
+  // Blockquote
   @apply prose-blockquote:rounded-lg prose-blockquote:border prose-blockquote:border-l-[10px] prose-blockquote:px-4 prose-blockquote:py-0 prose-blockquote:font-secondary prose-blockquote:text-2xl prose-blockquote:not-italic;
   @apply prose-blockquote:glass-t prose-blockquote:border-border prose-blockquote:dark:border-darkmode-border prose-blockquote:text-txt-s prose-blockquote:dark:text-darkmode-txt-s;
   @apply prose-blockquote:prose-p:m-0;
-  @apply prose-pre:rounded-lg prose-pre:bg-bg-t prose-pre:dark:bg-darkmode-bg-t;
-  @apply prose-code:px-1 prose-code:text-txt-p prose-code:dark:text-darkmode-txt-p;
-  @apply prose-strong:text-txt-p prose-strong:dark:text-darkmode-txt-s;
-  @apply prose-a:text-txt-s prose-a:underline hover:prose-a:text-txt-p prose-a:dark:text-darkmode-txt-s hover:prose-a:dark:text-darkmode-txt-p;
-  @apply prose-li:text-txt-s prose-li:dark:text-darkmode-txt-s;
-
+  // Table
   @apply prose-table:relative prose-table:overflow-hidden prose-table:rounded-lg prose-table:before:absolute prose-table:before:left-0 prose-table:before:top-0 prose-table:before:h-full prose-table:before:w-full prose-table:before:rounded-[inherit] prose-table:before:border prose-table:before:content-[""] prose-table:before:dark:border-darkmode-border;
   @apply prose-thead:border-border prose-thead:bg-bg-t prose-thead:dark:border-darkmode-border prose-thead:dark:bg-darkmode-bg-t;
   @apply prose-th:relative prose-th:z-10 prose-th:px-4 prose-th:py-[10px] prose-th:text-txt-p prose-th:dark:text-darkmode-txt-s;

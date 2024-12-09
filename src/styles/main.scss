@@ -9,7 +9,6 @@
 
 @layer components {
   @include meta.load-css("components");
-  @include meta.load-css("navigation");
 }
 
 @layer utilities {
