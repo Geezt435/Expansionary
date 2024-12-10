@@ -6,7 +6,15 @@ interface Props {
 const { style="" }: Props = Astro.props;
 ---
 
-<div class="h-full m-2 pl-0 bg-gradient-to-br gradient-1c rounded-lg intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+<!-- 
+  Intersect Transitions
+  - Fade        : intersect:animate-fade opacity-0
+  - Scale       : intersect:animate-scale opacity-0 scale-50
+  - Slide Right : intersect:animate-slideRight -translate-x-1/3
+  - Slide Left  : intersect:animate-slideLeft translate-x-1/3
+-->
+
+<div class="h-full m-2 pl-0 bg-gradient-to-br gradient-1c rounded-lg">
   <div class="glass h-full rounded-lg">
     <div class={style}>
       <slot />

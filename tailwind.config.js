@@ -1,5 +1,5 @@
 const theme = require("./src/config/theme.json");
-import plugin from 'tailwindcss/plugin';
+import plugin from "tailwindcss/plugin";
 
 let font_base = Number(theme.fonts.font_size.base.replace("px", ""));
 let font_scale = Number(theme.fonts.font_size.scale);
@@ -115,12 +115,27 @@ module.exports = {
         "9/16": "56.25%",
       },
       animation: {
-        fade: 'fadeInUp 1s both',
+        fade: "fadeInUp 1s both",
+        scale: "scaleOut 1s both",
+        slideRight: "slideRight 1s both",
+        slideLeft: "slideLeft 1s both",
       },
       keyframes: {
         fadeInUp: {
-          '0%': { opacity: 0, transform: 'translateY(2rem)' },
-          '100%': { opacity: 1, transform: 'translateY(0)' },
+          "0%": { opacity: 0, transform: "translateY(2rem)" },
+          "100%": { opacity: 1, transform: "translateY(0)" },
+        },
+        scaleOut: {
+          "0%": { opacity: 0, transform: "scale(0.5)" },
+          "100%": { opacity: 1, transform: "scale(1)" },
+        },
+        slideRight: {
+          "0%": { transform: "translateX(-1/3)" },
+          "100%": { transform: "translateX(0)" },
+        },
+        slideLeft: {
+          "0%": { transform: "translateX(1/3)" },
+          "100%": { transform: "translateX(0)" },
         },
       },
     },
@@ -140,7 +155,7 @@ module.exports = {
       },
     }),
     plugin(({ addVariant }) => {
-      addVariant('intersect', '&:not([no-intersect])');
+      addVariant("intersect", "&:not([no-intersect])");
     }),
   ],
 };
