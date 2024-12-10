@@ -1,4 +1,5 @@
 const theme = require("./src/config/theme.json");
+import plugin from 'tailwindcss/plugin';
 
 let font_base = Number(theme.fonts.font_size.base.replace("px", ""));
 let font_scale = Number(theme.fonts.font_size.scale);
@@ -113,6 +114,15 @@ module.exports = {
         "11/12": "91.666667%",
         "9/16": "56.25%",
       },
+      animation: {
+        fade: 'fadeInUp 1s both',
+      },
+      keyframes: {
+        fadeInUp: {
+          '0%': { opacity: 0, transform: 'translateY(2rem)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' },
+        },
+      },
     },
   },
   plugins: [
@@ -128,6 +138,9 @@ module.exports = {
         4: "1.5rem",
         5: "3rem",
       },
+    }),
+    plugin(({ addVariant }) => {
+      addVariant('intersect', '&:not([no-intersect])');
     }),
   ],
 };

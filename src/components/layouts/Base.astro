@@ -134,8 +134,8 @@ const { title, description, image, noindex, canonical } = Astro.props;
       crossorigin="anonymous"
     />
 
+    <ClientRouter fallback="swap" />
     <!-- 
-     <ClientRouter />
      transition:animate="slide"
      https://5-0-0-beta.docs.astro.build/en/guides/view-transitions/#_top
      -->
