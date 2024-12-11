@@ -3,7 +3,7 @@ interface Props {
   style?: string;
 }
 
-const { style="" }: Props = Astro.props;
+const { style = "" }: Props = Astro.props;
 ---
 
 <!-- 
@@ -13,8 +13,7 @@ const { style="" }: Props = Astro.props;
   - Slide Right : intersect:animate-slideRight -translate-x-1/3
   - Slide Left  : intersect:animate-slideLeft translate-x-1/3
 -->
-
-<div class="h-full m-2 pl-0 bg-gradient-to-br gradient-1c rounded-lg">
+<div class="h-full m-2 pl-0 bg-gradient-to-br gradient-1c rounded-lg intersect:animate-fade opacity-0">
   <div class="glass h-full rounded-lg">
     <div class={style}>
       <slot />
