@@ -16,7 +16,7 @@ const { label, link, newtab=false, type="primary", color, hoverInvert=false, gla
   <a 
     href={link} 
     target=`${newtab ? "_blank" : ""}`
-    class="no-underline inline-block hover:opacity-100"
+    class="no-underline inline-block hover:opacity-100 intersect:animate-fade opacity-0"
   >
     <div class=`glass hover:bg-opacity-20 hover:backdrop-blur-none
       ${type == "primary" ? "px-4 py-2 rounded-md font-bold" : "px-2 py-0.5 rounded-sm text-txt-light dark:text-darkmode-txt-light"}`
@@ -26,9 +26,9 @@ const { label, link, newtab=false, type="primary", color, hoverInvert=false, gla
   </a>
 ) : (
   <a 
-  href={link} 
-  target=`${newtab ? "_blank" : ""}`
-  class=`no-underline inline-block group ${hoverInvert ? "hover:opacity-100" : ""}`
+    href={link} 
+    target=`${newtab ? "_blank" : ""}`
+    class=`no-underline inline-block group intersect:animate-fadeLeft opacity-0${hoverInvert ? "hover:opacity-100" : ""}`
   >
   <div class=`
     ${color ? color : "bg-bg-t dark:bg-darkmode-bg-t"}

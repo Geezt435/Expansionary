@@ -70,20 +70,6 @@ const home = defineCollection({
         link: z.string().optional(),
       }).optional(),
     }),
-    testimonials: z.object({
-      enable: z.boolean().default(true),
-      title: z.string(),
-      description: z.string(),
-      items: z.array(
-        z.object({
-          name: z.string(),
-          designation: z.string(),
-          avatar: image().optional(),
-          avatarAlt: z.string().default("avatar image"),
-          content: z.string(),
-        }),
-      ),
-    }),
   }),
 });
 

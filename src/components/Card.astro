@@ -9,12 +9,14 @@ const { style = "" }: Props = Astro.props;
 <!-- 
   Intersect Transitions
   - Fade        : intersect:animate-fade opacity-0
+  - Fade Up     : intersect:animate-fadeUp opacity-0
+  - Fade Down   : intersect:animate-fadeDown opacity-0
+  - Fade Right  : intersect:animate-fadeRight opacity-0
+  - Fade Left   : intersect:animate-fadeLeft opacity-0
   - Scale       : intersect:animate-scale opacity-0 scale-50
-  - Slide Right : intersect:animate-slideRight -translate-x-1/3
-  - Slide Left  : intersect:animate-slideLeft translate-x-1/3
 -->
-<div class="h-full m-2 pl-0 bg-gradient-to-br gradient-1c rounded-lg intersect:animate-fade opacity-0">
-  <div class="glass h-full rounded-lg">
+<div class="h-full m-2 pl-0 bg-gradient-to-br gradient-1c rounded-lg">
+  <div class="glass h-full rounded-lg intersect:animate-fadeUp opacity-0">
     <div class={style}>
       <slot />
     </div>

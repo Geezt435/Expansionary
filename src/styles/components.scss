@@ -1,7 +1,7 @@
 // Markdown Content
 .content {
   // Base
-  @apply prose max-w-none;
+  @apply prose max-w-none intersect:animate-fadeUp;
   @apply prose-headings:mb-[.3em] prose-headings:mt-[.6em];
   @apply prose-h1:text-h1-sm md:prose-h1:text-h1;
   @apply prose-h2:text-h2-sm md:prose-h2:text-h2;

@@ -1,7 +1,6 @@
 ---
 import Base from "@layouts/Base.astro";
 import { markdownify } from "@/lib/textConverter";
-import Testimonials from "@components/Testimonials.astro";
 import Button from "@components/Button.astro";
 import type { HomeEntry } from "@/types";
 
@@ -10,7 +9,7 @@ interface Props {
 }
 
 const { entry } = Astro.props;
-const { banner, testimonials } = entry.data;
+const { banner } = entry.data;
 ---
 
 <Base>
@@ -36,6 +35,4 @@ const { banner, testimonials } = entry.data;
       </div>
     </div>
   </section>
-  <!-- /Banner -->
-  <Testimonials testimonials={testimonials} />
 </Base>
