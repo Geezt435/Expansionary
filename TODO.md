@@ -27,4 +27,5 @@
 - [ ] Tighten up the CSS/Tailwind Config pipeline.
 - [ ] Make a Customization Quickstart guide, to explain the most significant areas of interest.
 - [ ] Create a component that puts an image on the left and text on the right and vice-versa for Advynt prep.
-- [ ] Make an "opaque glass" component that has translucency and contrast on glass, but turns opaque instead of transparent on "no-glass" mode. It's only relevant in a few places.
+- [x] Make an "opaque glass" component that has translucency and contrast on glass, but turns opaque instead of transparent on "no-glass" mode. It's only relevant in a few places.
+- [x] Add animations, and mature them.

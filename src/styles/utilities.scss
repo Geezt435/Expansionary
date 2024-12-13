@@ -49,7 +49,7 @@ input#nav-toggle:checked ~ #nav-menu {
 .glass {
   @apply bg-bg-s dark:bg-darkmode-bg-s;
   @apply bg-opacity-40 dark:bg-opacity-40;
-  @apply backdrop-blur-md;
+  @apply backdrop-blur-md; 
   @apply bg-clip-padding backdrop-filter backdrop-saturate-100 backdrop-contrast-100;
   @apply border border-[rgba(255,255,255,0.6)] dark:border-[rgba(255,255,255,0.15)];
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);

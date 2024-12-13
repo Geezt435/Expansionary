@@ -1,11 +1,22 @@
 <!-- Customized from https://github.com/heidkaemper/tailwindcss-intersect -->
 
 <!-- 
+  *Animation*   : *Corresponging CSS*
+  - Fade        : intersect:animate-fade opacity-0
+  - Fade Up     : intersect:animate-fadeUp opacity-0
+  - Fade Down   : intersect:animate-fadeDown opacity-0
+  - Fade Right  : intersect:animate-fadeRight opacity-0
+  - Fade Left   : intersect:animate-fadeLeft opacity-0
+  - Scale       : intersect:animate-scale opacity-0 scale-50
+-->
+
+<!-- 
   Usage:
   - intersect-full: trigger animation when fully in view
   - intersect-half: trigger animation when 50% in view
   - intersect-quarter: trigger animation when 25% in view
   - intersect-repeat: trigger animation on every intersection
+  - intersect-no-queue: trigger animation immediately
 -->
 <script is:inline>
   const Observer = {
@@ -69,11 +80,10 @@
                 target.removeAttribute("no-intersect");
                 target.setAttribute("data-animated", "true");
 
-                const delay =
-                  this.animationCounter * this.delayBetweenAnimations;
+                const delay = this.animationCounter * this.delayBetweenAnimations;
                 this.animationCounter++;
 
-                target.style.transitionDelay = `${delay}ms`;
+                // target.style.transitionDelay = `${delay}ms`;
                 target.style.animationDelay = `${delay}ms`;
 
                 if (!target.classList.contains("intersect-repeat")) {

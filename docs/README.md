@@ -9,7 +9,7 @@ Recommended reading order:
 
 1. [Tech Stack](./tech-stack.md) - Explains the choice of technologies used for this application, their limitations, and all the setup needed to get the site deployed to the internet.
 2. [Project Structure](./project-structure.md) - Provides an overview of the project directory.
-3. [Customization Quickstart](./customization-quickstart.md) - Points out the areas of highest impact for customization, and examples of this template's range.
+3. [Customization](./customization.md) - Points out the areas of highest impact for customization, and examples of this template's range.
 
 ## Git Quick Reference
 
