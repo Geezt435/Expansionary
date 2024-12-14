@@ -65,7 +65,7 @@ if (pageIDs) {
             </svg>
           </a>
         ) : (
-          <span class="col rounded px-2 py-1.5 text-txt-light">
+          <span class="col rounded px-2 py-1.5 text-txt-light dark:text-darkmode-txt-light">
             <span class="sr-only">Previous</span>
             <svg
               viewBox="0 0 20 20"
@@ -95,7 +95,7 @@ if (pageIDs) {
             pagination === pageIndex ? (
               <span
                 aria-current="page"
-                class="col rounded glass-t-borderless px-4 py-2 font-primary font-semibold text-txt-p dark:text-darkmode-txt-p"
+                class="col rounded px-4 py-2 font-primary font-semibold text-txt-p dark:text-darkmode-txt-p border border-txt-light dark:border-darkmode-txt-light"
               >
                 {pagination}
               </span>
@@ -137,7 +137,7 @@ if (pageIDs) {
             </svg>
           </a>
         ) : (
-          <span class="col rounded px-2 py-1.5 text-txt-light">
+          <span class="col rounded px-2 py-1.5 text-txt-light dark:text-darkmode-txt-light">
             <span class="sr-only">Next</span>
             <svg
               viewBox="0 0 20 20"

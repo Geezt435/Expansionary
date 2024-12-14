@@ -7,8 +7,16 @@ const { theme_switcher, default_theme } = config.settings;
 {
   theme_switcher && (
     <div class="inline-flex a mr-2">
-      <input class="absolute opacity-0" id="theme-switcher" data-theme-switcher type="checkbox" />
-      <label class="relative inline-block h-4 w-6 cursor-pointer" for="theme-switcher">
+      <input
+        class="absolute opacity-0"
+        id="theme-switcher"
+        data-theme-switcher
+        type="checkbox"
+      />
+      <label
+        class="relative inline-block h-4 w-6 cursor-pointer"
+        for="theme-switcher"
+      >
         <span class="sr-only">theme switcher</span>
         <span class="absolute -top-1 left-0 flex h-6 w-6 items-center justify-center rounded-full">
           <svg
@@ -38,29 +46,41 @@ const { theme_switcher, default_theme } = config.settings;
     </div>
   )
 }
-<script is:inline define:vars={{ defaultTheme: default_theme }}>
-  var darkMode = defaultTheme === "dark" ? true : false;
-  var themeSwitch = document.querySelectorAll("[data-theme-switcher]");
-  if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-    darkMode = true;
+<script is:inline data-astro-rerun define:vars={{ defaultTheme: default_theme }}
+>
+  function getTheme(defaultTheme) {
+    var darkMode = defaultTheme === "dark" ? true : false;
+    if (localStorage.getItem("theme") === "system") {
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        darkMode = true;
+      }
+    } else if (localStorage.getItem("theme") === "dark") {
+      darkMode = true;
+    } else if (localStorage.getItem("theme") === "light") {
+      darkMode = false;
+    }
+    return darkMode;
   }
-  if (localStorage.getItem("theme") === "dark") {
-    darkMode = true;
-  } else if (localStorage.getItem("theme") === "light") {
-    darkMode = false;
+
+  function setTheme(darkMode) {
+    // Update DOM
+    darkMode
+      ? document.documentElement.classList.add("dark")
+      : document.documentElement.classList.remove("dark");
+    // Update localStorage
+    localStorage.setItem("theme", darkMode ? "dark" : "light");
   }
-  if (darkMode) {
-    document.documentElement.classList.toggle("dark");
-  }
-  document.addEventListener("DOMContentLoaded", () => {
-    [].forEach.call(themeSwitch, function (ts) {
-      ts.checked = darkMode ? true : false;
-      ts.addEventListener("click", () => {
-        document.documentElement.classList.toggle("dark");
-        localStorage.setItem(
-          "theme",
-          document.documentElement.classList.contains("dark") ? "dark" : "light"
-        );
+
+  // This prevents flickering back to default theme before the page is fully loaded
+  setTheme(getTheme(defaultTheme));
+
+  document.addEventListener("astro:page-load", () => {
+    setTheme(getTheme(defaultTheme));
+    // Theme switcher
+    var themeSwitch = document.querySelectorAll("[data-theme-switcher]");
+    themeSwitch.forEach((el) => {
+      el.addEventListener("change", (e) => {
+        setTheme(e.target.checked);
       });
     });
   });

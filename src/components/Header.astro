@@ -21,7 +21,7 @@ const { settings } = config;
 const { pathname } = Astro.url;
 ---
 
-<header class={`container glass py-2 z-30 mb-4 lg:mt-4 lg:rounded-lg ${settings.sticky_header && "sticky top-0"}`}>
+<header transition:persist class={`container glass py-2 z-30 mb-4 lg:mt-4 lg:rounded-lg ${settings.sticky_header && "sticky top-0"}`}>
   <nav class="relative flex flex-wrap items-center justify-between">
     <!-- navbar toggler -->
     <input id="nav-toggle" type="checkbox" class="hidden" />
