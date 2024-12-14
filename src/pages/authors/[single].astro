@@ -1,10 +1,10 @@
 ---
 import type { AuthorsEntry, BlogEntry } from "@/types";
-import AuthorSingle from "@layouts/AuthorSingle.astro";
-import { slugify } from "@/lib/textConverter";
+import EntryLayout from "@components/authors/EntryLayout.astro";
+import { slugify } from "@lib/textConverter";
 import { metadata } from "@/config/config.json";
-import { getEntries } from "@/lib/contentParser";
-import { sortByDate } from "@/lib/sortFunctions";
+import { getEntries } from "@lib/contentParser";
+import { sortByDate } from "@lib/sortFunctions";
 
 export async function getStaticPaths() {
   const entries = (await getEntries("authors")) as AuthorsEntry[];
@@ -27,4 +27,4 @@ const filteredBlogEntries = blogEntries.filter(
 );
 ---
 
-<AuthorSingle entry={entry} recentBlogEntries={filteredBlogEntries} />
+<EntryLayout entry={entry} recentBlogEntries={filteredBlogEntries} />

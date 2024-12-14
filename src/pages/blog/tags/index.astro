@@ -1,6 +1,6 @@
 ---
-import TaxonGroup from "@layouts/TaxonGroup.astro";
-import { getTaxa, getTaxaMultiset } from "@/lib/taxonomyParser";
+import TaxaLayout from "@components/blog/TaxaLayout.astro";
+import { getTaxa, getTaxaMultiset } from "@lib/taxonomyParser";
 
 const collection = "blog";
 const taxonomy = "tags";
@@ -8,4 +8,4 @@ const taxa = await getTaxa(collection, taxonomy);
 const allTaxa = await getTaxaMultiset(collection, taxonomy);
 ---
 
-<TaxonGroup collection={collection} taxonomy={taxonomy} taxa={taxa} allTaxa={allTaxa} />
+<TaxaLayout taxonomy={taxonomy} taxa={taxa} allTaxa={allTaxa} />

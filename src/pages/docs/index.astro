@@ -1,6 +1,6 @@
 ---
-import DocGroup from "@layouts/DocGroup.astro";
-import { getIndex, getGroups } from "@/lib/contentParser";
+import CollectionLayout from "@components/docs/CollectionLayout.astro";
+import { getIndex, getGroups } from "@lib/contentParser";
 import type { DocsEntry } from "@/types";
 import { sortByTitle } from "@lib/sortFunctions";
 
@@ -8,4 +8,4 @@ const collectionIndex = (await getIndex("docs")) as DocsEntry;
 const groupIndices = (await getGroups("docs", sortByTitle)) as DocsEntry[];
 ---
 
-<DocGroup entries={groupIndices} collectionIndex={collectionIndex} />
+<CollectionLayout entries={groupIndices} collectionIndex={collectionIndex} />

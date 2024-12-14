@@ -1,9 +1,9 @@
 ---
 import type { DocsEntry, MenuItem } from "@/types";
-import DocSingle from "@layouts/DocSingle.astro";
-import DocGroup from "@layouts/DocGroup.astro";
-import { getEntries, getEntriesInGroup, getGroups } from "@/lib/contentParser";
-import { sortByTitle } from "@/lib/sortFunctions";
+import EntryLayout from "@components/docs/EntryLayout.astro";
+import CollectionLayout from "@components/docs/CollectionLayout.astro";
+import { getEntries, getEntriesInGroup, getGroups } from "@lib/contentParser";
+import { sortByTitle } from "@lib/sortFunctions";
 
 export async function getStaticPaths() {
   const entries = (await getEntries("docs", sortByTitle)) as DocsEntry[];
@@ -58,8 +58,8 @@ await Promise.all(
 
 {
   isGroup ? (
-    <DocGroup collectionIndex={entry} entries={groupEntries} />
+    <CollectionLayout collectionIndex={entry} entries={groupEntries} />
   ) : (
-    <DocSingle entry={entry} browserMenu={browserMenu} />
+    <EntryLayout entry={entry} browserMenu={browserMenu} />
   )
 }

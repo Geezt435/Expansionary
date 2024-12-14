@@ -11,7 +11,7 @@
 - [x] Add border/shadow functionality to glass panes
 - [x] Formalize existing documentation
 - [x] Make uniform the page/layout/component structure across the project
-- [x] Parametrize (in config) pagination, related posts count on BlogSingle and AuthorSingle
+- [x] Parametrize (in config) pagination, related posts count on EntryLayout and EntryLayout
 - [x] Import the recipes collection from `origin/develop`, update it accordingly
 - [x] Create a new collection for poetry style content.
 - [x] Add in a bunch of stock content so the might of the template is more apparent
@@ -24,9 +24,10 @@
 - [x] Make an "opaque glass" component that has translucency and contrast on glass, but turns opaque instead of transparent on "no-glass" mode. It's only relevant in a few places.
 - [x] Add animations and mature them.
 - [x] Tighten up the CSS/Tailwind Config pipeline.
+- [x] Fix the nav bar bug where it's invisibly kind of broken after a transition between pages.
+- [x] Restructure components to be grouped by collection.
 - [ ] Make a Customization guide, to explain the most significant areas of interest.
 - [ ] Mature Social usages, namely for Authors.
 - [ ] Clean up Docs flex structure in cases of DocBrowser or ToC absence, and bound the width of blog.
 - [ ] Either clean up and tame the shortcodes, or replace them with ones from other templates.
 - [ ] Create a component that puts an image on the left and text on the right and vice-versa for Advynt prep? Alt: make a component that blurs on hover when flavor text is provided, revealing that text. Then the image can go above the text, which itself could be divided into tabs.
-- [ ] Fix the nav bar bug where it's invisibly kind of broken after a transition between pages.

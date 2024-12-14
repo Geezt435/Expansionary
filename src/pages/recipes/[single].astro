@@ -1,8 +1,8 @@
 ---
 import type { RecipesEntry } from "@/types";
-import RecipeSingle from "@layouts/RecipeSingle.astro";
-import { getEntries } from "@/lib/contentParser";
-import { sortByTitle } from "@/lib/sortFunctions";
+import EntryLayout from "@components/recipes/EntryLayout.astro";
+import { getEntries } from "@lib/contentParser";
+import { sortByTitle } from "@lib/sortFunctions";
 
 export async function getStaticPaths() {
   const entries = await getEntries("recipes", sortByTitle) as RecipesEntry[];
@@ -18,4 +18,4 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 ---
 
-<RecipeSingle entry={entry} />
+<EntryLayout entry={entry} />

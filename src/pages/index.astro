@@ -1,9 +1,9 @@
 ---
 import { getIndex } from "@lib/contentParser";
-import HomeSingle from "@layouts/HomeSingle.astro";
+import PageLayout from "@components/home/PageLayout.astro";
 import type { HomeEntry } from "@/types";
 
 const entry = (await getIndex("home")) as HomeEntry;
 ---
 
-<HomeSingle entry={entry} />
+<PageLayout entry={entry} />

@@ -1,9 +1,9 @@
 ---
 import config from "@/config/config.json";
-import { getIndex, getEntries } from "@/lib/contentParser";
-import { sortByDate } from "@/lib/sortFunctions";
+import { getIndex, getEntries } from "@lib/contentParser";
+import { sortByDate } from "@lib/sortFunctions";
 import type { RecipesEntry } from "@/types";
-import RecipeGroup from "@layouts/RecipeGroup.astro";
+import CollectionLayout from "@components/recipes/CollectionLayout.astro";
 
 export async function getStaticPaths() {
   const entries = (await getEntries("recipes", sortByDate)) as RecipesEntry[];
@@ -31,7 +31,7 @@ const indexOfFirstEntry = indexOfLastEntry - config.settings.recipe_pagination;
 const currentEntries = entries.slice(indexOfFirstEntry, indexOfLastEntry);
 ---
 
-<RecipeGroup
+<CollectionLayout
   entryIndex={entryIndex}
   entries={currentEntries}
   pageIndex={currentPageIndex}

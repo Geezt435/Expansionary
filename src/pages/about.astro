@@ -1,9 +1,9 @@
 ---
 import type { AboutEntry } from "@/types";
-import AboutSingle from "@layouts/AboutSingle.astro";
+import PageLayout from "@components/about/PageLayout.astro";
 import { getIndex } from "@lib/contentParser";
 
 const entry = (await getIndex("about")) as AboutEntry;
 ---
 
-<AboutSingle entry={entry} />
+<PageLayout entry={entry} />

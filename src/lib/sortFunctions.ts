@@ -1,39 +1,25 @@
-// sort by date
-export const sortByDate = (array: any[]) => {
-  const sortedArray = array.sort(
+import type { GenericEntry } from "@/types";
+
+// Sort by date
+export const sortByDate = (entries: GenericEntry[]): GenericEntry[] => {
+  const sortedEntries = entries.sort(
     (a: any, b: any) =>
       new Date(b.data.date && b.data.date).valueOf() -
       new Date(a.data.date && a.data.date).valueOf(),
   );
-  return sortedArray;
+  return sortedEntries;
 };
 
-// sort by title
-export const sortByTitle = (array: any[]) => {
-  const sortedArray = array.sort((a: any, b: any) =>
+// Sort by title
+export const sortByTitle = (entries: GenericEntry[]): GenericEntry[] => {
+  const sortedEntries = entries.sort((a: any, b: any) =>
     a.data.title.localeCompare(b.data.title),
   );
-  return sortedArray;
+  return sortedEntries;
 };
 
-// sort product by weight
-export const sortByWeight = (array: any[]) => {
-  const withWeight = array.filter(
-    (item: { data: { weight: any } }) => item.data.weight,
-  );
-  const withoutWeight = array.filter(
-    (item: { data: { weight: any } }) => !item.data.weight,
-  );
-  const sortedWeightedArray = withWeight.sort(
-    (a: { data: { weight: number } }, b: { data: { weight: number } }) =>
-      a.data.weight - b.data.weight,
-  );
-  const sortedArray = [...new Set([...sortedWeightedArray, ...withoutWeight])];
-  return sortedArray;
-};
-
-// sort by random
-export const sortByRandom = (array: any[]) => {
-  const sortedArray = array.sort(() => Math.random() - 0.5);
-  return sortedArray;
+// Sort by random
+export const sortByRandom = (entries: GenericEntry[]): GenericEntry[] => {
+  const sortedEntries = entries.sort(() => Math.random() - 0.5);
+  return sortedEntries;
 };

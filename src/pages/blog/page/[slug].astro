@@ -1,9 +1,9 @@
 ---
 import config from "@/config/config.json";
-import { getIndex, getEntries } from "@/lib/contentParser";
-import { getTaxaMultiset, getTaxa } from "@/lib/taxonomyParser";
-import { sortByDate } from "@/lib/sortFunctions";
-import BlogGroup from "@layouts/BlogGroup.astro";
+import { getIndex, getEntries } from "@lib/contentParser";
+import { getTaxaMultiset, getTaxa } from "@lib/taxonomyParser";
+import { sortByDate } from "@lib/sortFunctions";
+import CollectionLayout from "@components/blog/CollectionLayout.astro";
 import type { BlogEntry } from "@/types";
 
 export async function getStaticPaths() {
@@ -40,7 +40,7 @@ const pageCount: number = Math.ceil(
 );
 ---
 
-<BlogGroup
+<CollectionLayout
   entryIndex={entryIndex}
   entries={currentEntries}
   categories={categories}

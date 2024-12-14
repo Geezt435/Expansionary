@@ -1,8 +1,8 @@
 ---
-import BlogGroup from "@layouts/BlogGroup.astro";
-import { getTaxaMultiset, getTaxa } from "@/lib/taxonomyParser";
-import { getEntries, getIndex } from "@/lib/contentParser";
-import { sortByDate } from "@/lib/sortFunctions";
+import CollectionLayout from "@components/blog/CollectionLayout.astro";
+import { getTaxaMultiset, getTaxa } from "@lib/taxonomyParser";
+import { getEntries, getIndex } from "@lib/contentParser";
+import { sortByDate } from "@lib/sortFunctions";
 import type { BlogEntry } from "@/types";
 import config from "@/config/config.json";
 
@@ -25,7 +25,7 @@ const pageCount: number = Math.ceil(
 );
 ---
 
-<BlogGroup
+<CollectionLayout
   entryIndex={entryIndex}
   entries={currentEntries}
   categories={categories}

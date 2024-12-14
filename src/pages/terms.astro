@@ -1,9 +1,9 @@
 ---
-import TermsSingle from "@layouts/TermsSingle.astro";
+import PageLayout from "@components/terms/PageLayout.astro";
 import { getIndex } from "@lib/contentParser";
 import type { TermsEntry } from "@/types";
 
 const entry = await getIndex("terms") as TermsEntry;
 ---
 
-<TermsSingle entry={entry} />
+<PageLayout entry={entry} />

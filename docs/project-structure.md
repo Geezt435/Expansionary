@@ -29,13 +29,23 @@
   - The structure of this folder defines the routing structure for your site. So if in the `pages` folder you have `blog/categories/index.astro`, you will have that page `index.astro` located at `example.com/blog/categories`.
   - The Docs collection actually breaks this rule, because its content is 2 layers deep. I implemented a workaround so the docs pages follow the structure of the `content/docs/` folder.
   - The following are artificial constraints made to give a bit more structure and predictability to the astro code:
-    - Each file in `pages/` will directly reference exactly one `layout`, and no other components.
+    - Each file in `pages/` will directly reference exactly one page **layout**, and no other components.
+      - A **layout** is technically just a component, but to maintain a clear project structure, we prefer to treat them as the top-level component within a page.
     - Almost all data is "queried" at this layer. For now, "querying" just refers to a function call, (e.g. `getIndex()` or `getEntries()`) that returns a freshly minted copy of one or multiple `CollectionEntry` objects (which are derived straight from the contents of `content/`).
     - In this way, we decouple the routing and data querying from the structure/style of the pages themselves. You'd be encouraged to appreciate this design choice and stick to it, unless you specifically have other plans.
-- `components/` contains all components, which are modular pieces of HTML/CSS/JS. They can reference each other and ultimately are all referenced by the files in `layouts/`.
-  - `layouts/` contains the layouts each of your pages. These do count as components, but to maintain a clear project structure, we prefer to treat them specially, as they are in all cases meant to be the top-level component within a page.
-  - `shortcodes/` mainly contains components intended for use directly in `.mdx` Content files.
-- These three folders form a core trio for most of the code. There are a number of other pieces that don't fit into this pipeline, but the big idea is that `content` holds the actual written content displayed to your site, `pages` dictates how the site will be traversed and where the data from `content` gets sent, and `components` is where you give structure and style to that content.
+- `components/` contains all components, which are modular pieces of HTML/CSS/JS. There are three kinds of subdirectory:
+  1. `[collection]/` contains all layouts and other components specialized to that collection.
+     1. `PageLayout` defines the structure of the entry within a singleton collection.
+     2. `EntryLayout` defines the structure of a collection entry page.
+     3. `CollectionLayout` defines the structure of the page(s) displaying the collection entries.
+  2. `common/` contains components that are generic enough to be used across collections.
+     - `shortcodes/` mainly contains components intended for use directly in `.mdx` content files.
+  3. `base/` contains the base layout and associated components. Every other layout in the project is wrapped by `base/BaseLayout.astro`. Therefore the base layout code is applied to every page on the site.
+- TLDR:
+  - `content` holds the actual written content displayed to your site,
+  - `assets` holds the graphics and other resources referenced within `content`,
+  - `pages` dictates how the site will be traversed and where the data from `content` gets sent,
+  - `components` is where you give structure and style to the content.
 
 ## public/
 

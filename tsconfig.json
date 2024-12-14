@@ -16,9 +16,8 @@
       "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
       "@helpers/*": ["src/components/helpers/*"],
-      "@layouts/*": ["src/components/layouts/*"],
       "@lib/*": ["src/lib/*"],
-      "@shortcodes/*": ["src/components/shortcodes/*"],
+      "@shortcodes/*": ["src/components/common/shortcodes/*"],
       "@types/*": ["src/types/*"],
       "@/*": ["./src/*"]
     }
