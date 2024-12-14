@@ -21,11 +21,12 @@
 - [x] Add an entry header to docs.
 - [x] Add images to docCards, build their style around that
 - [x] Make it so across the site, authors hyperlink only if they have a page to link to.
-- [ ] Mature Social usages, namely for Authors.
-- [ ] Clean up Docs flex structure in cases of DocBrowser or ToC absence.
-- [ ] Either clean up and tame the shortcodes, or replace them with ones from other templates.
-- [ ] Tighten up the CSS/Tailwind Config pipeline.
-- [ ] Make a Customization Quickstart guide, to explain the most significant areas of interest.
-- [ ] Create a component that puts an image on the left and text on the right and vice-versa for Advynt prep.
 - [x] Make an "opaque glass" component that has translucency and contrast on glass, but turns opaque instead of transparent on "no-glass" mode. It's only relevant in a few places.
-- [x] Add animations, and mature them.
+- [x] Add animations and mature them.
+- [x] Tighten up the CSS/Tailwind Config pipeline.
+- [ ] Make a Customization guide, to explain the most significant areas of interest.
+- [ ] Mature Social usages, namely for Authors.
+- [ ] Clean up Docs flex structure in cases of DocBrowser or ToC absence, and bound the width of blog.
+- [ ] Either clean up and tame the shortcodes, or replace them with ones from other templates.
+- [ ] Create a component that puts an image on the left and text on the right and vice-versa for Advynt prep? Alt: make a component that blurs on hover when flavor text is provided, revealing that text. Then the image can go above the text, which itself could be divided into tabs.
+- [ ] Fix the nav bar bug where it's invisibly kind of broken after a transition between pages.

@@ -66,7 +66,7 @@ const Search = ({ searchList }: Props) => {
           <div className="col-10 lg:col-8 px-0">
             <div className="flex flex-nowrap">
               <input
-                className="w-full glass rounded-lg px-6 py-4 text-txt-p placeholder:text-txt-light dark:placeholder:text-darkmode-txt-light focus:border-darkmode-border focus:ring-transparent dark:text-darkmode-txt-light"
+                className="w-full glass rounded-lg px-6 py-4 text-txt-p placeholder:text-txt-light dark:placeholder:text-darkmode-txt-light focus:border-darkmode-border focus:ring-transparent dark:text-darkmode-txt-light intersect:animate-fadeDown opacity-0"
                 placeholder="search posts"
                 type="search"
                 name="search"
@@ -81,7 +81,7 @@ const Search = ({ searchList }: Props) => {
         </div>
         <div className="row">
           {searchResults?.length < 1 ? (
-            <div className="col-10 lg:col-8 mx-auto p-2 text-center glass rounded-lg">
+            <div className="col-10 lg:col-8 mx-auto p-2 text-center glass rounded-lg intersect:animate-fadeUp opacity-0">
               <p>
                 {inputVal.length < 1
                   ? "Looking for something?"
@@ -91,7 +91,7 @@ const Search = ({ searchList }: Props) => {
           ) : (
             searchResults?.map(({ item }, index) => (
               <div className="py-2 px-0" key={`search-${index}`}>
-                <div className="h-full glass col-10 lg:col-8 mx-auto rounded-lg p-4">
+                <div className="h-full glass col-10 lg:col-8 mx-auto rounded-lg p-4 intersect:animate-fade opacity-0">
                   <h4 className="mb-2">
                     <a href={getPath(item)}>
                       {item.data.title}

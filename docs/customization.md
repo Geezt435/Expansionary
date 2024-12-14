@@ -10,7 +10,7 @@
 
 ### Animations
 
-The animations are fairly subtle, by default.
+The animations are fairly subtle by default.
 
 #### Relevant Areas
 

@@ -36,31 +36,35 @@ input#nav-toggle:checked ~ #nav-menu {
   @apply block;
 }
 
-/* No Glass */
-// .glass {
-//   @apply bg-bg-p dark:bg-darkmode-bg-p;
-//   @apply bg-opacity-100;
-// }
-// .gradient-1c {
-//   @apply from-txt-s via-transparent to-transparent;
-//   @apply dark:from-darkmode-txt-s dark:via-transparent dark:to-transparent;
-// }
-/* Glass */
+// Glass
 .glass {
   @apply bg-bg-s dark:bg-darkmode-bg-s;
-  @apply bg-opacity-40 dark:bg-opacity-40;
-  @apply backdrop-blur-md; 
+  @apply backdrop-blur-lg; 
   @apply bg-clip-padding backdrop-filter backdrop-saturate-100 backdrop-contrast-100;
+  @apply bg-opacity-40 dark:bg-opacity-40;
   @apply border border-[rgba(255,255,255,0.6)] dark:border-[rgba(255,255,255,0.15)];
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
-}
-.gradient-1c {
-  @apply from-transparent via-transparent to-transparent;
 }
 
 .glass-t {
   @apply bg-bg-t dark:bg-darkmode-bg-t;
   @apply bg-opacity-40 dark:bg-opacity-40;
-  @apply backdrop-blur-md;
+  @apply backdrop-blur-lg;
   @apply bg-clip-padding backdrop-filter backdrop-saturate-100 backdrop-contrast-100;
+  @apply border border-[rgba(255,255,255,0.6)] dark:border-[rgba(255,255,255,0.15)];
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.glass-t-borderless {
+  @apply bg-bg-t dark:bg-darkmode-bg-t;
+  @apply bg-opacity-40 dark:bg-opacity-40;
+  @apply backdrop-blur-lg;
+  @apply bg-clip-padding backdrop-filter backdrop-saturate-100 backdrop-contrast-100;
+}
+
+// Gradient
+.gradient {
+  @apply from-transparent via-transparent to-transparent;
+  // @apply from-txt-s via-transparent to-transparent;
+  // @apply dark:from-darkmode-txt-s dark:via-transparent dark:to-transparent;
 }

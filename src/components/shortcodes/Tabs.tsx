@@ -42,7 +42,7 @@ const Tabs = ({ children }: { children: React.ReactElement }) => {
 
   return (
     <div className="overflow-hidden rounded-lg border border-border dark:border-darkmode-border">
-      <ul className="glass-t m-0 list-none flex border-b border-border bg-bg-t dark:border-darkmode-border dark:bg-darkmode-bg-t">
+      <ul className="glass-t-borderless m-0 list-none flex border-b border-border bg-bg-t dark:border-darkmode-border">
         {tabLinks.map(
           (item: { name: string; children: string }, index: number) => (
             <li
