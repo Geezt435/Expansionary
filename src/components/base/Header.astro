@@ -21,7 +21,7 @@ const { settings } = config;
 const { pathname } = Astro.url;
 ---
 
-<header transition:persist transition:persist-props class={`container glass py-2 z-30 mb-4 lg:mt-4 lg:rounded-lg ${settings.sticky_header && "sticky top-0"}`}>
+<header transition:persist class={`container glass py-2 z-30 mb-4 lg:mt-4 lg:rounded-lg ${settings.sticky_header && "sticky top-0"}`}>
   <nav class="relative flex flex-wrap items-center justify-between">
     <!-- navbar toggler -->
     <input id="nav-toggle" type="checkbox" class="hidden" />
@@ -50,7 +50,7 @@ const { pathname } = Astro.url;
           <li class="">
             <a
               href={menu.url}
-              class={`block p-2 font-primary font-semibold text-txt-p transition dark:text-darkmode-txt-p lg:px-2 lg:py-3 ${
+              class={`block p-2 font-secondary font-semibold text-txt-p transition dark:text-darkmode-txt-p lg:px-2 lg:py-3 ${
                 (pathname === `${menu.url}/` || pathname === menu.url) &&
                 "active"
               }`}

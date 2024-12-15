@@ -7,6 +7,7 @@ import ObserverScript from "@components/base/ObserverScript.astro";
 import "@/styles/main.scss";
 import type { ImageMetadata } from "astro";
 import { ClientRouter } from 'astro:transitions';
+import Background from "@/components/base/Background.astro";
 
 // types for frontmatters
 export interface Props {
@@ -142,6 +143,7 @@ const { title, description, image, noindex, canonical } = Astro.props;
      -->
   </head>
   <body>
+    <Background />
     <Header/>
     <main id="main-content" class="flex-1" >
       <slot />

@@ -1,52 +1,11 @@
-// /* Open Sans 400 */
-// @font-face {
-//   font-display: block; 
-//   font-family: 'Open Sans';
-//   font-style: normal;
-//   font-weight: 400;
-//   src: url('/fonts/open-sans/open-sans-400.woff2') format('woff2');
-// }
-
-// /* Open Sans 600 */
-// @font-face {
-//   font-display: block; 
-//   font-family: 'Open Sans';
-//   font-style: normal;
-//   font-weight: 600;
-//   src: url('/fonts/open-sans/open-sans-600.woff2') format('woff2');
-// }
-
-// /* Cormorant 500 */
-// @font-face {
-//   font-display: block; 
-//   font-family: 'Cormorant';
-//   font-style: normal;
-//   font-weight: 500;
-//   src: url('/fonts/cormorant/cormorant-500.woff2') format('woff2');
-// }
-
-// /* Cormorant 700 */
-// @font-face {
-//   font-display: block; 
-//   font-family: 'Cormorant';
-//   font-style: normal;
-//   font-weight: 700;
-//   src: url('/fonts/cormorant/cormorant-700.woff2') format('woff2');
-// }
-
 html {
   @apply text-base h-screen;
 }
 
-body { 
-  @apply font-primary font-normal leading-relaxed text-txt-s dark:text-darkmode-txt-s;
+body {
+  @apply font-secondary font-normal leading-relaxed text-txt-s dark:text-darkmode-txt-s;
   @apply bg-bg-p dark:bg-darkmode-bg-p;
   @apply flex flex-col min-h-screen lg:mx-8;
-  background: url(/src/assets/backgrounds/mtn-lake.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
 }
 
 h1,
@@ -55,8 +14,8 @@ h3,
 h4,
 h5,
 h6 {
-  @apply font-secondary font-bold leading-tight text-txt-p dark:text-darkmode-txt-p intersect:animate-fade opacity-0;
-  // @apply font-secondary font-bold leading-tight bg-gradient-to-r from-orange-500 via-indigo-500 to-green-500 text-transparent bg-clip-text;
+  @apply font-primary font-bold leading-tight text-txt-p dark:text-darkmode-txt-p intersect:animate-fade opacity-0;
+  // @apply font-primary font-bold leading-tight bg-gradient-to-r from-orange-500 via-indigo-500 to-green-500 text-transparent bg-clip-text;
 }
 h1,
 .h1 {

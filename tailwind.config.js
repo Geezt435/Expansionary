@@ -115,14 +115,20 @@ module.exports = {
         "9/16": "56.25%",
       },
       animation: {
+        // Intersect
         fade: "fadeIn 1s both",
         fadeUp: "fadeInUp 1s both",
         fadeDown: "fadeInDown 1s both",
         fadeRight: "fadeInRight 1s both",
         fadeLeft: "fadeInLeft 1s both",
         scale: "scaleOut 1s both",
+        // Star Background
+        twinkle: "twinkle 5s infinite ease-in-out",
+        // Cycle Background
+        cycleBg: "cycleBg 15s ease infinite"
       },
       keyframes: {
+        // Intersect
         fadeIn: {
           "0%": { opacity: 0 },
           "100%": { opacity: 1 },
@@ -146,6 +152,16 @@ module.exports = {
         scaleOut: {
           "0%": { opacity: 0, transform: "scale(0.5)" },
           "100%": { opacity: 1, transform: "scale(1)" },
+        },
+        // Star Background
+        twinkle: {
+          "0%, 20%, 100%": { opacity: 1 },
+          "10%": { opacity: 0.25 },
+        },
+        // Cycle Background
+        cycleBg: {
+          "0%, 100%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
         },
       },
     },
