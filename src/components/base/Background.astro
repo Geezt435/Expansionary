@@ -5,14 +5,14 @@ const stars = Array.from({ length: numStars }).map(() => ({
   left: `${Math.random() * 100}%`,
   top: `${Math.random() * 100}%`,
   size: `${Math.random() * 3 + 1}px`,
+  delay: `${5 * Math.random()}s`,
 }));
 ---
 <div
-  transition:persist
   class="fixed top-0 left-0 w-full h-full -z-1 pointer-events-none overflow-hidden"
 >
   {
-    stars.map(({ left, top, size }) => (
+    stars.map(({ left, top, size, delay }) => (
       <div
         class="absolute bg-black dark:bg-white rounded-full animate-twinkle"
         style={`
@@ -20,7 +20,7 @@ const stars = Array.from({ length: numStars }).map(() => ({
             top: ${top};
             width: ${size};
             height: ${size};
-            animation-delay: ${5 * Math.random()}s
+            animation-delay: ${delay};
         `}
       />
     ))
@@ -29,7 +29,6 @@ const stars = Array.from({ length: numStars }).map(() => ({
 
 <!-- Gradient Cycle Background -->
 <!-- <div
-  transition:persist
   class="gradient animate-cycleBg fixed top-0 left-0 w-full h-full -z-1 pointer-events-none overflow-hidden"
 />
 <style>

@@ -87,7 +87,68 @@ A common alternative to this is to use a CDN to host the font files. This will w
 
 ## Background
 
+By default the background is a flat color defined by the `bg-p` color parameter discussed in the **Theme Colors** section.
+
+### Relevant Areas
+
+#### `/src/base/Background.astro`
+
+Here I've provided three alternate kinds of background. All are commented out, but simply uncomment the desired one to use it. These are largely for demonstration purposes, and you should feel free to delete them and replace them with your own background.
+
+This file is referenced only in `/src/base/BaseLayout.astro`.
+
+#### `tailwind.config.js`
+
+The provided **Twinkling Star Background** and **Gradient Cycle Background** depend on animations defined in this file.
+
+```js
+module.exports = {
+  theme: {
+    extend: {
+      animation: {
+        // Star Background
+        twinkle: "twinkle 5s infinite ease-in-out",
+        // Cycle Background
+        cycleBg: "cycleBg 15s ease infinite"
+      },
+      keyframes: {
+        // Star Background
+        twinkle: {
+          "0%, 20%, 100%": { opacity: 1 },
+          "10%": { opacity: 0.25 },
+        },
+        // Cycle Background
+        cycleBg: {
+          "0%, 100%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+        },
+      },
+    }
+  }
+```
+
+The provided **Image Background** is straightforward. A few different exmple images are provided in `/src/assets/backgrounds` to be swaped out in the `url()`'s argument.
+
+### Parsimony
+
+If you decide to use a solid color background, you can of course delete the code mentioned in the **Relevant Areas** section above.
+
 ## Glass Effect
+
+One of the most powerful customization features of this template is the glass effect. This 
+
+Components:
+
+1. Color - The underlying background color of the element.
+2. Opacity - Essentially the `alpha` value of the color. `0` is fully transparent and `1` is fully opaque. If a color is specified, the default opacity is `1`, and if not, it's transparent.
+3. Blur - This is really the defining feature of the glass effect. The blur is applied to the element's background, and the element itself is made semi-transparent. The result is a frosted glass effect.
+   - See Tailwind's reference for the blur levels: [Tailwind](https://tailwindcss.com/docs/blur).
+4. Border - The border around the element. By default this effect is subtle, but adds a nice touch to the glass effect.
+5. Shadow - The shadow around the element, giving it a bit of depth.
+
+### Relevant Areas
+
+#### `/src/styles/glass.css`
 
 ## Animations
 
@@ -125,9 +186,21 @@ module.exports = {
       },
       keyframes: {
         // ...
-      }
-    }
-  }
+      },
+    },
+  },
+  plugins: [
+    plugin(({ addVariant }) => {
+      addVariant("intersect", "&:not([no-intersect])");
+    }),
+  ],
+};
+```
+
+`/src/styles/intersect.css`:
+
+```css
+}
 ```
 
 `/src/components/base/ObserverScript.astro`:
