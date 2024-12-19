@@ -1,6 +1,6 @@
-# Pages
+# Astrogon
 
-[![GitHub License](https://img.shields.io/github/license/reednel/pages?color=red)](https://github.com/reednel/pages/blob/main/LICENSE) [![Repo Size](https://img.shields.io/github/repo-size/reednel/pages)](https://github.com/reednel/pages) [![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/reednel/pages/deploy.yml?color=limegreen)](https://github.com/reednel/pages/deployments) [![Website](https://img.shields.io/website?up_message=online&up_color=limegreen&down_message=offline&down_color=yellow&url=https%3A%2F%2Freednel.com%2F)](https://reednel.com/)
+[![GitHub License](https://img.shields.io/github/license/astrogon/astrogon?color=red)](https://github.com/astrogon/astrogon/blob/main/LICENSE) [![Repo Size](https://img.shields.io/github/repo-size/astrogon/astrogon)](https://github.com/astrogon/astrogon) [![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/astrogon/astrogon/deploy.yml?color=limegreen)](https://github.com/astrogon/astrogon/deployments) [![Website](https://img.shields.io/website?up_message=online&up_color=limegreen&down_message=offline&down_color=yellow&url=https%3A%2F%2Freednel.com%2F)](https://reednel.com/)
 
 A personal website template.
 
@@ -8,9 +8,7 @@ A personal website template.
 
 ## Development Instructions
 
-Clone: `git clone https://github.com/reednel/pages.git`
-
-Checkout the template: `git checkout template`
+Fork the repo `git clone https://github.com/astrogon/astrogon.git`
 
 Use Node 20: `nvm install 20`
 
@@ -20,7 +18,7 @@ Build: `npm run dev`
 
 ## License
 
-Pages is licensed under the [MIT License](LICENSE).
+Astrogon is licensed under the [MIT License](LICENSE).
 
 ## Acknowledgments
 
