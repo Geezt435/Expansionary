@@ -61,7 +61,7 @@ const docs = defineCollection({
 
 const home = defineCollection({
   loader: glob({ pattern: '-index.{md,mdx}', base: "./src/content/home" }),
-  schema: ({ image }) => z.object({
+  schema: z.object({
     banner: z.object({
       title: z.string(),
       content: z.string(),
