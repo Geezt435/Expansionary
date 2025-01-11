@@ -47,7 +47,7 @@ It is not permitted to mirror or re-publish the content of this website. That in
 
 ## Attributions
 
-This source code is derivative of [pages](https://github.com/reednel/pages) by [Reed Nelson](https://github.com/reednel), which uses the license below.
+This source code is derivative of [Astrogon](https://github.com/astrogon/astrogon) by [Reed Nelson](https://github.com/reednel), which uses the license below.
 
 ```md
 The MIT License (MIT)

@@ -26,29 +26,6 @@ export type EntryReference = {
   collection: string;
 };
 
-export type AuthorsIndex = {
-  title: string;
-  description: string | null;
-};
-
-export type BlogIndex = {
-  title: string;
-  description?: string;
-};
-
-export type DocsIndex = {
-  title: string;
-  description?: string;
-  image: string | null;
-  imageAlt: string | null;
-  draft: boolean | null;
-};
-
-export type RecipesIndex = {
-  title: string;
-  description: string | null;
-};
-
 // Define heading hierarchy so that we can generate ToC
 export interface HeadingHierarchy extends MarkdownHeading {
   subheadings: HeadingHierarchy[];
