@@ -116,12 +116,12 @@ module.exports = {
       },
       animation: {
         // Intersect
-        fade: "fadeIn 1s both",
-        fadeUp: "fadeInUp 1s both",
-        fadeDown: "fadeInDown 1s both",
-        fadeRight: "fadeInRight 1s both",
-        fadeLeft: "fadeInLeft 1s both",
-        scale: "scaleOut 1s both",
+        fade: "fadeIn 1000ms both",
+        fadeUp: "fadeInUp 1000ms both",
+        fadeDown: "fadeInDown 1000ms both",
+        fadeRight: "fadeInRight 1000ms both",
+        fadeLeft: "fadeInLeft 1000ms both",
+        scale: "scaleOut 1000ms both",
         // Star Background
         twinkle: "twinkle 5s infinite ease-in-out",
         // Cycle Background

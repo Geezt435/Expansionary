@@ -23,6 +23,10 @@
     {
       "name": "Poetry",
       "url": "/poetry"
+    },
+    {
+      "name": "Index Cards",
+      "url": "/index-cards"
     }
   ]
 }
