@@ -6,6 +6,7 @@ const stars = Array.from({ length: numStars }).map(() => ({
   top: `${Math.random() * 100}%`,
   size: `${Math.random() * 3 + 1}px`,
   delay: `${5 * Math.random()}s`,
+  // hsl: `hsl(${Math.random() * 360}, 100%, 50%)`, // background: ${hsl}; 
 }));
 ---
 <div
