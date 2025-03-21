@@ -125,7 +125,7 @@ module.exports = {
         // Star Background
         twinkle: "twinkle 5s infinite ease-in-out",
         // Cycle Background
-        cycleBg: "cycleBg 15s ease infinite"
+        cycleBg: "cycleBg 60s ease infinite"
       },
       keyframes: {
         // Intersect

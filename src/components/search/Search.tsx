@@ -17,7 +17,7 @@ const getPath = (entry: SearchableEntry) => {
   return `${entry.collection}/${entry.id.replace("-index", "")}`;
 };
 
-const Search = ({ searchList }: Props) => {
+const SearchPage = ({ searchList }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [inputVal, setInputVal] = useState("");
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
@@ -113,4 +113,4 @@ const Search = ({ searchList }: Props) => {
   );
 };
 
-export default Search;
+export default SearchPage;
