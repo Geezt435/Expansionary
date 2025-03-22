@@ -4,26 +4,27 @@
 
 ### Stock Content
 
-The written content in the template's collections was AI generated. The images are Creative Commons licenced with a paint filter applied to them. The goal was to have disposable content that better demonstrates the form of the collections than "Lorem ipsum". In case you're unsure, review my [Terms of Use](https://reednel.com/terms/) for the policy on the use and redistribution of this content.
+The written content in the template's collections was AI generated. The images are Creative Commons licenced with a paint filter applied to them. The goal was to have disposable content that better demonstrates the form of the collections than "Lorem ipsum". In case you're unsure, review my [Terms of Use](https://astrogon.reednel.com/terms/) for the policy on the use and redistribution of this content.
+
+### The Mechanics
+
+
+
+For a higher-level overview of how the content collections work, see the [docs/project-structure.md](docs/project-structure.md) page.
 
 ## Theme Colors
 
 By default, the pallet of this site is defined in just 7 color parameters (14 if you count their dark theme variants).
 
-1. Text Primary (`txt-p`)
-   - Main use: header text
-2. Text Secondary (`txt-s`)
-   - Main use: body text
-3. Text Light (`txt-light`)
-   - Main use: indicate selected text
-4. Background Primary (`bg-p`)
-   - Main use: main background (unless background is an image)
-5. Background Secondary (`bg-s`)
-   - Main use: glass elements
-6. Background Tertiary (`bg-t`)
-   - Main use: glass elements intended to contrast with `bg-s`
-7. Border (`border`)
-   - Main use: border around glass elements
+| Name                 | CSS Label   | Main Use                                        |
+| -------------------- | ----------- | ----------------------------------------------- |
+| Text Primary         | `txt-p`     | header text                                     |
+| Text Secondary       | `txt-s`     | body text                                       |
+| Text Light           | `txt-light` | indicate selected text                          |
+| Background Primary   | `bg-p`      | main background (unless background is an image) |
+| Background Secondary | `bg-s`      | glass elements                                  |
+| Background Tertiary  | `bg-t`      | glass elements intended to contrast with `bg-s` |
+| Border               | `border`    | border around glass elements                    |
 
 ### Relevant Areas
 
@@ -135,16 +136,23 @@ If you decide to use a solid color background, you can of course delete the code
 
 ## Glass Effect
 
-One of the most powerful customization features of this template is the glass effect. This 
+One of the most powerful customization features of this template is the glass effect. By default, the template uses a true frosted glass effect, but by changing a few parameters specified below, the UI components can be given fully transparent or fully opaque backgrounds, for a more conventional website look.
 
-Components:
+| Name                      | CSS Label            | Main Use                                                |
+| ------------------------- | -------------------- | ------------------------------------------------------- |
+| Glass                     | `glass`              | styles the background of most components                |
+| Glass Tertiary            | `glass-t`            | for glass atop other glass, resembles the use of `bg-t` |
+| Glass Tertiary Borderless | `glass-t-borderless` | ui componnents with their own border                    |
 
-1. Color - The underlying background color of the element.
-2. Opacity - Essentially the `alpha` value of the color. `0` is fully transparent and `1` is fully opaque. If a color is specified, the default opacity is `1`, and if not, it's transparent.
-3. Blur - This is really the defining feature of the glass effect. The blur is applied to the element's background, and the element itself is made semi-transparent. The result is a frosted glass effect.
-   - See Tailwind's reference for the blur levels: [Tailwind](https://tailwindcss.com/docs/blur).
-4. Border - The border around the element. By default this effect is subtle, but adds a nice touch to the glass effect.
-5. Shadow - The shadow around the element, giving it a bit of depth.
+Parameters:
+
+| Name    | Explanation                                                                                                                            |
+| ------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Color   | The underlying background color of the element.                                                                                        |
+| Opacity | `0` is fully transparent and `1` is fully opaque. If a color is specified, the default opacity is `1`, and if not, it's transparent.   |
+| Blur    | The [blur](https://tailwindcss.com/docs/blur) is applied to the element's background, and the element itself is made semi-transparent. |
+| Border  | The border around the element. By default this effect is subtle, but adds a nice touch to the glass effect.                            |
+| Shadow  | The shadow around the element, giving it a bit of depth.                                                                               |
 
 ### Relevant Areas
 
@@ -197,12 +205,6 @@ module.exports = {
 };
 ```
 
-`/src/styles/intersect.css`:
-
-```css
-}
-```
-
 `/src/components/base/ObserverScript.astro`:
 
 This is a segment of JS run as an inline `<script>` in the `Base` layout component. That is, it's Javascript code that's loaded on every page of the site. It functions as a custom CSS processor for the made-up class `intersect`. The simple idea of `intersect` is to trigger an animation whatever it's applied to, only when it enter's the browser's viewport (section of the screen that's visible). In the template, you can see this in action each time you load a page, with the various components fading into view, and, as you scroll further down a page, additional components become visible.
@@ -213,9 +215,9 @@ This functionality has some problems:
 2. In its current form, it presents accessability issues. There is an accessability feature supported by browsers called `prefers-reduced-motion`. To be more friendly, these unnecessary animations should be disabled when this prefernece is detected.
 3. By default, many of the animations include a "fade-in", bringing the opacity of an item from 0% (invisible) to 100% (fully opaque). This is a bit finnicky when crossing the already semi-opaque "Glass" objects. When not handled properly, the result is a discrete snap from 0% opacity to 100% opacity, which doesn't look good. In all cases thus far this issue has been circumnavigable, but keep this in minds for your own customizations: when editing an "intersect" item, making it behave right on an opaque background might make it behave poorly on a semi-opaque background, or vice-versa.
 
-These animations add a fair bit of weight to the pages and complexity to the customization, but in my opinion make a world of difference in the feel of the site. If you don't think it worth the hassle, that's fine, it's also pretty easy to remove:
+I think these animations make a big difference in the feel of the site, but they add a fair bit of weight to the pages and complexity to the customization. If you don't think they're worth the hassle, they're pretty easy to remove:
 
-1. Ctrl-Shift-F for `intersect:animate` in the project and delete that and any CSS classes to the right of that on the given line.
+1. Ctrl-Shift-F for `intersect:animate` in the project and delete that and any CSS classes to the right of that on the given line. (Make sure you don't delete any unrelated classe you've added).
 2. Delete the `<ObserverScript />` reference and import in `/src/components/base/BaseLayout.astro`
 3. Delete `/src/components/base/ObserverScript.astro`
 4. Delete the `theme.extent.animation` and `theme.extend.keyframes` sections from the `module.exports` section of `/tailwind.config.js`.
