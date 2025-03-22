@@ -1,15 +1,16 @@
 ---
 import type { SearchableEntry } from "@/types";
-import BaseLayout from "@components/base/BaseLayout.astro";
-import PageLayout from "@components/search/PageLayout";
+import PageLayout from "@components/search/PageLayout.astro";
 import { getEntriesBatch } from "@lib/contentParser";
 import { settings } from "@/config/config.json";
 import type { CollectionKey } from "astro:content";
 
-const collectionList = settings.searchable_collections as CollectionKey[]
-const searchList = await getEntriesBatch(collectionList, undefined, false) as SearchableEntry[];
+const collectionList = settings.searchable_collections as CollectionKey[];
+const searchList = (await getEntriesBatch(
+  collectionList,
+  undefined,
+  false
+)) as SearchableEntry[];
 ---
 
-<BaseLayout title="Search">
-  <PageLayout client:load searchList={searchList} />
-</BaseLayout>
+<PageLayout searchList={searchList} />
