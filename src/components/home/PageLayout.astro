@@ -4,14 +4,13 @@ import { markdownify } from "@lib/textConverter";
 import Button from "@components/common/Button.astro";
 import type { HomeEntry } from "@/types";
 import { Image } from "astro:assets";
-import AstrogonStar from "@assets/astrogon-star.svg";
 
 interface Props {
   entry: HomeEntry;
 }
 
 const { entry } = Astro.props;
-const { banner } = entry.data;
+const { image, imageAlt, title, content, button } = entry.data;
 ---
 
 <BaseLayout>
@@ -20,21 +19,28 @@ const { banner } = entry.data;
     <div class="container">
       <div class="row justify-center">
         <div class="text-center lg:col-6">
-          <Image
-            class="-mt-12 mb-6 rounded-lg w-64"
-            src={AstrogonStar}
-            width={1024}
-            height={1024}
-            alt="Astrogon Logo"
-            format="webp"
-          />
-          <h1 set:html={markdownify(banner.title)} class="mb-4" />
-          <p set:html={markdownify(banner.content)} class="mb-8" />
           {
-            banner.button && (
+            image && (
+              <div class="blur-[0px]">
+                <Image
+                class="mb-6 w-64"
+                src={image}
+                alt={imageAlt}
+                width={1024}
+                height={1024}
+                format="webp"
+              />
+              </div>
+              
+            )
+          }
+          <h1 set:html={markdownify(title)} class="mb-4" />
+          <p set:html={markdownify(content)} class="mb-8" />
+          {
+            button && (
               <Button
-                label={banner.button.label}
-                link={banner.button.link}
+                label={button.label}
+                link={button.link}
                 newtab
                 hoverInvert
                 color=""
