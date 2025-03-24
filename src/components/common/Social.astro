@@ -1,33 +1,24 @@
 ---
+import type { SocialLinks } from "@/types";
+
 import {
+  FaDiscord,
+  FaEnvelope,
   FaFacebook,
-  FaTwitter,
-  FaLinkedin,
   FaGithub,
   FaInstagram,
+  FaLinkedin,
+  FaPinterest,
+  FaTiktok,
+  FaGlobe,
   FaYoutube,
-  FaMastodon,
 } from "react-icons/fa";
 
 interface Props {
-  facebookLink?: string;
-  twitterLink?: string;
-  linkedinLink?: string;
-  githubLink?: string;
-  instagramLink?: string;
-  youtubeLink?: string;
-  mastodonLink?: string;
+  links: SocialLinks;
 }
 
-const {
-  facebookLink,
-  twitterLink,
-  linkedinLink,
-  githubLink,
-  instagramLink,
-  youtubeLink,
-  mastodonLink,
-} = Astro.props;
+const { links } = Astro.props;
 
 const liClass = "inline-block px-1 intersect:animate-fade opacity-0";
 const iconClass =
@@ -36,12 +27,44 @@ const iconClass =
 
 <ul class="py-2 flex items-center">
   {
-    facebookLink && (
+    links.discord && (
+      <li class={liClass}>
+        <a
+          class={iconClass}
+          aria-label="Discord"
+          href={links.discord}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <span class="sr-only">Discord</span>
+          <FaDiscord className="w-6 h-6" />
+        </a>
+      </li>
+    )
+  }
+  {
+    links.email && (
+      <li class={liClass}>
+        <a
+          class={iconClass}
+          aria-label="Email"
+          href={`mailto:${links.email}`}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <span class="sr-only">Email</span>
+          <FaEnvelope className="w-6 h-6" />
+        </a>
+      </li>
+    )
+  }
+  {
+    links.facebook && (
       <li class={liClass}>
         <a
           class={iconClass}
           aria-label="Facebook"
-          href={facebookLink}
+          href={links.facebook}
           target="_blank"
           rel="noopener noreferrer nofollow"
         >
@@ -52,44 +75,12 @@ const iconClass =
     )
   }
   {
-    twitterLink && (
-      <li class={liClass}>
-        <a
-          class={iconClass}
-          aria-label="Twitter"
-          href={twitterLink}
-          target="_blank"
-          rel="noopener noreferrer nofollow"
-        >
-          <span class="sr-only">Twitter</span>
-          <FaTwitter className="w-6 h-6" />
-        </a>
-      </li>
-    )
-  }
-  {
-    linkedinLink && (
-      <li class={liClass}>
-        <a
-          class={iconClass}
-          aria-label="LinkedIn"
-          href={linkedinLink}
-          target="_blank"
-          rel="noopener noreferrer nofollow"
-        >
-          <span class="sr-only">LinkedIn</span>
-          <FaLinkedin className="w-6 h-6" />
-        </a>
-      </li>
-    )
-  }
-  {
-    githubLink && (
+    links.github && (
       <li class={liClass}>
         <a
           class={iconClass}
           aria-label="GitHub"
-          href={githubLink}
+          href={links.github}
           target="_blank"
           rel="noopener noreferrer nofollow"
         >
@@ -100,12 +91,12 @@ const iconClass =
     )
   }
   {
-    instagramLink && (
+    links.instagram && (
       <li class={liClass}>
         <a
           class={iconClass}
           aria-label="Instagram"
-          href={instagramLink}
+          href={links.instagram}
           target="_blank"
           rel="noopener noreferrer nofollow"
         >
@@ -116,33 +107,81 @@ const iconClass =
     )
   }
   {
-    youtubeLink && (
+    links.linkedIn && (
       <li class={liClass}>
         <a
           class={iconClass}
-          aria-label="YouTube"
-          href={youtubeLink}
+          aria-label="LinkedIn"
+          href={links.linkedIn}
           target="_blank"
           rel="noopener noreferrer nofollow"
         >
-          <span class="sr-only">YouTube</span>
-          <FaYoutube className="w-6 h-6" />
+          <span class="sr-only">LinkedIn</span>
+          <FaLinkedin className="w-6 h-6" />
         </a>
       </li>
     )
   }
   {
-    mastodonLink && (
+    links.pinterest && (
       <li class={liClass}>
         <a
           class={iconClass}
-          aria-label="Mastodon"
-          href={mastodonLink}
+          aria-label="Pinterest"
+          href={links.pinterest}
           target="_blank"
           rel="noopener noreferrer nofollow"
         >
-          <span class="sr-only">Mastodon</span>
-          <FaMastodon className="w-6 h-6" />
+          <span class="sr-only">Pinterest</span>
+          <FaPinterest className="w-6 h-6" />
+        </a>
+      </li>
+    )
+  }
+  {
+    links.tiktok && (
+      <li class={liClass}>
+        <a
+          class={iconClass}
+          aria-label="TikTok"
+          href={links.tiktok}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <span class="sr-only">TikTok</span>
+          <FaTiktok className="w-6 h-6" />
+        </a>
+      </li>
+    )
+  }
+  {
+    links.website && (
+      <li class={liClass}>
+        <a
+          class={iconClass}
+          aria-label="Website"
+          href={links.website}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <span class="sr-only">Website</span>
+          <FaGlobe className="w-6 h-6" />
+        </a>
+      </li>
+    )
+  }
+  {
+    links.youtube && (
+      <li class={liClass}>
+        <a
+          class={iconClass}
+          aria-label="YouTube"
+          href={links.youtube}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <span class="sr-only">YouTube</span>
+          <FaYoutube className="w-6 h-6" />
         </a>
       </li>
     )

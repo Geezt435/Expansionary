@@ -23,7 +23,9 @@ const { Content } = await render(entry);
       <div
         class="row justify-center border-b border-border pb-14 dark:border-darkmode-border"
       >
-        <div class="glass rounded-lg p-4 text-center lg:col-4 intersect:animate-fadeUp opacity-0">
+        <div
+          class="glass rounded-lg p-4 text-center lg:col-4 intersect:animate-fadeUp opacity-0"
+        >
           {
             image && (
               <Image
@@ -40,10 +42,9 @@ const { Content } = await render(entry);
           <div class="mb-6">
             <Content />
           </div>
-          <Social facebookLink="https://facebook.com" />
+          <Social links={social} />
         </div>
       </div>
-
       <div class="row justify-center pb-16 pt-14">
         {
           recentBlogEntries.map((entry) => (

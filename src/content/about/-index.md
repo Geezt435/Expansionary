@@ -1,5 +1,5 @@
 ---
-title: Hey, I am Jane Doe!
+title: Hey, I'm Jane Doe!
 description: this is meta description
 image: "@assets/profile/avatar.png"
 draft: false

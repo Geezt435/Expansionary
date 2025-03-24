@@ -10,10 +10,13 @@ interface Props {
 
 const { entry }: Props = Astro.props;
 const { title, image, imageAlt, social } = entry.data;
+const bodyBrief = entry.body ? plainify(entry.body?.slice(0, 100)) : null;
 ---
 
 <div class="mb-14 md:col-6 lg:col-4">
-  <div class="glass rounded-lg p-4 text-center intersect:animate-fadeUp opacity-0">
+  <div
+    class="glass rounded-lg p-4 text-center intersect:animate-fadeUp opacity-0"
+  >
     {
       image && (
         <Image
@@ -29,9 +32,7 @@ const { title, image, imageAlt, social } = entry.data;
     <h4 class="mb-3">
       <a href={`/authors/${entry.id}`}>{title}</a>
     </h4>
-    <p class="mb-4">
-      {plainify(entry.body?.slice(0, 100))}
-    </p>
-    <Social facebookLink="https://facebook.com" />
+    {bodyBrief && <p class="mb-4">{bodyBrief}</p>}
+    <Social links={social} />
   </div>
 </div>
