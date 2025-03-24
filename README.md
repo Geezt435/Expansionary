@@ -69,10 +69,10 @@ See [docs/tech-stack.md](docs/tech-stack.md) for more details.
 
 ## Development Instructions
 
-1. Fork the repo `git clone https://github.com/astrogon/astrogon.git`
+1. Fork this repository to your own GitHub account, then clone it to your local machine
 2. Use Node 22: `nvm install 22` or `nvm use 22`
-3. Install Node dependencies: `npm install`
-4. Build: `npm run dev`
+3. From the project directory, install Node dependencies: `npm install`
+4. From the project directory, build: `npm run dev`
 5. See your changes live at `http://localhost:4321`
 
 ## License
