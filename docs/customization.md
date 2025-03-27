@@ -221,3 +221,11 @@ I think these animations make a big difference in the feel of the site, but they
 2. Delete the `<ObserverScript />` reference and import in `/src/components/base/BaseLayout.astro`
 3. Delete `/src/components/base/ObserverScript.astro`
 4. Delete the `theme.extent.animation` and `theme.extend.keyframes` sections from the `module.exports` section of `/tailwind.config.js`.
+
+## Related Entries
+
+The "Related Entries" section is a feature that automatically populates a list of links to other entries in the same collection. This is not a dedicated component, but just a small section of code that can be added to any entry layout.
+
+By default in this template, there only example of this is in blog entries: `/src/components/blog/EntryLayout.astro`. You'll notice an array of entries called `relatedEntries` is is precomputed for each entry, and passed into the EntryLayout from the calling file: `/src/pages/blog/[single].astro`. Here you'll see the `relatedEntries` array is populated by the function in `/src/lib/similarItems.ts`, where the logic actually sits.
+
+The way `similarItems.ts` calculates what items are similar is just by reference to whatever metadata elements you choose to include in the comparison. In this template, that includes just the Categories and Tags. So if you want to add this Related Entries section to a content collection with other taxonomies, such as Diet for a recipe collection, you would want to update the `similarItems.ts` file to account for that.
