@@ -2,6 +2,7 @@ import { defineCollection, reference, z } from "astro:content";
 import { glob } from "astro/loaders";
 
 // May also need to update /src/types/index.d.ts when updating this file
+// When updating the set of searchable collections, update searchable_collections in /src/config/config.json
 
 const searchable = z.object({
   title: z.string(),
@@ -114,6 +115,23 @@ const poetry = defineCollection({
     }),
 });
 
+const portfolio = defineCollection({
+  loader: glob({
+    pattern: "-index.{md,mdx}",
+    base: "./src/content/portfolio",
+  }),
+  schema: searchable.extend({
+    projects: z.array(
+      z.object({
+        title: z.string(),
+        github: z.string().optional(),
+        technologies: z.array(z.string()).optional(),
+        content: z.array(z.string()).optional(),
+      }),
+    ),
+  }),
+});
+
 const recipes = defineCollection({
   loader: glob({
     pattern: "**\/[^_]*.{md,mdx}",
@@ -153,6 +171,7 @@ export const collections = {
   home,
   indexCards,
   poetry,
+  portfolio,
   recipes,
   terms,
 };

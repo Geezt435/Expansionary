@@ -10,7 +10,7 @@
     "theme_switcher": true,
     "default_theme": "system",
     "search_enabled": true,
-    "searchable_collections": ["about", "authors", "blog", "docs", "poetry", "recipes", "terms"],
+    "searchable_collections": ["about", "authors", "blog", "docs", "poetry", "portfolio", "recipes", "terms"],
     "blog_pagination": 4,
     "blog_description_length": 200,
     "search_description_length": 200,
