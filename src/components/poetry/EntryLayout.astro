@@ -4,7 +4,6 @@ import Pagination from "@components/common/Pagination.astro";
 import Share from "@components/common/Share.astro";
 import { plainify } from "@lib/textConverter";
 import type { PoetryEntry } from "@/types";
-import config from "@/config/config.json";
 
 import { render } from "astro:content";
 import EntryHeader from "@components/common/EntryHeader.astro";
@@ -19,13 +18,11 @@ const { entry, pageIDs, pageIndex, pageCount }: Props = Astro.props;
 const { title, description, autodescription, image } = entry.data;
 const { Content } = await render(entry);
 
+const descriptionLength = 200;
+
 const entryDescription =
   description ||
-  (autodescription
-    ? plainify(
-        entry.body!.slice(0, Number(config.settings.blog_description_length))
-      )
-    : null);
+  (autodescription ? plainify(entry.body!.slice(0, descriptionLength)) : null);
 ---
 
 <BaseLayout title={title} description={entryDescription} image={image?.src}>

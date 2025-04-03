@@ -56,7 +56,7 @@ Astrogon is a rapidly-customizable multipurpose website template built using Ast
 - Animated component **Transitions** for an elegant flourish
 - **Pagination** for any content collection
 - Component for **Social Media** sharing
-- Built-in patterns for **Search Engine Optimization** and **Accessibility**
+- Built-in patterns for **Search Engine Optimization**
 
 Every one of these features was designed with modularity and customizability in mind, for the smoothest development experience possible. For more details, see [docs/customization.md](docs/customization.md).
 

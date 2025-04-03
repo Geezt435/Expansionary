@@ -4,25 +4,23 @@ import { getTaxaMultiset, getTaxa } from "@lib/taxonomyParser";
 import { getEntries, getIndex } from "@lib/contentParser";
 import { sortByDate } from "@lib/sortFunctions";
 import type { BlogEntry } from "@/types";
-import config from "@/config/config.json";
 
 const { slug } = Astro.params;
 const currentPageIndex = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
 
-const entryIndex = await getIndex("blog") as BlogEntry;
+const entryIndex = (await getIndex("blog")) as BlogEntry;
 const entries = (await getEntries("blog", sortByDate)) as BlogEntry[];
 
 const allCategories = await getTaxaMultiset("blog", "categories");
 const categories = await getTaxa("blog", "categories");
 const tags = await getTaxa("blog", "tags");
 
-const indexOfLastEntry = currentPageIndex * config.settings.blog_pagination;
-const indexOfFirstEntry = indexOfLastEntry - config.settings.blog_pagination;
+const blogPagination = 4;
+const indexOfLastEntry = currentPageIndex * blogPagination;
+const indexOfFirstEntry = indexOfLastEntry - blogPagination;
 const currentEntries = entries.slice(indexOfFirstEntry, indexOfLastEntry);
 
-const pageCount: number = Math.ceil(
-  entries.length / config.settings.blog_pagination
-);
+const pageCount: number = Math.ceil(entries.length / blogPagination);
 ---
 
 <CollectionLayout

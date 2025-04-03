@@ -8,8 +8,6 @@ The written content in the template's collections was AI generated. The images a
 
 ### The Mechanics
 
-
-
 For a higher-level overview of how the content collections work, see the [docs/project-structure.md](docs/project-structure.md) page.
 
 ## Theme Colors
@@ -28,14 +26,15 @@ By default, the pallet of this site is defined in just 7 color parameters (14 if
 
 ### Relevant Areas
 
-`/src/config/theme.json`:
+`/tailwind.config.js`:
 
-```json
-{
-  "colors": {
-    // ...
-  }
-}
+```js
+module.exports = {
+  ...
+  theme: {
+    ...
+    extend: {
+      colors: {
 ```
 
 Structural changes would be made among:
@@ -66,14 +65,20 @@ font-family: system-ui; // uses the operating system's default
 
 ### Relevant Areas
 
-#### `/src/config/theme.json`
+`/tailwind.config.js`:
 
-```json
-{
-  "fonts": {
-    // ...
-  }
-}
+```js
+module.exports = {
+  ...
+  theme: {
+    ...
+    extend: {
+      fontSize: {
+        ...
+      },
+      fontFamily: {
+        ...
+      },
 ```
 
 #### `/src/styles/fonts.css`

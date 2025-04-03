@@ -1,14 +1,6 @@
----
-import config from "@/config/config.json";
+<script is:inline data-astro-rerun>
+  const defaultTheme = "system";
 
-const { default_theme } = config.settings;
----
-
-<script
-  is:inline 
-  data-astro-rerun 
-  define:vars={{ defaultTheme: default_theme }}
->
   function getTheme(defaultTheme) {
     var darkMode = defaultTheme === "dark" ? true : false;
     if (localStorage.getItem("theme") === "system") {

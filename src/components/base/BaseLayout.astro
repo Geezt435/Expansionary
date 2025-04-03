@@ -1,5 +1,4 @@
 ---
-import config from "@/config/config.json";
 import { plainify } from "@lib/textConverter";
 import Footer from "@components/base/Footer.astro";
 import Header from "@components/base/Header.astro";
@@ -19,6 +18,12 @@ export interface Props {
 }
 
 const { title, description, image, noindex, canonical } = Astro.props;
+
+const siteTitle = "Astrogon";
+const siteDescription = "Astrogon is a simple and elegant Astro theme.";
+const siteImage = "@assets/og-image.png";
+const siteAuthor = "Jane Doe";
+const baseUrl = "https://janedoe.com";
 ---
 
 <!DOCTYPE html>
@@ -54,7 +59,7 @@ const { title, description, image, noindex, canonical } = Astro.props;
 
     <!-- title -->
     <title>
-      {plainify(title ? title : config.site.title)}
+      {plainify(title ? title : siteTitle)}
     </title>
 
     <!-- canonical url -->
@@ -67,18 +72,18 @@ const { title, description, image, noindex, canonical } = Astro.props;
     <meta
       name="description"
       content={plainify(
-        description ? description : config.metadata.meta_description,
+        description ? description : siteDescription,
       )}
     />
 
     <!-- author from config.json -->
-    <meta name="author" content={config.metadata.meta_author} />
+    <meta name="author" content={siteAuthor} />
 
     <!-- og-title -->
     <meta
       property="og:title"
       content={plainify(
-        title ? title : config.site.title,
+        title ? title : siteTitle,
       )}
     />
 
@@ -86,20 +91,20 @@ const { title, description, image, noindex, canonical } = Astro.props;
     <meta
       property="og:description"
       content={plainify(
-        description ? description : config.metadata.meta_description,
+        description ? description : siteDescription,
       )}
     />
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
-      content={`${config.site.base_url}/${Astro.url.pathname.replace("/", "")}`}
+      content={`${baseUrl}/${Astro.url.pathname.replace("/", "")}`}
     />
 
     <!-- twitter-title -->
     <meta
       name="twitter:title"
       content={plainify(
-        title ? title : config.site.title,
+        title ? title : siteTitle,
       )}
     />
 
@@ -107,23 +112,23 @@ const { title, description, image, noindex, canonical } = Astro.props;
     <meta
       name="twitter:description"
       content={plainify(
-        description ? description : config.metadata.meta_description,
+        description ? description : siteDescription,
       )}
     />
 
     <!-- og-image -->
     <meta
       property="og:image"
-      content={`${config.site.base_url}${
-        image ? image : config.metadata.meta_image
+      content={`${baseUrl}${
+        image ? image : siteImage
       }`}
     />
 
     <!-- twitter-image -->
     <meta
       name="twitter:image"
-      content={`${config.site.base_url}${
-        image ? image : config.metadata.meta_image
+      content={`${baseUrl}${
+        image ? image : siteImage
       }`}
     />
     <meta name="twitter:card" content="summary_large_image" />

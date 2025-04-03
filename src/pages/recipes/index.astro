@@ -3,16 +3,17 @@ import CollectionLayout from "@components/recipes/CollectionLayout.astro";
 import { getIndex, getEntries } from "@lib/contentParser";
 import { sortByDate } from "@lib/sortFunctions";
 import type { RecipesEntry } from "@/types";
-import config from "@/config/config.json";
 
 const entryIndex = (await getIndex("recipes")) as RecipesEntry;
 const entries = (await getEntries("recipes", sortByDate)) as RecipesEntry[];
 
 const { slug } = Astro.params;
+
+const recipePagination = 6;
 const currentPageIndex = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
-const pageCount = Math.ceil(entries.length / config.settings.recipe_pagination);
-const indexOfLastEntry = currentPageIndex * config.settings.recipe_pagination;
-const indexOfFirstEntry = indexOfLastEntry - config.settings.recipe_pagination;
+const pageCount = Math.ceil(entries.length / recipePagination);
+const indexOfLastEntry = currentPageIndex * recipePagination;
+const indexOfFirstEntry = indexOfLastEntry - recipePagination;
 const currentEntries = entries.slice(indexOfFirstEntry, indexOfLastEntry);
 ---
 

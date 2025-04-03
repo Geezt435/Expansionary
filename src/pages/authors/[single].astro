@@ -2,7 +2,6 @@
 import type { AuthorsEntry, BlogEntry } from "@/types";
 import EntryLayout from "@components/authors/EntryLayout.astro";
 import { slugify } from "@lib/textConverter";
-import { metadata } from "@/config/config.json";
 import { getEntries } from "@lib/contentParser";
 import { sortByDate } from "@lib/sortFunctions";
 
@@ -22,7 +21,7 @@ const { title } = entry.data;
 const blogEntries = (await getEntries("blog", sortByDate)) as BlogEntry[];
 const filteredBlogEntries = blogEntries.filter(
   (entry: BlogEntry) =>
-    slugify(entry.data.author?.id ? entry.data.author.id : metadata.meta_author) ===
+    slugify(entry.data.author?.id ? entry.data.author.id : "Jane Doe") ===
     slugify(title)
 );
 ---

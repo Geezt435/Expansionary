@@ -1,31 +1,31 @@
-const theme = require("./src/config/theme.json");
 import plugin from "tailwindcss/plugin";
 
-let font_base = Number(theme.fonts.font_size.base.replace("px", ""));
-let font_scale = Number(theme.fonts.font_size.scale);
+let font_base = 16;
+let font_scale = 1.25;
+
 let h6 = font_base / font_base;
 let h5 = h6 * font_scale;
 let h4 = h5 * font_scale;
 let h3 = h4 * font_scale;
 let h2 = h3 * font_scale;
 let h1 = h2 * font_scale;
-let fontPrimary, fontPrimaryType, fontSecondary, fontSecondaryType;
-if (theme.fonts.font_family.primary) {
-  fontPrimary = theme.fonts.font_family.primary
-    .replace(/\+/g, " ")
-    .replace(/:[ital,]*[ital@]*[wght@]*[0-9,;]+/gi, "");
-  fontPrimaryType = theme.fonts.font_family.primary_type;
-}
-if (theme.fonts.font_family.secondary) {
-  fontSecondary = theme.fonts.font_family.secondary
-    .replace(/\+/g, " ")
-    .replace(/:[ital,]*[ital@]*[wght@]*[0-9,;]+/gi, "");
-  fontSecondaryType = theme.fonts.font_family.secondary_type;
-}
+
+let fontPrimary = "serif";
+let fontPrimaryType = "serif";
+let fontSecondary = "open sans";
+let fontSecondaryType = "sans-serif";
+
+fontPrimary = fontPrimary
+  .replace(/\+/g, " ")
+  .replace(/:[ital,]*[ital@]*[wght@]*[0-9,;]+/gi, "");
+
+fontSecondary = fontSecondary
+  .replace(/\+/g, " ")
+  .replace(/:[ital,]*[ital@]*[wght@]*[0-9,;]+/gi, "");
 
 /** @type {import("tailwindcss").Config} */
 module.exports = {
-  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx}"],
   safelist: [],
   darkMode: "class",
   theme: {
@@ -43,28 +43,28 @@ module.exports = {
     extend: {
       colors: {
         txt: {
-          p: theme.colors.default.txt.primary,
-          s: theme.colors.default.txt.secondary,
-          light: theme.colors.default.txt.light,
+          p: "#000",
+          s: "#222",
+          light: "#444",
         },
         bg: {
-          p: theme.colors.default.bg.primary,
-          s: theme.colors.default.bg.secondary,
-          t: theme.colors.default.bg.tertiary,
+          p: "#fff",
+          s: "#ddd",
+          t: "#ddd",
         },
-        border: theme.colors.default.border,
+        border: "#ddd",
         darkmode: {
           txt: {
-            p: theme.colors.darkmode.txt.primary,
-            s: theme.colors.darkmode.txt.secondary,
-            light: theme.colors.darkmode.txt.light,
+            p: "#fff",
+            s: "#ddd",
+            light: "#bbb",
           },
           bg: {
-            p: theme.colors.darkmode.bg.primary,
-            s: theme.colors.darkmode.bg.secondary,
-            t: theme.colors.darkmode.bg.tertiary,
+            p: "#222",
+            s: "#444",
+            t: "#444",
           },
-          border: theme.colors.darkmode.border,
+          border: "#444",
         },
       },
       minHeight: {
@@ -125,7 +125,7 @@ module.exports = {
         // Star Background
         twinkle: "twinkle 5s infinite ease-in-out",
         // Cycle Background
-        cycleBg: "cycleBg 60s ease infinite"
+        cycleBg: "cycleBg 60s ease infinite",
       },
       keyframes: {
         // Intersect
