@@ -78,3 +78,9 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.katex {
+  .base {
+    @apply text-txt-s dark:text-darkmode-txt-s;
+  }
+}

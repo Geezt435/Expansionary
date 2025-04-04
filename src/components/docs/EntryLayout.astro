@@ -3,7 +3,6 @@ import BaseLayout from "@components/base/BaseLayout.astro";
 import type { DocsEntry, MenuItem } from "@/types";
 import DocBrowser from "@components/docs/Browser.astro";
 import TableOfContents from "@components/common/TableOfContents.astro";
-import config from "@/config/config.json";
 
 import { render } from "astro:content";
 import EntryHeader from "@components/common/EntryHeader.astro";
@@ -16,6 +15,9 @@ const { entry, browserMenu } = Astro.props;
 
 const { Content, headings } = await render(entry);
 const { title, description, hideNav, hideToc, image } = entry.data;
+
+const globalHideNav = false;
+const globalHideToc = false;
 ---
 
 <BaseLayout title={title} image={image?.src} description={description}>
@@ -25,7 +27,7 @@ const { title, description, hideNav, hideToc, image } = entry.data;
     ${hideToc && hideNav ? "w-screen" : "mr-4 md:w-1/4 lg:w-1/5"}`
     >
       {
-        !config.settings.hide_doc_browser && !hideNav && (
+        !globalHideNav && !hideNav && (
           <DocBrowser
             menu={browserMenu}
             currentPage={entry.id.replace("/-index", "")}
@@ -46,11 +48,7 @@ const { title, description, hideNav, hideToc, image } = entry.data;
     <div
       class=`hidden lg:flex max-h-static_sidemenu sticky top-[5rem] ${hideToc && hideNav ? "" : "ml-4 lg:w-1/5"}`
     >
-      {
-        !config.settings.hide_doc_toc && !hideToc && (
-          <TableOfContents {headings} />
-        )
-      }
+      {!globalHideToc && !hideToc && <TableOfContents {headings} />}
     </div>
   </section>
 </BaseLayout>

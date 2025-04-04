@@ -1,12 +1,6 @@
 ---
 import type { BlogEntry } from "@/types";
-import config from "@/config/config.json";
-import {
-  upperHumanize,
-  plainify,
-  slugify,
-  lowerHumanize,
-} from "@lib/textConverter";
+import { upperHumanize, plainify, slugify } from "@lib/textConverter";
 import {
   FaRegFolder,
   FaRegClock,
@@ -31,15 +25,13 @@ const {
   complexity,
 } = entry.data;
 
+const descriptionLength = 200;
+
 const entryDate = date ? formatDate(date) : null;
 const entryReadingTime = readingTime(entry.body!, complexity);
 const entryDescription =
   description ||
-  (autodescription
-    ? plainify(
-        entry.body!.slice(0, Number(config.settings.blog_description_length))
-      )
-    : null);
+  (autodescription ? plainify(entry.body!.slice(0, descriptionLength)) : null);
 ---
 
 <div class="h-full m-2 pl-0 bg-gradient-to-br gradient rounded-lg">
@@ -96,4 +88,3 @@ const entryDescription =
     </p>
   </div>
 </div>
-

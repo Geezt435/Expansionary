@@ -2,10 +2,19 @@
 import type { SearchableEntry } from "@/types";
 import PageLayout from "@components/search/PageLayout.astro";
 import { getEntriesBatch } from "@lib/contentParser";
-import { settings } from "@/config/config.json";
 import type { CollectionKey } from "astro:content";
 
-const collectionList = settings.searchable_collections as CollectionKey[];
+const collectionList = [
+  "about",
+  "authors",
+  "blog",
+  "docs",
+  "poetry",
+  "portfolio",
+  "recipes",
+  "terms",
+] as CollectionKey[];
+
 const searchList = (await getEntriesBatch(
   collectionList,
   undefined,

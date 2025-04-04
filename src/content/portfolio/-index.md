@@ -24,5 +24,5 @@ projects:
       - "Thread"
     content: 
       - "The left shoe is a size 24. It is made of fabric, red. It is designed for use only by clowns. It is not suitable."
-      - "The right shoe is a size 29. It is made of fabric, blue. This shoe is purely theoretical. Members of polite society are would not entertain the idea of utilizing this."
+      - "The right shoe is a size 29. It is made of fabric, blue. This shoe is purely theoretical. Members of polite society would not entertain the idea of utilizing this."
 ---

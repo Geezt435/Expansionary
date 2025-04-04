@@ -22,7 +22,7 @@
 - `assets/` is where you put all images that will be displayed on the site. Preferably, don't dump every image right in there, make subdirectories. For example, if you keep the blog content collection, make a folder `blog`, and put any images your blog uses in there. Even make one subdirectory per blog post.
 - `content/` is where all your content collections live.
   - For uniformity, a collection is defined for each "original content" driven page on the website, even if it's a solitary piece of content, such as the `terms` or `about` page.
-  - The data type for each content collection is defined in the `config.ts` file. It will need to be updated if you want to edit the schema of a collection or add a new collection altogether.
+  - The data type for each content collection is defined in `/src/content/config.ts`. It will need to be updated if you want to edit the schema of a collection or add a new collection altogether.
   - Once development is pretty much done on your site and you're happy with how everything looks and is structured, the expectation is that you will rarely need to interact with anything outside of this folder (and `assets`).
 - `pages/` contains all the pages.
   - The structure of this folder defines the routing structure for your site. So if in the `pages` folder you have `blog/categories/index.astro`, you will have that page `index.astro` located at `example.com/blog/categories`.

@@ -6,14 +6,13 @@ import AutoImport from "astro-auto-import";
 import { defineConfig } from "astro/config";
 import remarkCollapse from "remark-collapse";
 import remarkToc from "remark-toc";
-import config from "./src/config/config.json";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 
 // https://astro.build/config
 export default defineConfig({
-  site: config.site.base_url,
-  base: config.site.base_path,
+  site: "https://janedoe.com",
+  base: "/",
   trailingSlash: "ignore",
   prefetch: {
     prefetchAll: true

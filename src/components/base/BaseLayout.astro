@@ -1,11 +1,10 @@
 ---
-import config from "@/config/config.json";
 import { plainify } from "@lib/textConverter";
 import Footer from "@components/base/Footer.astro";
 import Header from "@components/base/Header.astro";
 import ObserverScript from "@components/base/ObserverScript.astro";
 import "@/styles/main.scss";
-import { ClientRouter } from 'astro:transitions';
+import { ClientRouter } from "astro:transitions";
 import Background from "@/components/base/Background.astro";
 import { Tooltips } from "astro-tooltips";
 
@@ -19,18 +18,38 @@ export interface Props {
 }
 
 const { title, description, image, noindex, canonical } = Astro.props;
+
+const siteTitle = "Astrogon";
+const siteDescription = "Astrogon is a simple and elegant Astro theme.";
+const siteImage = "@assets/og-image.png";
+const siteAuthor = "Jane Doe";
+const baseUrl = "https://janedoe.com";
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon/favicon-16x16.png"
+    />
+    
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <!-- theme meta -->
     <meta name="theme-name" content="pages" />
     <meta name="msapplication-TileColor" content="#000000" />
     <meta
@@ -46,85 +65,46 @@ const { title, description, image, noindex, canonical } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <!-- responsive meta -->
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=5"
     />
 
-    <!-- title -->
     <title>
-      {plainify(title ? title : config.site.title)}
+      {plainify(title ? title : siteTitle)}
     </title>
 
-    <!-- canonical url -->
     {canonical && <link rel="canonical" href={canonical} item-prop="url" />}
-
-    <!-- noindex robots -->
     {noindex && <meta name="robots" content="noindex,nofollow" />}
 
-    <!-- meta-description -->
     <meta
       name="description"
-      content={plainify(
-        description ? description : config.metadata.meta_description,
-      )}
+      content={plainify(description ? description : siteDescription)}
     />
-
-    <!-- author from config.json -->
-    <meta name="author" content={config.metadata.meta_author} />
-
-    <!-- og-title -->
-    <meta
-      property="og:title"
-      content={plainify(
-        title ? title : config.site.title,
-      )}
-    />
-
-    <!-- og-description -->
+    <meta name="author" content={siteAuthor} />
+    <meta property="og:title" content={plainify(title ? title : siteTitle)} />
     <meta
       property="og:description"
-      content={plainify(
-        description ? description : config.metadata.meta_description,
-      )}
+      content={plainify(description ? description : siteDescription)}
     />
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
-      content={`${config.site.base_url}/${Astro.url.pathname.replace("/", "")}`}
+      content={`${baseUrl}/${Astro.url.pathname.replace("/", "")}`}
     />
-
-    <!-- twitter-title -->
-    <meta
-      name="twitter:title"
-      content={plainify(
-        title ? title : config.site.title,
-      )}
-    />
-
-    <!-- twitter-description -->
-    <meta
-      name="twitter:description"
-      content={plainify(
-        description ? description : config.metadata.meta_description,
-      )}
-    />
-
-    <!-- og-image -->
     <meta
       property="og:image"
-      content={`${config.site.base_url}${
-        image ? image : config.metadata.meta_image
-      }`}
+      content={`${baseUrl}${image ? image : siteImage}`}
     />
 
-    <!-- twitter-image -->
+    <meta name="twitter:title" content={plainify(title ? title : siteTitle)} />
+    <meta
+      name="twitter:description"
+      content={plainify(description ? description : siteDescription)}
+    />
     <meta
       name="twitter:image"
-      content={`${config.site.base_url}${
-        image ? image : config.metadata.meta_image
-      }`}
+      content={`${baseUrl}${image ? image : siteImage}`}
     />
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -148,17 +128,12 @@ const { title, description, image, noindex, canonical } = Astro.props;
       onload="renderMathInElement(document.body);"></script>
 
     <ClientRouter fallback="swap" />
-    <!-- 
-     transition:animate="slide"
-     https://5-0-0-beta.docs.astro.build/en/guides/view-transitions/#_top
-     -->
-
-     <Tooltips interactive={false} delay={[333, 0]} />
+    <Tooltips interactive={false} delay={[333, 0]} />
   </head>
   <body>
     <Background />
-    <Header/>
-    <main id="main-content" class="flex-1" >
+    <Header />
+    <main id="main-content" class="flex-1">
       <slot />
     </main>
     <Footer />
