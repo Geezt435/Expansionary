@@ -1,6 +1,6 @@
 ---
 title: "Elements"
-image: "@assets/placeholder.png"
+image: "@assets/backgrounds/bwca-dusk.png"
 ---
 
 # Heading 1
@@ -73,6 +73,18 @@ INNER JOIN dbo.Identity AS id ON id.identityID = p.currentIdentityID
 WHERE
   p.age > 30 AND p.eyeColor = 'grn'
 ```
+---
+
+### LaTeX
+
+In the middle of this sentance $$\int_0^\infty x^2 dx = \frac{1}{3}$$ is an inline expression. And after that is a block expression:
+
+$$$
+\int_0^\infty x^2 dx = \frac{1}{3}
+$$$
+
+Before this is a block expression.
+
 ---
 
 ### Button
@@ -158,22 +170,12 @@ Maybe you don't need to see everything all the time geez.
 
 ---
 
-### Image
-
-![image](@assets/placeholder.png)
-
----
-
 ### Youtube video
 
 <Youtube client:load id="XYsk4ibhd5g" title="Witcher IV Gameplay Trailer" />
 
-### LaTeX
+---
 
-In the middle of this sentance $$\int_0^\infty x^2 dx = \frac{1}{3}$$ is an inline expression. And after that is a block expression:
+### Image
 
-$$$
-\int_0^\infty x^2 dx = \frac{1}{3}
-$$$
-
-Before this is a block expression.
+![image](@assets/backgrounds/bwca-dusk.png "BWCA at dusk")

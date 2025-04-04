@@ -18,7 +18,8 @@ const currentEntries = entries.slice(indexOfFirstEntry, indexOfLastEntry);
 
 export async function getStaticPaths() {
   const entries = (await getEntries("recipes", sortByDate)) as RecipesEntry[];
-  const pageCount = Math.ceil(entries.length / recipePagination);
+  // divisor below must equal recipePagination
+  const pageCount = Math.ceil(entries.length / 6);
   const paths = [];
 
   for (let i = 1; i < pageCount; i++) {

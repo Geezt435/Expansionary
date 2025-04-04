@@ -26,7 +26,8 @@ const pageCount: number = Math.ceil(
 
 export async function getStaticPaths() {
   const entries = (await getEntries("blog", sortByDate)) as BlogEntry[];
-  const pageCount = Math.ceil(entries.length / blogPagination);
+  // divisor below must equal blogPagination
+  const pageCount = Math.ceil(entries.length / 4);
   const paths = [];
 
   for (let i = 1; i < pageCount; i++) {
