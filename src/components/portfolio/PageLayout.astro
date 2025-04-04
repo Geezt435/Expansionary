@@ -3,7 +3,7 @@ import type { PortfolioEntry } from "@/types";
 import BaseLayout from "@components/base/BaseLayout.astro";
 import PageHeader from "@/components/common/PageHeader.astro";
 import { markdownify } from "@lib/textConverter";
-import { FaGithubSquare } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 
 interface Props {
   entry: PortfolioEntry;
@@ -25,16 +25,23 @@ const { title, description, projects } = entry.data;
                 <div class="mt-8">
                   <h3 set:html={markdownify(project.title)} />
                 </div>
-                <div class="-mt-4">
+                <div class="-mt-4 flex items-center">
                   {project.github && (
-                    <a href={project.github} target="blank">
-                      <FaGithubSquare className="text-light -mt-1 mr-0.5 inline-block h-8 w-8" />
+                    <a
+                      aria-label="Github"
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer nofollow"
+                      class="mr-2 glass-t shadow-none rounded flex h-8 w-8 text-txt-p dark:text-darkmode-txt-p items-center justify-center text-center"
+                    >
+                      <FaGithub className="h-6 w-6" />
                     </a>
                   )}
                   {project.technologies?.map((element: string) => (
-                    <li class="inline-block h-8">
+                    <li class="list-none">
+                      {/* Use markdownify to convert markdown to HTML for each technology */}
                       <div
-                        class="m-1 block border border-light bg-transparent text-light rounded-sm px-2 dark:text-darkmode-light dark:border-darkmode-light"
+                        class="mr-2 px-2 h-8 flex glass-t shadow-none rounded text-txt-p dark:text-darkmode-txt-p items-center justify-center text-center"
                         set:html={markdownify(element)}
                       />
                     </li>

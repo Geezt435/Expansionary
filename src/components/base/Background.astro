@@ -1,4 +1,4 @@
----
+<!-- ---
 // Twinkling Star Background 
 const numStars = 1600;
 const stars = Array.from({ length: numStars }).map(() => ({
@@ -26,7 +26,7 @@ const stars = Array.from({ length: numStars }).map(() => ({
       />
     ))
   }
-</div>
+</div> -->
 
 <!-- Gradient Cycle Background -->
 <!-- <div
@@ -40,13 +40,20 @@ const stars = Array.from({ length: numStars }).map(() => ({
 </style> -->
 
 <!-- Image Background -->
-<!-- <style>
+<style>
   body {
-    background: url(/src/assets/backgrounds/mtn-lake.jpg) no-repeat center
-      center fixed;
+    background: url(/src/assets/backgrounds/bwca-day.png) no-repeat center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    .dark & {
+      /* Dark mode background */
+      background: url(/src/assets/backgrounds/bwca-night.png) no-repeat center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
   }
-</style> -->
+</style>
