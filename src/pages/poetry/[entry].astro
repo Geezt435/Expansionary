@@ -13,7 +13,7 @@ export async function getStaticPaths() {
     const pageIndex = pageIDs.indexOf(entry.id);
     return {
       params: {
-        single: entry.id,
+        entry: entry.id,
       },
       props: { entry, pageIDs, pageIndex, pageCount },
     };

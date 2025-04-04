@@ -8,7 +8,7 @@ export async function getStaticPaths() {
   const entries = await getEntries("recipes", sortByTitle) as RecipesEntry[];
   const paths = entries.map((entry) => ({
     params: {
-      single: entry.id,
+      entry: entry.id,
     },
     props: { entry },
   }));
