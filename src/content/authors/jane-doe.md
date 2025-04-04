@@ -1,7 +1,7 @@
 ---
 title: Jane Doe
 email: janedoe@email.com
-image: "@assets/profile/avatar.png"
+image: "@assets/profile/jane-doe.jpg"
 social:
   github: "https://github.com/"
   linkedIn: "https://www.linkedin.com/"
