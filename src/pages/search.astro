@@ -1,6 +1,6 @@
 ---
 import type { SearchableEntry } from "@/types";
-import PageLayout from "@components/search/PageLayout.astro";
+import EntryLayout from "@components/search/EntryLayout.astro";
 import { getEntriesBatch } from "@lib/contentParser";
 import type { CollectionKey } from "astro:content";
 
@@ -22,4 +22,4 @@ const searchList = (await getEntriesBatch(
 )) as SearchableEntry[];
 ---
 
-<PageLayout searchList={searchList} />
+<EntryLayout searchList={searchList} />

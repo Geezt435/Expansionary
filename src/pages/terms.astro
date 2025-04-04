@@ -1,9 +1,9 @@
 ---
-import PageLayout from "@components/terms/PageLayout.astro";
+import EntryLayout from "@components/terms/EntryLayout.astro";
 import { getIndex } from "@lib/contentParser";
 import type { TermsEntry } from "@/types";
 
 const entry = await getIndex("terms") as TermsEntry;
 ---
 
-<PageLayout entry={entry} />
+<EntryLayout entry={entry} />
