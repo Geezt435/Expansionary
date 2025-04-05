@@ -3,7 +3,7 @@
 Notes
 
 1. These docs are intended to be friendly and understandable for beginners, so anyone can rapidly assume ownership of this code.
-2. Don't confuse these docs with the **content collection** called docs.
+2. Don't confuse these docs with the **Content Collection** called docs.
 
 Recommended reading order:
 
@@ -26,3 +26,7 @@ Once you've made all the changes you want...
 If there's a change to any of your Node packages: `npm install`
 If you mess things up real bad and just want to revert to the last commit: `git reset --hard`
 When you want to pull changes down from GitHub: `git pull origin main`
+
+## See Also
+
+[Astro Documentation](https://docs.astro.build) - The official documentation for Astro. If there's an Astro topic you're confused about, you can probably find a consise and clear explanation here.

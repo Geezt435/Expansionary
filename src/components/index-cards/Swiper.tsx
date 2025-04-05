@@ -108,10 +108,9 @@ const ConversationSwiper = ({ cards }: Props) => {
               title="Jump to today's card"
               aria-label="Jump to today's card"
             >
-              <FaCalendarDay  className={"m-2 inline-block"} />
+              <FaCalendarDay className={"m-2 inline-block"} />
             </div>
             <div
-              
               className="cursor-pointer col-4 p-0 text-txt-p dark:text-darkmode-txt-p text-center"
               onClick={() =>
                 swiper?.slideTo(Math.floor(Math.random() * cards.length))

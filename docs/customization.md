@@ -8,7 +8,19 @@ The written content in the template's collections was AI generated. The images a
 
 ### The Mechanics
 
-For a higher-level overview of how the content collections work, see the [docs/project-structure.md](docs/project-structure.md) page.
+The idea of a **Content Collection** is one of Astro's most central features. A content collection is a structured way to store and retrieve content for your site. Each collection consists of one or multiple **Entries**, which, in this site, are stored in a Markdown (md, mdx) format. At the top of any of these entry files, you will find **frontmatter**. This is space designed to hold any metadata you want to add, such as an entry's publication date, author, or whatever you want.
+
+Adding an entry to a collection is as simple as creating a new file in the appropriate directory under `/src/content/`. For example, to add a new blog post on Bumble Bees, you would create a new file `/src/content/blog/bumble-bees.md`, and add all the necessary frontmatter. Then you can start plugging away in markdown. This is all very easy, and it's one of the best features of Astro. You can focus on writing content rather than worrying about the underlying code.
+
+Things get a little more complicated when you want to create a new collection (or update an existing one). Here's a brief overview of how to do that. For examples, look at one of the dozen ways each of these steps are already implemented in this template.
+
+1. The frontmatter we discussed must be defined in `/src/content/config.ts`. This file contains the schema for each collection.
+2. To follow best Typescript practices, you should add your new collection type in `/src/content/config.ts`.
+3. Add a new directory under `/src/content/` for your collection.
+4. Lay out the structure of your entry's page. This will may consist of an `EntryLayout.astro` and a `CollectionLayout.astro` in the `/src/components/[collection]/` directory. These components will define how each entry and the collection as a whole will be displayed.
+5. Connect the new collection to the routing structure by adding a new page in `/src/pages/` that will handle the routing for your collection. This typically involves calling `getEntries()` or `getIndex()` from the collection's config in the page's script section to retrieve the entries that will be referenced on that page.
+
+For more context on how the content collections work, see the [/docs/project-structure.md](/docs/project-structure.md) page.
 
 ## Theme Colors
 
@@ -133,7 +145,7 @@ module.exports = {
   }
 ```
 
-The provided **Image Background** is straightforward. A few different exmple images are provided in `/src/assets/backgrounds` to be swaped out in the `url()`'s argument.
+Additionally, there are code examples for single and dual-image backgrounds, depending on whether you want the background to change when the light/dark theme does. Swapping in your own images here is very straightforward.
 
 ### Parsimony
 
@@ -231,6 +243,49 @@ I think these animations make a big difference in the feel of the site, but they
 
 The "Related Entries" section is a feature that automatically populates a list of links to other entries in the same collection. This is not a dedicated component, but just a small section of code that can be added to any entry layout.
 
-By default in this template, there only example of this is in blog entries: `/src/components/blog/EntryLayout.astro`. You'll notice an array of entries called `relatedEntries` is is precomputed for each entry, and passed into the EntryLayout from the calling file: `/src/pages/blog/[single].astro`. Here you'll see the `relatedEntries` array is populated by the function in `/src/lib/similarItems.ts`, where the logic actually sits.
+By default in this template, there only example of this is in blog entries: `/src/components/blog/EntryLayout.astro`. You'll notice an array of entries called `relatedEntries` is is precomputed for each entry, and passed into the EntryLayout from the calling file: `/src/pages/blog/[entry].astro`. Here you'll see the `relatedEntries` array is populated by the function in `/src/lib/similarItems.ts`, where the logic actually sits.
 
 The way `similarItems.ts` calculates what items are similar is just by reference to whatever metadata elements you choose to include in the comparison. In this template, that includes just the Categories and Tags. So if you want to add this Related Entries section to a content collection with other taxonomies, such as Diet for a recipe collection, you would want to update the `similarItems.ts` file to account for that.
+
+## Favicon
+
+The favicon for the site is stored in `/public/favicon/`. For best quality across a range of devices, you should supply the many versions, as you can see there in this template. [favicon.io](https://favicon.io/) is a great resource for generating favicons.
+
+Note: if you change the favicon, you will likely need to clear your browser's cache to see the new one.
+
+## Tool Tips
+
+A tooltip is a small text box that appears when a user hovers over an element. Tooltips can provide additional information about an element without cluttering the UI. Astrogon implements [Astro Tooltips](https://github.com/JulianCataldo/web-garden/tree/develop/app/Tooltips). Read it's documentation if you want to get fancy with it, but the main thing is extremely straightforward. Just add the `title` attribute to any HTML element you want to have a tooltip. For example:
+
+```html
+<button
+  class="btn btn-primary"
+  title="This is a tooltip!"
+>
+  Click Me!
+</button>
+```
+
+Some customization levers are exposed in `/src/components/base/BaseLayout.astro` where `<Tooltips>` is called. Here you can specify the length of hover time before the tooltip appears, and how quickly it disappears after unhovering.
+
+## Search
+
+To make a collection searchable on the search page, you will need to:
+
+1. Ensure the collection extends the `searchable` property in `/src/content/config.ts`. All that does is require the collection entries to have a title and description, otherwise there will be nothing to display in the search results.
+2. Add the component to the union types comprising `SearchableEntry` in `/src/types/index.d.ts`. It's nice to keep Typescript happy.
+3. Add the collection name to the `searchableCollections` array in `/src/pages/search.astro`. This tells the search algorithm which collections to actually query.
+
+There's a built in `autodescription` feature. How this works is if an entry does not have a `description` in the frontmatter, it will automatically generate one from the first howevermany characters of the entry's body content.
+
+The max length of the description is set in `/src/components/search/Search.tsx`. Change it if the default is upsetting to you.
+
+## Pagination
+
+Pagination refers to the process of dividing a large set of entries into smaller chunks or "pages". By default you can see this at work with the blog entries, where the `/blog` page will show a limited number of entries per page, and provide links to subsequent pages. This feature is fancier than it might seem, which is to say, adding it to a collection is not as easy as it seems like it should be.
+
+Because each page of entries is, well, a page, you'll need to include a file `/src/pages/[collection]/page/[slug].astro`. This file will handle the routing for the pagination, and should look very similar to `/src/pages/[collection]/index.astro`. Of course, both will call that collection's `CollectionLayout` component. The pagination logic is handled by the `getIndex()` function in `/src/lib/pagination.ts`, which will return a slice of entries for the current page, as well as the total number of pages.
+
+You can customize the number of entries per page by changing the `entriesPerPage` variable in both the `index.astro` and `[slug].astro` files mentioned above. Note also that the `getStaticPaths` function in `[slug].astro` operates in a special way with Astro, and build errors can occur if you define a variable outside of the function, for example.
+
+I'm sick of writing about this without saying helpful things, so the TLDR is: just mimic how a working collection does it.
