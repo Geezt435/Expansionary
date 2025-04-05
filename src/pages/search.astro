@@ -4,7 +4,7 @@ import EntryLayout from "@components/search/EntryLayout.astro";
 import { getEntriesBatch } from "@lib/contentParser";
 import type { CollectionKey } from "astro:content";
 
-const collectionList = [
+const searchableCollections = [
   "about",
   "authors",
   "blog",
@@ -16,7 +16,7 @@ const collectionList = [
 ] as CollectionKey[];
 
 const searchList = (await getEntriesBatch(
-  collectionList,
+  searchableCollections,
   undefined,
   false
 )) as SearchableEntry[];
