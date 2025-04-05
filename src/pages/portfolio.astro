@@ -1,9 +1,9 @@
 ---
 import type { PortfolioEntry } from "@/types";
-import PageLayout from "@components/portfolio/PageLayout.astro";
+import EntryLayout from "@components/portfolio/EntryLayout.astro";
 import { getIndex } from "@lib/contentParser";
 
 const entry = (await getIndex("portfolio")) as PortfolioEntry;
 ---
 
-<PageLayout entry={entry} />
+<EntryLayout entry={entry} />

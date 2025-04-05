@@ -9,7 +9,7 @@ export async function getStaticPaths() {
   const entries = (await getEntries("blog", sortByDate)) as BlogEntry[];
   const paths = entries.map((entry) => ({
     params: {
-      single: entry.id,
+      entry: entry.id,
     },
     props: { entry, entries },
   }));

@@ -2,7 +2,6 @@
 import BaseLayout from "@components/base/BaseLayout.astro";
 import { markdownify } from "@lib/textConverter";
 import { Image } from "astro:assets";
-import profile from "@assets/profile/avatar.png";
 import type { AboutEntry } from "@/types";
 import { render } from "astro:content";
 
@@ -21,10 +20,10 @@ const { Content } = await render(entry);
       <div class="row justify-center">
         <div class="glass rounded-lg text-center p-8 md:col-10 lg:col-7 intersect:animate-fadeUp opacity-0 intersect-no-queue">
           {
-            profile && (
+            image && (
               <Image
-                class="mx-auto mb-6 rounded-lg  w-64"
-                src={profile}
+                class="mx-auto mb-6 rounded-lg w-64"
+                src={image}
                 width={1024}
                 height={1024}
                 alt={imageAlt}

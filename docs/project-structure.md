@@ -5,6 +5,7 @@
 ### Git/GitHub & Project Stuff
 
 - `.git` is a hidden folder. It is the thing containing all the git tracking. It should never be editied manually. Basically you should just ignore it, it's hidden for a reason.
+- `.github/` contains GitHub-specific files for the repository. If you want to use Github Pages as a host, you'd put a deployment script in here. However right now it's only purpose is to beg for your money. ...Probably just delete this folder.
 - `.gitignore` is a file that tells git which files and folders not to track. Some of the stuff in the repository you only want to have locally. That could be really big assets, files with sensitive info like keys, etc. You likely won't need to edit this at all.
 - `README.md` is the project README, of course. You can put whatever you want here, it will be displayed on the the repo's page on GitHub.
 - `LICENSE` contains the license details. The MIT license is a good and honorable one. You should not use a more restrictive license than this on the repository overall. As a software license, it doen not apply to the actual content, such as your writings. I added a `/terms` page where you will be able to outline whatever permissions you want. I have something there for my own site, but I'm no lawyer.
@@ -34,9 +35,8 @@
     - In this way, we decouple the routing and data querying from the structure/style of the pages themselves. You'd be encouraged to appreciate this design choice and stick to it, unless you specifically have other plans.
 - `components/` contains all components, which are modular pieces of HTML/CSS/JS. There are three kinds of subdirectory:
   1. `[collection]/` contains all layouts and other components specialized to that collection.
-     1. `PageLayout` defines the structure of the entry within a singleton collection.
-     2. `EntryLayout` defines the structure of a collection entry page.
-     3. `CollectionLayout` defines the structure of the page(s) displaying the collection entries.
+     1. `EntryLayout` defines the structure of a collection entry page.
+     2. `CollectionLayout` defines the structure of the page(s) displaying the collection entries.
   2. `common/` contains components that are generic enough to be used across collections.
      - `shortcodes/` mainly contains components intended for use directly in `.mdx` content files.
   3. `base/` contains the base layout and associated components. Every other layout in the project is wrapped by `base/BaseLayout.astro`. Therefore the base layout code is applied to every page on the site.

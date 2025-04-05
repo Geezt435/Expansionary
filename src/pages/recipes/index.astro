@@ -9,11 +9,11 @@ const entries = (await getEntries("recipes", sortByDate)) as RecipesEntry[];
 
 const { slug } = Astro.params;
 
-const recipePagination = 6;
+const entriesPerPage = 6;
 const currentPageIndex = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
-const pageCount = Math.ceil(entries.length / recipePagination);
-const indexOfLastEntry = currentPageIndex * recipePagination;
-const indexOfFirstEntry = indexOfLastEntry - recipePagination;
+const pageCount = Math.ceil(entries.length / entriesPerPage);
+const indexOfLastEntry = currentPageIndex * entriesPerPage;
+const indexOfFirstEntry = indexOfLastEntry - entriesPerPage;
 const currentEntries = entries.slice(indexOfFirstEntry, indexOfLastEntry);
 ---
 
