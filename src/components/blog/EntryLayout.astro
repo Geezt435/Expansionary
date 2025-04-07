@@ -16,8 +16,11 @@ const { entry, relatedEntries }: Props = Astro.props;
 const { title, description, autodescription, image, hideToc } = entry.data;
 const { Content, headings } = await render(entry);
 
-const descriptionLenth = 200;
-const globalHideToc = false;
+const descriptionLenth = 200; // the max length in characters for the auto-generated description
+const globalHideToc = false; // set true to always hide the table of contents (right side menu)
+const tocDepth = 3; // maximum depth for the table of contents 1 = h1, etc
+
+const actuallyHideToc = hideToc || globalHideToc || headings.filter((heading) => heading.depth <= tocDepth).length === 0;
 
 const entryDescription =
   description ||
@@ -25,8 +28,8 @@ const entryDescription =
 ---
 
 <BaseLayout title={title} description={entryDescription} image={image?.src}>
-  <section class="flex container">
-    <div class=`w-full ${globalHideToc || hideToc ? "" : "md:col-9"}`>
+  <section class="flex container p-4">
+    <div class=`w-full ${actuallyHideToc ? "" : "md:col-9"}`>
       <article class="">
         <section>
           <EntryHeader
@@ -45,13 +48,9 @@ const entryDescription =
       </article>
     </div>
     <div
-      class=`hidden md:flex max-h-static_sidemenu sticky top-[5rem] ${globalHideToc || hideToc ? "" : "mx-4 md:col-3"}`
+      class=`hidden max-h-static_sidemenu sticky top-[5rem] pl-4 ${globalHideToc || hideToc ? "" : "md:flex md:col-3"}`
     >
-      {
-        !(globalHideToc || hideToc) && (
-          <TableOfContents {headings} />
-        )
-      }
+      <TableOfContents {headings} />
     </div>
   </section>
 
