@@ -31,7 +31,7 @@ const Accordion = ({
         </svg>
       </button>
       <div
-        className={`max-h-0 overflow-hidden px-4 py-0 ${show && "max-h-screen py-0"}`}
+        className={`max-h-0 overflow-hidden px-4 py-0 ${show && "max-h-full py-0"}`}
       >
         {children}
       </div>

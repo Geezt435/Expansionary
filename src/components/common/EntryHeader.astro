@@ -75,10 +75,10 @@ categories?.sort((a: string, b: string) => a.localeCompare(b));
 tags?.sort((a: string, b: string) => a.localeCompare(b));
 ---
 
-<div>
+<div class="mt-2">
   {
     image && showImage && (
-      <div class="mb-8 mt-2 glass rounded-lg intersect:animate-fadeDown opacity-0 intersect-no-queue">
+      <div class="mb-8 glass rounded-lg intersect:animate-fadeDown opacity-0 intersect-no-queue">
         <Image
           src={image}
           height={500}
