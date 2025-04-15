@@ -51,10 +51,6 @@ strong {
   @apply font-semibold;
 }
 
-code {
-  @apply after:border-none;
-}
-
 img {
   @apply mx-auto;
 }
@@ -84,3 +80,13 @@ input[type=number] {
     @apply text-txt-s dark:text-darkmode-txt-s;
   }
 }
+
+html.dark .astro-code,
+html.dark .astro-code span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+}
+
+// code {
+//   @apply after:border-none;
+// }

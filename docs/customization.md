@@ -289,3 +289,11 @@ Because each page of entries is, well, a page, you'll need to include a file `/s
 You can customize the number of entries per page by changing the `entriesPerPage` variable in both the `index.astro` and `[slug].astro` files mentioned above. Note also that the `getStaticPaths` function in `[slug].astro` operates in a special way with Astro, and build errors can occur if you define a variable outside of the function, for example.
 
 I'm sick of writing about this without saying helpful things, so the TLDR is: just mimic how a working collection does it.
+
+## Header and Footer
+
+For the most part, these components will be customized within the component code directly. That is, `/src/components/base/Header.astro` and `/src/components/base/Footer.astro`.
+
+To add or remove paths from the header, you can edit the `menu` array in `Header.astro`.
+
+To add or remove social icons from the footer, you can edit values passed into the `<Social />` component in `Footer.astro`.
