@@ -22,6 +22,7 @@ const {
   author,
   description,
   image,
+  imageAlt,
   prepTime,
   servings,
   diet,
@@ -44,12 +45,12 @@ const {
               <div class="col basis-2/3 p-2 min-w-72">
                 <div class="glass rounded-lg intersect:animate-fadeDown opacity-0">
                   <Image
+                    class="w-full rounded-lg"
                     src={image}
+                    alt={imageAlt}
                     width={1920}
                     height={1080}
-                    alt={title}
-                    class="w-full rounded-lg"
-                    format="webp"
+                    loading="eager"
                   />
                 </div>
               </div>
