@@ -29,12 +29,12 @@ const { Content } = await render(entry);
           {
             image && (
               <Image
-                src={image}
                 class="mx-auto mb-10 rounded"
+                src={image}
+                alt={imageAlt}
                 height={200}
                 width={200}
-                alt={imageAlt}
-                format="webp"
+                loading="eager"
               />
             )
           }

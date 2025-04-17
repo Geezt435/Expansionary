@@ -29,7 +29,7 @@ const about = defineCollection({
   schema: ({ image }) =>
     searchable.extend({
       image: image().optional(),
-      imageAlt: z.string().default("image"),
+      imageAlt: z.string().default(""),
     }),
 });
 
@@ -42,7 +42,7 @@ const authors = defineCollection({
     searchable.extend({
       email: z.string().optional(),
       image: image().optional(),
-      imageAlt: z.string().default("image"),
+      imageAlt: z.string().default(""),
       social: social.optional(),
     }),
 });
@@ -53,7 +53,7 @@ const blog = defineCollection({
     searchable.extend({
       date: z.date().optional(),
       image: image().optional(),
-      imageAlt: z.string().default("image"),
+      imageAlt: z.string().default(""),
       author: reference("authors").optional(),
       categories: z.array(z.string()).optional(),
       tags: z.array(z.string()).optional(),
@@ -69,7 +69,7 @@ const docs = defineCollection({
       pubDate: z.date().optional(),
       modDate: z.date().optional(),
       image: image().optional(),
-      imageAlt: z.string().default("image"),
+      imageAlt: z.string().default(""),
       hideToc: z.boolean().default(false),
       hideNav: z.boolean().default(false),
     }),
@@ -80,7 +80,7 @@ const home = defineCollection({
   schema: ({ image }) =>
     z.object({
       image: image().optional(),
-      imageAlt: z.string().default("image"),
+      imageAlt: z.string().default(""),
       title: z.string(),
       content: z.string(),
       button: z
@@ -110,7 +110,7 @@ const poetry = defineCollection({
     searchable.extend({
       date: z.date().optional(),
       image: image().optional(),
-      imageAlt: z.string().default("image"),
+      imageAlt: z.string().default(""),
       author: reference("authors").optional(),
     }),
 });
@@ -141,7 +141,7 @@ const recipes = defineCollection({
     searchable.extend({
       date: z.date().optional(),
       image: image().optional(),
-      imageAlt: z.string().default("image"),
+      imageAlt: z.string().default(""),
       author: reference("authors").optional(),
       prepTime: z.number().optional(),
       servings: z.number().optional(),
