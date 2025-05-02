@@ -11,7 +11,7 @@ import remarkMath from "remark-math";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://janedoe.com",
+  site: "https://thunderstore.io/c/totally-accurate-battle-simulator/p/Geezt/Expansionary/",
   base: "/",
   trailingSlash: "ignore",
   prefetch: {
@@ -33,7 +33,7 @@ export default defineConfig({
       themes: { // https://shiki.style/themes
         light: "light-plus",
         dark: "dark-plus",
-      } 
+      }
     },
     extendDefaultPlugins: true
   },

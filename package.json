@@ -1,8 +1,8 @@
 {
-  "name": "Astrogon",
+  "name": "Expansionary",
   "version": "1.0.0",
-  "description": "Template.",
-  "author": "Jane Doe",
+  "description": "TABS Expansionary Modpage.",
+  "author": "Geezt Jeez",
   "license": "MIT",
   "packageManager": "npm@10.8.2",
   "scripts": {

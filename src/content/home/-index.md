@@ -1,9 +1,9 @@
 ---
 image: "@assets/astrogon-star.svg"
-imageAlt: Astrogon logo
-title: Astrogon
-content: A rapidly-customizable template for a blog, documentation, and more.
+imageAlt: Expansionary logo
+title: Expansionary
+content: Expansion to our beloved TABS! Adds new units, weapons, abilities, powers, maps! And most importantly, more battle!
 button:
-  label: See the Code
-  link: https://github.com/astrogon/astrogon
+  label: Download Expansionary!
+  link: https://thunderstore.io/c/totally-accurate-battle-simulator/p/Geezt/Expansionary/
 ---

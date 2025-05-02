@@ -19,11 +19,11 @@ export interface Props {
 
 const { title, description, image, noindex, canonical } = Astro.props;
 
-const siteTitle = "Astrogon";
-const siteDescription = "Astrogon is a simple and elegant Astro theme.";
+const siteTitle = "Expansionary";
+const siteDescription = "Expansion to our beloved TABS! Adds new units, weapons, abilities, powers, maps! And most importantly, more battle!";
 const siteImage = "@assets/og-image.png";
-const siteAuthor = "Jane Doe";
-const baseUrl = "https://janedoe.com";
+const siteAuthor = "Geezt Jeez";
+const baseUrl = "https://thunderstore.io/c/totally-accurate-battle-simulator/p/Geezt/Expansionary/";
 ---
 
 <!DOCTYPE html>
@@ -47,7 +47,7 @@ const baseUrl = "https://janedoe.com";
       sizes="16x16"
       href="/favicon/favicon-16x16.png"
     />
-    
+
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     <meta name="theme-name" content="pages" />
@@ -126,7 +126,7 @@ const baseUrl = "https://janedoe.com";
       integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh"
       crossorigin="anonymous"
       onload="renderMathInElement(document.body);"></script>
-      
+
     <!-- https://docs.astro.build/en/guides/view-transitions -->
     <ClientRouter fallback="swap" />
     <Tooltips interactive={false} delay={[333, 0]} />
