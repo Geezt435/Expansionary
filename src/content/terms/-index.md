@@ -4,69 +4,41 @@ title: Terms & Conditions
 
 ## Copyright
 
-&copy; 2025 Jane Doe. All rights reserved.
+&copy; 2025 Geezt Jeez. All rights reserved.
 
 ## Reuse
 
-### Source Code
+All code, content, models, images, audio, text, and downloadable files on this site are licensed under:
 
-The source code for janedoe.com is protected under the MIT License. In short, you can do as you see fit, so long as you include the original copyright notice in any copy of the software.
+> **Creative Commons Attribution-NonCommercial-NoDerivs 4.0 International (CC BY-NC-ND 4.0)**  
+> https://creativecommons.org/licenses/by-nc-nd/4.0/
 
-```md
-The MIT License (MIT)
+You are free to:
+✅ **Share** — copy and redistribute the material in any medium or format
 
-Copyright (c) 2025 Jane Doe
+But only under these strict conditions:
+- 🖊️ **Attribution** — You must give appropriate credit, link to the license, and indicate if changes were made.
+- 💸 **NonCommercial** — You may **not** use the material for commercial purposes.
+- 🛠️ **NoDerivatives** — You may **not** remix, transform, or build upon the material, nor distribute modified versions.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
+### In short:
+- No commercial use  
+- No asset or code reuse  
+- No remixing or redistribution  
+- Credit must always be given
 
-### Content
+🎥 **Showcasing or reviewing this mod or site?**  
+Yes — as long as you **credit properly**.
 
-It is not permitted to mirror or re-publish the content of this website. That includes, for example, the words and images displayed on it. Write your own blog.
+🚫 **Do not** extract or reuse assets, sounds, models, or scripts in other mods, games, or media without explicit permission from the author.
 
 ## Terms
 
-1. This site includes matters of opinion and speculation. All material is provided for informational purposes only.
-2. While I try to keep materials up-to-date and accurate, the currency, accuracy, and completeness of my work can not be guaranteed.
-3. You are responsible for whatever happens as a result of you reading or using materials from this site.
-4. These terms and conditions may be amended at any time in the future.
+1. This site contains personal opinions, experimental code, and creative content. Use it at your own discretion.
+2. Accuracy and completeness are not guaranteed, though I strive for both.
+3. You bear full responsibility for how you use or interpret this content.
+4. These terms may be changed at any time, without notice.
 
 ## Attributions
 
-This source code is derivative of [Astrogon](https://github.com/astrogon/astrogon) by [Reed Nelson](https://github.com/reednel), which uses the license below.
-
-```md
-The MIT License (MIT)
-
-Copyright (c) 2025 Reed Nelson
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
+This site may use third-party tools or inspirations, but all original work (including the mod, its assets, and its code) is the sole intellectual property of **Geezt Jeez** and protected under the **CC BY-NC-ND 4.0** license.

@@ -1,5 +1,5 @@
 ---
-image: "@assets/astrogon-star.svg"
+image: "@assets/expansionary_logo.svg"
 imageAlt: Expansionary logo
 title: Expansionary
 content: Expansion to our beloved TABS! Adds new units, weapons, abilities, powers, maps! And most importantly, more battle!

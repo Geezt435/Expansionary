@@ -164,14 +164,14 @@ const terms = defineCollection({
 
 // Export collections
 export const collections = {
-  about,
-  authors,
-  blog,
+  // about,
+  // authors,
+  // blog,
   docs,
   home,
-  indexCards,
-  poetry,
-  portfolio,
-  recipes,
+  // indexCards,
+  // poetry,
+  // portfolio,
+  // recipes,
   terms,
 };
