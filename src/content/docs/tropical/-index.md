@@ -1,5 +1,5 @@
 ---
 title: Tropical
-image: "@assets/docs/tropical/cover_tropical.png"
+image: "@assets/docs/Covers/cover_tropical.png"
 draft: false
 ---
