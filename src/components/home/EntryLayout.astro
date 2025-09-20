@@ -31,7 +31,7 @@ const { image, imageAlt, title, content, button } = entry.data;
                 loading="eager"
               />
               </div>
-              
+
             )
           }
           <h1 set:html={markdownify(title)} class="mb-4" />
@@ -46,6 +46,15 @@ const { image, imageAlt, title, content, button } = entry.data;
                 color=""
               />
             )
+          }
+          {
+              <Button
+                label={"Donate on KoFi! ❤️"}
+                link={"https://ko-fi.com/geeztjeez"}
+                newtab
+                hoverInvert
+                color="secondary"
+              />
           }
         </div>
       </div>

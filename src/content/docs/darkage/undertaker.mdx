@@ -1,0 +1,82 @@
+---
+title: "Undertaker"
+image: "@assets/docs/darkage/icon_soulcollector.png"
+---
+
+### Details
+
+Enters and leaves with no invitation, brooding, tall, and enigmatic. This old chap doesn't talk, but his presence is enough to signal that he's not here for a friendly chat.
+
+Scythe on his hands, head adorned with a top hat, dressed in dark uniform suited for coffin makers. A giant coffin follows him, its contents unknown, carried by unseen forces, and it smells like your last breath.
+
+---
+
+### Capabilities
+
+<Tabs client:load>
+
+<Tab name="Main Attack">
+
+#### Soulhawlr
+
+A giant scythe that cleave through multiple enemies in a wide arc. Its edge, imbued with souls, allowing it to deal extra damage to enemies marked as **Indebted Souls**.
+
+When attacking, leaves behind a trail of souls fire on ground that damage nearby enemies, dealing damage.
+
+The weapon's damage are also determined by how much lives are on the battlefield. Capped at **1000%** increase stacks. Base and minimal damage is **200**.
+
+The formula for the damage increase is as follows:
+
+```
+Damage = Base Damage * ((Lives) * 0.25)
+```
+
+Where "Lives" includes all living units, both allies and enemies.
+
+</Tab>
+
+<Tab name="Passive">
+
+#### Soulstice
+
+For every life existing on the battlefield, he gains increased weapon attack speed. The more there is, the more energy he consumes, and the faster he attacks.
+
+The formula for the attack speed increase is as follows:
+
+```
+Weapon ATK Speed = Base Speed + ((Lives) * 0.1) / Second
+```
+
+Where "Lives" includes all living units, both allies and enemies, and seconds is the time unit.
+
+</Tab>
+
+<Tab name="Effects">
+
+#### Indebted Souls
+
+Enemies attacked are marked with tax, for their due after death.
+
+Deals slow damage over time but upon death, heals the opposite team **10%** of victim's max health. Lasts for **8** seconds.
+
+</Tab>
+
+</Tabs>
+
+---
+
+### Trivia
+
+<Accordion client:load title="Soul Reaper?">
+
+Grim Reaper in disguise, the Undertaker embodies the essence of death and despair. His connection to the afterlife grants him unique powers over souls, making him a formidable foe on the battlefield.
+
+</Accordion>
+
+<Accordion client:load title="References?">
+
+One of the most obvious references is to "The Backwater Gospel", animated short film by Bo **Mathorne**. The Undertaker's design and demeanor closely resemble the character from the film, with his tall, brooding figure, top hat, and scythe.
+
+And although not a direct reference, and unknown power set wise, I deliberately planned his balance his power to connect with souls. Funny enough, his old design and name, "Soul Collector", was summary of his theme.
+
+</Accordion>
